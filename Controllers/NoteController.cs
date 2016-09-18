@@ -1,28 +1,29 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using WebCore.API.Models;
 
 namespace WebCore.API.Controllers
 {
     [Route("api/[controller]")]
     public class NoteController : Controller
     {
-        private static List<Note> _notes;
-        static NoteController()
+        private INoteRepository _repo;
+        public NoteController(INoteRepository repo)
         {
-            _notes = new List<Note>();
+            this._repo = repo;
         }
 
 
         [HttpGet]
         public IEnumerable<Note> GetAll()
         {
-            return _notes.AsReadOnly();
+            return _repo.GetAll();
         }
 
         [HttpGet("{id}", Name = "GetNote")]
         public IActionResult GetById(string id)
         {
-            var item = _notes.Find(n => n.Id == id);
+            var item = _repo.Find(id);
             if (item == null)
             {
                 return NotFound();
@@ -37,21 +38,14 @@ namespace WebCore.API.Controllers
             {
                 return BadRequest();
             }
-            item.Id = (_notes.Count + 1).ToString();
-            _notes.Add(item);
-            return CreatedAtRoute("GetNote", new { controller = "Note", id = item.Id }, item);
+            _repo.Add(item);
+            return CreatedAtRoute("GetNote", new { controller = "Note", id = item.Key }, item);
         }
 
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
-            _notes.RemoveAll(n => n.Id == id);
-        }
-
-        public class Note
-        {
-            public string Id { get; set; }
-            public string Content { get; set; }
+            _repo.Remove(id);
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using WebCore.API.Models;
 
-namespace  WebCore.API
+namespace WebCore.API
 {
     public class Program
     {
@@ -21,6 +21,8 @@ namespace  WebCore.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<INoteRepository,NoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,5 +30,6 @@ namespace  WebCore.API
         {
             app.UseMvcWithDefaultRoute();
         }
+
     }
 }
