@@ -8,6 +8,7 @@ namespace WebCore.API.Models
         Note Find(string id);
         void Add(Note item);
         void Remove(string id);
+
     }
     public class NoteRepository : INoteRepository
     {
@@ -17,6 +18,7 @@ namespace WebCore.API.Models
         {
             _list = new List<Note>();
         }
+
 
         public void Add(Note item)
         {
