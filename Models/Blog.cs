@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebCore.API
+namespace WebCore.API.Models
 {
 
   public class BloggingContext : DbContext

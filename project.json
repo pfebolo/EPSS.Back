@@ -5,7 +5,9 @@
     "emitEntryPoint": true
   },
   "dependencies": {
-    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0"
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
   },
   "frameworks": {
     "netcoreapp1.0": {

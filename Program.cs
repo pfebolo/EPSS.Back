@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using WebCore.API.Models;
+using System;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebCore.API
 {
@@ -24,6 +28,11 @@ namespace WebCore.API
 
             services.AddSingleton<INoteRepository,NoteRepository>();
             services.AddSingleton<IBlogRepository,BlogRepository>();
+            services.AddSingleton<IModalidadRepository,ModalidadRepository>();;
+
+            Console.WriteLine("Program.Services");
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
