@@ -35,32 +35,23 @@ namespace WebCore.API.Models
 
         public IEnumerable<Modalidad> GetAll()
         {
-          Console.WriteLine("Buscar Modalidades");
-
-
-          _list.Clear();  
-
-           
-            try
+          _list.Clear();
+          try
+          {
+            using (var db = new EPSSContext())
             {
-                
-                using (var db = new EPSSContext())
-                {
-
-                foreach (var Modalidad in db.Modalidades)
+              foreach (var Modalidad in db.Modalidades)
                 {
                     _list.Add(Modalidad);
-                    Console.WriteLine(Modalidad.Nombre);
+                    //Console.WriteLine(Modalidad.Nombre);
                 }
-            }             
-            }
+               Console.WriteLine("Buscar Modalidades --> OK");
+              }             
+          }
             catch (System.Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-            }
-          
-
+          {
+            Console.WriteLine(ex.Message);
+          }
           return _list.AsReadOnly();
         }
 
