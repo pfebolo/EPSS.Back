@@ -42,6 +42,7 @@ namespace WebCore.API
             services.AddSingleton<INoteRepository,NoteRepository>();
             services.AddSingleton<IBlogRepository,BlogRepository>();
             services.AddSingleton<IModalidadRepository,ModalidadRepository>();
+            services.AddSingleton<IAlumnoRepository,AlumnoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
