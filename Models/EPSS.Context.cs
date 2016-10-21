@@ -11,7 +11,7 @@ namespace WebCore.API.Models
   public class EPSSContext : DbContext
     {
         public DbSet<Modalidad> Modalidades { get; set; }
-				public DbSet<Alumno> Alumnos { get; set; }
+		public DbSet<Alumno> Alumnos { get; set; }
     
         public IConfigurationRoot Configuration { get; set;}
 

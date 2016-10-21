@@ -28,6 +28,10 @@ namespace WebCore.API.Models
         public string situacion_especial { get; set; }
         public string dni { get; set; }
         public string domicilio { get; set; }
+
+        
+        [ForeignKey("modalidad_id")]
+        public virtual Modalidad modalidad { get; set; }
     
 
     }

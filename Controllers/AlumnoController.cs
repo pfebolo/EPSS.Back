@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using WebCore.API.Models;
+using System;
 
 namespace WebCore.API.Controllers
 {
@@ -18,6 +19,7 @@ namespace WebCore.API.Controllers
         [HttpGet]
         public IEnumerable<Alumno> GetAll()
         {
+            Console.WriteLine("Buscar Alumnos --> Atiende llamada de API");
             return _repo.GetAll();
         }
 

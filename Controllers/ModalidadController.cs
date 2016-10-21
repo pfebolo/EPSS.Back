@@ -40,7 +40,8 @@ namespace WebCore.API.Controllers
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetModalidad", new { controller = "Modalidad", ModalidadId = item.ModalidadId }, item);
+            // return CreatedAtRoute("GetModalidad", new { controller = "Modalidad", ModalidadId = item.ModalidadId }, item);
+            return CreatedAtRoute("GetModalidad", new { controller = "Modalidad", modalidad_id = item.modalidad_id }, item);
         }
 
         [HttpDelete("{id}")]

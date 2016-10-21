@@ -30,7 +30,8 @@ namespace WebCore.API.Models
 
         public Modalidad Find(int id)
         {
-            return _list.Find(n=>n.ModalidadId==id);
+            // return _list.Find(n=>n.ModalidadId==id);
+            return _list.Find(n=>n.modalidad_id==id);
         }
 
         public IEnumerable<Modalidad> GetAll()
