@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using WebCore.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebCore.API.Models
 {
@@ -43,7 +44,7 @@ namespace WebCore.API.Models
             using (var db = new EPSSContext())
             {
               Console.WriteLine("Buscar Alumnos --> Intenta abrir contexto y obtener alumnos de DB");
-              foreach (var Alumno in db.Alumnos)
+              foreach (var Alumno in db.Alumnos.Include(a => a.modalidad))
                 {
 
                     //  Alumno.modalidad = new Modalidad();
@@ -53,20 +54,20 @@ namespace WebCore.API.Models
                     //Console.WriteLine(Alumno.Nombre);
 
                 }
-                Console.WriteLine(_list.Count().ToString());
-                foreach(Alumno AlumnoX in _list)
-                {
-                     var ai = (int)AlumnoX.modalidad_id;
-                     var qm = db.Modalidades.Where(x => x.modalidad_id == ai);
-                     AlumnoX.modalidad = qm.First();
-                     //  Alumno.modalidad = new Modalidad();
-                     // Alumno.modalidad.modalidad_id=2;
-                     // Alumno.modalidad.Nombre = "Carrera a Distancia";
-                     // _list.Add(Alumno);
-                     Console.WriteLine(AlumnoX.nombre);
+                // Console.WriteLine(_list.Count().ToString());
+                // foreach(Alumno AlumnoX in _list)
+                // {
+                //      var ai = (int)AlumnoX.modalidad_id;
+                //      var qm = db.Modalidades.Where(x => x.modalidad_id == ai);
+                //      AlumnoX.modalidad = qm.First();
+                //      //  Alumno.modalidad = new Modalidad();
+                //      // Alumno.modalidad.modalidad_id=2;
+                //      // Alumno.modalidad.Nombre = "Carrera a Distancia";
+                //      // _list.Add(Alumno);
+                //      Console.WriteLine(AlumnoX.nombre);
 
-                 }
-                 Console.WriteLine(_list.Count().ToString());
+                //  }
+                //  Console.WriteLine(_list.Count().ToString());
                
                Console.WriteLine("Buscar Alumnos --> OK");
               }             
