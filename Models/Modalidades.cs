@@ -1,38 +1,24 @@
-
-
-
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebCore.API.Models
+namespace API.Models
 {
-
-
-
-public class Modalidad
-{
-
-    public Modalidad()
+    [Table("modalidades")]
+    public partial class Modalidades
     {
-        this.Alumnos = new HashSet<Alumno>();
+        public Modalidades()
+        {
+            Alumnos = new HashSet<Alumnos>();
+        }
+
+        [Column("id")]
+        public int Id { get; set; }
+        [Column("nombre", TypeName = "varchar(500)")]
+        public string Nombre { get; set; }
+
+        [InverseProperty("Modalidad")]
+        public virtual ICollection<Alumnos> Alumnos { get; set; }
     }
-
-    
-    [Column("id"), Key]
-    public int modalidad_id { get; set; }
-    public string Nombre { get; set; }
-
-    [IgnoreDataMember]
-    public virtual ICollection<Alumno> Alumnos { get; set; }
-    
-}
-
-
-
 }
