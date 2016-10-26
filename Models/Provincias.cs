@@ -21,7 +21,7 @@ namespace API.Models
         public string ProvinciaId { get; set; }
 
         [IgnoreDataMember]
-        [InverseProperty("P")]
+        [InverseProperty("Provincia")]
         public virtual ICollection<Partidos> Partidos { get; set; }
         
         [ForeignKey("PaisId")]

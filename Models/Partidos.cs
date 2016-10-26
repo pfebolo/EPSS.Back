@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace API.Models
 {
@@ -24,10 +25,11 @@ namespace API.Models
         [MaxLength(255)]
         public string Nombre { get; set; }
 
+        [IgnoreDataMember]
         [InverseProperty("P")]
         public virtual ICollection<Localidades> Localidades { get; set; }
         [ForeignKey("PaisId,ProvinciaId")]
         [InverseProperty("Partidos")]
-        public virtual Provincias P { get; set; }
+        public virtual Provincias Provincia { get; set; }
     }
 }
