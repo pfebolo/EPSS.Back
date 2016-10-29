@@ -20,7 +20,7 @@ public class Modalidad
 
     public Modalidad()
     {
-        this.Alumnos = new HashSet<Alumno>();
+        //this.Alumnos = new HashSet<Alumno>();
     }
 
     
@@ -28,8 +28,8 @@ public class Modalidad
     public int modalidad_id { get; set; }
     public string Nombre { get; set; }
 
-    [IgnoreDataMember]
-    public virtual ICollection<Alumno> Alumnos { get; set; }
+    //[IgnoreDataMember]
+    //public virtual ICollection<Alumno> Alumnos { get; set; }
     
 }
 
