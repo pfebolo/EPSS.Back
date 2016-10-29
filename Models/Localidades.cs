@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace API.Models
 {
@@ -27,13 +28,16 @@ namespace API.Models
         [MaxLength(255)]
         public string Nombre { get; set; }
 
-        [InverseProperty("Direccion")]
+        [IgnoreDataMember]
+        [InverseProperty("Localidad")]
         public virtual ICollection<Legajos> Legajos { get; set; }
+        
         [ForeignKey("PaisId,CodigoPostalId")]
         [InverseProperty("Localidades")]
-        public virtual CodigosPostales CodigosPostales { get; set; }
+        public virtual CodigosPostales CodigoPostal { get; set; }
+        
         [ForeignKey("PaisId,ProvinciaId,PartidoD")]
         [InverseProperty("Localidades")]
-        public virtual Partidos P { get; set; }
+        public virtual Partidos Partido { get; set; }
     }
 }

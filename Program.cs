@@ -47,6 +47,8 @@ namespace WebCore.API
             services.AddSingleton<IPaisesRepository,PaisesRepository>();
             services.AddSingleton<IProvinciasRepository,ProvinciasRepository>();
             services.AddSingleton<IPartidosRepository,PartidosRepository>();
+            services.AddSingleton<ICodigosPostalesRepository,CodigosPostalesRepository>();
+            services.AddSingleton<ILocalidadesRepository,LocalidadesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

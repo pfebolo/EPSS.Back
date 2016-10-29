@@ -28,6 +28,7 @@ namespace API.Models
         [IgnoreDataMember]
         [InverseProperty("Pais")]
         public virtual ICollection<CodigosPostales> CodigosPostales { get; set; }
+
         [IgnoreDataMember]
         [InverseProperty("Pais")]
         public virtual ICollection<Provincias> Provincias { get; set; }

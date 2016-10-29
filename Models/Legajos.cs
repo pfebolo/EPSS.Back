@@ -50,8 +50,9 @@ namespace API.Models
         [ForeignKey("AlumnoId")]
         [InverseProperty("Legajos")]
         public virtual Alumnos Alumno { get; set; }
+        
         [ForeignKey("DireccionPaisId,DireccionProvinciaId,DireccionPartidoId,DireccionLocalidadId")]
         [InverseProperty("Legajos")]
-        public virtual Localidades Direccion { get; set; }
+        public virtual Localidades Localidad { get; set; }
     }
 }
