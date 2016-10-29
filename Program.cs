@@ -40,15 +40,20 @@ namespace WebCore.API
             
      
 
+            //Borrar
             services.AddSingleton<INoteRepository,NoteRepository>();
             services.AddSingleton<IBlogRepository,BlogRepository>();
-            services.AddSingleton<IModalidadRepository,ModalidadRepository>();
             services.AddSingleton<IAlumnoRepository,AlumnoRepository>();
+
+            //Oks
+            //TODO: Incorporar por inyeccion de dependencias el contexto
+            services.AddSingleton<IModalidadRepository,ModalidadRepository>();
             services.AddSingleton<IPaisesRepository,PaisesRepository>();
             services.AddSingleton<IProvinciasRepository,ProvinciasRepository>();
             services.AddSingleton<IPartidosRepository,PartidosRepository>();
             services.AddSingleton<ICodigosPostalesRepository,CodigosPostalesRepository>();
             services.AddSingleton<ILocalidadesRepository,LocalidadesRepository>();
+            services.AddSingleton<IAlumnosRepository,AlumnosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

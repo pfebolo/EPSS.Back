@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace API.Models
 {
     [Table("alumnos")]
     public partial class Alumnos
     {
+
         [Column("id")]
-        public int Id { get; set; }
+        [Key]
+        public int AlumnoId { get; set; }
         [Column("nombre", TypeName = "varchar(100)")]
         public string Nombre { get; set; }
         [Column("apellido", TypeName = "varchar(120)")]
@@ -42,9 +45,11 @@ namespace API.Models
         public string Dni { get; set; }
         [Column("domicilio", TypeName = "varchar(500)")]
         public string Domicilio { get; set; }
-
+        
+        [IgnoreDataMember]
         [InverseProperty("Alumno")]
         public virtual Legajos Legajos { get; set; }
+
         [ForeignKey("ModalidadId")]
         [InverseProperty("Alumnos")]
         public virtual Modalidades Modalidad { get; set; }
