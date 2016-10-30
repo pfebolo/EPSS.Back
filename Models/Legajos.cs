@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace API.Models
 {
     public partial class Legajos
     {
+        public Legajos()
+        {
+            Estudios = new HashSet<Estudios>();
+        }
+
         [Column("AlumnoID")]
         [Key]
         public int AlumnoId { get; set; }
@@ -54,5 +60,9 @@ namespace API.Models
         [ForeignKey("DireccionPaisId,DireccionProvinciaId,DireccionPartidoId,DireccionLocalidadId")]
         [InverseProperty("Legajos")]
         public virtual Localidades Localidad { get; set; }
+
+        
+        [InverseProperty("Legajo")]
+        public virtual ICollection<Estudios> Estudios { get; set; }
     }
 }

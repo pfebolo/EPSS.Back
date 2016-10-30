@@ -20,6 +20,15 @@ namespace API.Models
                     .HasName("PK_CodigoPostal_1");
             });
 
+            modelBuilder.Entity<Estudios>(entity =>
+            {
+                entity.HasKey(e => new { e.AlumnoId, e.EstudioId })
+                    .HasName("PK_Estudios");
+
+                entity.HasIndex(e => e.AlumnoId)
+                    .HasName("IX_Estudios");
+            });
+
             modelBuilder.Entity<Legajos>(entity =>
             {
                 entity.HasIndex(e => e.LegajoNro)
@@ -53,9 +62,11 @@ namespace API.Models
 
         public virtual DbSet<Alumnos> Alumnos { get; set; }
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
+        public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
+        public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
         public virtual DbSet<Partidos> Partidos { get; set; }
         public virtual DbSet<Provincias> Provincias { get; set; }

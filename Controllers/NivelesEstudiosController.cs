@@ -1,26 +1,27 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using WebCore.API.Models;
+using API.Models;
 
 namespace WebCore.API.Controllers
 {
     [Route("api/[controller]")]
-    public class NoteController : Controller
+    public class NivelesEstudiosController : Controller
     {
-        private INoteRepository _repo;
-        public NoteController(INoteRepository repo)
+        private INivelesEstudiosRepository _repo;
+        
+        public NivelesEstudiosController(INivelesEstudiosRepository repo)
         {
             this._repo = repo;
         }
 
 
         [HttpGet]
-        public IEnumerable<Note> GetAll()
+        public IEnumerable<NivelesEstudios> GetAll()
         {
             return _repo.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetNote")]
+        [HttpGet("{id}", Name = "GetNivelesEstudios")]
         public IActionResult GetById(string id)
         {
             var item = _repo.Find(id);
@@ -32,14 +33,14 @@ namespace WebCore.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Note item)
+        public IActionResult Create([FromBody] NivelesEstudios item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetNote", new { controller = "Note", id = item.Key }, item);
+            return CreatedAtRoute("GetNivelesEstudios", new { controller = "NivelesEstudios", NivelEstudioId = item.NivelEstudioId }, item);
         }
 
         [HttpDelete("{id}")]

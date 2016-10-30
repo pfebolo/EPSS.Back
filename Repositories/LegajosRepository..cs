@@ -47,7 +47,8 @@ namespace API.Models
                                         .Include(Legajo => Legajo.Localidad)
                                             .ThenInclude(Localidad => Localidad.CodigoPostal)
                                         .Include(Legajo => Legajo.Localidad)
-                                            .ThenInclude(Localidad => Localidad.Partido))
+                                            .ThenInclude(Localidad => Localidad.Partido)
+                                        .Include(Legajo => Legajo.Estudios))
                 {
                     _list.Add(Legajo);
                     //Console.WriteLine(Legajos.Nombre);
