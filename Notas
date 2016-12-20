@@ -11,6 +11,6 @@ dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=Tr
 #Duplicar el directorio
 #Sobre el duplicado 'scaffoldear' con las tablas nuevas
 #Copiar los modelos nuevos a la carpeta original
-#Copiar el contecto renovado (verificar que solo agrego relaciones) (Este archivo en gral nos es modificado)
+#Copiar el contexto renovado (verificar que solo agrego relaciones) (Este archivo en gral nos es modificado)
 
-dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -t NivelesEstudios -t Estudios -o Models -f
+dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t Cursos -t Coordinadores -t Grupos -t Coordinacion -o Models -f

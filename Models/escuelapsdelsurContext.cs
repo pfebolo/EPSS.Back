@@ -20,6 +20,23 @@ namespace API.Models
                     .HasName("PK_CodigoPostal_1");
             });
 
+            modelBuilder.Entity<Coordinacion>(entity =>
+            {
+                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.CoordinadorId })
+                    .HasName("PK_Coordinacion");
+            });
+
+            modelBuilder.Entity<Coordinadores>(entity =>
+            {
+                entity.Property(e => e.CoordinadorId).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Cursos>(entity =>
+            {
+                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId })
+                    .HasName("PK_Cursos");
+            });
+
             modelBuilder.Entity<Estudios>(entity =>
             {
                 entity.HasKey(e => new { e.AlumnoId, e.EstudioId })
@@ -27,6 +44,12 @@ namespace API.Models
 
                 entity.HasIndex(e => e.AlumnoId)
                     .HasName("IX_Estudios");
+            });
+
+            modelBuilder.Entity<Grupos>(entity =>
+            {
+                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.AlumnoId })
+                    .HasName("PK_Grupos");
             });
 
             modelBuilder.Entity<Legajos>(entity =>
@@ -53,6 +76,12 @@ namespace API.Models
                     .HasName("PK_Partidos");
             });
 
+            modelBuilder.Entity<Promociones>(entity =>
+            {
+                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId })
+                    .HasName("PK_Promociones");
+            });
+
             modelBuilder.Entity<Provincias>(entity =>
             {
                 entity.HasKey(e => new { e.PaisId, e.ProvinciaId })
@@ -62,13 +91,20 @@ namespace API.Models
 
         public virtual DbSet<Alumnos> Alumnos { get; set; }
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
+        public virtual DbSet<Coordinacion> Coordinacion { get; set; }
+        public virtual DbSet<Coordinadores> Coordinadores { get; set; }
+        public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
+        public virtual DbSet<Grupos> Grupos { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
+        public virtual DbSet<Modos> Modos { get; set; }
         public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
         public virtual DbSet<Partidos> Partidos { get; set; }
+        public virtual DbSet<Promociones> Promociones { get; set; }
         public virtual DbSet<Provincias> Provincias { get; set; }
+        public virtual DbSet<Turnos> Turnos { get; set; }
     }
 }

@@ -85,5 +85,9 @@ namespace API.Models
         
         [InverseProperty("Legajo")]
         public virtual ICollection<Estudios> Estudios { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Legajo")]
+        public virtual ICollection<Grupos> Grupos { get; set; }
     }
 }
