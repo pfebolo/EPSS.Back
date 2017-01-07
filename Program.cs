@@ -6,7 +6,6 @@ using API.Models;
 using System;
 
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
 
 namespace WebCore.API
 {
@@ -56,6 +55,7 @@ namespace WebCore.API
             services.AddSingleton<ICoordinadoresRepository,CoordinadoresRepository>();
             services.AddSingleton<IGruposRepository,GruposRepository>();
             services.AddSingleton<ICoordinacionesRepository,CoordinacionesRepository>();
+            services.AddSingleton<IBasicoRepository,BasicoRepository>();
 
         }
 
