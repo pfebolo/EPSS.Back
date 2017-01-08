@@ -1,16 +1,13 @@
+﻿using System;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
 
-namespace WebCore.API.Models
+
+namespace API.Models
 {
-
-  public class EPSSContext : DbContext
+    public partial class escuelapsdelsurContext : DbContext
     {
-        public DbSet<Modalidad> Modalidades { get; set; }
-		//public DbSet<Alumno> Alumnos { get; set; }
-    
         public IConfigurationRoot Configuration { get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,20 +19,17 @@ namespace WebCore.API.Models
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-            //optionsBuilder.UseSqlite("Filename=../../../blog.db");
-            //options.UseSqlServer(optionsBuilder.GetConnectionString("DefaultConnection"));
+            Console.WriteLine(@"*** CON CONFIG ***");
+            Console.WriteLine("Configuracion:");
             Console.WriteLine(Directory.GetCurrentDirectory() );
-            Console.WriteLine(Configuration.GetConnectionString("DefaultConnection") );
             //optionsBuilder.UseSqlServer(@"Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;");
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            Console.WriteLine(@"*** CON CONFIG 222222 ***");
-            Console.WriteLine("Configuracion");
+            //optionsBuilder.UseSqlServer(@"Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;");
+            //string Configuracion = @"Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;";
+            string Configuracion = Configuration.GetConnectionString("DefaultConnection");
+            Console.WriteLine(Configuracion);
+            optionsBuilder.UseSqlServer(Configuracion);
         }
         
 
-
     }
-
-
-
 }

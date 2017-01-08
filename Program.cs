@@ -41,6 +41,7 @@ namespace WebCore.API
 
             //TODO: Incorporar por inyeccion de dependencias el contexto
             services.AddSingleton<IModalidadRepository,ModalidadRepository>();
+            services.AddSingleton<IModalidadesRepository,ModalidadesRepository>();
             services.AddSingleton<IPaisesRepository,PaisesRepository>();
             services.AddSingleton<IProvinciasRepository,ProvinciasRepository>();
             services.AddSingleton<IPartidosRepository,PartidosRepository>();
