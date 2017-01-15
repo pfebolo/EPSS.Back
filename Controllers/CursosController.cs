@@ -49,5 +49,20 @@ namespace EPSS.Controllers
         {
             _repo.Remove(id);
         }
+
+#region "Busquedas específicas"
+        [HttpGet("activoporestudiante/{estudianteLegajo}", Name = "GetCursoActivo")]
+        public IActionResult GetAtiveByEstudiante(int estudianteLegajo)
+        {
+            var item = _repo.FindActivebyEstudiante(estudianteLegajo);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+
+#endregion
+
     }
 }
