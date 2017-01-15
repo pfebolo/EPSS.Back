@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 
 
-namespace API.Models
+namespace EPSS.Models
 {
     public partial class EstadosCurso
     {

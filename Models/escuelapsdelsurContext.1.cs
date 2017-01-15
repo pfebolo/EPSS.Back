@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 
-namespace API.Models
+namespace EPSS.Models
 {
     public partial class escuelapsdelsurContext : DbContext
     {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebCore.API.Models
+namespace EPSS.Models
 {
     public class Basico
     {

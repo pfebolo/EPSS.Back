@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 
-namespace API.Models
+namespace EPSS.Models
 {
     public partial class NivelesEstudios
     {

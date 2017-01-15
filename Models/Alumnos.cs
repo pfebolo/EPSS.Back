@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace API.Models
+namespace EPSS.Models
 {
     [Table("alumnos")]
     public partial class Alumnos

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using API.Models;
+using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Repositories

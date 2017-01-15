@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using WebCore.API.Models;
+using EPSS.Models;
 using EPSS.Repositories;
 
 namespace WebCore.API.Controllers

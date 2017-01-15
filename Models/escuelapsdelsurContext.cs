@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace API.Models
+namespace EPSS.Models
 {
     public partial class escuelapsdelsurContext : DbContext
     {

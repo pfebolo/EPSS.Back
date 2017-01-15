@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System;
-using WebCore.API.Models;
+using EPSS.Models;
 
 namespace EPSS.Repositories
 {
