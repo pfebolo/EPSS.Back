@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using WebCore.API.Models;
-using API.Models;
+using EPSS.Repositories;
 using System;
 
 using Microsoft.Extensions.Configuration;
 
-namespace WebCore.API
+namespace EPSS
 {
     public class Program
     {

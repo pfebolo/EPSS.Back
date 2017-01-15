@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 using WebCore.API.Models;
 
-namespace WebCore.API.Models
+namespace EPSS.Repositories
 {
     public interface IBasicoRepository
     {

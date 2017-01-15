@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System;
+using API.Models;
 
-
-namespace API.Models
+namespace EPSS.Repositories
 {
     public interface IEstadosCursosRepository
     {

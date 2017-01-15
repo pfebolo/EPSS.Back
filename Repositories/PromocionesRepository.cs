@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System;
 using API.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace API.Models
-{
+
+namespace EPSS.Repositories{
     public interface IPromocionesRepository
     {
         IEnumerable<Promociones> GetAll();
