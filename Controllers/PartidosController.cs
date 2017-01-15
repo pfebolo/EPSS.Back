@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using EPSS.Models;
 using EPSS.Repositories;
 
-namespace WebCore.API.Controllers
+namespace EPSS.Controllers
 {
     [Route("api/[controller]")]
     public class PartidosController : Controller
