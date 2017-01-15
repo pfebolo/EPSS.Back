@@ -56,6 +56,7 @@ namespace WebCore.API
             services.AddSingleton<IGruposRepository,GruposRepository>();
             services.AddSingleton<ICoordinacionesRepository,CoordinacionesRepository>();
             services.AddSingleton<IBasicoRepository,BasicoRepository>();
+            services.AddSingleton<IEstadosCursosRepository,EstadosCursosRepository>();
 
         }
 

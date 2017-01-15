@@ -4,6 +4,9 @@
     "debugType": "portable",
     "emitEntryPoint": true
   },
+  "tooling": {
+    "defaultNamespace": "API"
+  },
   "dependencies": {
     "Microsoft.EntityFrameworkCore.Sqlite": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",

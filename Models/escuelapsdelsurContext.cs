@@ -1,9 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace API.Models
 {
     public partial class escuelapsdelsurContext : DbContext
     {
+        public virtual DbSet<Alumnos> Alumnos { get; set; }
+        public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
+        public virtual DbSet<Coordinacion> Coordinacion { get; set; }
+        public virtual DbSet<Coordinadores> Coordinadores { get; set; }
+        public virtual DbSet<Cursos> Cursos { get; set; }
+        public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
+        public virtual DbSet<Estudios> Estudios { get; set; }
+        public virtual DbSet<Grupos> Grupos { get; set; }
+        public virtual DbSet<Legajos> Legajos { get; set; }
+        public virtual DbSet<Localidades> Localidades { get; set; }
+        public virtual DbSet<Modalidades> Modalidades { get; set; }
+        public virtual DbSet<Modos> Modos { get; set; }
+        public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
+        public virtual DbSet<Paises> Paises { get; set; }
+        public virtual DbSet<Partidos> Partidos { get; set; }
+        public virtual DbSet<Promociones> Promociones { get; set; }
+        public virtual DbSet<Provincias> Provincias { get; set; }
+        public virtual DbSet<Turnos> Turnos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +48,11 @@ namespace API.Models
             {
                 entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId })
                     .HasName("PK_Cursos");
+            });
+
+            modelBuilder.Entity<EstadosCurso>(entity =>
+            {
+                entity.Property(e => e.EstadoCursoId).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Estudios>(entity =>
@@ -81,23 +106,5 @@ namespace API.Models
                     .HasName("PK_Provincias_1");
             });
         }
-
-        public virtual DbSet<Alumnos> Alumnos { get; set; }
-        public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
-        public virtual DbSet<Coordinacion> Coordinacion { get; set; }
-        public virtual DbSet<Coordinadores> Coordinadores { get; set; }
-        public virtual DbSet<Cursos> Cursos { get; set; }
-        public virtual DbSet<Estudios> Estudios { get; set; }
-        public virtual DbSet<Grupos> Grupos { get; set; }
-        public virtual DbSet<Legajos> Legajos { get; set; }
-        public virtual DbSet<Localidades> Localidades { get; set; }
-        public virtual DbSet<Modalidades> Modalidades { get; set; }
-        public virtual DbSet<Modos> Modos { get; set; }
-        public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
-        public virtual DbSet<Paises> Paises { get; set; }
-        public virtual DbSet<Partidos> Partidos { get; set; }
-        public virtual DbSet<Promociones> Promociones { get; set; }
-        public virtual DbSet<Provincias> Provincias { get; set; }
-        public virtual DbSet<Turnos> Turnos { get; set; }
     }
 }

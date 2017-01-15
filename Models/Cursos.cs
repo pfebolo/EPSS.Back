@@ -26,6 +26,8 @@ namespace API.Models
         public string TurnoId { get; set; }
         [Column("CursoID")]
         public int CursoId { get; set; }
+        [Column("EstadoCursoID")]
+        public int EstadoCursoId { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Curso")]
@@ -39,5 +41,11 @@ namespace API.Models
         [ForeignKey("PromocionId,CuatrimestreId,ModoId,TurnoId")]
         [InverseProperty("Cursos")]
         public virtual Promociones Promocion { get; set; }
+
+        
+        [ForeignKey("EstadoCursoId")]
+        [InverseProperty("Cursos")]
+        public virtual EstadosCurso EstadoCurso { get; set; }
+
     }
 }

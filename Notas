@@ -8,10 +8,11 @@ dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=Tr
 
 
 
-#Duplicar el directorio
-#Sobre el duplicado 'scaffoldear' con las tablas nuevas
-#Copiar los modelos nuevos a la carpeta original
-#Copiar el contexto renovado (verificar que solo agrego relaciones) (Este archivo en gral nos es modificado)
+#Verificar que el Directorio se llame API (es necesario ya que de este nombre genera el namespace base)
+#'scaffoldear' con las tablas nuevas
+#Agregar los modelos nuevos al commit
+"Revertir todoso los cambios sobre los modelos viejos
+#verificar el archivo de contexto, y ajustar de ser necesario
 
 dotnet ef dbContext scaffold "192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -o Models -f
 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System;
-using WebCore.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Models
@@ -42,7 +41,7 @@ namespace API.Models
           {
             using (var db = new escuelapsdelsurContext())
             {
-              foreach (var Curso in db.Cursos)
+              foreach (var Curso in db.Cursos.Include(a => a.EstadoCurso))
                 {
                     _list.Add(Curso);
                     //Console.WriteLine(Cursos.Nombre);
