@@ -17,8 +17,12 @@ dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=Tr
 dotnet ef dbContext scaffold "192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -o Models -f
 
 
+----
+Para ir actualizando Net Core
+https://www.microsoft.com/net/download/core#/current/sdk
 
-
+*Verificar que en UBUNTU seguramente se actualiza automaticamente
+  -Si es así, entonces mantener sincronizados las computadoreas NB1 y SUPERVISOR
 
 
 ------

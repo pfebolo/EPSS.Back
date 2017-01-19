@@ -14,6 +14,7 @@ namespace EPSS
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseUrls("http://*:5000")
                 .UseStartup<Program>()
                 .Build();
 
