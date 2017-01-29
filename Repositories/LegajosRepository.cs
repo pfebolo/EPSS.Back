@@ -10,12 +10,14 @@ namespace EPSS.Repositories
         IEnumerable<Legajos> GetAll();
         Legajos Find(int id);
         void Add(Legajos item);
+        void Update(Legajos item);
         void Remove(int id);
 
     }
     public class LegajosRepository : ILegajosRepository
     {
         private List<Legajos> _list;
+        private Boolean legajosCargados=false;
 
         public LegajosRepository()
         {
@@ -31,13 +33,17 @@ namespace EPSS.Repositories
 
         public Legajos Find(int id)
         {
-            // return _list.Find(n=>n.LegajosId==id);
-            return _list.Find(n=>n.AlumnoId==id);
+            if (!legajosCargados) 
+               GetAll();
+            Legajos legajo = _list.Find(n=>n.AlumnoId==id);   
+            Console.WriteLine("Buscar Legajo ID: " + id.ToString() + " --> OK");
+            return legajo;
         }
 
         public IEnumerable<Legajos> GetAll()
         {
           _list.Clear();
+          legajosCargados=false;
           try
           {
             using (var db = new escuelapsdelsurContext())
@@ -53,6 +59,7 @@ namespace EPSS.Repositories
                     _list.Add(Legajo);
                     //Console.WriteLine(Legajos.Nombre);
                 }
+               legajosCargados=true;
                Console.WriteLine("Buscar Legajos --> OK");
               }             
           }
@@ -67,5 +74,14 @@ namespace EPSS.Repositories
         {
             //_list.RemoveAll(n=>n.Key==id);
         }
+ 
+        public void Update(Legajos item)
+        {
+            var db = new escuelapsdelsurContext();
+            db.Update(item);
+            db.SaveChanges();
+            Console.WriteLine("Actualizar Legajo ID: " + item.AlumnoId.ToString() + " --> OK");
+        }
+ 
     }
 }

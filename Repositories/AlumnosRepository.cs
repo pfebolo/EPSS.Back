@@ -10,6 +10,7 @@ namespace EPSS.Repositories
         IEnumerable<Alumnos> GetAll();
         Alumnos Find(int id);
         void Add(Alumnos item);
+        void Update(Alumnos item);
         void Remove(int id);
 
     }
@@ -56,6 +57,15 @@ namespace EPSS.Repositories
           }
           return _list.AsReadOnly();
         }
+
+
+        public void Update(Alumnos item)
+        {
+            var db = new escuelapsdelsurContext();
+            db.Update(item);
+            db.SaveChanges();
+        }
+
 
         public void Remove(int id)
         {
