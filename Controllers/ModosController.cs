@@ -6,24 +6,24 @@ using EPSS.Repositories;
 namespace EPSS.Controllers
 {
     [Route("api/[controller]")]
-    public class LegajosController : Controller
+    public class ModosController : Controller
     {
-        private ILegajosRepository _repo;
-        
-        public LegajosController(ILegajosRepository repo)
+        private IModosRepository _repo;
+
+        public ModosController(IModosRepository repo)
         {
             this._repo = repo;
         }
 
 
         [HttpGet]
-        public IEnumerable<Legajos> GetAll()
+        public IEnumerable<Modos> GetAll()
         {
             return _repo.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetLegajos")]
-        public IActionResult GetById(int id)
+        [HttpGet("{id}", Name = "GetModos")]
+        public IActionResult GetById(string id)
         {
             var item = _repo.Find(id);
             if (item == null)
@@ -34,33 +34,34 @@ namespace EPSS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Legajos item)
+        public IActionResult Create([FromBody] Modos item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetLegajos", new { controller = "Legajos", AlumnoId = item.AlumnoId }, item);
+            
+            var x = CreatedAtRoute("GetModos", new { controller = "Modos", id = "Nuevo" }, item);
+            return x;
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _repo.Remove(id);
-        }
-
-        // PUT api/legajos
+        // PUT api/modos
         [HttpPut]
-        public IActionResult Put([FromBody] Legajos item)
+        public IActionResult Put([FromBody] Modos item)
         {
             if (item == null)
+            {
                 return BadRequest();
+            }
 
-            var Modo = _repo.Find(item.AlumnoId);
+            var Modo = _repo.Find(item.ModoId);
+
 
             if (Modo == null)
+            {
                 return NotFound();
+            }
 
             _repo.Update(item);
 
@@ -68,5 +69,10 @@ namespace EPSS.Controllers
         }
 
 
+        [HttpDelete("{id}")]
+        public void Delete(string id)
+        {
+            _repo.Remove(id);
+        }
     }
 }

@@ -40,6 +40,7 @@ namespace EPSS
      
 
             //TODO: Incorporar por inyeccion de dependencias el contexto
+            services.AddSingleton<IModosRepository,ModosRepository>();
             services.AddSingleton<IModalidadesRepository,ModalidadesRepository>();
             services.AddSingleton<IPaisesRepository,PaisesRepository>();
             services.AddSingleton<IProvinciasRepository,ProvinciasRepository>();

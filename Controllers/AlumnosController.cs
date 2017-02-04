@@ -49,5 +49,24 @@ namespace EPSS.Controllers
         {
             _repo.Remove(id);
         }
+
+        // PUT api/alumnos
+        [HttpPut]
+        public IActionResult Put([FromBody] Alumnos item)
+        {
+            if (item == null)
+                return BadRequest();
+
+            var Modo = _repo.Find(item.AlumnoId);
+
+            if (Modo == null)
+                return NotFound();
+
+            _repo.Update(item);
+
+            return NoContent();
+        }
+
+
     }
 }
