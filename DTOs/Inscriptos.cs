@@ -6,6 +6,6 @@ namespace EPSS.DTOs
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Dni { get; set; }
-        public int LegajoNro { get; set; }
+        public int? LegajoNro { get; set; }
     }
 }

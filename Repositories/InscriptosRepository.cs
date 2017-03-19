@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using EPSS.DTOs;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace EPSS.Repositories
 {
@@ -28,20 +31,39 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
+
+                    List<Alumnos> listAlumnos = new List<Alumnos>();
                     foreach (var alumno in db.Alumnos)
                     {
-                        Inscriptos inscripto = new Inscriptos();
-                        inscripto.AlumnoId = alumno.AlumnoId;
-                        inscripto.Nombre = alumno.Nombre;
-                        inscripto.Apellido = alumno.Apellido;
-                        _list.Add(inscripto);
+                        listAlumnos.Add(alumno);
                     }
+
+
+                    foreach (var insc in listAlumnos)
+                    {
+
+                        db.Entry(insc).Reference(b => b.Legajos).Load();
+
+                        if (insc.Legajos == null)
+                        {
+                            Inscriptos inscripto = new Inscriptos();
+                            inscripto.AlumnoId = insc.AlumnoId;
+                            inscripto.Nombre = insc.Nombre;
+                            inscripto.Apellido = insc.Apellido;
+                            inscripto.Dni = insc.Dni;
+                            
+                            _list.Add(inscripto);
+                        }
+                    }
+
+
                     Console.WriteLine("Buscar Inscriptos--> OK");
                 }
             }
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                throw ex;
             }
             return _list.AsReadOnly();
         }
