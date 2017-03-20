@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using EPSS.DTOs;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+//using Microsoft.EntityFrameworkCore;
+
 
 
 
@@ -32,30 +34,43 @@ namespace EPSS.Repositories
                 using (var db = new escuelapsdelsurContext())
                 {
 
-                    List<Alumnos> listAlumnos = new List<Alumnos>();
-                    foreach (var alumno in db.Alumnos)
-                    {
-                        listAlumnos.Add(alumno);
-                    }
+                    //  Forma Linq - "Query Syntax"
+                    //  var q = from a in db.Alumnos
+                    //          join l in db.Legajos on a.AlumnoId equals l.AlumnoId
+                    //          select new Inscriptos {AlumnoId = a.AlumnoId,
+                    //                                 Nombre =  a.Nombre, 
+                    //                                 Apellido = a.Apellido, 
+                    //                                 Dni= a.Dni};
 
 
-                    foreach (var insc in listAlumnos)
-                    {
+                    // Forma Linq - "Method Syntax"
+                    // var q = db.Alumnos.Join(db.Legajos, a => a.AlumnoId, l => l.AlumnoId, (a, l) => new Inscriptos
+                    // {
+                    //     AlumnoId = a.AlumnoId,
+                    //     Nombre = a.Nombre,
+                    //     Apellido = a.Apellido,
+                    //     Dni = a.Dni
+                    // });
 
-                        db.Entry(insc).Reference(b => b.Legajos).Load();
+                    //  Forma Linq - "Query Syntax"
+                    // var q = from a in db.Alumnos
+                    //          where !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)
+                    //          select new Inscriptos {AlumnoId = a.AlumnoId,
+                    //                                  Nombre =  a.Nombre, 
+                    //                                  Apellido = a.Apellido, 
+                    //                                  Dni= a.Dni};
 
-                        if (insc.Legajos == null)
-                        {
-                            Inscriptos inscripto = new Inscriptos();
-                            inscripto.AlumnoId = insc.AlumnoId;
-                            inscripto.Nombre = insc.Nombre;
-                            inscripto.Apellido = insc.Apellido;
-                            inscripto.Dni = insc.Dni;
-                            
-                            _list.Add(inscripto);
-                        }
-                    }
-
+                    // Forma Linq - "Method Syntax"
+                    var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Select(a => new Inscriptos
+                     {
+                         AlumnoId = a.AlumnoId,
+                         Nombre = a.Nombre,
+                         Apellido = a.Apellido,
+                         Dni = a.Dni
+                     });
+                    
+                    
+                    _list = q.ToList();
 
                     Console.WriteLine("Buscar Inscriptos--> OK");
                 }
