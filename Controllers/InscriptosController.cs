@@ -10,7 +10,7 @@ namespace EPSS.Controllers
     public class InscriptosController : Controller
     {
         private IInscriptosRepository _repo;
-        
+
         public InscriptosController(IInscriptosRepository repo)
         {
             this._repo = repo;
@@ -31,10 +31,16 @@ namespace EPSS.Controllers
             if (items == null)
                 return BadRequest();
 
-            _repo.Update(items);
-            Console.WriteLine("PUT Inscriptos");
-
-            return NoContent();
+            try
+            {
+                _repo.Update(items);
+                Console.WriteLine("PUT Inscriptos");
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseConfict(ex);
+            }
         }
 
 

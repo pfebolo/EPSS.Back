@@ -87,7 +87,7 @@ namespace EPSS.Repositories
             {
                 Legajos LegajoNuevo;
                 Boolean HayLegajosNuevos = false;
-                int dniok=0;
+                int dniok = 0;
                 foreach (var item in items)
                 {
                     if (item.LegajoNro.HasValue)
@@ -95,32 +95,25 @@ namespace EPSS.Repositories
                         LegajoNuevo = new Legajos();
                         LegajoNuevo.AlumnoId = item.AlumnoId;
                         LegajoNuevo.LegajoNro = item.LegajoNro.Value;
-                        LegajoNuevo.Sexo= "Masculino";
-                        LegajoNuevo.FechaNacimiento= DateTime.Today;
-                        dniok=0;
-                        int.TryParse(item.Dni,out dniok);
-                        LegajoNuevo.Dni=dniok;
-                        LegajoNuevo.DireccionCalle=String.Empty;
-                        LegajoNuevo.DireccionNro=String.Empty;
-                     
+                        LegajoNuevo.Sexo = "Masculino";
+                        LegajoNuevo.FechaNacimiento = DateTime.Today;
+                        dniok = 0;
+                        int.TryParse(item.Dni, out dniok);
+                        LegajoNuevo.Dni = dniok;
+                        LegajoNuevo.DireccionCalle = String.Empty;
+                        LegajoNuevo.DireccionNro = String.Empty;
+
 
                         db.Legajos.Add(LegajoNuevo);
                         HayLegajosNuevos = true;
                     }
                 }
 
-                try
-                {
-                    if (HayLegajosNuevos)
-                        db.SaveChanges();
-                    Console.WriteLine("Inscriptos:Crear legajos--> Ok");
-                }
-                catch (System.Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                if (HayLegajosNuevos)
+                    db.SaveChanges();
+                Console.WriteLine("Inscriptos:Crear legajos--> Ok");
             }
-            
+
         }
     }
 
