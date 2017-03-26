@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EPSS.DTOs;
 using EPSS.Repositories;
+using System;
 
 namespace EPSS.Controllers
 {
@@ -25,17 +26,13 @@ namespace EPSS.Controllers
 
         // PUT api/Inscriptos
         [HttpPut]
-        public IActionResult Put([FromBody] IEnumerable<Inscriptos> item)
+        public IActionResult Put([FromBody] IEnumerable<Inscriptos> items)
         {
-            if (item == null)
+            if (items == null)
                 return BadRequest();
 
-            // var Modo = _repo.Find(item.InscriptoId);
-
-            // if (Modo == null)
-            //     return NotFound();
-
-            // _repo.Update(item);
+            _repo.Update(items);
+            Console.WriteLine("PUT Inscriptos");
 
             return NoContent();
         }

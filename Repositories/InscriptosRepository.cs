@@ -5,9 +5,6 @@ using EPSS.DTOs;
 using System.Linq;
 //using Microsoft.EntityFrameworkCore;
 
-
-
-
 namespace EPSS.Repositories
 {
     public interface IInscriptosRepository
@@ -62,14 +59,14 @@ namespace EPSS.Repositories
 
                     // Forma Linq - "Method Syntax"
                     var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Select(a => new Inscriptos
-                     {
-                         AlumnoId = a.AlumnoId,
-                         Nombre = a.Nombre,
-                         Apellido = a.Apellido,
-                         Dni = a.Dni
-                     });
-                    
-                    
+                    {
+                        AlumnoId = a.AlumnoId,
+                        Nombre = a.Nombre,
+                        Apellido = a.Apellido,
+                        Dni = a.Dni
+                    });
+
+
                     _list = q.ToList();
 
                     Console.WriteLine("Buscar Inscriptos--> OK");
@@ -86,10 +83,45 @@ namespace EPSS.Repositories
 
         public void Update(IEnumerable<Inscriptos> items)
         {
-            // var db = new escuelapsdelsurContext();
-            // db.Update(item);
-            // db.SaveChanges();
-        }
+            using (var db = new escuelapsdelsurContext())
+            {
+                Legajos LegajoNuevo;
+                Boolean HayLegajosNuevos = false;
+                int dniok=0;
+                foreach (var item in items)
+                {
+                    if (item.LegajoNro.HasValue)
+                    {
+                        LegajoNuevo = new Legajos();
+                        LegajoNuevo.AlumnoId = item.AlumnoId;
+                        LegajoNuevo.LegajoNro = item.LegajoNro.Value;
+                        LegajoNuevo.Sexo= "Masculino";
+                        LegajoNuevo.FechaNacimiento= DateTime.Today;
+                        dniok=0;
+                        int.TryParse(item.Dni,out dniok);
+                        LegajoNuevo.Dni=dniok;
+                        LegajoNuevo.DireccionCalle=String.Empty;
+                        LegajoNuevo.DireccionNro=String.Empty;
+                     
 
+                        db.Legajos.Add(LegajoNuevo);
+                        HayLegajosNuevos = true;
+                    }
+                }
+
+                try
+                {
+                    if (HayLegajosNuevos)
+                        db.SaveChanges();
+                    Console.WriteLine("Inscriptos:Crear legajos--> Ok");
+                }
+                catch (System.Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            
+        }
     }
+
 }
