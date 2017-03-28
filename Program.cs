@@ -58,6 +58,7 @@ namespace EPSS
             services.AddSingleton<ICoordinacionesRepository,CoordinacionesRepository>();
             services.AddSingleton<IBasicoRepository,BasicoRepository>();
             services.AddSingleton<IEstadosCursosRepository,EstadosCursosRepository>();
+            services.AddSingleton<IInscriptosRepository,InscriptosRepository>();
 
         }
 
