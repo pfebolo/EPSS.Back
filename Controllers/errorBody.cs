@@ -22,7 +22,7 @@ namespace EPSS.Controllers
             iex = ex;
             do
             {
-                mensajes.Push(new error(iex.GetType().ToString() ,iex.Message));
+                mensajes.Push(new error(iex.GetType().ToString() + " (0x" + iex.HResult.ToString("X") + ")" ,iex.Message));
                 Console.WriteLine(iex.Message);
                 iex = iex.InnerException;
             } while (iex != null);
