@@ -3,7 +3,7 @@ using System;
 using EPSS.Models;
 using EPSS.DTOs;
 using System.Linq;
-//using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Repositories
 {
@@ -58,12 +58,25 @@ namespace EPSS.Repositories
                     //                                  Dni= a.Dni};
 
                     // Forma Linq - "Method Syntax"
-                    var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Select(a => new Inscriptos
+                    var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Include(a => a.Modalidad).Select(a => new Inscriptos
                     {
                         AlumnoId = a.AlumnoId,
                         Nombre = a.Nombre,
                         Apellido = a.Apellido,
-                        Dni = a.Dni
+                        Dni = a.Dni,
+                        Mail2 = a.Mail2,
+                        Telefono = a.Telefono,
+                        Celular = a.Celular,
+                        ComoConocio = a.ComoConocio,
+                        ModalidadId = a.Modalidad.Nombre,
+                        GradoInteres = a.GradoInteres,
+                        FechaInteresado = a.FechaInteresado,
+                        Comentario = a.Comentario,
+                        Provincia = a.Provincia,
+                        SituacionInscripcion = a.SituacionInscripcion,
+                        SituacionEspecial = a.SituacionEspecial
+
+
                     });
 
 
