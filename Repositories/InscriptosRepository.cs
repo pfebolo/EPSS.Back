@@ -64,6 +64,7 @@ namespace EPSS.Repositories
                         Nombre = a.Nombre,
                         Apellido = a.Apellido,
                         Dni = a.Dni,
+                        Mail = a.Mail,
                         Mail2 = a.Mail2,
                         Telefono = a.Telefono,
                         Celular = a.Celular,
@@ -74,7 +75,8 @@ namespace EPSS.Repositories
                         Comentario = a.Comentario,
                         Provincia = a.Provincia,
                         SituacionInscripcion = a.SituacionInscripcion,
-                        SituacionEspecial = a.SituacionEspecial
+                        SituacionEspecial = a.SituacionEspecial,
+                        Domicilio = a.Domicilio
 
 
                     });
