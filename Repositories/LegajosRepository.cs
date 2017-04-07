@@ -50,6 +50,7 @@ namespace EPSS.Repositories
             {
               foreach (var Legajo in db.Legajos
                                         .Include(Legajo => Legajo.Alumno)
+                                            .ThenInclude(Alumno => Alumno.Modalidad)
                                         .Include(Legajo => Legajo.Localidad)
                                             .ThenInclude(Localidad => Localidad.CodigoPostal)
                                         .Include(Legajo => Legajo.Localidad)
