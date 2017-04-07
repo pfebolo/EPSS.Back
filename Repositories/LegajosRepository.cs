@@ -36,7 +36,7 @@ namespace EPSS.Repositories
             if (!legajosCargados) 
                GetAll();
             Legajos legajo = _list.Find(n=>n.AlumnoId==id);   
-            Console.WriteLine("Buscar Legajo ID: " + id.ToString() + " --> OK");
+            Console.WriteLine("Buscar Legajo ID: " + id.ToString() + "/ Legajo Nro: " + legajo.LegajoNro.ToString() + " --> OK");
             return legajo;
         }
 
@@ -50,6 +50,7 @@ namespace EPSS.Repositories
             {
               foreach (var Legajo in db.Legajos
                                         .Include(Legajo => Legajo.Alumno)
+                                            .ThenInclude(Alumno => Alumno.Modalidad)
                                         .Include(Legajo => Legajo.Localidad)
                                             .ThenInclude(Localidad => Localidad.CodigoPostal)
                                         .Include(Legajo => Legajo.Localidad)
@@ -80,7 +81,7 @@ namespace EPSS.Repositories
             var db = new escuelapsdelsurContext();
             db.Update(item);
             db.SaveChanges();
-            Console.WriteLine("Actualizar Legajo ID: " + item.AlumnoId.ToString() + " --> OK");
+            Console.WriteLine("Actualizar Legajo ID: " + item.AlumnoId.ToString() + "/ Legajo Nro: " + item.LegajoNro.ToString() + " --> OK");
         }
  
     }

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EPSS.DTOs;
 using EPSS.Repositories;
-using System;
 
 namespace EPSS.Controllers
 {
@@ -34,7 +33,6 @@ namespace EPSS.Controllers
             try
             {
                 _repo.Update(items);
-                Console.WriteLine("PUT Inscriptos");
                 return NoContent();
             }
             catch (System.Exception ex)
