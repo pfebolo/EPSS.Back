@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
-
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +13,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class CoordinadoresRepository : ICoordinadoresRepository
+    public class CoordinadoresRepository: BaseRepository,ICoordinadoresRepository
     {
         private List<Coordinadores> _list;
 
-        public CoordinadoresRepository()
+        public CoordinadoresRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Coordinadores>();
@@ -45,14 +45,13 @@ namespace EPSS.Repositories
               foreach (var Coordinador in db.Coordinadores)
                 {
                     _list.Add(Coordinador);
-                    //Console.WriteLine(Coordinadores.Nombre);
                 }
-               Console.WriteLine("Buscar Coordinadores --> OK");
+               _logger.LogInformation("Buscar Coordinadores --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

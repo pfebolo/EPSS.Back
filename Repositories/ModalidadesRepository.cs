@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -12,11 +13,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class ModalidadesRepository : IModalidadesRepository
+    public class ModalidadesRepository: BaseRepository,IModalidadesRepository
     {
         private List<Modalidades> _list;
 
-        public ModalidadesRepository()
+        public ModalidadesRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Modalidades>();
@@ -44,14 +45,13 @@ namespace EPSS.Repositories
               foreach (var Localidad in db.Modalidades)
                 {
                     _list.Add(Localidad);
-                    //Console.WriteLine(Modalidades.Nombre);
                 }
-               Console.WriteLine("Buscar Modalidades --> OK");
+               _logger.LogInformation("Buscar Modalidades --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

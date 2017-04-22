@@ -3,7 +3,7 @@ using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -17,11 +17,11 @@ namespace EPSS.Repositories
 
 
     }
-    public class CursosRepository : ICursosRepository
+    public class CursosRepository: BaseRepository,ICursosRepository
     {
         private List<Cursos> _list;
 
-        public CursosRepository()
+        public CursosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Cursos>();
@@ -49,14 +49,13 @@ namespace EPSS.Repositories
                     foreach (var Curso in db.Cursos.Include(a => a.EstadoCurso))
                     {
                         _list.Add(Curso);
-                        //Console.WriteLine(Cursos.Nombre);
                     }
-                    Console.WriteLine("Buscar Cursos --> OK");
+                    _logger.LogInformation("Buscar Cursos --> OK");
                 }
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogInformation(ex.Message);
             }
             return _list.AsReadOnly();
         }
@@ -87,12 +86,12 @@ namespace EPSS.Repositories
 
                     CursoActivo = Curso.Single();
 
-                    Console.WriteLine("Buscar Curso  Activo por Estudiante(" + estudianteLegajo.ToString() + ") --> OK");
+                    _logger.LogInformation("Buscar Curso  Activo por Estudiante(" + estudianteLegajo.ToString() + ") --> OK");
                 }
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogInformation(ex.Message);
             }
 
 

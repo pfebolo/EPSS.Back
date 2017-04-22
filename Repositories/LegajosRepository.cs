@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -14,12 +15,12 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class LegajosRepository : ILegajosRepository
+    public class LegajosRepository: BaseRepository,ILegajosRepository
     {
         private List<Legajos> _list;
         private Boolean legajosCargados=false;
 
-        public LegajosRepository()
+        public LegajosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Legajos>();
@@ -36,7 +37,7 @@ namespace EPSS.Repositories
             if (!legajosCargados) 
                GetAll();
             Legajos legajo = _list.Find(n=>n.AlumnoId==id);   
-            Console.WriteLine("Buscar Legajo ID: " + id.ToString() + "/ Legajo Nro: " + legajo.LegajoNro.ToString() + " --> OK");
+            _logger.LogInformation("Buscar Legajo ID: " + id.ToString() + "/ Legajo Nro: " + legajo.LegajoNro.ToString() + " --> OK");
             return legajo;
         }
 
@@ -58,15 +59,14 @@ namespace EPSS.Repositories
                                         .Include(Legajo => Legajo.Estudios))
                 {
                     _list.Add(Legajo);
-                    //Console.WriteLine(Legajos.Nombre);
                 }
                legajosCargados=true;
-               Console.WriteLine("Buscar Legajos --> OK");
+               _logger.LogInformation("Buscar Legajos --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }
@@ -81,7 +81,7 @@ namespace EPSS.Repositories
             var db = new escuelapsdelsurContext();
             db.Update(item);
             db.SaveChanges();
-            Console.WriteLine("Actualizar Legajo ID: " + item.AlumnoId.ToString() + "/ Legajo Nro: " + item.LegajoNro.ToString() + " --> OK");
+            _logger.LogInformation("Actualizar Legajo ID: " + item.AlumnoId.ToString() + "/ Legajo Nro: " + item.LegajoNro.ToString() + " --> OK");
         }
  
     }

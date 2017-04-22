@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +14,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class CodigosPostalesRepository : ICodigosPostalesRepository
+    public class CodigosPostalesRepository: BaseRepository,ICodigosPostalesRepository
     {
         private List<CodigosPostales> _list;
 
-        public CodigosPostalesRepository()
+        public CodigosPostalesRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<CodigosPostales>();
@@ -45,14 +46,13 @@ namespace EPSS.Repositories
               foreach (var CodigoPostal in db.CodigosPostales.Include(CodigoPostal => CodigoPostal.Pais))
                 {
                     _list.Add(CodigoPostal);
-                    //Console.WriteLine(CodigosPostales.Nombre);
                 }
-               Console.WriteLine("Buscar CodigosPostales --> OK");
+               _logger.LogInformation("Buscar CodigosPostales --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }
