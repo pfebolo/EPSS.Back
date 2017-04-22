@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
-
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories{
     public interface IPromocionesRepository
@@ -12,11 +12,11 @@ namespace EPSS.Repositories{
         void Remove(int id);
 
     }
-    public class PromocionesRepository : IPromocionesRepository
+    public class PromocionesRepository: BaseRepository,IPromocionesRepository
     {
         private List<Promociones> _list;
 
-        public PromocionesRepository()
+        public PromocionesRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Promociones>();
@@ -44,14 +44,13 @@ namespace EPSS.Repositories{
               foreach (var Promocion in db.Promociones)
                 {
                     _list.Add(Promocion);
-                    //Console.WriteLine(Promociones.Nombre);
                 }
-               Console.WriteLine("Buscar Promociones --> OK");
+               _logger.LogInformation("Buscar Promociones --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

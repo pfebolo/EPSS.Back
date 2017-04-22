@@ -14,15 +14,12 @@ namespace EPSS.Repositories
         IEnumerable<Inscriptos> GetAll();
         void Update(IEnumerable<Inscriptos> items);
     }
-    public class InscriptosRepository : IInscriptosRepository
+    public class InscriptosRepository: BaseRepository,IInscriptosRepository
     {
         private List<Inscriptos> _list;
-        private ILogger _logger;
-
-        public InscriptosRepository(ILoggerFactory loggerFactory)
+        public InscriptosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
             _list = new List<Inscriptos>();
-            _logger = loggerFactory.CreateLogger<InscriptosRepository>();
         }
 
         public IEnumerable<Inscriptos> GetAll()

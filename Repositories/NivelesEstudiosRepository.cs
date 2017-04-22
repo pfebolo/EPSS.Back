@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -12,11 +13,11 @@ namespace EPSS.Repositories
         void Remove(string id);
 
     }
-    public class NivelesEstudiosRepository : INivelesEstudiosRepository
+    public class NivelesEstudiosRepository: BaseRepository,INivelesEstudiosRepository
     {
         private List<NivelesEstudios> _list;
 
-        public NivelesEstudiosRepository()
+        public NivelesEstudiosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<NivelesEstudios>();
@@ -45,15 +46,14 @@ namespace EPSS.Repositories
               foreach (var  Nivel in db.NivelesEstudios)
                 {
                     _list.Add(Nivel);
-                    //Console.WriteLine(Paises.Nombre);
                 }
 
-               Console.WriteLine("Buscar NivelesEstudios --> OK");
+               _logger.LogInformation("Buscar NivelesEstudios --> OK");
             }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

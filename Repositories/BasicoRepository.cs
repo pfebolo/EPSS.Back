@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -12,11 +13,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class BasicoRepository : IBasicoRepository
+    public class BasicoRepository: BaseRepository,IBasicoRepository
     {
         private List<Basico> _list;
 
-        public BasicoRepository()
+        public BasicoRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Basico>();
@@ -41,12 +42,11 @@ namespace EPSS.Repositories
             {
                 Basico b = new Basico();
                 _list.Add(b);
-                //Console.WriteLine(Basico.Nombre);
-                Console.WriteLine("Buscar Basico --> OK");
+                _logger.LogInformation("Buscar Basico --> OK");
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogInformation(ex.Message);
             }
             return _list.AsReadOnly();
         }
