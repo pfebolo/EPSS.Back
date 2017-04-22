@@ -4,6 +4,8 @@ using EPSS.Models;
 using EPSS.DTOs;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
 
 namespace EPSS.Repositories
 {
@@ -11,16 +13,16 @@ namespace EPSS.Repositories
     {
         IEnumerable<Inscriptos> GetAll();
         void Update(IEnumerable<Inscriptos> items);
-
-
     }
     public class InscriptosRepository : IInscriptosRepository
     {
         private List<Inscriptos> _list;
+        private ILogger _logger;
 
-        public InscriptosRepository()
+        public InscriptosRepository(ILoggerFactory loggerFactory)
         {
             _list = new List<Inscriptos>();
+            _logger = loggerFactory.CreateLogger<InscriptosRepository>();
         }
 
         public IEnumerable<Inscriptos> GetAll()
@@ -84,12 +86,12 @@ namespace EPSS.Repositories
 
                     _list = q.ToList();
 
-                    Console.WriteLine("Buscar Inscriptos--> OK");
+                   _logger.LogInformation("Buscar Inscriptos--> OK");
                 }
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message);
+               _logger.LogError(ex.Message);
                 throw ex;
             }
             return _list.AsReadOnly();
@@ -126,7 +128,8 @@ namespace EPSS.Repositories
 
                 if (HayLegajosNuevos)
                     db.SaveChanges();
-                Console.WriteLine("Inscriptos:Crear legajos--> Ok");
+               _logger.LogInformation("Inscriptos:Crear legajos--> Ok");
+                
             }
 
         }
