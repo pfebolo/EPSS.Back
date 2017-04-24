@@ -44,6 +44,8 @@ namespace EPSS.Models
         public string Dni { get; set; }
         [Column("domicilio", TypeName = "varchar(500)")]
         public string Domicilio { get; set; }
+        [Column("Cuestionario", TypeName = "date")]
+        public DateTime? Cuestionario { get; set; }
         
         [IgnoreDataMember]
         [InverseProperty("Alumno")]
