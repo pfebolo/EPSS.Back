@@ -75,10 +75,7 @@ namespace EPSS.Repositories
                         Provincia = a.Provincia,
                         SituacionInscripcion = a.SituacionInscripcion,
                         SituacionEspecial = a.SituacionEspecial,
-                        Domicilio = a.Domicilio,
-                        Cuestionario = a.Cuestionario
-
-
+                        Domicilio = a.Domicilio
                     });
 
 
