@@ -76,8 +76,6 @@ namespace EPSS.Repositories
                         SituacionInscripcion = a.SituacionInscripcion,
                         SituacionEspecial = a.SituacionEspecial,
                         Domicilio = a.Domicilio
-
-
                     });
 
 

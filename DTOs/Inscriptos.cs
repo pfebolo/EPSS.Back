@@ -1,3 +1,5 @@
+using System;
+
 namespace EPSS.DTOs
 {
     public partial class Inscriptos
@@ -19,7 +21,7 @@ namespace EPSS.DTOs
         public string SituacionInscripcion { get; set; }
         public string SituacionEspecial { get; set; }
         public string Domicilio { get; set; }
-        
+                
         public int? LegajoNro { get; set; }
     }
 }
