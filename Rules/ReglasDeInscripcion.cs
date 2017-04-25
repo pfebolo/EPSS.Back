@@ -15,7 +15,11 @@ namespace EPSS.Rules
     {
         private ILoggerFactory loggerFactory = new LoggerFactory().AddConsole().AddDebug();
         private ILogger _logger;
-        private string[] inscripto = new String[46];
+        private int _inscriptosEncontradosOK = 0;
+        private int _inscriptosEncontradosNoOK = 0;
+        private int _inscriptosNoEncontrados = 0;
+
+        private string[] inscripto = new String[45];
         private enum inscriptoCampos
         {
             ID = 0,
@@ -57,13 +61,12 @@ namespace EPSS.Rules
             CursoAno = 36,
             CursoModalidad = 37,
             ConoceAAlguien = 38,
-            Quien = 39,
-            Aclaracion = 40,
-            Historia = 41,
-            Definicion = 42,
-            Situacion = 43,
-            Expectativas = 44,
-            FechaDeInscripcion = 45
+            Aclaracion = 39,
+            Historia = 40,
+            Definicion = 41,
+            Situacion = 42,
+            Expectativas = 43,
+            FechaDeInscripcion = 44
         }
 
         public ReglasDeInscripcion()
@@ -78,7 +81,7 @@ namespace EPSS.Rules
             //TODO: Obtener el path desde una configuración
 
             // get the page
-            _logger.LogInformation("Actualizando inscripciones...");
+            _logger.LogInformation("Actualizando legajos...");
             var request = WebRequest.CreateHttp("http://psicologiasocial.com.ar/inscripcion/ingresos/view.php");
             // start the asynchronous operation
             request.BeginGetResponse(new AsyncCallback(ProcesarHTML), request);
@@ -93,6 +96,9 @@ namespace EPSS.Rules
             using (HttpWebResponse response = (HttpWebResponse)request.EndGetResponse(asynchronousResult))
             {
                 HtmlDocument doc = new HtmlDocument();
+                _inscriptosEncontradosOK = 0;
+                _inscriptosEncontradosNoOK = 0;
+                _inscriptosNoEncontrados = 0;
                 Stream streamResponse = response.GetResponseStream();
                 StreamReader reader = new StreamReader(streamResponse, Encoding.GetEncoding("iso-8859-1"));
                 doc.Load(reader);
@@ -109,7 +115,10 @@ namespace EPSS.Rules
                     //_logger.LogInformation("Actualización de Inscripciones interrumpidas ;(");
                     //break;
                 }
-                _logger.LogInformation("Inscripciones Actualizadas :)");
+                _logger.LogInformation("Legajos Actualizados :)");
+                _logger.LogInformation("DNIs encontrados OK:" + _inscriptosEncontradosOK.ToString());
+                _logger.LogInformation("DNIs con error:" + _inscriptosEncontradosNoOK.ToString());
+                _logger.LogInformation("DNIs NO encontrados, o procesados previamente:" + _inscriptosNoEncontrados.ToString());
 
             }
         }
@@ -123,32 +132,52 @@ namespace EPSS.Rules
                     int NroDni = 0;
 
                     Int32.TryParse(inscripto[(int)inscriptoCampos.DNI].Replace(".", ""), out NroDni);
-                    // StringBuilder    registro=new StringBuilder(""); 
-                    // for (int campo = 0; campo<inscripto.Length ; campo++)
-                    // {
-                    //     registro.Append(inscripto[campo]);
-                    //     registro.Append(",");
-                    // }
-                    // Console.WriteLine(registro.ToString());
-                    Console.WriteLine(NroDni.ToString());
-                    if (db.Alumnos.Count(x => x.Dni.Trim() == NroDni.ToString()) == 1)
+                    _logger.LogInformation("Procesando DNI:" + NroDni.ToString());
+                    if (db.Legajos.Count(x => (x.Dni == NroDni) && (x.Cuestionario==null))  == 1)
                     {
-                        var alumno = db.Alumnos.Single(x => x.Dni.Trim() == NroDni.ToString());
-                        alumno.Comentario = inscripto[(int)inscriptoCampos.Aclaracion];
-                        alumno.Cuestionario = DateTime.Now;
-                        //db.Update(item);
-                        db.SaveChanges();
-                        Console.WriteLine(NroDni.ToString() + "--> encontrado");
+                        try
+                        {
+                            StringBuilder registro = new StringBuilder("");
+                            for (int campo = 0; campo < inscripto.Length; campo++)
+                            {
+                                registro.Append(inscripto[campo]);
+                                registro.Append(",");
+                            }
+                            _logger.LogInformation("Fila: " + registro.ToString());
 
+                            Legajos legajo = db.Legajos.Single(x => x.Dni == NroDni);
+                            legajo.Sexo = inscripto[(int)inscriptoCampos.Sexo].Trim();
+                            legajo.FechaNacimiento = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaNacimiento]);
+                            legajo.LugarNacimiento = inscripto[(int)inscriptoCampos.LugarNacimiento].Trim();
+                            legajo.DireccionCalle = inscripto[(int)inscriptoCampos.DireccionCalle].Trim();
+                            legajo.DireccionNro = inscripto[(int)inscriptoCampos.DireccionNumero].Trim();
+                            legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
+                            legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
+                            legajo.SecundarioCompletoOley25 = inscripto[(int)inscriptoCampos.TituloSecundario].Trim().ToUpper() == "SI";
+                            legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion];
+                            int CPBase = 0;
+                            int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
+                            legajo.CodigoPostalBase = CPBase;
+                            legajo.FechaIngreso = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            legajo.ModalidadBase = inscripto[(int)inscriptoCampos.CursoModalidad];
+                            legajo.Cuestionario = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            db.SaveChanges();
+                            _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
+                            _inscriptosEncontradosOK += 1;
+                        }
+                        catch (System.Exception ex)
+                        {
+                            _logger.LogInformation(ex.Message);
+                            _inscriptosEncontradosNoOK += 1;
+                        }
                     }
-
-
-                    //foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
-
-
-
-                    //_logger.LogInformation("Inscripto Actualizado");
+                    else
+                    {
+                        _logger.LogDebug(NroDni.ToString() + " No encontrado o previamente procesado.");
+                        _inscriptosNoEncontrados += 1;
+                    }
                 }
+
             }
             catch (System.Exception ex)
             {
@@ -178,3 +207,4 @@ namespace EPSS.Rules
 
     }
 }
+
