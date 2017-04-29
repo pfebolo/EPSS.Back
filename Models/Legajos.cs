@@ -73,6 +73,18 @@ namespace EPSS.Models
         public DateTime? DocDni { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DocFoto { get; set; }
+        [Column(TypeName = "varchar(8000)")]
+        public string Historia { get; set; }
+        [Column(TypeName = "varchar(8000)")]
+        public string Definicion { get; set; }
+        [Column(TypeName = "varchar(8000)")]
+        public string Situacion { get; set; }
+        [Column(TypeName = "varchar(8000)")]
+        public string Expectativas { get; set; }
+
+
+
+        
 
         [ForeignKey("AlumnoId")]
         [InverseProperty("Legajos")]

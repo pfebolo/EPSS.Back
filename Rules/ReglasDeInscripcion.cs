@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-
+using EPSS.Controllers;
 
 namespace EPSS.Rules
 {
@@ -154,52 +154,59 @@ namespace EPSS.Rules
                             legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
                             legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
                             legajo.SecundarioCompletoOley25 = false;
-                            legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion];
+                            legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
                             int CPBase = 0;
                             int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
                             legajo.CodigoPostalBase = CPBase;
                             legajo.FechaIngreso = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
                             legajo.ModalidadBase = inscripto[(int)inscriptoCampos.CursoModalidad];
                             legajo.Cuestionario = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            legajo.Historia = inscripto[(int)inscriptoCampos.Historia].Trim();
+                            legajo.Definicion = inscripto[(int)inscriptoCampos.Definicion].Trim();
+                            legajo.Situacion = inscripto[(int)inscriptoCampos.Situacion].Trim();
+                            legajo.Expectativas = inscripto[(int)inscriptoCampos.Expectativas].Trim();
+
                             //Estudios
-                            int Estudio_ID=0;
+                            int Estudio_ID = 500;
                             //Secundario
-                            Estudios estudio = new Estudios();
-                            estudio.AlumnoId = legajo.AlumnoId;
-                            Estudio_ID +=1;
-                            estudio.EstudioId = Estudio_ID;
+                            Estudios estudio;
+                            Estudio_ID += 1;
+                            estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
                             estudio.NivelEstudioId = "Secundario";
                             estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioSecundarioCarrera].Trim();
                             estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioSecundarioExpedidoPor].Trim();
                             estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioSecundario].Trim().ToUpper() == "SI");
-                            db.Estudios.Add(estudio);
-                            if ((inscripto[(int)inscriptoCampos.EstudioTerciario].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim() != "") ||
+                            if (!db.Estudios.Contains(estudio))
+                            {
+                                db.Estudios.Add(estudio);
+                            }
+                            if ((inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim() != "") ||
                                 (inscripto[(int)inscriptoCampos.EstudioTerciarioInstitucion].Trim() != ""))
                             {
-                                estudio = new Estudios();
-                                estudio.AlumnoId = legajo.AlumnoId;
-                                Estudio_ID +=1;
-                                estudio.EstudioId = Estudio_ID;
+                                Estudio_ID += 1;
+                                estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
                                 estudio.NivelEstudioId = "Terciario";
                                 estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
                                 estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
                                 estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim().ToUpper() == "SI");
+                                if (!db.Estudios.Contains(estudio))
+                                {
+                                    db.Estudios.Add(estudio);
+                                }
                             }
-                            if ((inscripto[(int)inscriptoCampos.EstudioUniversitario].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim() != "") ||
+                            if ((inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim() != "") ||
                                 (inscripto[(int)inscriptoCampos.EstudioUniversitarioInstitucion].Trim() != ""))
                             {
-                                estudio = new Estudios();
-                                estudio.AlumnoId = legajo.AlumnoId;
-                                Estudio_ID +=1;
-                                estudio.EstudioId = Estudio_ID;
+                                Estudio_ID += 1;
+                                estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
                                 estudio.NivelEstudioId = "Universitario";
                                 estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
                                 estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
                                 estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim().ToUpper() == "SI");
+                                if (!db.Estudios.Contains(estudio))
+                                {
+                                    db.Estudios.Add(estudio);
+                                }
                             }
                             db.SaveChanges();
                             _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
@@ -207,13 +214,13 @@ namespace EPSS.Rules
                         }
                         catch (System.Exception ex)
                         {
-                            _logger.LogInformation(ex.Message);
+                            _logger.LogError(new EventId(), ex, null);
                             _inscriptosEncontradosNoOK += 1;
                         }
                     }
                     else
                     {
-                        _logger.LogDebug(NroDni.ToString() + " No encontrado o previamente procesado.");
+                        _logger.LogInformation(NroDni.ToString() + " No encontrado o previamente procesado.");
                         _inscriptosNoEncontrados += 1;
                     }
                 }
@@ -221,7 +228,7 @@ namespace EPSS.Rules
             }
             catch (System.Exception ex)
             {
-                _logger.LogInformation(ex.Message);
+                _logger.LogError(new EventId(), ex, null);
             }
         }
 
