@@ -42,9 +42,9 @@ namespace EPSS.Rules
             DireccionCP = 17,
             DireccionProvincia = 18,
             DireccionPais = 19,
-            TituloSecundario = 20,
-            TituloSecundarioCarrera = 21,
-            TituloSecundarioExpedidoPor = 22,
+            EstudioSecundario = 20,
+            EstudioSecundarioCarrera = 21,
+            EstudioSecundarioExpedidoPor = 22,
             EstudioTerciario = 23,
             EstudioTerciarioCompleto = 24,
             EstudioTerciarioCarrera = 25,
@@ -133,7 +133,7 @@ namespace EPSS.Rules
 
                     Int32.TryParse(inscripto[(int)inscriptoCampos.DNI].Replace(".", ""), out NroDni);
                     _logger.LogInformation("Procesando DNI:" + NroDni.ToString());
-                    if (db.Legajos.Count(x => (x.Dni == NroDni) && (x.Cuestionario==null))  == 1)
+                    if (db.Legajos.Count(x => (x.Dni == NroDni) && (x.Cuestionario == null)) == 1)
                     {
                         try
                         {
@@ -153,7 +153,7 @@ namespace EPSS.Rules
                             legajo.DireccionNro = inscripto[(int)inscriptoCampos.DireccionNumero].Trim();
                             legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
                             legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
-                            legajo.SecundarioCompletoOley25 = inscripto[(int)inscriptoCampos.TituloSecundario].Trim().ToUpper() == "SI";
+                            legajo.SecundarioCompletoOley25 = false;
                             legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion];
                             int CPBase = 0;
                             int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
@@ -161,6 +161,46 @@ namespace EPSS.Rules
                             legajo.FechaIngreso = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
                             legajo.ModalidadBase = inscripto[(int)inscriptoCampos.CursoModalidad];
                             legajo.Cuestionario = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            //Estudios
+                            int Estudio_ID=0;
+                            //Secundario
+                            Estudios estudio = new Estudios();
+                            estudio.AlumnoId = legajo.AlumnoId;
+                            Estudio_ID +=1;
+                            estudio.EstudioId = Estudio_ID;
+                            estudio.NivelEstudioId = "Secundario";
+                            estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioSecundarioCarrera].Trim();
+                            estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioSecundarioExpedidoPor].Trim();
+                            estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioSecundario].Trim().ToUpper() == "SI");
+                            db.Estudios.Add(estudio);
+                            if ((inscripto[(int)inscriptoCampos.EstudioTerciario].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioTerciarioInstitucion].Trim() != ""))
+                            {
+                                estudio = new Estudios();
+                                estudio.AlumnoId = legajo.AlumnoId;
+                                Estudio_ID +=1;
+                                estudio.EstudioId = Estudio_ID;
+                                estudio.NivelEstudioId = "Terciario";
+                                estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
+                                estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
+                                estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim().ToUpper() == "SI");
+                            }
+                            if ((inscripto[(int)inscriptoCampos.EstudioUniversitario].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioInstitucion].Trim() != ""))
+                            {
+                                estudio = new Estudios();
+                                estudio.AlumnoId = legajo.AlumnoId;
+                                Estudio_ID +=1;
+                                estudio.EstudioId = Estudio_ID;
+                                estudio.NivelEstudioId = "Universitario";
+                                estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
+                                estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
+                                estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim().ToUpper() == "SI");
+                            }
                             db.SaveChanges();
                             _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
                             _inscriptosEncontradosOK += 1;
