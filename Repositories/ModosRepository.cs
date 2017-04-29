@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +14,11 @@ namespace EPSS.Repositories
         void Remove(string id);
 
     }
-    public class ModosRepository : IModosRepository
+    public class ModosRepository: BaseRepository,IModosRepository
     {
         private List<Modos> _list;
 
-        public ModosRepository()
+        public ModosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Modos>();
@@ -55,12 +56,12 @@ namespace EPSS.Repositories
                         _list.Add(Modo);
                     }
 
-                    Console.WriteLine("Buscar Modos --> OK");
+                    _logger.LogInformation("Buscar Modos --> OK");
                 }
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.LogInformation(ex.Message);
             }
             return _list.AsReadOnly();
         }

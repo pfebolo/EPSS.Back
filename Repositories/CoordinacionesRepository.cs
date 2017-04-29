@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +14,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class CoordinacionesRepository : ICoordinacionesRepository
+    public class CoordinacionesRepository: BaseRepository,ICoordinacionesRepository
     {
         private List<Coordinacion> _list;
 
-        public CoordinacionesRepository()
+        public CoordinacionesRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Coordinacion>();
@@ -46,14 +47,13 @@ namespace EPSS.Repositories
                                     .Include(Coordinacion => Coordinacion.Coordinador))
                 {
                     _list.Add(Coordinacion_);
-                    //Console.WriteLine(Coordinaciones.Nombre);
                 }
-               Console.WriteLine("Buscar Coordinaciones --> OK");
+               _logger.LogInformation("Buscar Coordinaciones --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

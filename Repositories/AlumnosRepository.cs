@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -14,11 +15,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class AlumnosRepository : IAlumnosRepository
+    public class AlumnosRepository: BaseRepository,IAlumnosRepository
     {
         private List<Alumnos> _list;
 
-        public AlumnosRepository()
+        public AlumnosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Alumnos>();
@@ -46,14 +47,13 @@ namespace EPSS.Repositories
               foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
                 {
                     _list.Add(Alumno);
-                    //Console.WriteLine(Alumnos.Nombre);
                 }
-               Console.WriteLine("Buscar Alumnos (2) --> OK");
+               _logger.LogInformation("Buscar Alumnos (2) --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

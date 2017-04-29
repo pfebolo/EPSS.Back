@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +14,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class LocalidadesRepository : ILocalidadesRepository
+    public class LocalidadesRepository: BaseRepository,ILocalidadesRepository
     {
         private List<Localidades> _list;
 
-        public LocalidadesRepository()
+        public LocalidadesRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Localidades>();
@@ -45,14 +46,13 @@ namespace EPSS.Repositories
               foreach (var Localidad in db.Localidades.Include(Localidad => Localidad.Partido).Include(Localidad => Localidad.CodigoPostal))
                 {
                     _list.Add(Localidad);
-                    //Console.WriteLine(Localidades.Nombre);
                 }
-               Console.WriteLine("Buscar Localidades --> OK");
+               _logger.LogInformation("Buscar Localidades --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }

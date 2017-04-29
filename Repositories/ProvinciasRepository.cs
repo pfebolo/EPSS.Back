@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
@@ -13,11 +14,11 @@ namespace EPSS.Repositories
         void Remove(string id);
 
     }
-    public class ProvinciasRepository : IProvinciasRepository
+    public class ProvinciasRepository: BaseRepository,IProvinciasRepository
     {
         private List<Provincias> _list;
 
-        public ProvinciasRepository()
+        public ProvinciasRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
             _list = new List<Provincias>();
@@ -45,14 +46,13 @@ namespace EPSS.Repositories
               foreach (var Provincia in db.Provincias.Include(a => a.Pais))
                 {
                     _list.Add(Provincia);
-                    //Console.WriteLine(Provincias.Nombre);
                 }
-               Console.WriteLine("Buscar Provincias --> OK");
+               _logger.LogInformation("Buscar Provincias --> OK");
               }             
           }
             catch (System.Exception ex)
           {
-            Console.WriteLine(ex.Message);
+            _logger.LogInformation(ex.Message);
           }
           return _list.AsReadOnly();
         }
