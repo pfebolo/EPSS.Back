@@ -11,6 +11,7 @@ namespace EPSS.Models
         public Legajos()
         {
             Estudios = new HashSet<Estudios>();
+            Trabajos = new HashSet<Trabajos>();
         }
 
         [Column("AlumnoID")]
@@ -73,18 +74,18 @@ namespace EPSS.Models
         public DateTime? DocDni { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DocFoto { get; set; }
-        [Column(TypeName = "varchar(8000)")]
+        [Column(TypeName = "varchar(max)")]
         public string Historia { get; set; }
-        [Column(TypeName = "varchar(8000)")]
+        [Column(TypeName = "varchar(max)")]
         public string Definicion { get; set; }
-        [Column(TypeName = "varchar(8000)")]
+        [Column(TypeName = "varchar(max)")]
         public string Situacion { get; set; }
-        [Column(TypeName = "varchar(8000)")]
+        [Column(TypeName = "varchar(max)")]
         public string Expectativas { get; set; }
 
 
 
-        
+
 
         [ForeignKey("AlumnoId")]
         [InverseProperty("Legajos")]
@@ -94,12 +95,14 @@ namespace EPSS.Models
         [InverseProperty("Legajos")]
         public virtual Localidades Localidad { get; set; }
 
-        
         [InverseProperty("Legajo")]
         public virtual ICollection<Estudios> Estudios { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Legajo")]
         public virtual ICollection<Grupos> Grupos { get; set; }
+
+        [InverseProperty("Legajo")]
+        public virtual ICollection<Trabajos> Trabajos { get; set; }
     }
 }
