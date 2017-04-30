@@ -208,6 +208,26 @@ namespace EPSS.Rules
                                     db.Estudios.Add(estudio);
                                 }
                             }
+
+                            //Trabajos
+                            Trabajos trabajo;
+                            int Trabajo_ID = 500;
+                            if ((inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.TrabajoCargo].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.TrabajoLugar].Trim() != "") ||
+                                (inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim() != ""))
+                            {
+                                Trabajo_ID += 1;
+                                trabajo = db.Trabajos.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.TrabajoId == Trabajo_ID) ?? new Trabajos(legajo.AlumnoId, Trabajo_ID);
+                                trabajo.Antiguedad  = inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim();
+                                trabajo.Cargo = inscripto[(int)inscriptoCampos.TrabajoCargo].Trim();
+                                trabajo.RazonSocial = inscripto[(int)inscriptoCampos.TrabajoLugar].Trim();
+                                trabajo.Telefono = inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim();
+                                if (!db.Trabajos.Contains(trabajo))
+                                {
+                                    db.Trabajos.Add(trabajo);
+                                }
+                            }
                             db.SaveChanges();
                             _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
                             _inscriptosEncontradosOK += 1;

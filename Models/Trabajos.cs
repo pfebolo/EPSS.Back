@@ -5,6 +5,15 @@ namespace EPSS.Models
 {
     public partial class Trabajos
     {
+        public Trabajos () {
+        }
+
+        public Trabajos (int alumnoId, int trabajoId) {
+            AlumnoId = alumnoId;
+            TrabajoId = trabajoId;
+        }
+
+
         [Column("AlumnoID")]
         public int AlumnoId { get; set; }
         [Column("TrabajoID")]
