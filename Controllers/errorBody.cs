@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+
 
 namespace EPSS.Controllers
 {
@@ -23,7 +25,6 @@ namespace EPSS.Controllers
             do
             {
                 mensajes.Push(new error(iex.GetType().ToString() + " (0x" + iex.HResult.ToString("X") + ")" ,iex.Message));
-                Console.WriteLine(iex.Message);
                 iex = iex.InnerException;
             } while (iex != null);
         }
@@ -31,6 +32,11 @@ namespace EPSS.Controllers
         public errorBody(string mensajeDeError)
         {
             mensajes.Push(new error(typeof(System.Exception).ToString() ,mensajeDeError));
+        }
+
+        public override string ToString() {
+            string str = JsonConvert.SerializeObject(this);
+            return str;
         }
 
     }
