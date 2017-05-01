@@ -7,6 +7,13 @@ namespace EPSS.Models
     public partial class Estudios
     {
 
+        public Estudios () {
+        }
+
+        public Estudios (int alumnoId, int estudioId) {
+            AlumnoId = alumnoId;
+            EstudioId = estudioId;
+        }
 
         [Column("AlumnoID")]
         public int AlumnoId { get; set; }

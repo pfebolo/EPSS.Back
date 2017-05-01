@@ -21,6 +21,7 @@ namespace EPSS.Models
         public virtual DbSet<Partidos> Partidos { get; set; }
         public virtual DbSet<Promociones> Promociones { get; set; }
         public virtual DbSet<Provincias> Provincias { get; set; }
+        public virtual DbSet<Trabajos> Trabajos { get; set; }
         public virtual DbSet<Turnos> Turnos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -102,6 +103,12 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PaisId, e.ProvinciaId })
                     .HasName("PK_Provincias_1");
+            });
+
+            modelBuilder.Entity<Trabajos>(entity =>
+            {
+                entity.HasKey(e => new { e.AlumnoId, e.TrabajoId })
+                    .HasName("PK_Trabajos");
             });
         }
     }
