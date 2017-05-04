@@ -78,7 +78,7 @@ namespace EPSS.Rules
 
         public void Cargar(object data)
         {
-            //TODO: Obtener el path desde una configuración
+             //TODO: Obtener el path desde una configuración
 
             // get the page
             _logger.LogInformation("Actualizando legajos...");
@@ -119,8 +119,13 @@ namespace EPSS.Rules
                 _logger.LogInformation("DNIs encontrados OK:" + _inscriptosEncontradosOK.ToString());
                 _logger.LogInformation("DNIs con error:" + _inscriptosEncontradosNoOK.ToString());
                 _logger.LogInformation("DNIs NO encontrados, o procesados previamente:" + _inscriptosNoEncontrados.ToString());
-
+                reader.Dispose();
+                streamResponse.Dispose();
+                doc = null;
             }
+            request=null;
+            GC.Collect();
+            GC.Collect();
         }
 
         private void ActualizarInscripto(string[] inscripto)
