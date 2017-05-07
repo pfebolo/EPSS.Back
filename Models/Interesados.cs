@@ -9,7 +9,8 @@ namespace EPSS.Models
     public partial class Interesados
     {
         [Column("id")]
-        public int Id { get; set; }
+        [Key]
+        public int InteresadoId { get; set; }
         [Column("nombre", TypeName = "varchar(100)")]
         public string Nombre { get; set; }
         [Column("apellido", TypeName = "varchar(120)")]

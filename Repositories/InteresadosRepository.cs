@@ -6,49 +6,49 @@ using Microsoft.Extensions.Logging;
 
 namespace EPSS.Repositories
 {
-    public interface IAlumnosRepository
+    public interface IInteresadosRepository
     {
-        IEnumerable<Alumnos> GetAll();
-        Alumnos Find(int id);
-        void Add(Alumnos item);
-        void Update(Alumnos item);
+        IEnumerable<Interesados> GetAll();
+        Interesados Find(int id);
+        void Add(Interesados item);
+        void Update(Interesados item);
         void Remove(int id);
 
     }
-    public class AlumnosRepository: BaseRepository,IAlumnosRepository
+    public class InteresadosRepository: BaseRepository,IInteresadosRepository
     {
-        private List<Alumnos> _list;
+        private List<Interesados> _list;
 
-        public AlumnosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
+        public InteresadosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
         {
 
-            _list = new List<Alumnos>();
+            _list = new List<Interesados>();
         }
 
-        public void Add(Alumnos item)
+        public void Add(Interesados item)
         {
             //item.Key=(_list.Count+1).ToString();
             //_list.Add(item);
         }
 
-        public Alumnos Find(int id)
+        public Interesados Find(int id)
         {
-            // return _list.Find(n=>n.AlumnosId==id);
-            return _list.Find(n=>n.AlumnoId==id);
+            // return _list.Find(n=>n.InteresadosId==id);
+            return _list.Find(n=>n.InteresadoId==id);
         }
 
-        public IEnumerable<Alumnos> GetAll()
+        public IEnumerable<Interesados> GetAll()
         {
           _list.Clear();
           try
           {
             using (var db = new escuelapsdelsurContext())
             {
-              foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
+              foreach (var Interesado in db.Interesados.Include(a => a.Modalidad))
                 {
-                    _list.Add(Alumno);
+                    _list.Add(Interesado);
                 }
-               _logger.LogInformation("Buscar Alumnos (2) --> OK");
+               _logger.LogInformation("Buscar Interesados --> OK");
               }             
           }
             catch (System.Exception ex)
@@ -59,7 +59,7 @@ namespace EPSS.Repositories
         }
 
 
-        public void Update(Alumnos item)
+        public void Update(Interesados item)
         {
             var db = new escuelapsdelsurContext();
             db.Update(item);
