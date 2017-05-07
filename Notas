@@ -1,20 +1,18 @@
-Comando para generar codigo de modelo de base de datos
+# Notas
 
-dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -o Models -f
+## Base de datos
 
+### Scaffoldear
+#### Comando usado para generar codigo de modelo de base de datos inicial
+  * dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -o Models -f
 
-
-dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -o Models -f
-
-
-
-#Verificar que el Directorio se llame EPSS (es necesario ya que de este nombre genera el namespace base)
-#'scaffoldear' con las tablas nuevas
-#Agregar los modelos nuevos al commit
-"Revertir todos los cambios sobre los modelos viejos
-#verificar el archivo de contexto, y ajustar de ser necesario
-
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -t Trabajos -o Models -f
+#### Tareas para ir actualizando el acceso a DB
+* Verificar que el Directorio se llame EPSS (es necesario ya que de este nombre genera el namespace base)
+* 'scaffoldear' con las tablas nuevas
+* Agregar los modelos nuevos al commit
+* "Revertir todos los cambios sobre los modelos viejos
+* verificar el archivo de contexto, y ajustar de ser necesario
+* __Comando__: dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t interesados -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -t Trabajos -o Models -f
 
 
 ----

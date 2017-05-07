@@ -12,6 +12,7 @@ namespace EPSS.Models
         public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
+        public virtual DbSet<Interesados> Interesados { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
@@ -58,9 +59,6 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.AlumnoId, e.EstudioId })
                     .HasName("PK_Estudios");
-
-                entity.HasIndex(e => e.AlumnoId)
-                    .HasName("IX_Estudios");
             });
 
             modelBuilder.Entity<Grupos>(entity =>
@@ -75,7 +73,7 @@ namespace EPSS.Models
                     .HasName("IX_Legajos")
                     .IsUnique();
 
-                entity.HasIndex(e => new { e.DireccionLocalidadId, e.DireccionProvinciaId, e.DireccionPaisId })
+                entity.HasIndex(e => new { e.DireccionLocalidadId, e.DireccionPartidoId, e.DireccionProvinciaId, e.DireccionPaisId })
                     .HasName("IX_Localidad");
 
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
