@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EPSS.Models;
 using EPSS.Repositories;
+using System;
+
 
 namespace EPSS.Controllers
 {
@@ -16,10 +18,10 @@ namespace EPSS.Controllers
         }
 
 
-        [HttpGet]
-        public IEnumerable<Interesados> GetAll()
+        [HttpGet("{fechaFIN}", Name = "GetUltimosInteresados")]
+        public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
         {
-            return _repo.GetAll();
+            return _repo.GetAll(fechaFIN);
         }
 
         [HttpGet("{id}", Name = "GetInteresados")]

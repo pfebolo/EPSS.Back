@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using EPSS.Models;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -8,7 +9,7 @@ namespace EPSS.Repositories
 {
     public interface IInteresadosRepository
     {
-        IEnumerable<Interesados> GetAll();
+        IEnumerable<Interesados> GetAll(DateTime fechaFIN);
         Interesados Find(int id);
         void Add(Interesados item);
         void Update(Interesados item);
@@ -37,14 +38,17 @@ namespace EPSS.Repositories
             return _list.Find(n=>n.InteresadoId==id);
         }
 
-        public IEnumerable<Interesados> GetAll()
+        public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
         {
           _list.Clear();
+          
+          DateTime fechaINI = fechaFIN.AddMonths(-2); //TODO: Obtener de configuración
+
           try
           {
             using (var db = new escuelapsdelsurContext())
             {
-              foreach (var Interesado in db.Interesados.Include(a => a.Modalidad))
+              foreach (var Interesado in db.Interesados.Where(a => a.FechaInteresado >= fechaINI && a.FechaInteresado <= fechaFIN ).Include(a => a.Modalidad) )
                 {
                     _list.Add(Interesado);
                 }
