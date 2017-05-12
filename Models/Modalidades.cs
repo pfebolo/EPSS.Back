@@ -17,8 +17,12 @@ namespace EPSS.Models
         [Column("nombre", TypeName = "varchar(500)")]
         public string Nombre { get; set; }
 
-         [IgnoreDataMember]
+        [IgnoreDataMember]
         [InverseProperty("Modalidad")]
         public virtual ICollection<Alumnos> Alumnos { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Modalidad")]
+        public virtual ICollection<Interesados> Interesados { get; set; }
     }
 }

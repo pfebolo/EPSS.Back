@@ -67,7 +67,7 @@ namespace EPSS.Repositories
           }
             catch (System.Exception ex)
           {
-            _logger.LogInformation(ex.Message);
+            _logger.LogError(ex.Message);
           }
           return _list.AsReadOnly();
         }
