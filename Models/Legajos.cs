@@ -22,7 +22,7 @@ namespace EPSS.Models
         [Column(TypeName = "char(9)")]
         public string Sexo { get; set; }
         [Column(TypeName = "smalldatetime")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         [MaxLength(50)]
         public string LugarNacimiento { get; set; }
         [Column("DNI")]
