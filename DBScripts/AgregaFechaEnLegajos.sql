@@ -67,7 +67,7 @@ CREATE TABLE dbo.Tmp_Legajos
 	DocTituloValido datetime NULL,
 	DocDNIValido datetime NULL,
 	DocFotoValido datetime NULL,
-	PathFoto narchar(1024) NULL,
+	PathFoto nvarchar(1024) NULL,
 	Historia varchar(8000) NULL,
 	Definicion varchar(8000) NULL,
 	Situacion varchar(8000) NULL,
