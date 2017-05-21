@@ -13,14 +13,16 @@
   * dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -o Models -f
 
 #### Tareas para ir actualizando el acceso a DB
-* Verificar que el Directorio se llame EPSS (es necesario ya que de este nombre genera el namespace base)
+* Verificar que la carpeta donde se ejecuta el _scaffold_ se llame **EPSS** (es necesario ya que de este nombre genera el namespace base)
+* Si existe la carpeta **Models**, renombrarla
 * 'scaffoldear' con las tablas nuevas
-* Agregar los modelos nuevos al commit
-* "Revertir todos los cambios sobre los modelos viejos
-* verificar el archivo de contexto, y ajustar de ser necesario
+* Comparar carpeta vieja con la nueva
+  * Mergear la carpeta nueva con la vieja
+  * Verificar el archivo de contexto, y ajustar de ser necesario
 * __*Comando*__:  
 dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t interesados -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -t Trabajos -o Models -f
-
+* Borrar carpeta nueva
+* Renombrar nuevamente la carpeta donde se ejcutó el *scaffold* a su nombre original
 
 
 ### Como conectar desde Linux (en realidad desde otra computadora) al Sql Server
