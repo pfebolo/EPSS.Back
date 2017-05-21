@@ -44,6 +44,22 @@ namespace EPSS.Models
         public string Dni { get; set; }
         [Column("domicilio", TypeName = "varchar(500)")]
         public string Domicilio { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? FechaInteresadoOriginal { get; set; }
+        [Column("AnioACursar")]
+        public int? AnioAcursar { get; set; }
+        [Column("NMestreACursar")]
+        public int? NmestreAcursar { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? DocTitulo { get; set; }
+        [Column("DocDNI", TypeName = "date")]
+        public DateTime? DocDni { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? DocAptoFisico { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? DocFoto { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime? DocCompromiso { get; set; }
 
         
         [IgnoreDataMember]
