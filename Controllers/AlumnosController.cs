@@ -9,7 +9,7 @@ namespace EPSS.Controllers
     public class AlumnosController : Controller
     {
         private IAlumnosRepository _repo;
-        
+
         public AlumnosController(IAlumnosRepository repo)
         {
             this._repo = repo;
@@ -40,8 +40,15 @@ namespace EPSS.Controllers
             {
                 return BadRequest();
             }
-            _repo.Add(item);
-            return CreatedAtRoute("GetAlumnos", new { controller = "Alumnos", AlumnoId = item.AlumnoId }, item);
+            try
+            {
+                _repo.Add(item);
+                return CreatedAtRoute("GetAlumnos", new { controller = "Alumnos", Id = item.AlumnoId }, item);
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
 
         [HttpDelete("{id}")]
