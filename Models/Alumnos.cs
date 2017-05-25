@@ -50,6 +50,8 @@ namespace EPSS.Models
         public int? AnioAcursar { get; set; }
         [Column("NMestreACursar")]
         public int? NmestreAcursar { get; set; }
+        [Column("Turno", TypeName = "varchar(6)")]
+        public string Turno { get; set; }
         [Column(TypeName = "date")]
         public DateTime? DocTitulo { get; set; }
         [Column("DocDNI", TypeName = "date")]
