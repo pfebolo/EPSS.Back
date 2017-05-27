@@ -68,14 +68,25 @@ namespace EPSS.Repositories
                         Telefono = a.Telefono,
                         Celular = a.Celular,
                         ComoConocio = a.ComoConocio,
-                        ModalidadId = a.Modalidad.Nombre,
+                        Modalidad = a.Modalidad.Nombre,
                         GradoInteres = a.GradoInteres,
                         FechaInteresado = a.FechaInteresado,
                         Comentario = a.Comentario,
                         Provincia = a.Provincia,
                         SituacionInscripcion = a.SituacionInscripcion,
                         SituacionEspecial = a.SituacionEspecial,
-                        Domicilio = a.Domicilio
+                        Domicilio = a.Domicilio,
+
+
+                        fechaInteresadoOriginal = a.FechaInteresadoOriginal,
+                        anioAcursar = a.AnioAcursar,
+                        nmestreAcursar = a.NmestreAcursar,
+                        turno = a.Turno,
+                        docTitulo = a.DocTitulo,
+                        docDni = a.DocDni,
+                        docAptoFisico = a.DocAptoFisico,
+                        docFoto = a.DocFoto,
+                        docCompromiso = a.DocCompromiso
                     });
 
 
