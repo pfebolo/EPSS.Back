@@ -15,11 +15,11 @@ namespace EPSS.Repositories
         void Remove(int id);
 
     }
-    public class AlumnosRepository: BaseRepository,IAlumnosRepository
+    public class AlumnosRepository : BaseRepository, IAlumnosRepository
     {
         private List<Alumnos> _list;
 
-        public AlumnosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
+        public AlumnosRepository(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
 
             _list = new List<Alumnos>();
@@ -27,35 +27,81 @@ namespace EPSS.Repositories
 
         public void Add(Alumnos item)
         {
-            //item.Key=(_list.Count+1).ToString();
-            //_list.Add(item);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    // Alumnos AlumnoNuevo;
+                    // AlumnoNuevo = new Alumnos();
+                    // AlumnoNuevo.AlumnoId = item.AlumnoId;
+                    // AlumnoNuevo.Nombre = item.Nombre;
+                    // AlumnoNuevo.Apellido = item.Apellido;
+                    // AlumnoNuevo.Mail = item.Mail;
+                    // AlumnoNuevo.Mail2 = item.Mail2;
+                    // AlumnoNuevo.Telefono = item.Telefono;
+                    // AlumnoNuevo.Celular = item.Celular;
+                    // AlumnoNuevo.ComoConocio = item.ComoConocio;
+                    // AlumnoNuevo.ModalidadId = item.ModalidadId;
+                    // AlumnoNuevo.GradoInteres = item.GradoInteres;
+                    // AlumnoNuevo.FechaInteresado = item.FechaInteresado;
+                    // AlumnoNuevo.Comentario = item.Comentario;
+                    // AlumnoNuevo.Provincia = item.Provincia;
+                    // AlumnoNuevo.SituacionInscripcion = item.SituacionInscripcion;
+                    // AlumnoNuevo.SituacionEspecial = item.SituacionEspecial;
+                    // AlumnoNuevo.Dni = item.Dni;
+                    // AlumnoNuevo.Domicilio = item.Domicilio;
+                    // AlumnoNuevo.FechaInteresadoOriginal = item.FechaInteresadoOriginal;
+                    // AlumnoNuevo.AnioAcursar = item.AnioAcursar;
+                    // AlumnoNuevo.NmestreAcursar = item.NmestreAcursar;
+                    // AlumnoNuevo.DocTitulo = item.DocTitulo;
+                    // AlumnoNuevo.DocDni = item.DocDni;
+                    // AlumnoNuevo.DocAptoFisico = item.DocAptoFisico;
+                    // AlumnoNuevo.DocFoto = item.DocFoto;
+                    // AlumnoNuevo.DocCompromiso = item.DocCompromiso;
+                    int idInteresado = item.AlumnoId;
+                    item.AlumnoId+=50000; //Numero magico para que no colisione con sistema anterior
+                    db.Alumnos.Add(item);
+                    //Borrar Interesados
+                    Interesados interesadoABorrar= db.Interesados.Find(idInteresado);
+                    if (interesadoABorrar != null)
+                       db.Interesados.Remove(interesadoABorrar);
+                    db.SaveChanges();
+
+                    _logger.LogInformation("Crear Alumno (" + item.AlumnoId.ToString() + "), DNI:" + item.Dni.ToString() + "--> Ok");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
 
         public Alumnos Find(int id)
         {
             // return _list.Find(n=>n.AlumnosId==id);
-            return _list.Find(n=>n.AlumnoId==id);
+            return _list.Find(n => n.AlumnoId == id);
         }
 
         public IEnumerable<Alumnos> GetAll()
         {
-          _list.Clear();
-          try
-          {
-            using (var db = new escuelapsdelsurContext())
+            _list.Clear();
+            try
             {
-              foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
+                using (var db = new escuelapsdelsurContext())
                 {
-                    _list.Add(Alumno);
+                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
+                    {
+                        _list.Add(Alumno);
+                    }
+                    _logger.LogInformation("Buscar Alumnos (2) --> OK");
                 }
-               _logger.LogInformation("Buscar Alumnos (2) --> OK");
-              }             
-          }
+            }
             catch (System.Exception ex)
-          {
-            _logger.LogError(ex.Message);
-          }
-          return _list.AsReadOnly();
+            {
+                _logger.LogError(ex.Message);
+            }
+            return _list.AsReadOnly();
         }
 
 

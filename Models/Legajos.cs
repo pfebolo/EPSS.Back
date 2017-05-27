@@ -22,7 +22,7 @@ namespace EPSS.Models
         [Column(TypeName = "char(9)")]
         public string Sexo { get; set; }
         [Column(TypeName = "smalldatetime")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         [MaxLength(50)]
         public string LugarNacimiento { get; set; }
         [Column("DNI")]
@@ -74,6 +74,18 @@ namespace EPSS.Models
         public DateTime? DocDni { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? DocFoto { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DocCompromiso { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DocAptoFisicoValido { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DocTituloValido { get; set; }
+        [Column("DocDNIValido", TypeName = "datetime")]
+        public DateTime? DocDnivalido { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime? DocFotoValido { get; set; }
+        [MaxLength(1024)]
+        public string PathFoto { get; set; }
         [Column(TypeName = "varchar(max)")]
         public string Historia { get; set; }
         [Column(TypeName = "varchar(max)")]

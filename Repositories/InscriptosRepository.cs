@@ -14,10 +14,10 @@ namespace EPSS.Repositories
         IEnumerable<Inscriptos> GetAll();
         void Update(IEnumerable<Inscriptos> items);
     }
-    public class InscriptosRepository: BaseRepository,IInscriptosRepository
+    public class InscriptosRepository : BaseRepository, IInscriptosRepository
     {
         private List<Inscriptos> _list;
-        public InscriptosRepository(ILoggerFactory loggerFactory) : base (loggerFactory)
+        public InscriptosRepository(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
             _list = new List<Inscriptos>();
         }
@@ -81,12 +81,12 @@ namespace EPSS.Repositories
 
                     _list = q.ToList();
 
-                   _logger.LogInformation("Buscar Inscriptos--> OK");
+                    _logger.LogInformation("Buscar Inscriptos--> OK");
                 }
             }
             catch (System.Exception ex)
             {
-               _logger.LogError(ex.Message);
+                _logger.LogError(ex.Message);
                 throw ex;
             }
             return _list.AsReadOnly();
@@ -95,38 +95,45 @@ namespace EPSS.Repositories
 
         public void Update(IEnumerable<Inscriptos> items)
         {
-            using (var db = new escuelapsdelsurContext())
+            try
             {
-                Legajos LegajoNuevo;
-                Boolean HayLegajosNuevos = false;
-                int dniok = 0;
-                foreach (var item in items)
+                using (var db = new escuelapsdelsurContext())
                 {
-                    if (item.LegajoNro.HasValue)
+                    Legajos LegajoNuevo;
+                    Boolean HayLegajosNuevos = false;
+                    int dniok = 0;
+                    foreach (var item in items)
                     {
-                        LegajoNuevo = new Legajos();
-                        LegajoNuevo.AlumnoId = item.AlumnoId;
-                        LegajoNuevo.LegajoNro = item.LegajoNro.Value;
-                        LegajoNuevo.Sexo = "Masculino";
-                        LegajoNuevo.FechaNacimiento = DateTime.Today;
-                        dniok = 0;
-                        int.TryParse(item.Dni, out dniok);
-                        LegajoNuevo.Dni = dniok;
-                        LegajoNuevo.DireccionCalle = String.Empty;
-                        LegajoNuevo.DireccionNro = String.Empty;
+                        if (item.LegajoNro.HasValue)
+                        {
+                            LegajoNuevo = new Legajos();
+                            LegajoNuevo.AlumnoId = item.AlumnoId;
+                            LegajoNuevo.LegajoNro = item.LegajoNro.Value;
+                            LegajoNuevo.Sexo = "Masculino";
+                            LegajoNuevo.FechaNacimiento = DateTime.Today;
+                            dniok = 0;
+                            int.TryParse(item.Dni, out dniok);
+                            LegajoNuevo.Dni = dniok;
+                            LegajoNuevo.DireccionCalle = String.Empty;
+                            LegajoNuevo.DireccionNro = String.Empty;
 
 
-                        db.Legajos.Add(LegajoNuevo);
-                        HayLegajosNuevos = true;
+                            db.Legajos.Add(LegajoNuevo);
+                            HayLegajosNuevos = true;
+                        }
                     }
+
+                    if (HayLegajosNuevos)
+                        db.SaveChanges();
+                    _logger.LogInformation("Inscriptos:Crear legajos--> Ok");
+
                 }
-
-                if (HayLegajosNuevos)
-                    db.SaveChanges();
-               _logger.LogInformation("Inscriptos:Crear legajos--> Ok");
-                
             }
-
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
     }
 
