@@ -68,7 +68,7 @@ namespace EPSS.Repositories
                         Telefono = a.Telefono,
                         Celular = a.Celular,
                         ComoConocio = a.ComoConocio,
-                        Modalidad = a.Modalidad.Nombre,
+                        Modalidad = a.Modalidad,
                         GradoInteres = a.GradoInteres,
                         FechaInteresado = a.FechaInteresado,
                         Comentario = a.Comentario,

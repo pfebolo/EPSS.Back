@@ -1,4 +1,5 @@
 using System;
+using EPSS.Models;
 
 namespace EPSS.DTOs
 {
@@ -13,7 +14,8 @@ namespace EPSS.DTOs
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public string ComoConocio { get; set; }
-        public string Modalidad { get; set; }
+        //public string Modalidad { get; set; }
+        public virtual Modalidades Modalidad { get; set; }
         public string GradoInteres { get; set; }
         public DateTime? FechaInteresado { get; set; }
         public string Comentario { get; set; }
