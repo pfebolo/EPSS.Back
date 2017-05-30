@@ -79,8 +79,20 @@ namespace EPSS.Repositories
 
         public Alumnos Find(int id)
         {
-            // return _list.Find(n=>n.AlumnosId==id);
-            return _list.Find(n => n.AlumnoId == id);
+            Alumnos AlumnoBuscado=null;
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    AlumnoBuscado =  db.Alumnos.Find(id);
+                    _logger.LogInformation("Buscar AlumnoId: " + id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return AlumnoBuscado;
         }
 
         public IEnumerable<Alumnos> GetAll()
