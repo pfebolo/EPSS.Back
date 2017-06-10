@@ -18,7 +18,7 @@ namespace EPSS.Controllers
         }
 
 
-        [HttpGet("{fechaFIN}", Name = "GetUltimosInteresados")]
+        [HttpGet("{fechaFIN:datetime}", Name = "GetUltimosInteresados")]
         public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
         {
             return _repo.GetAll(fechaFIN);
@@ -42,8 +42,15 @@ namespace EPSS.Controllers
             {
                 return BadRequest();
             }
-            _repo.Add(item);
-            return CreatedAtRoute("GetInteresados", new { controller = "Interesados", InteresadoId = item.InteresadoId }, item);
+            try
+            {
+                _repo.Add(item);
+                return CreatedAtRoute("GetInteresados", new { controller = "Interesados", Id = item.InteresadoId }, item);
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
 
         [HttpDelete("{id}")]
