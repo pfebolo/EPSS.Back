@@ -70,10 +70,16 @@ namespace EPSS.Controllers
 
             if (Modo == null)
                 return NotFound();
+            try
+            {
+                _repo.Update(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
 
-            _repo.Update(item);
-
-            return NoContent();
         }
 
 

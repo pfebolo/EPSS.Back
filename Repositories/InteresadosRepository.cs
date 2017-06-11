@@ -90,10 +90,20 @@ namespace EPSS.Repositories
 
 		public void Update(Interesados item)
 		{
-			var db = new escuelapsdelsurContext();
-			db.Update(item);
-			db.SaveChanges();
-		}
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Update(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Actualizar Interesado ID: " + item.InteresadoId.ToString() + "/ Mail: " + item.Mail + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }		}
 
 
 		public void Remove(int id)
