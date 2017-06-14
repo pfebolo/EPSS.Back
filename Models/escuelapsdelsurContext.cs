@@ -5,6 +5,7 @@ namespace EPSS.Models
     public partial class escuelapsdelsurContext : DbContext
     {
         public virtual DbSet<Alumnos> Alumnos { get; set; }
+        public virtual DbSet<Carreras> Carreras { get; set; }
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
         public virtual DbSet<Coordinacion> Coordinacion { get; set; }
         public virtual DbSet<Coordinadores> Coordinadores { get; set; }
@@ -27,6 +28,16 @@ namespace EPSS.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Alumnos>(entity =>
+            {
+                entity.Property(e => e.AlumnoId).ValueGeneratedNever();
+            });
+
+            modelBuilder.Entity<Carreras>(entity =>
+            {
+                entity.Property(e => e.CarreraId).ValueGeneratedNever();
+            });
+
             modelBuilder.Entity<CodigosPostales>(entity =>
             {
                 entity.HasKey(e => new { e.PaisId, e.CodigoPostalId })
@@ -65,6 +76,11 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.AlumnoId })
                     .HasName("PK_Grupos");
+            });
+
+            modelBuilder.Entity<Interesados>(entity =>
+            {
+                entity.Property(e => e.Seguimiento).HasDefaultValueSql("0");
             });
 
             modelBuilder.Entity<Legajos>(entity =>

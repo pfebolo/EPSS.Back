@@ -39,6 +39,19 @@ namespace EPSS.Models
         public string SituacionInscripcion { get; set; }
         [Column("situacion_especial", TypeName = "varchar(200)")]
         public string SituacionEspecial { get; set; }
+        [Column("CarreraID")]
+        public int? CarreraId { get; set; }
+        [Column("AnioACursar")]
+        public int? AnioAcursar { get; set; }
+        [Column("NMestreACursar")]
+        public int? NmestreAcursar { get; set; }
+        [Column(TypeName = "varchar(6)")]
+        public string Turno { get; set; }
+        public bool Seguimiento { get; set; }
+
+        [ForeignKey("CarreraId")]
+        [InverseProperty("Interesados")]
+        public virtual Carreras Carrera { get; set; }
 
         [ForeignKey("ModalidadId")]
         [InverseProperty("Interesados")]
