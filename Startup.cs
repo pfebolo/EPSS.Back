@@ -46,6 +46,7 @@ namespace EPSS
             services.AddSingleton<ICodigosPostalesRepository, CodigosPostalesRepository>();
             services.AddSingleton<ILocalidadesRepository, LocalidadesRepository>();
             services.AddSingleton<ILugaresRepository, LugaresRepository>();
+            services.AddSingleton<IEventosRepository, EventosRepository>();
             services.AddSingleton<IAlumnosRepository, AlumnosRepository>();
             services.AddSingleton<ILegajosRepository, LegajosRepository>();
             services.AddSingleton<INivelesEstudiosRepository, NivelesEstudiosRepository>();
