@@ -20,5 +20,11 @@ namespace EPSS.Models
         public bool? Inscripto { get; set; }
         [Column("asistente")]
         public bool? Asistente { get; set; }
+
+        [ForeignKey("EventoId")]
+        public virtual Eventos Evento { get; set; }
+        [ForeignKey("interesado_id")]
+        public virtual Interesados Interesado { get; set; }
+
     }
 }

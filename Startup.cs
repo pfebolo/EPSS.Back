@@ -60,7 +60,7 @@ namespace EPSS
             services.AddSingleton<IEstadosCursosRepository, EstadosCursosRepository>();
             services.AddSingleton<IInscriptosRepository, InscriptosRepository>();
             services.AddSingleton<IInteresadosRepository, InteresadosRepository>();
-
+            services.AddSingleton<IInteresadosEventosRepository, InteresadosEventosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
