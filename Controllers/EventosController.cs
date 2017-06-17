@@ -40,9 +40,43 @@ namespace EPSS.Controllers
             {
                 return BadRequest();
             }
-            _repo.Add(item);
-            return CreatedAtRoute("GetEventos", new { controller = "Eventos", EventoId = item.Id }, item);
+            try
+            {
+                _repo.Add(item);
+                return CreatedAtRoute("GetEventos", new { controller = "Eventos", Id = item.Id }, item);
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
+
+        // PUT api/Eventos
+        [HttpPut]
+        public IActionResult Put([FromBody] Eventos item)
+        {
+            if (item == null)
+                return BadRequest();
+
+            var Modo = _repo.Find(item.Id);
+
+            if (Modo == null)
+                return NotFound();
+            try
+            {
+                _repo.Update(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
+
+        }
+
+
+
+
 
         [HttpDelete("{id}")]
         public void Delete(int id)
