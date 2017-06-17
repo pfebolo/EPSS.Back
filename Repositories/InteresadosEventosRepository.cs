@@ -3,6 +3,7 @@ using System;
 using EPSS.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace EPSS.Repositories
 {
@@ -10,6 +11,7 @@ namespace EPSS.Repositories
     {
         IEnumerable<InteresadosEventos> GetAll();
         InteresadosEventos Find(int id);
+        IEnumerable<InteresadosEventos> FindByEventoId(int eventoId);
         void Add(InteresadosEventos item);
         void Remove(int id);
 
@@ -35,6 +37,45 @@ namespace EPSS.Repositories
             // return _list.Find(n=>n.InteresadosEventosId==id);
             return _list.Find(n => n.Id == id);
         }
+
+
+        public IEnumerable<InteresadosEventos> FindByEventoId(int eventoId)
+        {
+            List<InteresadosEventos> buscados =  new List<InteresadosEventos>();
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+
+                    //  Forma Linq - "Query Syntax"
+                    //  var q = from a in db.Alumnos
+                    //          join l in db.Legajos on a.AlumnoId equals l.AlumnoId
+                    //          select new Inscriptos {AlumnoId = a.AlumnoId,
+                    //                                 Nombre =  a.Nombre, 
+                    //                                 Apellido = a.Apellido, 
+                    //                                 Dni= a.Dni};
+
+                {
+                    foreach (var InteresadoEvento in from ie in db.InteresadosEventos
+                                                        .Include(InteresadoEvento => InteresadoEvento.Evento)
+                                                        .Include(InteresadoEvento => InteresadoEvento.Interesado)
+                                                        where ie.Evento.Id==eventoId 
+                                                        select ie)
+                                                        
+                    {
+                        if (InteresadoEvento.Interesado !=null) 
+                            buscados.Add(InteresadoEvento);
+                    }
+                    _logger.LogInformation("Buscar InteresadosEventos x EventoId " + eventoId.ToString() + ", cantidad:" + buscados.Count().ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+            return buscados.AsReadOnly();
+
+        }
+
 
         public IEnumerable<InteresadosEventos> GetAll()
         {

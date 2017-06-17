@@ -33,6 +33,17 @@ namespace EPSS.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("eventos/{eventoId}", Name = "GetInteresadosEventosXEvento")]
+        public IActionResult GetByEventoId(int eventoId)
+        {
+            var item = _repo.FindByEventoId(eventoId);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+        }
+
         [HttpPost]
         public IActionResult Create([FromBody] InteresadosEventos item)
         {
