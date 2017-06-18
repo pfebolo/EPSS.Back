@@ -12,7 +12,7 @@ namespace EPSS.Repositories
         Eventos Find(int id);
         void Add(Eventos item);
         void Update(Eventos item);
-        void Remove(int id);
+        void Remove(Eventos item);
     }
     public class EventosRepository : BaseRepository, IEventosRepository
     {
@@ -81,9 +81,22 @@ namespace EPSS.Repositories
             return _list.AsReadOnly();
         }
 
-        public void Remove(int id)
+        public void Remove(Eventos item)
         {
-            //_list.RemoveAll(n=>n.Key==id);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Remove(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Eliminado Evento ID: " + item.Id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
 
         public void Update(Eventos item)

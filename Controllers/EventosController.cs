@@ -9,7 +9,7 @@ namespace EPSS.Controllers
     public class EventosController : Controller
     {
         private IEventosRepository _repo;
-        
+
         public EventosController(IEventosRepository repo)
         {
             this._repo = repo;
@@ -79,9 +79,22 @@ namespace EPSS.Controllers
 
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _repo.Remove(id);
+            var item = _repo.Find(id);
+            if (item == null)
+            {
+                return NoContent(); //Sin error por que DELETE es Idempotente.
+            }
+            try
+            {
+                _repo.Remove(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
     }
 }
