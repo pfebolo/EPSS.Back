@@ -9,7 +9,7 @@ namespace EPSS.Controllers
     public class InteresadosEventosController : Controller
     {
         private IInteresadosEventosRepository _repo;
-        
+
         public InteresadosEventosController(IInteresadosEventosRepository repo)
         {
             this._repo = repo;
@@ -17,9 +17,16 @@ namespace EPSS.Controllers
 
 
         [HttpGet]
-        public IEnumerable<InteresadosEventos> GetAll()
+        public IActionResult GetAll()
         {
-            return _repo.GetAll();
+            try
+            {
+                return new ObjectResult(_repo.GetAll());
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
 
         [HttpGet("{id}", Name = "GetInteresadosEventos")]
@@ -56,9 +63,22 @@ namespace EPSS.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _repo.Remove(id);
+            try
+            {
+                var item = _repo.Find(id);
+                if (item == null)
+                {
+                    return NoContent(); //Sin error por que DELETE es Idempotente.
+                }
+                _repo.Remove(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
     }
 }

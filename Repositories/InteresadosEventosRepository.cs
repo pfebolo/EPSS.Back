@@ -13,7 +13,7 @@ namespace EPSS.Repositories
         InteresadosEventos Find(int id);
         IEnumerable<InteresadosEventos> FindByEventoId(int eventoId);
         void Add(InteresadosEventos item);
-        void Remove(int id);
+        void Remove(InteresadosEventos item);
 
     }
     public class InteresadosEventosRepository : BaseRepository, IInteresadosEventosRepository
@@ -34,8 +34,21 @@ namespace EPSS.Repositories
 
         public InteresadosEventos Find(int id)
         {
-            // return _list.Find(n=>n.InteresadosEventosId==id);
-            return _list.Find(n => n.Id == id);
+            InteresadosEventos item = null;
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    item = db.InteresadosEventos.Find(id);
+                    _logger.LogInformation("Buscar InteresadoEventoId: " + id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+            return item;
         }
 
 
@@ -85,7 +98,7 @@ namespace EPSS.Repositories
                 using (var db = new escuelapsdelsurContext())
                 {
                     foreach (var InteresadoEvento in db.InteresadosEventos.Include(InteresadoEvento => InteresadoEvento.Evento).Include(InteresadoEvento => InteresadoEvento.Interesado))
-                    // foreach (var InteresadoEvento in db.InteresadosEventos)
+                    //foreach (var InteresadoEvento in db.InteresadosEventos)
                     // foreach (var InteresadoEvento in db.InteresadosEventos.Include(InteresadoEvento => InteresadoEvento.Evento))
                     {
                         _list.Add(InteresadoEvento);
@@ -96,13 +109,27 @@ namespace EPSS.Repositories
             catch (System.Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw ex;
             }
             return _list.AsReadOnly();
         }
 
-        public void Remove(int id)
+        public void Remove(InteresadosEventos item)
         {
-            //_list.RemoveAll(n=>n.Key==id);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Remove(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Eliminado InteresadoEvento ID: " + item.Id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
     }
 }

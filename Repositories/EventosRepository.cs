@@ -56,6 +56,7 @@ namespace EPSS.Repositories
             catch (System.Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw ex;
             }
             return EventoBuscado;
         }

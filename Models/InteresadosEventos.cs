@@ -9,6 +9,7 @@ namespace EPSS.Models
     public partial class InteresadosEventos
     {
         [Column("id")]
+        [Key]
         public int Id { get; set; }
         [Column("interesado_id")]
         public int? InteresadoId { get; set; }
@@ -22,8 +23,11 @@ namespace EPSS.Models
         public bool? Asistente { get; set; }
 
         [ForeignKey("EventoId")]
+        [InverseProperty("InteresadosEventos")]
         public virtual Eventos Evento { get; set; }
-        [ForeignKey("interesado_id")]
+
+        
+        [ForeignKey("InteresadoId")]
         public virtual Interesados Interesado { get; set; }
 
     }

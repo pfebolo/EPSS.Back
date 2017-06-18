@@ -19,7 +19,7 @@ namespace EPSS
 
             ReglasDeInscripcion reglasDeInscripcion = new ReglasDeInscripcion();
             
-            tmr = new Timer(reglasDeInscripcion.Cargar, null, 180000, 180000); //180000=30minutos
+            tmr = new Timer(reglasDeInscripcion.Cargar, null, 1800000, 1800000); //1800000=30minutos
             
             
 
