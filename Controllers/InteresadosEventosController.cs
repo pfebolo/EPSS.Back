@@ -51,16 +51,46 @@ namespace EPSS.Controllers
             return new ObjectResult(item);
         }
 
+        [HttpGet("interesados/{interesadoId}", Name = "GetInteresadosEventosXInteresado")]
+        public IActionResult GetByInteresadoId(int interesadoId)
+        {
+            try
+            {
+                var item = _repo.FindByInteresadoId(interesadoId);
+                if (item == null)
+                {
+                    return NotFound();
+                }
+                return new ObjectResult(item);
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
+        }
+
+
+
         [HttpPost]
         public IActionResult Create([FromBody] InteresadosEventos item)
         {
-            if (item == null)
+            try
             {
-                return BadRequest();
+                if (item == null)
+                {
+                    return BadRequest();
+                }
+                _repo.Add(item); 
+                //TODO: si el item es null, genera un error QUE NO ES CAPTURADO ¿?????
+                return CreatedAtRoute("GetInteresadosEventos", new { controller = "InteresadosEventos", Id = item.Id }, item);
             }
-            _repo.Add(item);
-            return CreatedAtRoute("GetInteresadosEventos", new { controller = "InteresadosEventos", InteresadoEventoId = item.Id }, item);
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
+
+
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

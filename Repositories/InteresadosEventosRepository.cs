@@ -12,6 +12,7 @@ namespace EPSS.Repositories
         IEnumerable<InteresadosEventos> GetAll();
         InteresadosEventos Find(int id);
         IEnumerable<InteresadosEventos> FindByEventoId(int eventoId);
+        IEnumerable<InteresadosEventos> FindByInteresadoId(int interesadoId);
         void Add(InteresadosEventos item);
         void Remove(InteresadosEventos item);
 
@@ -28,8 +29,21 @@ namespace EPSS.Repositories
 
         public void Add(InteresadosEventos item)
         {
-            //item.Key=(_list.Count+1).ToString();
-            //_list.Add(item);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.InteresadosEventos.Add(item);
+                    db.SaveChanges();
+
+                    _logger.LogInformation("Crear InteresadoEvento (" + item.Id.ToString() + ") --> Ok");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
         }
 
         public InteresadosEventos Find(int id)
@@ -54,28 +68,27 @@ namespace EPSS.Repositories
 
         public IEnumerable<InteresadosEventos> FindByEventoId(int eventoId)
         {
-            List<InteresadosEventos> buscados =  new List<InteresadosEventos>();
+            List<InteresadosEventos> buscados = new List<InteresadosEventos>();
             try
             {
                 using (var db = new escuelapsdelsurContext())
 
-                    //  Forma Linq - "Query Syntax"
-                    //  var q = from a in db.Alumnos
-                    //          join l in db.Legajos on a.AlumnoId equals l.AlumnoId
-                    //          select new Inscriptos {AlumnoId = a.AlumnoId,
-                    //                                 Nombre =  a.Nombre, 
-                    //                                 Apellido = a.Apellido, 
-                    //                                 Dni= a.Dni};
+                //  Forma Linq - "Query Syntax"
+                //  var q = from a in db.Alumnos
+                //          join l in db.Legajos on a.AlumnoId equals l.AlumnoId
+                //          select new Inscriptos {AlumnoId = a.AlumnoId,
+                //                                 Nombre =  a.Nombre, 
+                //                                 Apellido = a.Apellido, 
+                //                                 Dni= a.Dni};
 
                 {
                     foreach (var InteresadoEvento in from ie in db.InteresadosEventos
                                                         .Include(InteresadoEvento => InteresadoEvento.Evento)
                                                         .Include(InteresadoEvento => InteresadoEvento.Interesado)
-                                                        where ie.Evento.Id==eventoId 
-                                                        select ie)
-                                                        
+                                                     where ie.Evento.Id == eventoId
+                                                     select ie)
                     {
-                        if (InteresadoEvento.Interesado !=null) 
+                        if (InteresadoEvento.Interesado != null)
                             buscados.Add(InteresadoEvento);
                     }
                     _logger.LogInformation("Buscar InteresadosEventos x EventoId " + eventoId.ToString() + ", cantidad:" + buscados.Count().ToString() + " --> OK");
@@ -84,6 +97,34 @@ namespace EPSS.Repositories
             catch (System.Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw ex;
+            }
+            return buscados.AsReadOnly();
+
+        }
+
+        public IEnumerable<InteresadosEventos> FindByInteresadoId(int interesadoId)
+        {
+            List<InteresadosEventos> buscados = new List<InteresadosEventos>();
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    foreach (var InteresadoEvento in from ie in db.InteresadosEventos
+                                                        .Include(InteresadoEvento => InteresadoEvento.Evento)
+                                                        .Include(InteresadoEvento => InteresadoEvento.Interesado)
+                                                     where ie.Interesado.InteresadoId == interesadoId
+                                                     select ie)
+                    {
+                        buscados.Add(InteresadoEvento);
+                    }
+                    _logger.LogInformation("Buscar InteresadosEventos x InteresadoId " + interesadoId.ToString() + ", cantidad:" + buscados.Count().ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
             }
             return buscados.AsReadOnly();
 
