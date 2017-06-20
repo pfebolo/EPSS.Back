@@ -15,6 +15,8 @@ namespace EPSS.Repositories
         IEnumerable<InteresadosEventos> FindByInteresadoId(int interesadoId);
         void Add(InteresadosEventos item);
         void Remove(InteresadosEventos item);
+        void Update(InteresadosEventos item);
+
 
     }
     public class InteresadosEventosRepository : BaseRepository, IInteresadosEventosRepository
@@ -164,6 +166,24 @@ namespace EPSS.Repositories
                     db.Remove(item);
                     db.SaveChanges();
                     _logger.LogInformation("Eliminado InteresadoEvento ID: " + item.Id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+        }
+
+        public void Update(InteresadosEventos item)
+        {
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Update(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Actualizar InteresadoEvento ID: " + item.Id.ToString() + " --> OK");
                 }
             }
             catch (System.Exception ex)

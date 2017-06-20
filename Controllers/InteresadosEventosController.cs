@@ -80,7 +80,7 @@ namespace EPSS.Controllers
                 {
                     return BadRequest();
                 }
-                _repo.Add(item); 
+                _repo.Add(item);
                 //TODO: si el item es null, genera un error QUE NO ES CAPTURADO ¿?????
                 return CreatedAtRoute("GetInteresadosEventos", new { controller = "InteresadosEventos", Id = item.Id }, item);
             }
@@ -110,5 +110,31 @@ namespace EPSS.Controllers
                 return Utils.ResponseInternalError(ex);
             }
         }
+
+        // PUT api/InteresadoEventos
+        [HttpPut]
+        public IActionResult Put([FromBody] InteresadosEventos item)
+        {
+            try
+            {
+                if (item == null)
+                    return BadRequest();
+
+                if (_repo.Find(item.Id) == null)
+                    return NotFound();
+    
+                _repo.Update(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
+
+        }
+
+
+
+
     }
 }
