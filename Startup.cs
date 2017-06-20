@@ -45,6 +45,8 @@ namespace EPSS
             services.AddSingleton<IPartidosRepository, PartidosRepository>();
             services.AddSingleton<ICodigosPostalesRepository, CodigosPostalesRepository>();
             services.AddSingleton<ILocalidadesRepository, LocalidadesRepository>();
+            services.AddSingleton<ILugaresRepository, LugaresRepository>();
+            services.AddSingleton<IEventosRepository, EventosRepository>();
             services.AddSingleton<IAlumnosRepository, AlumnosRepository>();
             services.AddSingleton<ILegajosRepository, LegajosRepository>();
             services.AddSingleton<INivelesEstudiosRepository, NivelesEstudiosRepository>();
@@ -58,7 +60,7 @@ namespace EPSS
             services.AddSingleton<IEstadosCursosRepository, EstadosCursosRepository>();
             services.AddSingleton<IInscriptosRepository, InscriptosRepository>();
             services.AddSingleton<IInteresadosRepository, InteresadosRepository>();
-
+            services.AddSingleton<IInteresadosEventosRepository, InteresadosEventosRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,10 +12,13 @@ namespace EPSS.Models
         public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
+        public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
         public virtual DbSet<Interesados> Interesados { get; set; }
+        public virtual DbSet<InteresadosEventos> InteresadosEventos { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
+        public virtual DbSet<Lugares> Lugares { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
         public virtual DbSet<Modos> Modos { get; set; }
         public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
