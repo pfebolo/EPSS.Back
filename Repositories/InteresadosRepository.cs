@@ -9,7 +9,8 @@ namespace EPSS.Repositories
 {
 	public interface IInteresadosRepository
 	{
-		IEnumerable<Interesados> GetAll(DateTime fechaFIN);
+		IEnumerable<Interesados> GetAll();
+		IEnumerable<Interesados> GetAllbyPeriod(DateTime fechaFIN);
 		Interesados Find(int id);
 		void Add(Interesados item);
 		void Update(Interesados item);
@@ -63,7 +64,30 @@ namespace EPSS.Repositories
 			return InteresadoBuscado;
 		}
 
-		public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
+		public IEnumerable<Interesados> GetAll()
+		{
+			_list.Clear();
+
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					foreach (var Interesado in db.Interesados.Include(a => a.Modalidad).Include(c => c.Carrera))
+					{
+						_list.Add(Interesado);
+					}
+					_logger.LogInformation("Buscar Interesados --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return _list.AsReadOnly();
+		}
+
+
+		public IEnumerable<Interesados> GetAllbyPeriod(DateTime fechaFIN)
 		{
 			_list.Clear();
 

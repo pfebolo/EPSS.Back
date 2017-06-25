@@ -18,10 +18,17 @@ namespace EPSS.Controllers
         }
 
 
-        [HttpGet("{fechaFIN:datetime}", Name = "GetUltimosInteresados")]
-        public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
+        [HttpGet]
+        public IEnumerable<Interesados> GetAll()
         {
-            return _repo.GetAll(fechaFIN);
+            return _repo.GetAll();
+        }
+
+
+        [HttpGet("{fechaFIN:datetime}", Name = "GetUltimosInteresados")]
+        public IEnumerable<Interesados> GetAllbyPeriod(DateTime fechaFIN)
+        {
+            return _repo.GetAllbyPeriod(fechaFIN);
         }
 
         [HttpGet("{id}", Name = "GetInteresados")]
