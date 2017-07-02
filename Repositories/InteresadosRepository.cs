@@ -9,7 +9,8 @@ namespace EPSS.Repositories
 {
 	public interface IInteresadosRepository
 	{
-		IEnumerable<Interesados> GetAll(DateTime fechaFIN);
+		IEnumerable<Interesados> GetAll();
+		IEnumerable<Interesados> GetAllbyPeriod(DateTime fechaFIN);
 		Interesados Find(int id);
 		void Add(Interesados item);
 		void Update(Interesados item);
@@ -28,42 +29,65 @@ namespace EPSS.Repositories
 
 		public void Add(Interesados item)
 		{
-            try
-            {
-                using (var db = new escuelapsdelsurContext())
-                {
-                    db.Interesados.Add(item);
-                    db.SaveChanges();
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					db.Interesados.Add(item);
+					db.SaveChanges();
 
-                    _logger.LogInformation("Crear Alumno (" + item.InteresadoId.ToString() + "), E-Mail:" + item.Mail + " --> Ok");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw ex;
-            }
+					_logger.LogInformation("Crear Alumno (" + item.InteresadoId.ToString() + "), E-Mail:" + item.Mail + " --> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
 		}
 
 		public Interesados Find(int id)
 		{
-            Interesados InteresadoBuscado=null;
-            try
-            {
-                using (var db = new escuelapsdelsurContext())
-                {
-                    InteresadoBuscado =  db.Interesados.Find(id);
-                    _logger.LogInformation("Buscar InteresadoId: " + id.ToString() + " --> OK");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
-            return InteresadoBuscado;
+			Interesados InteresadoBuscado = null;
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					InteresadoBuscado = db.Interesados.Find(id);
+					_logger.LogInformation("Buscar InteresadoId: " + id.ToString() + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return InteresadoBuscado;
 		}
 
-		public IEnumerable<Interesados> GetAll(DateTime fechaFIN)
+		public IEnumerable<Interesados> GetAll()
+		{
+			_list.Clear();
+
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					foreach (var Interesado in db.Interesados.Include(a => a.Modalidad).Include(c => c.Carrera))
+					{
+						_list.Add(Interesado);
+					}
+					_logger.LogInformation("Buscar Interesados --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return _list.AsReadOnly();
+		}
+
+
+		public IEnumerable<Interesados> GetAllbyPeriod(DateTime fechaFIN)
 		{
 			_list.Clear();
 
@@ -90,20 +114,21 @@ namespace EPSS.Repositories
 
 		public void Update(Interesados item)
 		{
-            try
-            {
-                using (var db = new escuelapsdelsurContext())
-                {
-                    db.Update(item);
-                    db.SaveChanges();
-                    _logger.LogInformation("Actualizar Interesado ID: " + item.InteresadoId.ToString() + "/ Mail: " + item.Mail + " --> OK");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw ex;
-            }		}
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					db.Update(item);
+					db.SaveChanges();
+					_logger.LogInformation("Actualizar Interesado ID: " + item.InteresadoId.ToString() + "/ Mail: " + item.Mail + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
 
 
 		public void Remove(int id)
