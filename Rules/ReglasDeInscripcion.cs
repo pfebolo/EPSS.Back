@@ -8,6 +8,7 @@ using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using EPSS.Controllers;
+using EPSS;
 
 namespace EPSS.Rules
 {
@@ -132,116 +133,127 @@ namespace EPSS.Rules
             {
                 int NroDni = 0;
                 DateTime dtProvisorio;
+                Legajos legajo = null;
 
                 Int32.TryParse(inscripto[(int)inscriptoCampos.DNI].Replace(".", ""), out NroDni);
                 _logger.LogInformation("Procesando DNI:" + NroDni.ToString());
                 if (db.Legajos.Count(x => (x.Dni == NroDni) && (x.Cuestionario == null)) == 1)
                 {
-                    try
+                    using (var dbContextTransaction = db.Database.BeginTransaction())
                     {
-                        StringBuilder registro = new StringBuilder("");
-                        for (int campo = 0; campo < inscripto.Length; campo++)
+                        try
                         {
-                            registro.Append(inscripto[campo]);
-                            registro.Append(",");
-                        }
-                        _logger.LogInformation("Fila: " + registro.ToString());
+                            StringBuilder registro = new StringBuilder("");
+                            for (int campo = 0; campo < inscripto.Length; campo++)
+                            {
+                                registro.Append(inscripto[campo]);
+                                registro.Append(",");
+                            }
+                            _logger.LogInformation("Fila: " + registro.ToString());
 
-                        Legajos legajo = db.Legajos.Single(x => x.Dni == NroDni);
-                        legajo.Sexo = inscripto[(int)inscriptoCampos.Sexo].Trim();
-                        if (DateTime.TryParse(inscripto[(int)inscriptoCampos.FechaNacimiento], out dtProvisorio))
-                            legajo.FechaNacimiento = dtProvisorio;
-                        else
-                            legajo.FechaNacimiento = DateTime.MinValue;
-                        legajo.LugarNacimiento = inscripto[(int)inscriptoCampos.LugarNacimiento].Trim();
-                        legajo.DireccionCalle = inscripto[(int)inscriptoCampos.DireccionCalle].Trim();
-                        legajo.DireccionNro = inscripto[(int)inscriptoCampos.DireccionNumero].Trim();
-                        legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
-                        legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
-                        legajo.SecundarioCompletoOley25 = false;
-                        legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
-                        int CPBase = 0;
-                        int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
-                        legajo.CodigoPostalBase = CPBase;
-                        legajo.FechaIngreso = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
-                        legajo.ModalidadBase = inscripto[(int)inscriptoCampos.CursoModalidad];
-                        legajo.Cuestionario = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
-                        legajo.Historia = inscripto[(int)inscriptoCampos.Historia].Trim();
-                        legajo.Definicion = inscripto[(int)inscriptoCampos.Definicion].Trim();
-                        legajo.Situacion = inscripto[(int)inscriptoCampos.Situacion].Trim();
-                        legajo.Expectativas = inscripto[(int)inscriptoCampos.Expectativas].Trim();
+                            legajo = db.Legajos.Single(x => x.Dni == NroDni);
+                            legajo.Sexo = inscripto[(int)inscriptoCampos.Sexo].Trim();
+                            if (DateTime.TryParse(inscripto[(int)inscriptoCampos.FechaNacimiento], out dtProvisorio))
+                                legajo.FechaNacimiento = dtProvisorio;
+                            else
+                                legajo.FechaNacimiento = new DateTime(1900, 1, 1); //MinValue form smallDateTime (type of DB Column)
+                            legajo.LugarNacimiento = inscripto[(int)inscriptoCampos.LugarNacimiento].Trim();
+                            legajo.DireccionCalle = inscripto[(int)inscriptoCampos.DireccionCalle].Trim();
+                            legajo.DireccionNro = inscripto[(int)inscriptoCampos.DireccionNumero].Trim();
+                            legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
+                            legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
+                            legajo.SecundarioCompletoOley25 = false;
+                            legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
+                            int CPBase = 0;
+                            int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
+                            legajo.CodigoPostalBase = CPBase;
+                            legajo.FechaIngreso = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            legajo.ModalidadBase = inscripto[(int)inscriptoCampos.CursoModalidad];
+                            legajo.Cuestionario = DateTime.Parse(inscripto[(int)inscriptoCampos.FechaDeInscripcion]);
+                            legajo.Historia = inscripto[(int)inscriptoCampos.Historia].Trim();
+                            legajo.Definicion = inscripto[(int)inscriptoCampos.Definicion].Trim();
+                            legajo.Situacion = inscripto[(int)inscriptoCampos.Situacion].Trim();
+                            legajo.Expectativas = inscripto[(int)inscriptoCampos.Expectativas].Trim();
 
-                        //Estudios
-                        int Estudio_ID = 500;
-                        //Secundario
-                        Estudios estudio;
-                        Estudio_ID += 1;
-                        estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
-                        estudio.NivelEstudioId = "Secundario";
-                        estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioSecundarioCarrera].Trim();
-                        estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioSecundarioExpedidoPor].Trim();
-                        estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioSecundario].Trim().ToUpper() == "SI");
-                        if (!db.Estudios.Contains(estudio))
-                        {
-                            db.Estudios.Add(estudio);
-                        }
-                        if ((inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioTerciarioInstitucion].Trim() != ""))
-                        {
+                            //Estudios
+                            int Estudio_ID = 500;
+                            //Secundario
+                            Estudios estudio;
                             Estudio_ID += 1;
                             estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
-                            estudio.NivelEstudioId = "Terciario";
-                            estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
-                            estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
-                            estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim().ToUpper() == "SI");
+                            estudio.NivelEstudioId = "Secundario";
+                            estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioSecundarioCarrera].Trim();
+                            estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioSecundarioExpedidoPor].Trim();
+                            estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioSecundario].Trim().ToUpper() == "SI");
                             if (!db.Estudios.Contains(estudio))
                             {
                                 db.Estudios.Add(estudio);
                             }
-                        }
-                        if ((inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.EstudioUniversitarioInstitucion].Trim() != ""))
-                        {
-                            Estudio_ID += 1;
-                            estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
-                            estudio.NivelEstudioId = "Universitario";
-                            estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
-                            estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
-                            estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim().ToUpper() == "SI");
-                            if (!db.Estudios.Contains(estudio))
+                            if ((inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim() != "") ||
+                                    (inscripto[(int)inscriptoCampos.EstudioTerciarioInstitucion].Trim() != ""))
                             {
-                                db.Estudios.Add(estudio);
+                                Estudio_ID += 1;
+                                estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
+                                estudio.NivelEstudioId = "Terciario";
+                                estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
+                                estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioTerciarioCarrera].Trim();
+                                estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioTerciarioCompleto].Trim().ToUpper() == "SI");
+                                if (!db.Estudios.Contains(estudio))
+                                {
+                                    db.Estudios.Add(estudio);
+                                }
                             }
+                            if ((inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim() != "") ||
+                                    (inscripto[(int)inscriptoCampos.EstudioUniversitarioInstitucion].Trim() != ""))
+                            {
+                                Estudio_ID += 1;
+                                estudio = db.Estudios.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.EstudioId == Estudio_ID) ?? new Estudios(legajo.AlumnoId, Estudio_ID);
+                                estudio.NivelEstudioId = "Universitario";
+                                estudio.Titulo = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
+                                estudio.Institucion = inscripto[(int)inscriptoCampos.EstudioUniversitarioCarrera].Trim();
+                                estudio.Terminado = (inscripto[(int)inscriptoCampos.EstudioUniversitarioCompleto].Trim().ToUpper() == "SI");
+                                if (!db.Estudios.Contains(estudio))
+                                {
+                                    db.Estudios.Add(estudio);
+                                }
+                            }
+
+                            //Trabajos
+                            Trabajos trabajo;
+                            int Trabajo_ID = 500;
+                            if ((inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim() != "") ||
+                                    (inscripto[(int)inscriptoCampos.TrabajoCargo].Trim() != "") ||
+                                    (inscripto[(int)inscriptoCampos.TrabajoLugar].Trim() != "") ||
+                                    (inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim() != ""))
+                            {
+                                Trabajo_ID += 1;
+                                trabajo = db.Trabajos.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.TrabajoId == Trabajo_ID) ?? new Trabajos(legajo.AlumnoId, Trabajo_ID);
+                                trabajo.Antiguedad = inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim();
+                                trabajo.Cargo = inscripto[(int)inscriptoCampos.TrabajoCargo].Trim();
+                                trabajo.RazonSocial = inscripto[(int)inscriptoCampos.TrabajoLugar].Trim();
+                                trabajo.Telefono = inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim();
+                                if (!db.Trabajos.Contains(trabajo))
+                                {
+                                    db.Trabajos.Add(trabajo);
+                                }
+                            }
+                            db.SaveChanges();
+                            dbContextTransaction.Commit();
+                            _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
+                            _inscriptosEncontradosOK += 1;
                         }
 
-                        //Trabajos
-                        Trabajos trabajo;
-                        int Trabajo_ID = 500;
-                        if ((inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.TrabajoCargo].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.TrabajoLugar].Trim() != "") ||
-                                (inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim() != ""))
+                        catch (System.Exception ex)
                         {
-                            Trabajo_ID += 1;
-                            trabajo = db.Trabajos.SingleOrDefault(x => x.AlumnoId == legajo.AlumnoId && x.TrabajoId == Trabajo_ID) ?? new Trabajos(legajo.AlumnoId, Trabajo_ID);
-                            trabajo.Antiguedad = inscripto[(int)inscriptoCampos.TrabajoAntiguedad].Trim();
-                            trabajo.Cargo = inscripto[(int)inscriptoCampos.TrabajoCargo].Trim();
-                            trabajo.RazonSocial = inscripto[(int)inscriptoCampos.TrabajoLugar].Trim();
-                            trabajo.Telefono = inscripto[(int)inscriptoCampos.TrabajoTelefono].Trim();
-                            if (!db.Trabajos.Contains(trabajo))
-                            {
-                                db.Trabajos.Add(trabajo);
-                            }
+                            dbContextTransaction.Rollback();
+                            //Rollback del Contexto
+                            DbContextHelper dbHelper = new DbContextHelper(db);
+                            dbHelper.tableRollback<Estudios>(legajo.Estudios);
+                            dbHelper.tableRollback<Trabajos>(legajo.Trabajos);
+                            dbHelper.entryRollback(legajo);
+                            _logger.LogError(new EventId(), ex, null);
+                            _inscriptosEncontradosNoOK += 1;
                         }
-                        db.SaveChanges();
-                        _logger.LogInformation("Legajo con DNI" + NroDni.ToString() + " encontrado y actualizado satisfactoriamente.");
-                        _inscriptosEncontradosOK += 1;
-                    }
-
-                    catch (System.Exception ex)
-                    {
-                        _logger.LogError(new EventId(), ex, null);
-                        _inscriptosEncontradosNoOK += 1;
                     }
                 }
                 else
