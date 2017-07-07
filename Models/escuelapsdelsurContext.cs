@@ -95,6 +95,8 @@ namespace EPSS.Models
                 entity.HasIndex(e => new { e.DireccionLocalidadId, e.DireccionPartidoId, e.DireccionProvinciaId, e.DireccionPaisId })
                     .HasName("IX_Localidad");
 
+                entity.Property(e => e.FechaNacimiento).HasColumnType("smalldatetime");
+
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
             });
 
