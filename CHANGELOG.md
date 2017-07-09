@@ -6,8 +6,11 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 
 ## [Unreleased]
 ### Added
-- Archivo CHANGELOG.md que se usará para documentar el historial de cambios, basado en el proyecto de código abierto CHANGELOG.
+- API DELETE /interesados/{id}
 
+## [0.9.1] - 2017-07-05
+### Added
+- Archivo CHANGELOG.md que se usará para documentar el historial de cambios, basado en el proyecto de código abierto CHANGELOG.
 ### Fixed
 - Se sincroniza el tipo de datos del atributo _FechaNacimiento_ de legajos entre la base de datos y la entidad.
 - Se corrige la fecha de Nacimiento por Omisión para asignar 1/1/1900 (y no 1/1/0000).
