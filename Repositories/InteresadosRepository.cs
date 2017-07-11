@@ -14,7 +14,7 @@ namespace EPSS.Repositories
 		Interesados Find(int id);
 		void Add(Interesados item);
 		void Update(Interesados item);
-		void Remove(int id);
+		void Remove(Interesados item);
 
 	}
 	public class InteresadosRepository : BaseRepository, IInteresadosRepository
@@ -131,9 +131,23 @@ namespace EPSS.Repositories
 		}
 
 
-		public void Remove(int id)
+		public void Remove(Interesados item)
 		{
-			//_list.RemoveAll(n=>n.Key==id);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Remove(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Eliminado Interesado ID: " + item.InteresadoId.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+
 		}
 	}
 }
