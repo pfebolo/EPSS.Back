@@ -25,6 +25,8 @@ namespace EPSS.Models
         public string Titulo { get; set; }
         [Column("lugar_id")]
         public int? LugarId { get; set; }
+        [Column("observacion")]
+        public string Observacion { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Evento")]        
