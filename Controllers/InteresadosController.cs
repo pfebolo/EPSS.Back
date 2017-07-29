@@ -11,7 +11,7 @@ namespace EPSS.Controllers
     public class InteresadosController : Controller
     {
         private IInteresadosRepository _repo;
-        
+
         public InteresadosController(IInteresadosRepository repo)
         {
             this._repo = repo;
@@ -61,9 +61,22 @@ namespace EPSS.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _repo.Remove(id);
+            var item = _repo.Find(id);
+            if (item == null)
+            {
+                return NoContent(); //Sin error por que DELETE es Idempotente.
+            }
+            try
+            {
+                _repo.Remove(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
         }
 
         // PUT api/Interesados
