@@ -72,7 +72,7 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-					foreach (var Interesado in db.Interesados.Include(a => a.Modalidad).Include(c => c.Carrera))
+					foreach (var Interesado in db.Interesados.Include(a => a.Modalidad).Include(c => c.Carrera).Include(m => m.MedioDeContacto))
 					{
 						_list.Add(Interesado);
 					}
@@ -97,7 +97,7 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-					foreach (var Interesado in db.Interesados.Where(a => a.FechaInteresado >= fechaINI && a.FechaInteresado <= fechaFIN).Include(a => a.Modalidad).Include(c => c.Carrera))
+					foreach (var Interesado in db.Interesados.Where(a => a.FechaInteresado >= fechaINI && a.FechaInteresado <= fechaFIN).Include(a => a.Modalidad).Include(c => c.Carrera).Include(m => m.MedioDeContacto))
 					{
 						_list.Add(Interesado);
 					}
