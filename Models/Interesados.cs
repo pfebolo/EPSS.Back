@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -48,10 +48,16 @@ namespace EPSS.Models
         [Column(TypeName = "varchar(6)")]
         public string Turno { get; set; }
         public bool Seguimiento { get; set; }
+        [Column("MedioDeContactoID")]
+        public int? MedioDeContactoId { get; set; }
 
         [ForeignKey("CarreraId")]
         [InverseProperty("Interesados")]
         public virtual Carreras Carrera { get; set; }
+        
+        [ForeignKey("MedioDeContactoId")]	
+        [InverseProperty("Interesados")]
+        public virtual MediosDeContacto MedioDeContacto { get; set; }
 
         [ForeignKey("ModalidadId")]
         [InverseProperty("Interesados")]
