@@ -19,6 +19,7 @@ namespace EPSS.Models
         public virtual DbSet<Legajos> Legajos { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
         public virtual DbSet<Lugares> Lugares { get; set; }
+        public virtual DbSet<MediosDeContacto> MediosDeContacto { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
         public virtual DbSet<Modos> Modos { get; set; }
         public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
@@ -44,7 +45,7 @@ namespace EPSS.Models
             modelBuilder.Entity<CodigosPostales>(entity =>
             {
                 entity.HasKey(e => new { e.PaisId, e.CodigoPostalId })
-                    .HasName("PK_CodigoPostal_1");
+                    .HasName("PK_CodigosPostales");
             });
 
             modelBuilder.Entity<Coordinacion>(entity =>
@@ -103,7 +104,13 @@ namespace EPSS.Models
             modelBuilder.Entity<Localidades>(entity =>
             {
                 entity.HasKey(e => new { e.PaisId, e.ProvinciaId, e.PartidoD, e.LocalidadId })
-                    .HasName("PK_Localidades_1");
+                    .HasName("PK_Localidades");
+            });
+
+            modelBuilder.Entity<MediosDeContacto>(entity =>
+            {
+                entity.HasKey(e => e.MedioDeContactoId)
+                    .HasName("PK_medios_contacto");
             });
 
             modelBuilder.Entity<Partidos>(entity =>
@@ -121,7 +128,7 @@ namespace EPSS.Models
             modelBuilder.Entity<Provincias>(entity =>
             {
                 entity.HasKey(e => new { e.PaisId, e.ProvinciaId })
-                    .HasName("PK_Provincias_1");
+                    .HasName("PK_Provincias");
             });
 
             modelBuilder.Entity<Trabajos>(entity =>
