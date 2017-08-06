@@ -16,7 +16,8 @@ namespace EPSS
         {
             loggerFactory
               .AddConsole()
-              .AddDebug();
+              .AddDebug()
+              .AddFile("Logs/myapp-{Date}.log");
             _LoggerFactory = loggerFactory;
             _Logger = loggerFactory.CreateLogger<Startup>();
         }
