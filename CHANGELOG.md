@@ -4,7 +4,14 @@ Todos los cambios notables del proyecto serán documentados en este archivo.
 El formato está basado en la especificación [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2017-08-01
+## [Unreleased] - 2017-08-08
+### Added
+- Se actualizan versiones de dependencias
+- Se agrega dependencia Serilog.Extensions.Logging.File
+- Se agrega dependencia NETCore.MailKit
+- Se agrega log en archivos de texto .log
+
+## [0.11] - 2017-08-02
 ### Added
 - Se agrega el campo observación a los eventos.
 - Se agrega el campo MedioDeContacto a los interesados.
