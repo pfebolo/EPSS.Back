@@ -3,3 +3,4 @@ obj
 
 project\.lock\.json
 temp.sql
+Logs/*
