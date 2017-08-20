@@ -9,7 +9,7 @@
         {
             "taskName": "build",
             "args": [
-                "${workspaceRoot}/project.json"
+                "${workspaceRoot}/EPSS.Back.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

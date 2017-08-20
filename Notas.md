@@ -2,9 +2,25 @@
 
 ## Net Core
 * Para ir actualizando: __https://www.microsoft.com/net/download/core#/current/sdk__
+  - Se migró a version: 1.1.0-preview1-005077
+    - Se ejecutó comando: dotnet migrate --report-file migrate.txt 
+
+
 
 * Verificar que en UBUNTU seguramente se actualiza automaticamente
   - Si es así, entonces mantener sincronizados las computadoreas NB1 y SUPERVISOR
+
+### Orden de llamada de Ejecución, al inicio del programa
+1. Main
+    1. new WebHostBuilder().UseStartup<tipo> //en esta instrucción se indica el  el type (nombre de la clase) usada para el la inicialización del WebHost (en gral la clase se llama 'StartUp')
+        1. Startup (constructor)
+        2. StartUp.ConfigureServices
+        3. StartUp.Configure
+    2. Otras instruciones
+    3.host.Run()  //Ejecuta en loop infinito el sitio web  
+2. End
+
+
 
 ## Base de datos
 
