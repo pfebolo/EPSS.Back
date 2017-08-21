@@ -277,15 +277,17 @@ namespace EPSS.Rules
 
 		public void EnviarEmail(Models.Alumnos Inscripto, MailboxAddress contactFrom, MailEasy mail)
 		{
+			MailboxAddress contactTo=null;
 			string emailaddress = Inscripto.Mail.Replace("%40", "@");
-			MailboxAddress contactTo = new MailboxAddress("Test: " + Inscripto.Apellido + ", " + Inscripto.Nombre, "pfebolo@yahoo.com");
-			//MailboxAddress contactTo = new MailboxAddress(Inscripto.Apellido + ", " +  Inscripto.Nombre, emailaddress);
+			if (!settings.inscripcion.ModoTest)
+				contactTo = new MailboxAddress(Inscripto.Apellido + ", " +  Inscripto.Nombre, emailaddress);
+			else
+				contactTo = new MailboxAddress("Test: " + Inscripto.Apellido + ", " + Inscripto.Nombre, settings.inscripcion.ReceptorTestEmailDireccion);
 			_logger.LogInformation("E-Mails de Inscripción enviado a: " + Inscripto.Apellido + ", " + Inscripto.Nombre + " -> " + emailaddress);
 			string mensajeAEnviar = settings.inscripcion.MensajeBienvenida;
 			mensajeAEnviar= mensajeAEnviar.Replace("{{nombreInscripto}}" , Inscripto.Nombre);
 			BodyHtml body = new BodyHtml("Link de Inscripción",mensajeAEnviar);
 			mail.send(contactFrom, contactTo, body);
-
 		}
 
 		private string DeterminarProximoReintento(String EstadoOriginal)

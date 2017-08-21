@@ -9,6 +9,8 @@ namespace EPSS.Settings
         public string  EmisorEmailDireccion { get; set; }
         public int  Reintentos { get; set; }
         public string MensajeBienvenida { get; set; }
+        public bool ModoTest  { get; set; }
+        public string ReceptorTestEmailDireccion { get; set; }
 
 
     }
