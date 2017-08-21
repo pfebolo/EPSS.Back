@@ -42,18 +42,30 @@ namespace EPSS.Mail
 			smtpClient.Disconnect(true);
 		}
 
-		public void send(MailboxAddress contactFrom, MailboxAddress contactTo, BodyText bodyText)
+
+		private void send(MailboxAddress contactFrom, MailboxAddress contactTo, MimeMessage Message)
 		{
+			Message.From.Add(contactFrom);
+			Message.To.Add(contactTo);
+			smtpClient.Send(Message);
+		}
 
+		public void send(MailboxAddress contactFrom, MailboxAddress contactTo, BodyText body)
+		{
 			var mimeMessage = new MimeMessage();
-			mimeMessage.From.Add(contactFrom);
-			mimeMessage.To.Add(contactTo);
-			mimeMessage.Subject = bodyText.Subject;
-			mimeMessage.Body = bodyText.Body;
+			mimeMessage.Subject = body.Subject;
+			mimeMessage.Body = body.Body;
 
-			smtpClient.Send(mimeMessage);
-			Console.WriteLine("The mail has been sent successfully !!");
+			send(contactFrom,contactTo,mimeMessage);
+		}
 
+		public void send(MailboxAddress contactFrom, MailboxAddress contactTo, BodyHtml body)
+		{
+			var mimeMessage = new MimeMessage();
+			mimeMessage.Subject = body.Subject;
+			mimeMessage.Body = body.Body;
+
+			send(contactFrom,contactTo,mimeMessage);
 		}
 	}
 }
