@@ -60,6 +60,7 @@ namespace EPSS.Repositories
                     // AlumnoNuevo.DocCompromiso = item.DocCompromiso;
                     int idInteresado = item.AlumnoId;
                     item.AlumnoId+=50000; //Numero magico para que no colisione con sistema anterior
+                    item.Mail2="Enviar"; //Marca el envio de E-mail de bienvenida y completado de cuestionario.
                     db.Alumnos.Add(item);
                     //Borrar Interesados
                     Interesados interesadoABorrar= db.Interesados.Find(idInteresado);
@@ -120,6 +121,9 @@ namespace EPSS.Repositories
         public void Update(Alumnos item)
         {
             var db = new escuelapsdelsurContext();
+            Alumnos valorOriginal =  db.Alumnos.Find(item.AlumnoId);
+            item.Mail2 = valorOriginal.Mail2;
+            db.Entry(valorOriginal).State=EntityState.Detached;
             db.Update(item);
             db.SaveChanges();
         }
