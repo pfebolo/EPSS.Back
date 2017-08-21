@@ -281,8 +281,10 @@ namespace EPSS.Rules
 			MailboxAddress contactTo = new MailboxAddress("Test: " + Inscripto.Apellido + ", " + Inscripto.Nombre, "pfebolo@yahoo.com");
 			//MailboxAddress contactTo = new MailboxAddress(Inscripto.Apellido + ", " +  Inscripto.Nombre, emailaddress);
 			_logger.LogInformation("E-Mails de Inscripción enviado a: " + Inscripto.Apellido + ", " + Inscripto.Nombre + " -> " + emailaddress);
-			BodyText bodyText = new BodyText("Hello World - Sending email using ASP.NET Core 1.1", "ASP.NET Core was previously called ASP.NET 5. It was renamed in January 2016. It supports cross-platform frameworks ( Windows, Linux, Mac ) for building modern cloud-based internet-connected applications like IOT, web apps, and mobile back-end.");
-			mail.send(contactFrom, contactTo, bodyText);
+			string mensajeAEnviar = settings.inscripcion.MensajeBienvenida;
+			mensajeAEnviar= mensajeAEnviar.Replace("{{nombreInscripto}}" , Inscripto.Nombre);
+			BodyHtml body = new BodyHtml("Link de Inscripción",mensajeAEnviar);
+			mail.send(contactFrom, contactTo, body);
 
 		}
 
@@ -376,3 +378,4 @@ namespace EPSS.Rules
 		}
 	}
 }
+

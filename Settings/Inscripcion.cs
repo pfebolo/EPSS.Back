@@ -8,6 +8,8 @@ namespace EPSS.Settings
         public string  EmisorEmailNombre { get; set; }
         public string  EmisorEmailDireccion { get; set; }
         public int  Reintentos { get; set; }
+        public string MensajeBienvenida { get; set; }
+
 
     }
 }
