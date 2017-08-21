@@ -275,19 +275,19 @@ namespace EPSS.Rules
 			}
 		}
 
-		public void EnviarEmail(Models.Alumnos Inscripto, MailboxAddress contactFrom, MailEasy mail)
+		public void EnviarEmail(Models.Alumnos Inscripto, MailboxAddress contactFrom, MailboxAddress contactBCC, MailEasy mail)
 		{
-			MailboxAddress contactTo=null;
+			MailboxAddress contactTo = null;
 			string emailaddress = Inscripto.Mail.Replace("%40", "@");
 			if (!settings.inscripcion.ModoTest)
-				contactTo = new MailboxAddress(Inscripto.Apellido + ", " +  Inscripto.Nombre, emailaddress);
+				contactTo = new MailboxAddress(Inscripto.Apellido + ", " + Inscripto.Nombre, emailaddress);
 			else
 				contactTo = new MailboxAddress("Test: " + Inscripto.Apellido + ", " + Inscripto.Nombre, settings.inscripcion.ReceptorTestEmailDireccion);
 			_logger.LogInformation("E-Mails de Inscripción enviado a: " + Inscripto.Apellido + ", " + Inscripto.Nombre + " -> " + emailaddress);
 			string mensajeAEnviar = settings.inscripcion.MensajeBienvenida;
-			mensajeAEnviar= mensajeAEnviar.Replace("{{nombreInscripto}}" , Inscripto.Nombre);
-			BodyHtml body = new BodyHtml("Link de Inscripción",mensajeAEnviar);
-			mail.send(contactFrom, contactTo, body);
+			mensajeAEnviar = mensajeAEnviar.Replace("{{nombreInscripto}}", Inscripto.Nombre);
+			BodyHtml body = new BodyHtml("Link de Inscripción", mensajeAEnviar);
+			mail.send(contactFrom, contactTo, contactBCC, body);
 		}
 
 		private string DeterminarProximoReintento(String EstadoOriginal)
@@ -310,13 +310,16 @@ namespace EPSS.Rules
 
 		public void ProcesarMails(object data)
 		{
-			try
+			if (!MailInscripcionEnProceso)
 			{
-				if (!MailInscripcionEnProceso)
+				MailInscripcionEnProceso = true;
+				try
 				{
-					MailInscripcionEnProceso = true;
 					MailEasy mail = new MailEasy(settings.smtpSettings);
 					MailboxAddress From = new MailboxAddress(settings.inscripcion.EmisorEmailNombre, settings.inscripcion.EmisorEmailDireccion);
+					MailboxAddress CCO = null;
+					if (!string.IsNullOrEmpty(settings.inscripcion.CCOEmailDireccion))
+						CCO = new MailboxAddress(settings.inscripcion.CCOEmailNombre, settings.inscripcion.CCOEmailDireccion);
 					mail.Conectar(); //Posible error de conexión a servidor de mail 
 					int EmailsEnviados = 0;
 					int EmailsConError = 0;
@@ -342,7 +345,7 @@ namespace EPSS.Rules
 								db.SaveChanges();
 
 								//Se intenta enviar el Mail
-								EnviarEmail(alumno, From, mail);
+								EnviarEmail(alumno, From, CCO, mail);
 								alumno.Mail2 = "Enviado"; //Estado que toma al enviar exitosamente el envio.
 								db.SaveChanges(); //Graba estado de envío exitoso.
 								EmailsEnviados++;
@@ -365,16 +368,16 @@ namespace EPSS.Rules
 							_logger.LogInformation("E-Mails de Inscripción de completado de cuestionario sin inscriptos a procesar");
 					}
 					mail.DesConectar();
-					MailInscripcionEnProceso = false;
 				}
-				else
+				catch (System.Exception ex)
 				{
-					_logger.LogInformation("E-Mails de Inscripción de completado de cuestionario en proceso, se reintentará a próximo ciclo.");
+					_logger.LogError(new EventId(), ex, null); //Posible error de conexión a servidor de mail
 				}
+				MailInscripcionEnProceso = false;
 			}
-			catch (System.Exception ex)
+			else
 			{
-				_logger.LogError(new EventId(), ex, null); //Posible error de conexión a servidor de mail
+				_logger.LogInformation("E-Mails de Inscripción de completado de cuestionario en proceso, se reintentará a próximo ciclo.");
 			}
 
 		}

@@ -2,21 +2,13 @@ using MimeKit;
 
 namespace EPSS.Mail
 {
-	public class BodyHtml
+	public class BodyHtml:BodyBase
 	{
-		public string Subject { get; }
-		public MimeEntity Body { get; }
-
-		public BodyHtml(string subject, string content)
-		{
-			Subject = subject;
-			Body = new TextPart("html")
+		public BodyHtml(string subject, string content):base(subject,new TextPart("html")
 			{
 				Text = content
 
-			};
-
-		}
+			}){}
 	}
 }
 
