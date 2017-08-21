@@ -12,8 +12,11 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 - Se agrega log en archivos de texto .log.
 - Se actualiza net core a versión 1.1.0-preview1-005077.
 - Se mejora administración de configuración.
-- Se agrega configuración para la actualización de los datos de inscripción.
-- Se agrega envio de mail a los inscriptos, para completar de cuestionario ingreso.
+- Se agrega configuración de tiempos para la actualización de los datos de cuestionario de inscripción.
+- Se agrega envío de e-mail a los inscriptos.
+- Se agrega e-mail de bienvenida y completado de cuestionario, configurable, para los inscriptos.
+- Se agrega 'ModoTest' pare el envío de e-mails.
+
 
 ## [0.11] - 2017-08-02
 ### Added
