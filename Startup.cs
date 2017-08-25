@@ -10,7 +10,6 @@ namespace EPSS
     {
         public ILogger _Logger;
         public ILoggerFactory _LoggerFactory;
-        //public IConfigurationRoot Configuration { get; }
 
         public Startup(IHostingEnvironment env, ILoggerFactory loggerFactory)
         {

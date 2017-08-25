@@ -2,14 +2,28 @@
 using Microsoft.AspNetCore.Hosting;
 using System.Threading;
 using EPSS.Rules;
+using System;
+using System.IO;
+using Microsoft.Extensions.Configuration;
+using EPSS.Settings;
+
 
 namespace EPSS
 {
     public class Program
     {
         private static Timer tmr;
+        
         public static void Main(string[] args)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", optional: true)
+                .AddEnvironmentVariables();
+
+            settings.cargarConfiguracion(builder.Build());
+
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseUrls("http://*:5000")
@@ -19,9 +33,9 @@ namespace EPSS
 
             ReglasDeInscripcion reglasDeInscripcion = new ReglasDeInscripcion();
             
-            tmr = new Timer(reglasDeInscripcion.Cargar, null, 180000, 1800000); //180000=3minutos. 1800000=30minutos
+            tmr = new Timer(reglasDeInscripcion.Cargar, null, settings.inscripcion.ejecucionInicialSegundos * 1000, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
             
-            
+            tmr = new Timer(reglasDeInscripcion.ProcesarMails, null, settings.inscripcion.ejecucionInicialSegundos * 1500, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
 
             host.Run();
         }

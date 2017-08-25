@@ -4,3 +4,5 @@ obj
 project\.lock\.json
 temp.sql
 Logs/*
+console.sql
+appsettings.Development.json
