@@ -88,3 +88,21 @@ http://dba.stackexchange.com/questions/62165/i-cant-connect-to-my-servers-sql-da
 
 
 
+### Entornos / Environment
+> ref: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments
+
+Windows
+* DOS
+'''
+set ASPNETCORE_ENVIRONMENT=Development
+'''
+
+* PowerShell
+'''
+$Env:ASPNETCORE_ENVIRONMENT = "Development"
+'''
+
+Linux
+'''
+export ASPNETCORE_ENVIRONMENT=Development
+'''
