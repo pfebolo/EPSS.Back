@@ -51,10 +51,28 @@ namespace EPSS.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public IActionResult Delete([FromBody] Alumnos item )
         {
-            _repo.Remove(id);
+            if (item == null)
+                return BadRequest();
+
+            var Modo = _repo.Find(item.AlumnoId);
+
+            if (Modo == null)
+                return NoContent(); //Sin error por que DELETE es Idempotente.
+
+            try
+            {
+                _repo.Remove(item);
+                return NoContent();
+            }
+            catch (System.Exception ex)
+            {
+                return Utils.ResponseInternalError(ex);
+            }
+
+
         }
 
         // PUT api/alumnos
