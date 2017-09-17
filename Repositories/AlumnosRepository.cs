@@ -158,7 +158,7 @@ namespace EPSS.Repositories
                     interesado.Telefono = item.Telefono;
                     interesado.Celular = item.Celular;
                     interesado.ComoConocio = item.ComoConocio;
-                    interesado.ModalidadId = item.ModalidadId;
+                    interesado.ModalidadId = item.Modalidad.Id;
                     interesado.GradoInteres = item.GradoInteres;
                     interesado.FechaInteresado = item.FechaInteresadoOriginal;
                     interesado.Comentario = item.Comentario;
