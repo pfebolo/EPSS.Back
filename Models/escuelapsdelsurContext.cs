@@ -123,6 +123,12 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId })
                     .HasName("PK_Promociones");
+
+                entity.Property(e => e.AnioLectivo).HasDefaultValueSql("1");
+
+                entity.Property(e => e.MesFinal).HasDefaultValueSql("1");
+
+                entity.Property(e => e.NMestreLectivo).HasDefaultValueSql("1");
             });
 
             modelBuilder.Entity<Provincias>(entity =>
