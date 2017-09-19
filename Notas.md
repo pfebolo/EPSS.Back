@@ -26,8 +26,8 @@
 
 ### Scaffoldear
 #### Comando usado para generar codigo de modelo de base de datos inicial
-  * dotnet ef dbContext scaffold "Data Source=NB01\SQLEXPRESS;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t modalidades -t alumnos -t Legajos -o Models -f
-
+  * dotnet ef dbContext scaffold "Data Source=...
+  
 #### Tareas para ir actualizando el acceso a DB
 * Verificar que la carpeta donde se ejecuta el _scaffold_ se llame **EPSS** (es necesario ya que de este nombre genera el namespace base)
 * Si existe la carpeta **Models**, renombrarla
@@ -36,7 +36,7 @@
   * Mergear la carpeta nueva con la vieja
   * Verificar el archivo de contexto, y ajustar de ser necesario
 * __*Comando*__:  
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -a -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -t Trabajos -o Models -f
+dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t Turnos -t Promociones -t EstadosCurso -t Cursos -t Coordinadores -t Grupos -t Coordinacion -t Trabajos -o Models -f
 * Borrar carpeta nueva
 * Renombrar nuevamente la carpeta donde se ejcutó el *scaffold* a su nombre original
 

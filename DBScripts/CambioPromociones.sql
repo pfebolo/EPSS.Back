@@ -1,19 +1,19 @@
 
 -- CREATE FIELD "AnioLectivo" ----------------------------------
 ALTER TABLE [dbo].[Promociones]
-ADD [AnioLectivo] INT DEFAULT '1' NOT NULL
+ADD [AnioLectivo] INT DEFAULT 1 NOT NULL
 GO;
 -- -------------------------------------------------------------
-
+select * from promociones
 -- CREATE FIELD "nMestreLectivo" -------------------------------
 ALTER TABLE [dbo].[Promociones]
-ADD [nMestreLectivo] INT DEFAULT '1' NOT NULL
+ADD [nMestreLectivo] INT DEFAULT 1 NOT NULL
 GO;
 -- -------------------------------------------------------------
 
 -- CREATE FIELD "MesFinal" -------------------------------------
 ALTER TABLE [dbo].[Promociones]
-ADD [MesFinal] INT DEFAULT '1' NOT NULL
+ADD [MesFinal] INT DEFAULT 1 NOT NULL
 GO;
 -- -------------------------------------------------------------
 
