@@ -3,16 +3,26 @@ using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace EPSS.Repositories
 {
+
+    public class InscriptoInexistenteException : System.Exception
+    {
+        public InscriptoInexistenteException() { }
+        public InscriptoInexistenteException(string message) : base(message) { }
+        public InscriptoInexistenteException(string message, System.Exception inner) : base(message, inner) { }
+
+    }
+
     public interface IAlumnosRepository
     {
         IEnumerable<Alumnos> GetAll();
         Alumnos Find(int id);
         void Add(Alumnos item);
         void Update(Alumnos item);
-        void Remove(int id);
+        void Remove(Alumnos item);
 
     }
     public class AlumnosRepository : BaseRepository, IAlumnosRepository
@@ -128,10 +138,57 @@ namespace EPSS.Repositories
             db.SaveChanges();
         }
 
-
-        public void Remove(int id)
+        public void Remove(Alumnos item)
         {
-            //_list.RemoveAll(n=>n.Key==id);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+
+                    int legajo = db.Legajos.Count(n => n.AlumnoId == item.AlumnoId);
+                    if (legajo==0) {
+
+
+                    Interesados interesado = new Interesados();
+                    //interesado.InteresadoId = item.AlumnoId-50000;
+                    interesado.Nombre = item.Nombre;
+                    interesado.Apellido = item.Apellido;
+                    interesado.Mail = item.Mail;
+                    interesado.Mail2 = item.Mail2;
+                    interesado.Telefono = item.Telefono;
+                    interesado.Celular = item.Celular;
+                    interesado.ComoConocio = item.ComoConocio;
+                    interesado.ModalidadId = item.Modalidad.Id;
+                    interesado.GradoInteres = item.GradoInteres;
+                    interesado.FechaInteresado = item.FechaInteresadoOriginal;
+                    interesado.Comentario = item.Comentario;
+                    interesado.Provincia = item.Provincia;
+                    interesado.SituacionInscripcion = item.SituacionInscripcion;
+                    interesado.SituacionEspecial = item.SituacionEspecial;
+                    interesado.CarreraId = 0; //TODO: Este dato se pierde ¿?
+                    interesado.AnioAcursar = item.AnioAcursar;
+                    interesado.NmestreAcursar = item.NmestreAcursar;
+                    interesado.Turno = item.Turno;
+                    interesado.Seguimiento = false;
+                    interesado.MedioDeContactoId = 12; //TODO: Este dato se pierde ¿?
+                    db.Remove(item);
+                    db.Interesados.Add(interesado);
+                    db.SaveChanges();
+                    _logger.LogInformation("Eliminado Inscripto ID: " + item.AlumnoId.ToString() + " --> OK");
+                    _logger.LogInformation("Re-Creando Interesado ID: " + interesado.InteresadoId.ToString() + " --> OK");
+                    }
+                    else
+                    {
+                     throw new InscriptoInexistenteException("El Inscripto ID: " + item.AlumnoId.ToString() + " tiene legajo asignado.");
+                   }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+
         }
     }
 }

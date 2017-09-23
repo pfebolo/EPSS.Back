@@ -23,6 +23,10 @@ namespace EPSS.Models
         [Column("TurnoID")]
         [MaxLength(25)]
         public string TurnoId { get; set; }
+        public int MesFinal { get; set; }
+        public int AnioLectivo { get; set; }
+        [Column("nMestreLectivo")]
+        public int NMestreLectivo { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Promocion")]

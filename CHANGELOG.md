@@ -4,7 +4,11 @@ Todos los cambios notables del proyecto serán documentados en este archivo.
 El formato está basado en la especificación [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2017-08-22
+## [Unreleased] - 2017-09-19
+### Added
+- Se crea API DELETE /alumnos
+
+## [.012] - 2017-08-22
 ### Added
 - Se actualizan versiones de dependencias.
 - Se agrega dependencia Serilog.Extensions.Logging.File.
@@ -43,4 +47,3 @@ y este proyecto adhiere a [Versionamiento Semántico 2.x.x](http://semver.org/sp
 ### Removed
 
 ### Fixed
-
