@@ -8,12 +8,16 @@ namespace EPSS.Models
         public virtual DbSet<Carreras> Carreras { get; set; }
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
         public virtual DbSet<Coordinacion> Coordinacion { get; set; }
+        public virtual DbSet<Coordinaciones> Coordinaciones { get; set; }
         public virtual DbSet<Coordinadores> Coordinadores { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
+        public virtual DbSet<CursosXxx> CursosXxx { get; set; }
+        public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
+        public virtual DbSet<GruposXxx> GruposXxx { get; set; }
         public virtual DbSet<Interesados> Interesados { get; set; }
         public virtual DbSet<InteresadosEventos> InteresadosEventos { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
@@ -54,6 +58,12 @@ namespace EPSS.Models
                     .HasName("PK_Coordinacion");
             });
 
+            modelBuilder.Entity<Coordinaciones>(entity =>
+            {
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.CoordinadorId })
+                    .HasName("PK_Coordinaciones");
+            });
+
             modelBuilder.Entity<Coordinadores>(entity =>
             {
                 entity.Property(e => e.CoordinadorId).ValueGeneratedNever();
@@ -63,6 +73,18 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId })
                     .HasName("PK_Cursos");
+            });
+
+            modelBuilder.Entity<CursosXxx>(entity =>
+            {
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId })
+                    .HasName("PK_CursosXXX");
+            });
+
+            modelBuilder.Entity<Divisiones>(entity =>
+            {
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId })
+                    .HasName("PK_Divisiones");
             });
 
             modelBuilder.Entity<EstadosCurso>(entity =>
@@ -80,6 +102,12 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.AlumnoId })
                     .HasName("PK_Grupos");
+            });
+
+            modelBuilder.Entity<GruposXxx>(entity =>
+            {
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.AlumnoId })
+                    .HasName("PK_GruposXXX");
             });
 
             modelBuilder.Entity<Interesados>(entity =>

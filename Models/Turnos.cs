@@ -9,6 +9,7 @@ namespace EPSS.Models
     {
         public Turnos()
         {
+            Divisiones = new HashSet<Divisiones>();
             Promociones = new HashSet<Promociones>();
         }
 
@@ -16,6 +17,10 @@ namespace EPSS.Models
         [MaxLength(25)]
         [Key]
         public string TurnoId { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Turno")]
+        public virtual ICollection<Divisiones> Divisiones { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Turno")]

@@ -12,6 +12,7 @@ namespace EPSS.Models
         public EstadosCurso()
         {
             Cursos = new HashSet<Cursos>();
+            Divisiones = new HashSet<Divisiones>();
         }
 
         [Column("EstadoCursoID")]
@@ -24,5 +25,9 @@ namespace EPSS.Models
         [IgnoreDataMember]
         [InverseProperty("EstadoCurso")]
         public virtual ICollection<Cursos> Cursos { get; set; }
+        
+        [IgnoreDataMember]
+        [InverseProperty("EstadoCurso")]
+        public virtual ICollection<Divisiones> Divisiones { get; set; }
     }
 }
