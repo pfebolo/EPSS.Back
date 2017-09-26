@@ -108,3 +108,8 @@ Linux
 '''
 export ASPNETCORE_ENVIRONMENT=Development
 '''
+
+
+### Script de DB (SQLCMD)
+> ref: https://technet.microsoft.com/es-es/library/ms165702(v=sql.105).aspx
+
