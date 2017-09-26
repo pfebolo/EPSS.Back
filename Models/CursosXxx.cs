@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+
 
 namespace EPSS.Models
 {
@@ -30,9 +32,13 @@ namespace EPSS.Models
 
         [InverseProperty("CursosXxx")]
         public virtual ICollection<Divisiones> Divisiones { get; set; }
+        
+        [IgnoreDataMember]
         [ForeignKey("CarreraId")]
-        [InverseProperty("Cursos")]
+        [InverseProperty("CursosXxx")]
         public virtual Carreras Carrera { get; set; }
+        
+        [IgnoreDataMember]
         [ForeignKey("ModoId")]
         [InverseProperty("CursosXxx")]
         public virtual Modos Modo { get; set; }
