@@ -19,7 +19,8 @@ namespace EPSS.Models
         [MaxLength(25)]
         public string TurnoId { get; set; }
         [Column("DivisionID")]
-        public int DivisionId { get; set; }
+        [MaxLength(2)]
+        public string DivisionId { get; set; }
         [Column("AlumnoID")]
         public int AlumnoId { get; set; }
         [MaxLength(255)]
