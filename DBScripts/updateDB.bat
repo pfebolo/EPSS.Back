@@ -6,3 +6,4 @@ sqlcmd -i TablaGrupos.sql
 sqlcmd -i TablaCoordinaciones.sql
 
 Rem Llena Datos Iniciales
+sqlcmd -i InsertDatos.1.sql

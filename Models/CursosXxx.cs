@@ -31,13 +31,14 @@ namespace EPSS.Models
         [MaxLength(255)]
         public string Comentario { get; set; }
 
+        [IgnoreDataMember]
         [InverseProperty("CursosXxx")]
         public virtual ICollection<Divisiones> Divisiones { get; set; }
         
-        [IgnoreDataMember]
         [ForeignKey("CarreraId")]
         [InverseProperty("CursosXxx")]
         public virtual Carreras Carrera { get; set; }
+        
         
         [IgnoreDataMember]
         [ForeignKey("ModoId")]

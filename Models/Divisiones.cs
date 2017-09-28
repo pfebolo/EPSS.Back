@@ -44,6 +44,7 @@ namespace EPSS.Models
         [InverseProperty("Divisiones")]
         public virtual EstadosCurso EstadoCurso { get; set; }
         
+        [IgnoreDataMember]
         [ForeignKey("TurnoId")]
         [InverseProperty("Divisiones")]
         public virtual Turnos Turno { get; set; }
