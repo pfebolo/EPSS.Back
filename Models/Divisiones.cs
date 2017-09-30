@@ -37,7 +37,7 @@ namespace EPSS.Models
         public virtual ICollection<Coordinaciones> Coordinaciones { get; set; }
         
         [IgnoreDataMember]
-        [InverseProperty("Divisiones")]
+        [InverseProperty("Division")]
         public virtual ICollection<GruposXxx> GruposXxx { get; set; }
         
         [ForeignKey("EstadoCursoId")]

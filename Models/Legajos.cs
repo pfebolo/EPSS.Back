@@ -121,7 +121,7 @@ namespace EPSS.Models
         public virtual ICollection<Grupos> Grupos { get; set; }
 
         [IgnoreDataMember]
-        [InverseProperty("Alumno")]
+        [InverseProperty("LegajoNew")]
         public virtual ICollection<GruposXxx> GruposXxx { get; set; }
     }
 }
