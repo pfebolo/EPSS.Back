@@ -1,3 +1,4 @@
+chcp 65001
 Rem Crea Tablas
 sqlcmd -i CambioCarreras.1.sql
 sqlcmd -i TablaEstadosDivision.sql

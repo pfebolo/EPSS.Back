@@ -6,21 +6,20 @@ using System.Runtime.Serialization;
 
 namespace EPSS.Models
 {
-    [Table("EstadosCursoXXX")]
-    public partial class EstadosCursoXxx
+    public partial class EstadosDivision
     {
-        public EstadosCursoXxx()
+        public EstadosDivision()
         {
             Divisiones = new HashSet<Divisiones>();
         }
 
-        [Column("EstadoCursoID")]
+        [Column("EstadoDivisionID")]
         [MaxLength(25)]
         [Key]
-        public string EstadoCursoId { get; set; }
+        public string EstadoDivisionId { get; set; }
 
-		[IgnoreDataMember]        
-		[InverseProperty("EstadoCurso")]
+		[IgnoreDataMember]
+        [InverseProperty("EstadoDivision")]
         public virtual ICollection<Divisiones> Divisiones { get; set; }
     }
 }

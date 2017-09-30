@@ -28,9 +28,9 @@ namespace EPSS.Models
         [MaxLength(2)]
         public string DivisionId { get; set; }
         [Required]
-        [Column("EstadoCursoID")]
+        [Column("EstadoDivisionID")]
         [MaxLength(25)]
-        public string EstadoCursoId { get; set; }
+        public string EstadoDivisionId { get; set; }
         [MaxLength(255)]
         public string Comentario { get; set; }
 
@@ -43,9 +43,9 @@ namespace EPSS.Models
         public virtual ICollection<GruposXxx> GruposXxx { get; set; }
         
         [IgnoreDataMember] //Enumerado
-        [ForeignKey("EstadoCursoId")]
+        [ForeignKey("EstadoDivisionId")]
         [InverseProperty("Divisiones")]
-        public virtual EstadosCursoXxx EstadoCurso { get; set; }
+        public virtual EstadosDivision EstadoDivision { get; set; }
         
         [IgnoreDataMember] //Enumerado
         [ForeignKey("TurnoId")]

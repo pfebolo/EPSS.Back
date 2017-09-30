@@ -51,6 +51,7 @@ namespace EPSS
             services.AddSingleton<IRepository<Models.Carreras>, BaseRepositoryNew<Models.Carreras>>();
             services.AddSingleton<IRepository<Models.CursosXxx>, BaseRepositoryNew<Models.CursosXxx>>();
             services.AddSingleton<IRepository<Models.Turnos>, BaseRepositoryNew<Models.Turnos>>();
+            services.AddSingleton<IRepository<Models.EstadosDivision>, BaseRepositoryNew<Models.EstadosDivision>>();
             services.AddSingleton<IRepository<Models.Divisiones>, DivisionesRepository>();
             services.AddSingleton<IRepository<Models.GruposXxx>, GruposXxxRepository>();
             services.AddSingleton<IRepository<Models.Coordinaciones>, CoordinacionesXxxRepository>();
