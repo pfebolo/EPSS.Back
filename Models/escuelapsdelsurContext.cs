@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EPSS.Models
 {
@@ -14,6 +16,7 @@ namespace EPSS.Models
         public virtual DbSet<CursosXxx> CursosXxx { get; set; }
         public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
+        public virtual DbSet<EstadosCursoXxx> EstadosCursoXxx { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
