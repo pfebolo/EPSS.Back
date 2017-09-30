@@ -1,10 +1,18 @@
+:r UseDb.sql
+:On Error exit
+BEGIN TRAN
+--EstadosCurso
+Insert into EstadosCursoXxx Values('En Preparación');
+Insert into EstadosCursoXxx Values('Cursando');
+Insert into EstadosCursoXxx Values('Terminado');
+
 -- Cursos
 Insert into CursosXxx Values(0,'Presencial',1,2017,8,12,3,1,'3ro1c');
 Insert into CursosXxx Values(0,'A Distancia',1,2017,8,12,2,2,'2do2c');
 
 -- Divisiones
-Insert into Divisiones Values(0,'Presencial',1,'Noche','A',2,'');
-Insert into Divisiones Values(0,'A Distancia',1,'Virtual','E',2,'');
+Insert into Divisiones Values(0,'Presencial',1,'Noche','A','Cursando','');
+Insert into Divisiones Values(0,'A Distancia',1,'Virtual','E','Cursando','');
 
 -- Grupos
 Insert into GruposXxx 
@@ -17,12 +25,11 @@ Select 0,'A Distancia',1,'Virtual','E',AlumnoId,'' from Legajos where LegajoNro 
 '4410','4356','4545','4619','4474','4483','4459','4503','2829','4584','4502',
 '4553','4550','4463','4369','4467','4605','4510');
 
-
-
-
 -- Coordinaciones
 Insert into Coordinaciones
 Select 0,'Presencial',1,'Noche','A',CoordinadorId,'' from Coordinadores where CoordinadorID in (1,3)
 Insert into Coordinaciones
 Select 0,'A Distancia',1,'Virtual','E',CoordinadorId,'' from Coordinadores where CoordinadorID in (1,3)
+GO
+COMMIT
 GO

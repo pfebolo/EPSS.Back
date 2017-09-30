@@ -6,7 +6,7 @@ CREATE TABLE dbo.Divisiones
 	CursoID int NOT NULL,
 	TurnoID  nvarchar(25) NOT NULL,
 	DivisionID nvarchar(2) NOT NULL,
-	EstadoCursoID int NOT NULL,
+	EstadoCursoID nvarchar(25) NOT NULL,
 	Comentario nvarchar(255) NULL
 	)  ON [PRIMARY]
 GO
@@ -40,7 +40,7 @@ ALTER TABLE dbo.Divisiones ADD CONSTRAINT
 	FK_Divisiones_EstadosCurso FOREIGN KEY
 	(
 	EstadoCursoID
-	) REFERENCES dbo.EstadosCurso
+	) REFERENCES dbo.EstadosCursoXXX
 	(
 	EstadoCursoID
 	) ON UPDATE  NO ACTION 
