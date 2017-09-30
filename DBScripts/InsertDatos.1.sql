@@ -2,9 +2,9 @@
 :On Error exit
 BEGIN TRAN
 --EstadosCurso
-Insert into EstadosCursoXxx Values('En Preparación');
-Insert into EstadosCursoXxx Values('Cursando');
-Insert into EstadosCursoXxx Values('Terminado');
+Insert into EstadosDivision Values('En Preparación');
+Insert into EstadosDivision Values('Cursando');
+Insert into EstadosDivision Values('Terminado');
 
 -- Cursos
 Insert into CursosXxx Values(0,'Presencial',1,2017,8,12,3,1,'3ro1c');

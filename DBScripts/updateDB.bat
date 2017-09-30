@@ -1,6 +1,6 @@
 Rem Crea Tablas
 sqlcmd -i CambioCarreras.1.sql
-sqlcmd -i TablaEstadosCurso.sql
+sqlcmd -i TablaEstadosDivision.sql
 sqlcmd -i TablaCursos.sql
 sqlcmd -i TablaDivisiones.sql
 sqlcmd -i TablaGrupos.sql
