@@ -28,7 +28,7 @@ namespace EPSS.Models
 
         [ForeignKey("AlumnoId")]
         [InverseProperty("GruposXxx")]
-        public virtual Legajos LegajoNew { get; set; }
+        public virtual Legajos LegajoXxx { get; set; }
         
         [ForeignKey("CarreraId,ModoId,CursoId,TurnoId,DivisionId")]
         [InverseProperty("GruposXxx")]

@@ -23,7 +23,8 @@ namespace EPSS.Repositories
               foreach (var Grupo in db.GruposXxx.Include(Grupo => Grupo.Division)
                                                     .ThenInclude(Division => Division.CursosXxx)
                                                         .ThenInclude(Curso => Curso.Carrera)
-                                                .Include(Grupo => Grupo.LegajoNew))
+                                                .Include(Grupo => Grupo.LegajoXxx)
+                                                    .ThenInclude(Legajo => Legajo.Alumno))
                 {
                     _list.Add(Grupo);
                 }
