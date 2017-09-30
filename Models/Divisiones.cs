@@ -27,8 +27,10 @@ namespace EPSS.Models
         [Column("DivisionID")]
         [MaxLength(2)]
         public string DivisionId { get; set; }
+        [Required]
         [Column("EstadoCursoID")]
-        public int EstadoCursoId { get; set; }
+        [MaxLength(25)]
+        public string EstadoCursoId { get; set; }
         [MaxLength(255)]
         public string Comentario { get; set; }
 
@@ -40,11 +42,12 @@ namespace EPSS.Models
         [InverseProperty("Division")]
         public virtual ICollection<GruposXxx> GruposXxx { get; set; }
         
+        [IgnoreDataMember] //Enumerado
         [ForeignKey("EstadoCursoId")]
         [InverseProperty("Divisiones")]
-        public virtual EstadosCurso EstadoCurso { get; set; }
+        public virtual EstadosCursoXxx EstadoCurso { get; set; }
         
-        [IgnoreDataMember]
+        [IgnoreDataMember] //Enumerado
         [ForeignKey("TurnoId")]
         [InverseProperty("Divisiones")]
         public virtual Turnos Turno { get; set; }
