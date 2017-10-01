@@ -61,13 +61,8 @@ namespace EPSS
             services.AddSingleton<ILegajosRepository, LegajosRepository>();
             services.AddSingleton<INivelesEstudiosRepository, NivelesEstudiosRepository>();
             services.AddSingleton<IEstudiosRepository, EstudiosRepository>();
-            services.AddSingleton<IPromocionesRepository, PromocionesRepository>();
-            services.AddSingleton<ICursosRepository, CursosRepository>();
             services.AddSingleton<ICoordinadoresRepository, CoordinadoresRepository>();
-            services.AddSingleton<IGruposRepository, GruposRepository>();
-            services.AddSingleton<ICoordinacionesRepository, CoordinacionesRepository>();
             services.AddSingleton<IBasicoRepository, BasicoRepository>();
-            services.AddSingleton<IEstadosCursosRepository, EstadosCursosRepository>();
             services.AddSingleton<IInscriptosRepository, InscriptosRepository>();
             services.AddSingleton<IInteresadosRepository, InteresadosRepository>();
             services.AddSingleton<IInteresadosEventosRepository, InteresadosEventosRepository>();
