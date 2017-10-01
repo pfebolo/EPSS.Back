@@ -8,16 +8,16 @@ namespace EPSS.Controllers
     [Route("api/[controller]")]
     public class CoordinacionesController : Controller
     {
-        private ICoordinacionesRepository _repo;
+        private IRepository<Coordinaciones> _repo;
         
-        public CoordinacionesController(ICoordinacionesRepository repo)
+        public CoordinacionesController(IRepository<Coordinaciones> repo)
         {
             this._repo = repo;
         }
 
 
         [HttpGet]
-        public IEnumerable<Coordinacion> GetAll()
+        public IEnumerable<Coordinaciones> GetAll()
         {
             return _repo.GetAll();
         }
@@ -34,14 +34,14 @@ namespace EPSS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Coordinacion item)
+        public IActionResult Create([FromBody] Coordinaciones item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetCoordinaciones", new { controller = "Coordinaciones", PromocionId = item.PromocionId }, item);
+            return CreatedAtRoute("GetCoordinaciones", new { controller = "Coordinaciones", id = item.CarreraId }, item);
         }
 
         [HttpDelete("{id}")]

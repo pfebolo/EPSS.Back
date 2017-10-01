@@ -12,6 +12,7 @@ namespace EPSS.Models
         {
             Estudios = new HashSet<Estudios>();
             Trabajos = new HashSet<Trabajos>();
+            Grupos = new HashSet<Grupos>();
         }
 
         [Column("AlumnoID")]
@@ -23,7 +24,7 @@ namespace EPSS.Models
         public string Sexo { get; set; }
         [Column(TypeName = "smalldatetime")]
         public DateTime? FechaNacimiento { get; set; }
-        [MaxLength(50)]
+        [MaxLength(255)]
         public string LugarNacimiento { get; set; }
         [Column("DNI")]
         public int Dni { get; set; }
@@ -110,11 +111,11 @@ namespace EPSS.Models
         [InverseProperty("Legajo")]
         public virtual ICollection<Estudios> Estudios { get; set; }
 
+        [InverseProperty("Legajo")]
+        public virtual ICollection<Trabajos> Trabajos { get; set; }
+
         [IgnoreDataMember]
         [InverseProperty("Legajo")]
         public virtual ICollection<Grupos> Grupos { get; set; }
-
-        [InverseProperty("Legajo")]
-        public virtual ICollection<Trabajos> Trabajos { get; set; }
     }
 }

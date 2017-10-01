@@ -9,7 +9,7 @@ namespace EPSS.Models
     {
         public Modos()
         {
-            Promociones = new HashSet<Promociones>();
+            Cursos = new HashSet<Cursos>();
         }
 
         [Column("ModoID")]
@@ -19,6 +19,7 @@ namespace EPSS.Models
 
         [IgnoreDataMember]
         [InverseProperty("Modo")]
-        public virtual ICollection<Promociones> Promociones { get; set; }
+        public virtual ICollection<Cursos> Cursos { get; set; }
+        
     }
 }

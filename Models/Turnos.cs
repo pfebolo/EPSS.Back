@@ -9,7 +9,7 @@ namespace EPSS.Models
     {
         public Turnos()
         {
-            Promociones = new HashSet<Promociones>();
+            Divisiones = new HashSet<Divisiones>();
         }
 
         [Column("TurnoID")]
@@ -19,6 +19,7 @@ namespace EPSS.Models
 
         [IgnoreDataMember]
         [InverseProperty("Turno")]
-        public virtual ICollection<Promociones> Promociones { get; set; }
+        public virtual ICollection<Divisiones> Divisiones { get; set; }
+
     }
 }
