@@ -20,7 +20,7 @@ namespace EPSS.Repositories
           {
             using (var db = new escuelapsdelsurContext())
             {
-              foreach (var Division in db.Divisiones.Include(Division => Division.CursosXxx))
+              foreach (var Division in db.Divisiones.Include(Division => Division.Cursos))
                 {
                     _list.Add(Division);
                 }

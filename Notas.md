@@ -36,7 +36,7 @@
   * Mergear la carpeta nueva con la vieja
   * Verificar el archivo de contexto, y ajustar de ser necesario
 * __*Comando*__:  
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosCurso -t EstadosDivision -t CursosXXX -t Turnos -t Divisiones -t Coordinadores -t GruposXXX -t Coordinaciones -t Promociones -t Cursos  -t Grupos -t Coordinacion -t Trabajos -o Models -f
+dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
 * Borrar carpeta nueva
 * Renombrar nuevamente la carpeta donde se ejecutó el *scaffold* a su nombre original
 * Renombrar el archivo EPSS.csproj  x EPSS.Back.csproj 

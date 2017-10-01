@@ -22,12 +22,12 @@ ALTER TABLE dbo.Divisiones ADD CONSTRAINT
 
 GO
 ALTER TABLE dbo.Divisiones ADD CONSTRAINT
-	FK_Divisiones_CursosXXX FOREIGN KEY
+	FK_Divisiones_Cursos FOREIGN KEY
 	(
 	CarreraID,
 	ModoID,
 	CursoID
-	) REFERENCES dbo.CursosXXX
+	) REFERENCES dbo.Cursos
 	(
 	CarreraID,
 	ModoID,

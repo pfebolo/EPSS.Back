@@ -11,12 +11,12 @@ namespace EPSS.Models
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
         public virtual DbSet<Coordinaciones> Coordinaciones { get; set; }
         public virtual DbSet<Coordinadores> Coordinadores { get; set; }
-        public virtual DbSet<CursosXxx> CursosXxx { get; set; }
+        public virtual DbSet<Cursos> Cursos { get; set; }
         public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<EstadosDivision> EstadosDivision { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
-        public virtual DbSet<GruposXxx> GruposXxx { get; set; }
+        public virtual DbSet<Grupos> Grupos { get; set; }
         public virtual DbSet<Interesados> Interesados { get; set; }
         public virtual DbSet<InteresadosEventos> InteresadosEventos { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
@@ -61,10 +61,10 @@ namespace EPSS.Models
                 entity.Property(e => e.CoordinadorId).ValueGeneratedNever();
             });
 
-            modelBuilder.Entity<CursosXxx>(entity =>
+            modelBuilder.Entity<Cursos>(entity =>
             {
                 entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId })
-                    .HasName("PK_CursosXXX");
+                    .HasName("PK_Cursos");
             });
 
             modelBuilder.Entity<Divisiones>(entity =>
@@ -79,10 +79,10 @@ namespace EPSS.Models
                     .HasName("PK_Estudios");
             });
 
-            modelBuilder.Entity<GruposXxx>(entity =>
+            modelBuilder.Entity<Grupos>(entity =>
             {
                 entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.AlumnoId })
-                    .HasName("PK_GruposXXX");
+                    .HasName("PK_Grupos");
             });
 
             modelBuilder.Entity<Interesados>(entity =>
