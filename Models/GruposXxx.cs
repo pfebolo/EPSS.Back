@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EPSS.Models
 {
-    [Table("GruposXXX")]
-    public partial class GruposXxx
+    [Table("Grupos")]
+    public partial class Grupos
     {
         [Column("CarreraID")]
         public int CarreraId { get; set; }
@@ -27,11 +27,11 @@ namespace EPSS.Models
         public string Comentario { get; set; }
 
         [ForeignKey("AlumnoId")]
-        [InverseProperty("GruposXxx")]
-        public virtual Legajos LegajoNew { get; set; }
+        [InverseProperty("Grupos")]
+        public virtual Legajos Legajo { get; set; }
         
         [ForeignKey("CarreraId,ModoId,CursoId,TurnoId,DivisionId")]
-        [InverseProperty("GruposXxx")]
+        [InverseProperty("Grupos")]
         public virtual Divisiones Division { get; set; }
     }
 }

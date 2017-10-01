@@ -49,25 +49,20 @@ namespace EPSS
 
 
             services.AddSingleton<IRepository<Models.Carreras>, BaseRepositoryNew<Models.Carreras>>();
-            services.AddSingleton<IRepository<Models.CursosXxx>, BaseRepositoryNew<Models.CursosXxx>>();
+            services.AddSingleton<IRepository<Models.Cursos>, BaseRepositoryNew<Models.Cursos>>();
             services.AddSingleton<IRepository<Models.Turnos>, BaseRepositoryNew<Models.Turnos>>();
             services.AddSingleton<IRepository<Models.EstadosDivision>, BaseRepositoryNew<Models.EstadosDivision>>();
             services.AddSingleton<IRepository<Models.Divisiones>, DivisionesRepository>();
-            services.AddSingleton<IRepository<Models.GruposXxx>, GruposXxxRepository>();
-            services.AddSingleton<IRepository<Models.Coordinaciones>, CoordinacionesXxxRepository>();
+            services.AddSingleton<IRepository<Models.Grupos>, GruposRepository>();
+            services.AddSingleton<IRepository<Models.Coordinaciones>, CoordinacionesRepository>();
 
             services.AddSingleton<IEventosRepository, EventosRepository>();
             services.AddSingleton<IAlumnosRepository, AlumnosRepository>();
             services.AddSingleton<ILegajosRepository, LegajosRepository>();
             services.AddSingleton<INivelesEstudiosRepository, NivelesEstudiosRepository>();
             services.AddSingleton<IEstudiosRepository, EstudiosRepository>();
-            services.AddSingleton<IPromocionesRepository, PromocionesRepository>();
-            services.AddSingleton<ICursosRepository, CursosRepository>();
             services.AddSingleton<ICoordinadoresRepository, CoordinadoresRepository>();
-            services.AddSingleton<IGruposRepository, GruposRepository>();
-            services.AddSingleton<ICoordinacionesRepository, CoordinacionesRepository>();
             services.AddSingleton<IBasicoRepository, BasicoRepository>();
-            services.AddSingleton<IEstadosCursosRepository, EstadosCursosRepository>();
             services.AddSingleton<IInscriptosRepository, InscriptosRepository>();
             services.AddSingleton<IInteresadosRepository, InteresadosRepository>();
             services.AddSingleton<IInteresadosEventosRepository, InteresadosEventosRepository>();

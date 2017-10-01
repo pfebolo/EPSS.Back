@@ -26,7 +26,7 @@ namespace EPSS.Models
         public string Comentario { get; set; }
 
         [ForeignKey("CoordinadorId")]
-        [InverseProperty("CoordinacionesXxx")]
+        [InverseProperty("Coordinaciones")]
         public virtual Coordinadores Coordinador { get; set; }
         
         [ForeignKey("CarreraId,ModoId,CursoId,TurnoId,DivisionId")]

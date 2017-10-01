@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Repositories
 {
-    public class CoordinacionesXxxRepository: BaseRepositoryNew<Coordinaciones>
+    public class CoordinacionesRepository: BaseRepositoryNew<Coordinaciones>
     {
 
-        public CoordinacionesXxxRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
+        public CoordinacionesRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
 
         public override IEnumerable<Coordinaciones> GetAll()
         {
@@ -24,7 +24,7 @@ namespace EPSS.Repositories
                 {
                     _list.Add(Coordinacion);
                 }
-               _logger.LogInformation("Buscar CoordinacionesXxx --> OK");
+               _logger.LogInformation("Buscar Coordinaciones --> OK");
               }             
           }
             catch (System.Exception ex)

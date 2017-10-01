@@ -11,7 +11,7 @@ namespace EPSS.Models
         public Divisiones()
         {
             Coordinaciones = new HashSet<Coordinaciones>();
-            GruposXxx = new HashSet<GruposXxx>();
+            Grupos = new HashSet<Grupos>();
         }
 
         [Column("CarreraID")]
@@ -40,7 +40,7 @@ namespace EPSS.Models
         
         [IgnoreDataMember]
         [InverseProperty("Division")]
-        public virtual ICollection<GruposXxx> GruposXxx { get; set; }
+        public virtual ICollection<Grupos> Grupos { get; set; }
         
         [IgnoreDataMember] //Enumerado
         [ForeignKey("EstadoDivisionId")]
@@ -54,6 +54,6 @@ namespace EPSS.Models
         
         [ForeignKey("CarreraId,ModoId,CursoId")]
         [InverseProperty("Divisiones")]
-        public virtual CursosXxx CursosXxx { get; set; }
+        public virtual Cursos Cursos { get; set; }
     }
 }

@@ -7,10 +7,10 @@ using System.Runtime.Serialization;
 
 namespace EPSS.Models
 {
-    [Table("CursosXXX")]
-    public partial class CursosXxx
+    [Table("Cursos")]
+    public partial class Cursos
     {
-        public CursosXxx()
+        public Cursos()
         {
             Divisiones = new HashSet<Divisiones>();
         }
@@ -32,17 +32,17 @@ namespace EPSS.Models
         public string Comentario { get; set; }
 
         [IgnoreDataMember]
-        [InverseProperty("CursosXxx")]
+        [InverseProperty("Cursos")]
         public virtual ICollection<Divisiones> Divisiones { get; set; }
         
         [ForeignKey("CarreraId")]
-        [InverseProperty("CursosXxx")]
+        [InverseProperty("Cursos")]
         public virtual Carreras Carrera { get; set; }
         
         
         [IgnoreDataMember]
         [ForeignKey("ModoId")]
-        [InverseProperty("CursosXxx")]
+        [InverseProperty("Cursos")]
         public virtual Modos Modo { get; set; }
     }
 }

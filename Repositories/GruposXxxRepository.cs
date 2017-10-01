@@ -8,26 +8,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Repositories
 {
-    public class GruposXxxRepository: BaseRepositoryNew<GruposXxx>
+    public class GruposRepository: BaseRepositoryNew<Grupos>
     {
 
-        public GruposXxxRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
+        public GruposRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
 
-        public override IEnumerable<GruposXxx> GetAll()
+        public override IEnumerable<Grupos> GetAll()
         {
           _list.Clear();
           try
           {
             using (var db = new escuelapsdelsurContext())
             {//
-              foreach (var Grupo in db.GruposXxx.Include(Grupo => Grupo.Division)
-                                                    .ThenInclude(Division => Division.CursosXxx)
+              foreach (var Grupo in db.Grupos.Include(Grupo => Grupo.Division)
+                                                    .ThenInclude(Division => Division.Cursos)
                                                         .ThenInclude(Curso => Curso.Carrera)
-                                                .Include(Grupo => Grupo.LegajoNew))
+                                                .Include(Grupo => Grupo.Legajo)
+                                                    .ThenInclude(Legajo => Legajo.Alumno))
                 {
                     _list.Add(Grupo);
                 }
-               _logger.LogInformation("Buscar GruposXxx --> OK");
+               _logger.LogInformation("Buscar Grupos --> OK");
               }             
           }
             catch (System.Exception ex)
