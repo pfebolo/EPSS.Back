@@ -34,8 +34,25 @@ namespace EPSS.Repositories
 
 		public virtual void Add(Model item)
 		{
-			item = default(Model);
-			_list.Add(item);
+			// item = default(Model);
+			// _list.Add(item);
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Set<Model>().Add(item);
+                    db.SaveChanges();
+
+                    _logger.LogInformation("Crear " + typeof(Model).Name +  "--> Ok");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+
+
 		}
 
 		public virtual Model Find(int id)
