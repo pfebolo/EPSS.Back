@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EPSS.Models;
 using EPSS.Repositories;
+using System;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace EPSS.Controllers
 {
@@ -44,10 +47,38 @@ namespace EPSS.Controllers
             return CreatedAtRoute("GetDivisiones", new { controller = "Divisiones", id = item.CarreraId }, item);
         }
 
+		// PUT api/Divisiones
+		[HttpPut]
+		public IActionResult Put([FromBody] Divisiones item)
+		{
+			try
+			{
+				if (item == null)
+					return BadRequest();
+
+				var division = _repo.Find(item.CarreraId,item.ModoId,item.CursoId,item.TurnoId,item.DivisionId);
+
+				if (division == null)
+					return NotFound();
+
+				_repo.Update(item);
+				return NoContent();
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
+
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _repo.Remove(id);
+            //_repo.Remove(id);
         }
     }
 }

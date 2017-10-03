@@ -45,10 +45,37 @@ namespace EPSS.Controllers
 				_repo.Add(item);
 				return CreatedAtRoute("GetEventos", new { controller = "Eventos", Id = item.CursoId }, item);
 			}
-            catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
-            {
-                return Utils.ResponseConfict(ex);
-            }
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
+
+		// PUT api/Cursos
+		[HttpPut]
+		public IActionResult Put([FromBody] Cursos item)
+		{
+			try
+			{
+				if (item == null)
+					return BadRequest();
+
+				var curso = _repo.Find(item.CarreraId,item.ModoId,item.CursoId);
+
+				if (curso == null)
+					return NotFound();
+
+				_repo.Update(item);
+				return NoContent();
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
 			catch (Exception ex)
 			{
 				return Utils.ResponseInternalError(ex);
@@ -58,7 +85,7 @@ namespace EPSS.Controllers
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
-			_repo.Remove(id);
+			//_repo.Remove(id);
 		}
 	}
 }
