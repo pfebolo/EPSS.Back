@@ -1,5 +1,5 @@
 /*
-   sábado, 7 de octubre de 201719:32:14
+   sábado, 7 de octubre de 201719:33:24
    Usuario: sa
    Servidor: 192.168.1.41
    Base de datos: escuelapsdelsur
@@ -18,12 +18,12 @@ SET ANSI_WARNINGS ON
 COMMIT
 BEGIN TRANSACTION
 GO
-DROP TABLE dbo.Grupos
+DROP TABLE dbo.Coordinaciones
 GO
 COMMIT
 BEGIN TRANSACTION
 GO
-ALTER TABLE dbo.Legajos SET (LOCK_ESCALATION = TABLE)
+ALTER TABLE dbo.Coordinadores SET (LOCK_ESCALATION = TABLE)
 GO
 COMMIT
 BEGIN TRANSACTION
