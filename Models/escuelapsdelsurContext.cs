@@ -52,7 +52,7 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Coordinaciones>(entity =>
             {
-                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.CoordinadorId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo, e.TurnoId, e.DivisionId, e.CoordinadorId })
                     .HasName("PK_Coordinaciones");
             });
 
@@ -63,13 +63,13 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Cursos>(entity =>
             {
-                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo })
                     .HasName("PK_Cursos");
             });
 
             modelBuilder.Entity<Divisiones>(entity =>
             {
-                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo, e.TurnoId, e.DivisionId })
                     .HasName("PK_Divisiones");
             });
 
@@ -81,7 +81,7 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Grupos>(entity =>
             {
-                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.AlumnoId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo, e.TurnoId, e.DivisionId, e.AlumnoId })
                     .HasName("PK_Grupos");
             });
 
