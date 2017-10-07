@@ -6,23 +6,23 @@ using EPSS.Repositories;
 namespace EPSS.Controllers
 {
     [Route("api/[controller]")]
-    public class PromocionesController : Controller
+    public class DivisionesController : Controller
     {
-        private IPromocionesRepository _repo;
+        private IRepository<Divisiones> _repo;
         
-        public PromocionesController(IPromocionesRepository repo)
+        public DivisionesController(IRepository<Divisiones> repo)
         {
             this._repo = repo;
         }
 
 
         [HttpGet]
-        public IEnumerable<Promociones> GetAll()
+        public IEnumerable<Divisiones> GetAll()
         {
             return _repo.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetPromociones")]
+        [HttpGet("{id}", Name = "GetDivisiones")]
         public IActionResult GetById(int id)
         {
             var item = _repo.Find(id);
@@ -34,14 +34,14 @@ namespace EPSS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Promociones item)
+        public IActionResult Create([FromBody] Divisiones item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetPromociones", new { controller = "Promociones", PromocionId = item.PromocionId }, item);
+            return CreatedAtRoute("GetDivisiones", new { controller = "Divisiones", id = item.CarreraId }, item);
         }
 
         [HttpDelete("{id}")]

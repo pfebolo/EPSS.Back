@@ -6,23 +6,23 @@ using EPSS.Repositories;
 namespace EPSS.Controllers
 {
     [Route("api/[controller]")]
-    public class CursosController : Controller
+    public class GruposController : Controller
     {
-        private ICursosRepository _repo;
+        private IRepository<Grupos> _repo;
         
-        public CursosController(ICursosRepository repo)
+        public GruposController(IRepository<Grupos> repo)
         {
             this._repo = repo;
         }
 
 
         [HttpGet]
-        public IEnumerable<Cursos> GetAll()
+        public IEnumerable<Grupos> GetAll()
         {
             return _repo.GetAll();
         }
 
-        [HttpGet("{id}", Name = "GetCursos")]
+        [HttpGet("{id}", Name = "GetGrupos")]
         public IActionResult GetById(int id)
         {
             var item = _repo.Find(id);
@@ -34,14 +34,14 @@ namespace EPSS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Cursos item)
+        public IActionResult Create([FromBody] Grupos item)
         {
             if (item == null)
             {
                 return BadRequest();
             }
             _repo.Add(item);
-            return CreatedAtRoute("GetCursos", new { controller = "Cursos", CursoId = item.CursoId }, item);
+            return CreatedAtRoute("GetGrupos", new { controller = "Grupos", id = item.CarreraId }, item);
         }
 
         [HttpDelete("{id}")]
@@ -49,20 +49,5 @@ namespace EPSS.Controllers
         {
             _repo.Remove(id);
         }
-
-#region "Busquedas específicas"
-        [HttpGet("activoporestudiante/{estudianteLegajo}", Name = "GetCursoActivo")]
-        public IActionResult GetAtiveByEstudiante(int estudianteLegajo)
-        {
-            var item = _repo.FindActivebyEstudiante(estudianteLegajo);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return new ObjectResult(item);
-        }
-
-#endregion
-
     }
 }

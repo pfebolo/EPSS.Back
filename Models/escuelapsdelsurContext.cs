@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace EPSS.Models
 {
@@ -7,10 +9,11 @@ namespace EPSS.Models
         public virtual DbSet<Alumnos> Alumnos { get; set; }
         public virtual DbSet<Carreras> Carreras { get; set; }
         public virtual DbSet<CodigosPostales> CodigosPostales { get; set; }
-        public virtual DbSet<Coordinacion> Coordinacion { get; set; }
+        public virtual DbSet<Coordinaciones> Coordinaciones { get; set; }
         public virtual DbSet<Coordinadores> Coordinadores { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
-        public virtual DbSet<EstadosCurso> EstadosCurso { get; set; }
+        public virtual DbSet<Divisiones> Divisiones { get; set; }
+        public virtual DbSet<EstadosDivision> EstadosDivision { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
@@ -25,7 +28,6 @@ namespace EPSS.Models
         public virtual DbSet<NivelesEstudios> NivelesEstudios { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
         public virtual DbSet<Partidos> Partidos { get; set; }
-        public virtual DbSet<Promociones> Promociones { get; set; }
         public virtual DbSet<Provincias> Provincias { get; set; }
         public virtual DbSet<Trabajos> Trabajos { get; set; }
         public virtual DbSet<Turnos> Turnos { get; set; }
@@ -48,10 +50,10 @@ namespace EPSS.Models
                     .HasName("PK_CodigosPostales");
             });
 
-            modelBuilder.Entity<Coordinacion>(entity =>
+            modelBuilder.Entity<Coordinaciones>(entity =>
             {
-                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.CoordinadorId })
-                    .HasName("PK_Coordinacion");
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.CoordinadorId })
+                    .HasName("PK_Coordinaciones");
             });
 
             modelBuilder.Entity<Coordinadores>(entity =>
@@ -61,13 +63,14 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Cursos>(entity =>
             {
-                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId })
                     .HasName("PK_Cursos");
             });
 
-            modelBuilder.Entity<EstadosCurso>(entity =>
+            modelBuilder.Entity<Divisiones>(entity =>
             {
-                entity.Property(e => e.EstadoCursoId).ValueGeneratedNever();
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId })
+                    .HasName("PK_Divisiones");
             });
 
             modelBuilder.Entity<Estudios>(entity =>
@@ -78,7 +81,7 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Grupos>(entity =>
             {
-                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId, e.CursoId, e.AlumnoId })
+                entity.HasKey(e => new { e.CarreraId, e.ModoId, e.CursoId, e.TurnoId, e.DivisionId, e.AlumnoId })
                     .HasName("PK_Grupos");
             });
 
@@ -117,18 +120,6 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.PaisId, e.ProvinciaId, e.PartidoId })
                     .HasName("PK_Partidos");
-            });
-
-            modelBuilder.Entity<Promociones>(entity =>
-            {
-                entity.HasKey(e => new { e.PromocionId, e.CuatrimestreId, e.ModoId, e.TurnoId })
-                    .HasName("PK_Promociones");
-
-                entity.Property(e => e.AnioLectivo).HasDefaultValueSql("1");
-
-                entity.Property(e => e.MesFinal).HasDefaultValueSql("1");
-
-                entity.Property(e => e.NMestreLectivo).HasDefaultValueSql("1");
             });
 
             modelBuilder.Entity<Provincias>(entity =>
