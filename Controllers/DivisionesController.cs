@@ -56,7 +56,7 @@ namespace EPSS.Controllers
 				if (item == null)
 					return BadRequest();
 
-				var division = _repo.Find(item.CarreraId,item.ModoId,item.CursoId,item.TurnoId,item.DivisionId);
+				var division = _repo.Find(item.CarreraId,item.ModoId,item.AnioInicio,item.MesInicio,item.AnioLectivo,item.NmestreLectivo,item.TurnoId,item.DivisionId);
 
 				if (division == null)
 					return NotFound();

@@ -3,7 +3,10 @@ CREATE TABLE dbo.Divisiones
 	(
 	CarreraID int NOT NULL,
 	ModoID nvarchar(25) NOT NULL,
-	CursoID int NOT NULL,
+	AnioInicio int NOT NULL,
+	MesInicio int NOT NULL,
+	AnioLectivo int NOT NULL,
+	NMestreLectivo int NOT NULL,
 	TurnoID  nvarchar(25) NOT NULL,
 	DivisionID nvarchar(2) NOT NULL,
 	EstadoDivisionID nvarchar(25) NOT NULL,
@@ -15,7 +18,10 @@ ALTER TABLE dbo.Divisiones ADD CONSTRAINT
 	(
 	CarreraID,
 	ModoID,
-	CursoID,
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo,
 	TurnoID,
 	DivisionID
 	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -26,12 +32,18 @@ ALTER TABLE dbo.Divisiones ADD CONSTRAINT
 	(
 	CarreraID,
 	ModoID,
-	CursoID
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo
 	) REFERENCES dbo.Cursos
 	(
 	CarreraID,
 	ModoID,
-	CursoID
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo
 	) ON UPDATE  NO ACTION 
 	 ON DELETE  NO ACTION 
 	

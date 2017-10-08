@@ -43,7 +43,7 @@ namespace EPSS.Controllers
 				if (item == null)
 					return BadRequest();
 				_repo.Add(item);
-				return CreatedAtRoute("GetEventos", new { controller = "Eventos", Id = item.CursoId }, item);
+				return CreatedAtRoute("GetEventos", new { controller = "Eventos", Id = item.CarreraId }, item);
 			}
 			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
 			{
@@ -64,7 +64,7 @@ namespace EPSS.Controllers
 				if (item == null)
 					return BadRequest();
 
-				var curso = _repo.Find(item.CarreraId,item.ModoId,item.CursoId);
+				var curso = _repo.Find(item.CarreraId,item.ModoId,item.AnioInicio,item.MesInicio,item.AnioLectivo,item.NmestreLectivo);
 
 				if (curso == null)
 					return NotFound();

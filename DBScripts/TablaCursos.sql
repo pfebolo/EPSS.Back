@@ -3,7 +3,6 @@ CREATE TABLE dbo.Cursos
 	(
 	CarreraID int NOT NULL,
 	ModoID nvarchar(25) NOT NULL,
-	CursoID int NOT NULL,
 	AnioInicio int NOT NULL,
 	MesInicio int NOT NULL,
 	MesFinal int NOT NULL,
@@ -17,7 +16,10 @@ ALTER TABLE dbo.Cursos ADD CONSTRAINT
 	(
 	CarreraID,
 	ModoID,
-	CursoID
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo
 	) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 
 GO

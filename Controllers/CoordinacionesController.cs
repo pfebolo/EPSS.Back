@@ -24,10 +24,10 @@ namespace EPSS.Controllers
 			return _repo.GetAll();
 		}
 
-		[HttpGet("{CarreraId}/{ModoId}/{CursoId}/{TurnoId}/{DivisionId}/{CoordinadorId}", Name = "GetCoordinaciones")]
-		public IActionResult GetById(int CarreraId, string ModoId, int CursoId, string TurnoId, string DivisionId, int CoordinadorId)
+		[HttpGet("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/{CoordinadorId}", Name = "GetCoordinaciones")]
+		public IActionResult GetById(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId, int CoordinadorId)
 		{
-			var item = _repo.Find(CarreraId, ModoId, CursoId, TurnoId, DivisionId, CoordinadorId);
+			var item = _repo.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId, CoordinadorId);
 			if (item == null)
 			{
 				return NotFound();
@@ -43,8 +43,9 @@ namespace EPSS.Controllers
 				return BadRequest();
 			}
 			_repo.Add(item);
-			return CreatedAtRoute("GetCoordinaciones", new { controller = "Coordinaciones", id = item.CarreraId }, item);
+			return CreatedAtRoute("GetCoordinaciones", new { controller = "Coordinaciones", CarreraId = item.CarreraId, ModoId = item.ModoId, AnioInicio = item.AnioInicio, MesInicio = item.MesInicio, AnioLectivo = item.AnioLectivo, NmestreLectivo = item.NmestreLectivo, TurnoId = item.TurnoId, DivisionId = item.DivisionId, CoordinadorId = item.CoordinadorId }, item);
 		}
+
 
 		// PUT api/Coordinaciones
 		[HttpPut]
@@ -55,7 +56,7 @@ namespace EPSS.Controllers
 				if (item == null)
 					return BadRequest();
 
-				var coordinacion = _repo.Find(item.CarreraId, item.ModoId, item.CursoId, item.TurnoId, item.DivisionId, item.CoordinadorId);
+				var coordinacion = _repo.Find(item.CarreraId, item.ModoId, item.AnioInicio, item.MesInicio, item.AnioLectivo, item.NmestreLectivo, item.TurnoId, item.DivisionId, item.CoordinadorId);
 
 				if (coordinacion == null)
 					return NotFound();
@@ -73,12 +74,12 @@ namespace EPSS.Controllers
 			}
 		}
 
-		[HttpDelete("{CarreraId}/{ModoId}/{CursoId}/{TurnoId}/{DivisionId}/{CoordinadorId}")]
-		public IActionResult Delete(int CarreraId, string ModoId, int CursoId, string TurnoId, string DivisionId, int CoordinadorId)
+		[HttpDelete("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/{CoordinadorId}")]
+		public IActionResult Delete(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId, int CoordinadorId)
 		{
 			try
 			{
-				var item = _repo.Find(CarreraId, ModoId, CursoId, TurnoId, DivisionId, CoordinadorId);
+				var item = _repo.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId, CoordinadorId);
 				if (item == null)
 				{
 					return NoContent(); //Sin error por que DELETE es Idempotente.
