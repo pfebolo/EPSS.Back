@@ -34,11 +34,21 @@ namespace EPSS.Repositories
 
         public Legajos Find(int id)
         {
-            if (!legajosCargados)
-                GetAll();
-            Legajos legajo = _list.Find(n => n.AlumnoId == id);
-            _logger.LogInformation("Buscar Legajo ID: " + id.ToString() + "/ Legajo Nro: " + legajo.LegajoNro.ToString() + " --> OK");
-            return legajo;
+            Legajos ItemBuscado = null;
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    ItemBuscado = db.Legajos.Find(id);
+                    _logger.LogInformation("Buscar LegajoId: " + id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+            return ItemBuscado;
         }
 
         public IEnumerable<Legajos> GetAll()
