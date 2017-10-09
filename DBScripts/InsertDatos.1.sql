@@ -26,5 +26,8 @@ Select 0,'Presencial',2017,8,3,1,'Noche','A',CoordinadorId,'' from Coordinadores
 Insert into Coordinaciones
 Select 0,'A Distancia',2017,8,2,2,'Virtual','E',CoordinadorId,'' from Coordinadores where CoordinadorID in (1,3)
 GO
+Update Modalidades Set nombre = 'Presencial' where id=1;
+Update Modalidades Set nombre = 'A Distancia' where id=2;
+GO
 COMMIT
 GO

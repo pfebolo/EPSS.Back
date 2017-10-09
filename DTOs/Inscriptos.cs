@@ -24,6 +24,7 @@ namespace EPSS.DTOs
         public string SituacionEspecial { get; set; }
         public string Domicilio { get; set; }
         public DateTime? fechaInteresadoOriginal  { get; set; }
+        public virtual Carreras Carrera { get; set; }
         public int? anioAcursar  { get; set; }
         public int? nmestreAcursar  { get; set; }
         public string turno  { get; set; }
