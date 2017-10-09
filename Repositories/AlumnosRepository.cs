@@ -113,7 +113,7 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad))
+                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad).Include(Alumno => Alumno.Carrera))
                     {
                         _list.Add(Alumno);
                     }
@@ -165,7 +165,7 @@ namespace EPSS.Repositories
                     interesado.Provincia = item.Provincia;
                     interesado.SituacionInscripcion = item.SituacionInscripcion;
                     interesado.SituacionEspecial = item.SituacionEspecial;
-                    interesado.CarreraId = 0; //TODO: Este dato se pierde ¿?
+                    interesado.CarreraId = item.CarreraId;
                     interesado.AnioAcursar = item.AnioAcursar;
                     interesado.NmestreAcursar = item.NmestreAcursar;
                     interesado.Turno = item.Turno;

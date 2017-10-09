@@ -18,7 +18,6 @@ namespace EPSS.Repositories
     public class LegajosRepository : BaseRepository, ILegajosRepository
     {
         private List<Legajos> _list;
-        private Boolean legajosCargados = false;
 
         public LegajosRepository(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
@@ -54,7 +53,6 @@ namespace EPSS.Repositories
         public IEnumerable<Legajos> GetAll()
         {
             _list.Clear();
-            legajosCargados = false;
             try
             {
                 using (var db = new escuelapsdelsurContext())
@@ -62,6 +60,8 @@ namespace EPSS.Repositories
                     foreach (var Legajo in db.Legajos
                                               .Include(Legajo => Legajo.Alumno)
                                                   .ThenInclude(Alumno => Alumno.Modalidad)
+                                              .Include(Legajo => Legajo.Alumno)
+                                                  .ThenInclude(Alumno => Alumno.Carrera)
                                               .Include(Legajo => Legajo.Localidad)
                                                   .ThenInclude(Localidad => Localidad.CodigoPostal)
                                               .Include(Legajo => Legajo.Localidad)
@@ -71,7 +71,6 @@ namespace EPSS.Repositories
                     {
                         _list.Add(Legajo);
                     }
-                    legajosCargados = true;
                     _logger.LogInformation("Buscar Legajos --> OK");
                 }
             }

@@ -10,6 +10,7 @@ namespace EPSS.Models
     {
         public Carreras()
         {
+            Alumnos = new HashSet<Alumnos>();
             Cursos = new HashSet<Cursos>();
             Interesados = new HashSet<Interesados>();
         }
@@ -22,6 +23,10 @@ namespace EPSS.Models
         public string Descripcion { get; set; }
         [MaxLength(255)]
         public string Resolucion { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Carrera")]
+        public virtual ICollection<Alumnos> Alumnos { get; set; }
 
 		[IgnoreDataMember]
         [InverseProperty("Carrera")]
