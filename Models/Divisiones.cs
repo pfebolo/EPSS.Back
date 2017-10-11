@@ -57,6 +57,6 @@ namespace EPSS.Models
 
         [ForeignKey("CarreraId,ModoId,AnioInicio,MesInicio,AnioLectivo,NmestreLectivo")]
         [InverseProperty("Divisiones")]
-        public virtual Cursos Cursos { get; set; }
+        public virtual Cursos Curso { get; set; }
     }
 }

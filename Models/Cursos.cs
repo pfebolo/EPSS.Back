@@ -30,7 +30,7 @@ namespace EPSS.Models
         public string Comentario { get; set; }
 
 		[IgnoreDataMember]
-		[InverseProperty("Cursos")]
+		[InverseProperty("Curso")]
 		public virtual ICollection<Divisiones> Divisiones { get; set; }
 
 		[ForeignKey("CarreraId")]

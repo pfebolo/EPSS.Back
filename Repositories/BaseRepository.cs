@@ -34,8 +34,6 @@ namespace EPSS.Repositories
 
 		public virtual void Add(Model item)
 		{
-			// item = default(Model);
-			// _list.Add(item);
 			try
 			{
 				using (var db = new escuelapsdelsurContext())
@@ -51,8 +49,6 @@ namespace EPSS.Repositories
 				_logger.LogError(ex.Message);
 				throw ex;
 			}
-
-
 		}
 
 		public virtual Model Find(params Object[] KeyValues)
