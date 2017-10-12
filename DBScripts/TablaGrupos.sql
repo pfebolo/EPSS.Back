@@ -3,7 +3,10 @@ CREATE TABLE dbo.Grupos
 	(
 	CarreraID int NOT NULL,
 	ModoID nvarchar(25) NOT NULL,
-	CursoID int NOT NULL,
+	AnioInicio int NOT NULL,
+	MesInicio int NOT NULL,
+	AnioLectivo int NOT NULL,
+	NMestreLectivo int NOT NULL,
 	TurnoID nvarchar(25) NOT NULL,
 	DivisionID nvarchar(2) NOT NULL,
 	AlumnoID int NOT NULL,
@@ -15,7 +18,10 @@ ALTER TABLE dbo.Grupos ADD CONSTRAINT
 	(
 	CarreraID,
 	ModoID,
-	CursoID,
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo,
 	TurnoID,
 	DivisionID,
 	AlumnoID
@@ -27,14 +33,20 @@ ALTER TABLE dbo.Grupos ADD CONSTRAINT
 	(
 	CarreraID,
 	ModoID,
-	CursoID,
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo,
 	TurnoID,
 	DivisionID
 	) REFERENCES dbo.Divisiones
 	(
 	CarreraID,
 	ModoID,
-	CursoID,
+	AnioInicio,
+	MesInicio,
+	AnioLectivo,
+	NMestreLectivo,
 	TurnoID,
 	DivisionID
 	) ON UPDATE  NO ACTION 

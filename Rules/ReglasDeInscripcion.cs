@@ -283,11 +283,11 @@ namespace EPSS.Rules
 				contactTo = new MailboxAddress(Inscripto.Apellido + ", " + Inscripto.Nombre, emailaddress);
 			else
 				contactTo = new MailboxAddress("Test: " + Inscripto.Apellido + ", " + Inscripto.Nombre, settings.inscripcion.ReceptorTestEmailDireccion);
-			_logger.LogInformation("E-Mails de Inscripción enviado a: " + Inscripto.Apellido + ", " + Inscripto.Nombre + " -> " + emailaddress);
 			string mensajeAEnviar = settings.inscripcion.MensajeBienvenida;
 			mensajeAEnviar = mensajeAEnviar.Replace("{{nombreInscripto}}", Inscripto.Nombre);
 			BodyHtml body = new BodyHtml("Link de Inscripción", mensajeAEnviar);
 			mail.send(contactFrom, contactTo, contactBCC, body);
+			_logger.LogInformation("E-Mails de Inscripción enviado a: " + Inscripto.Apellido + ", " + Inscripto.Nombre + " -> " + emailaddress);
 		}
 
 		private string DeterminarProximoReintento(String EstadoOriginal)

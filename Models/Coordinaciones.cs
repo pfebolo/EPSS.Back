@@ -12,8 +12,11 @@ namespace EPSS.Models
         [Column("ModoID")]
         [MaxLength(25)]
         public string ModoId { get; set; }
-        [Column("CursoID")]
-        public int CursoId { get; set; }
+        public int AnioInicio { get; set; }
+        public int MesInicio { get; set; }
+        public int AnioLectivo { get; set; }
+        [Column("NMestreLectivo")]
+        public int NmestreLectivo { get; set; }
         [Column("TurnoID")]
         [MaxLength(25)]
         public string TurnoId { get; set; }
@@ -28,8 +31,8 @@ namespace EPSS.Models
         [ForeignKey("CoordinadorId")]
         [InverseProperty("Coordinaciones")]
         public virtual Coordinadores Coordinador { get; set; }
-        
-        [ForeignKey("CarreraId,ModoId,CursoId,TurnoId,DivisionId")]
+
+        [ForeignKey("CarreraId,ModoId,AnioInicio,MesInicio,AnioLectivo,NmestreLectivo,TurnoId,DivisionId")]
         [InverseProperty("Coordinaciones")]
         public virtual Divisiones Divisiones { get; set; }
     }

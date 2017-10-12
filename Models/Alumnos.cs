@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -20,7 +21,7 @@ namespace EPSS.Models
         public string Mail { get; set; }
         [Column("mail2", TypeName = "varchar(150)")]
         public string Mail2 { get; set; }
-        [Column("telefono", TypeName = "varchar(25)")]
+        [Column("telefono", TypeName = "varchar(255)")]
         public string Telefono { get; set; }
         [Column("celular", TypeName = "varchar(25)")]
         public string Celular { get; set; }
@@ -50,7 +51,7 @@ namespace EPSS.Models
         public int? AnioAcursar { get; set; }
         [Column("NMestreACursar")]
         public int? NmestreAcursar { get; set; }
-        [Column("Turno", TypeName = "varchar(6)")]
+        [Column(TypeName = "varchar(6)")]
         public string Turno { get; set; }
         [Column(TypeName = "date")]
         public DateTime? DocTitulo { get; set; }
@@ -62,11 +63,17 @@ namespace EPSS.Models
         public DateTime? DocFoto { get; set; }
         [Column(TypeName = "date")]
         public DateTime? DocCompromiso { get; set; }
+        [Column("CarreraID")]
+        public int CarreraId { get; set; }
 
         
         [IgnoreDataMember]
         [InverseProperty("Alumno")]
         public virtual Legajos Legajos { get; set; }
+
+        [ForeignKey("CarreraId")]
+        [InverseProperty("Alumnos")]
+        public virtual Carreras Carrera { get; set; }
 
         [ForeignKey("ModalidadId")]
         [InverseProperty("Alumnos")]

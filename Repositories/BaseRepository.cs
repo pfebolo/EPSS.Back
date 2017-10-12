@@ -34,13 +34,42 @@ namespace EPSS.Repositories
 
 		public virtual void Add(Model item)
 		{
-			item = default(Model);
-			_list.Add(item);
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					db.Set<Model>().Add(item);
+					db.SaveChanges();
+
+					_logger.LogInformation("Crear " + typeof(Model).Name + "--> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
 		}
 
-		public virtual Model Find(int id)
+		public virtual Model Find(params Object[] KeyValues)
 		{
-			return default(Model);
+			//return default(Model);
+
+			Model ItemBuscado = null;
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					ItemBuscado = db.Set<Model>().Find(KeyValues);
+					_logger.LogInformation("Buscar " + typeof(Model).Name + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+			return ItemBuscado;
 		}
 
 		public virtual IEnumerable<Model> GetAll()
@@ -48,14 +77,14 @@ namespace EPSS.Repositories
 			_list.Clear();
 			try
 			{
-				using (var db =  new escuelapsdelsurContext())
+				using (var db = new escuelapsdelsurContext())
 				{
 					foreach (var item in db.Set<Model>())
 					{
 						_list.Add(item);
 					}
 				}
-				_logger.LogInformation("Buscar " + typeof(Model).Name +" --> OK");
+				_logger.LogInformation("Buscar " + typeof(Model).Name + " --> OK");
 			}
 			catch (System.Exception ex)
 			{
@@ -66,11 +95,38 @@ namespace EPSS.Repositories
 
 		public virtual void Update(Model item)
 		{
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					db.Update(item);
+					db.SaveChanges();
+					_logger.LogInformation("Actualizar " + typeof(Model).Name + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
 		}
 
-		public virtual void Remove(int id)
+		public virtual void Remove(Model item)
 		{
-			//_list.RemoveAll(n=>n.Key==id);
+			try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    db.Remove(item);
+                    db.SaveChanges();
+                    _logger.LogInformation("Eliminar " + typeof(Model).Name + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
 		}
 	}
 }

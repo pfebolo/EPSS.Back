@@ -47,7 +47,7 @@ namespace EPSS.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _repo.Remove(id);
+            //_repo.Remove(id);
         }
     }
 }

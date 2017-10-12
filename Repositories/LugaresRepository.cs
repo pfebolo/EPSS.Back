@@ -9,9 +9,23 @@ namespace EPSS.Repositories
     {
 
         public LugaresRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
-        public override Lugares Find(int id)
+        public override Lugares Find(params Object[] KeyValues)
         {
-            return _list.Find(n=>n.Id==id);
+            Lugares ItemBuscado = null;
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    ItemBuscado = db.Lugares.Find(KeyValues);
+                    _logger.LogInformation("Buscar LugarId: " + KeyValues.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+            return ItemBuscado;
         }
 
         public override IEnumerable<Lugares> GetAll()

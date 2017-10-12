@@ -6,9 +6,9 @@ namespace EPSS.Repositories
 	public interface IRepository<Model>
 	{
 		IEnumerable<Model> GetAll();
-		Model Find(int id);
+		Model Find(params Object[] KeyValues);
 		void Add(Model item);
 		void Update(Model item);
-		void Remove(int id);
+		void Remove(Model item);
 	}
 }
