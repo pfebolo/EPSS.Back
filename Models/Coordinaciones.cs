@@ -34,6 +34,6 @@ namespace EPSS.Models
 
         [ForeignKey("CarreraId,ModoId,AnioInicio,MesInicio,AnioLectivo,NmestreLectivo,TurnoId,DivisionId")]
         [InverseProperty("Coordinaciones")]
-        public virtual Divisiones Divisiones { get; set; }
+        public virtual Divisiones Division { get; set; }
     }
 }
