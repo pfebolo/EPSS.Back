@@ -95,9 +95,8 @@ namespace EPSS.Models
         public string Situacion { get; set; }
         [Column(TypeName = "varchar(max)")]
         public string Expectativas { get; set; }
-
-
-
+        public int? LibroMatriz { get; set; }
+        public int? Folio { get; set; }
 
 
         [ForeignKey("AlumnoId")]

@@ -18,7 +18,6 @@ namespace EPSS.Repositories
     public class LegajosRepository : BaseRepository, ILegajosRepository
     {
         private List<Legajos> _list;
-        private Boolean legajosCargados = false;
 
         public LegajosRepository(ILoggerFactory loggerFactory) : base(loggerFactory)
         {
@@ -34,17 +33,26 @@ namespace EPSS.Repositories
 
         public Legajos Find(int id)
         {
-            if (!legajosCargados)
-                GetAll();
-            Legajos legajo = _list.Find(n => n.AlumnoId == id);
-            _logger.LogInformation("Buscar Legajo ID: " + id.ToString() + "/ Legajo Nro: " + legajo.LegajoNro.ToString() + " --> OK");
-            return legajo;
+            Legajos ItemBuscado = null;
+            try
+            {
+                using (var db = new escuelapsdelsurContext())
+                {
+                    ItemBuscado = db.Legajos.Find(id);
+                    _logger.LogInformation("Buscar LegajoId: " + id.ToString() + " --> OK");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw ex;
+            }
+            return ItemBuscado;
         }
 
         public IEnumerable<Legajos> GetAll()
         {
             _list.Clear();
-            legajosCargados = false;
             try
             {
                 using (var db = new escuelapsdelsurContext())
@@ -52,6 +60,8 @@ namespace EPSS.Repositories
                     foreach (var Legajo in db.Legajos
                                               .Include(Legajo => Legajo.Alumno)
                                                   .ThenInclude(Alumno => Alumno.Modalidad)
+                                              .Include(Legajo => Legajo.Alumno)
+                                                  .ThenInclude(Alumno => Alumno.Carrera)
                                               .Include(Legajo => Legajo.Localidad)
                                                   .ThenInclude(Localidad => Localidad.CodigoPostal)
                                               .Include(Legajo => Legajo.Localidad)
@@ -61,7 +71,6 @@ namespace EPSS.Repositories
                     {
                         _list.Add(Legajo);
                     }
-                    legajosCargados = true;
                     _logger.LogInformation("Buscar Legajos --> OK");
                 }
             }

@@ -21,7 +21,7 @@ namespace EPSS.Repositories
             using (var db = new escuelapsdelsurContext())
             {//
               foreach (var Grupo in db.Grupos.Include(Grupo => Grupo.Division)
-                                                    .ThenInclude(Division => Division.Cursos)
+                                                    .ThenInclude(Division => Division.Curso)
                                                         .ThenInclude(Curso => Curso.Carrera)
                                                 .Include(Grupo => Grupo.Legajo)
                                                     .ThenInclude(Legajo => Legajo.Alumno))
