@@ -20,7 +20,10 @@ namespace EPSS.Repositories
           {
             using (var db = new escuelapsdelsurContext())
             {//
-              foreach (var Coordinacion in db.Coordinaciones.Include(Coordinacion => Coordinacion.Coordinador))
+              foreach (var Coordinacion in db.Coordinaciones
+                                                .Include(Coordinacion => Coordinacion.Coordinador)
+                                                .Include(Coordinacion => Coordinacion.Division)
+                                                  .ThenInclude(Division => Division.Curso))
                 {
                     _list.Add(Coordinacion);
                 }

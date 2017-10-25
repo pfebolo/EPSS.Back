@@ -38,7 +38,7 @@ namespace EPSS.Models
         public string Comentario { get; set; }
 
         [IgnoreDataMember]
-        [InverseProperty("Divisiones")]
+        [InverseProperty("Division")]
         public virtual ICollection<Coordinaciones> Coordinaciones { get; set; }
         
         [IgnoreDataMember]

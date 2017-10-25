@@ -87,6 +87,10 @@ namespace EPSS.Controllers
 				_repo.Remove(item); ;
 				return NoContent();
 			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
 			catch (System.Exception ex)
 			{
 				return Utils.ResponseInternalError(ex);
