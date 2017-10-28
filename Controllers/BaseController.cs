@@ -22,10 +22,10 @@ namespace EPSS.Controllers
 			return _repo.GetAll();
 		}
 
-		[HttpGet("{id}", Name = "GetModel")]
-		public IActionResult GetById(int id)
+		//[HttpGet("{id}", Name = "GetModel")]
+		public IActionResult GetById(params Object[] KeyValues)
 		{
-			var item = _repo.Find(id);
+			var item = _repo.Find(KeyValues);
 			if (item == null)
 			{
 				return NotFound();
@@ -41,7 +41,9 @@ namespace EPSS.Controllers
 				return BadRequest();
 			}
 			_repo.Add(item);
-			return CreatedAtRoute("GetModel", new { controller = "Model", id = 1 }, item);
+			//TODO: Crear un resultado con la ruta (route path) generico
+			//return CreatedAtRoute("GetModel", new { controller = "Model", id = 1 }, item);
+			return Utils.ResponseCreated(); //No devuelve la ruta
 		}
 
 		//[HttpDelete("{id}")]
