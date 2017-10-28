@@ -12,6 +12,7 @@ namespace EPSS.Models
         public virtual DbSet<Coordinaciones> Coordinaciones { get; set; }
         public virtual DbSet<Coordinadores> Coordinadores { get; set; }
         public virtual DbSet<Cursos> Cursos { get; set; }
+        public virtual DbSet<Dispositivos> Dispositivos { get; set; }
         public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<EstadosDivision> EstadosDivision { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
@@ -65,6 +66,12 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo })
                     .HasName("PK_Cursos");
+            });
+
+            modelBuilder.Entity<Dispositivos>(entity =>
+            {
+                entity.HasKey(e => new { e.ModoId, e.DispositivoId })
+                    .HasName("PK_Dispositivos");
             });
 
             modelBuilder.Entity<Divisiones>(entity =>

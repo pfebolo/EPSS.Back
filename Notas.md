@@ -3,8 +3,10 @@
 ## Net Core
 * Para ir actualizando: __https://www.microsoft.com/net/download/core#/current/sdk__
   - Se migró a version: 1.1.0-preview1-005077
-    - Se ejecutó comando: dotnet migrate --report-file migrate.txt 
-
+    - Se ejecutó comando: 
+```
+    dotnet migrate --report-file migrate.txt 
+```
 
 
 * Verificar que en UBUNTU seguramente se actualiza automaticamente
@@ -26,20 +28,39 @@
 
 ### Scaffoldear
 #### Comando usado para generar codigo de modelo de base de datos inicial
-  * dotnet ef dbContext scaffold "Data Source=...
-  
-#### Tareas para ir actualizando el acceso a DB
-* Renombrar EPSS.Back.csproj  x EPSS.csproj porque del nombre toma el nombre del namespace
-* Si existe la carpeta **Models**, renombrarla
+```
+dotnet ef dbContext scaffold "Data Source=...
+```
+#### Tareas para ir actualizando los modelos desde la DB
+* Renombrar EPSS.Back.csproj  x EPSS.csproj porque el nombre del namespace lo toma el nombre del proyecto
+```
+mv EPSS.Back.csproj EPPS.csproj
+```
+* Si existe la carpeta **Models**, renombrarla a **Models.ORI**
 * 'scaffoldear' con las tablas nuevas
+  * __*Comando*__:  
+```
+dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Dispositivos -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
+```
 * Comparar carpeta vieja con la nueva
+```
+meld Models.ORI/ Models
+```
   * Mergear la carpeta nueva con la vieja
+    * Verificar modelos nuevos, modificados y sus relaciones
   * Verificar el archivo de contexto, y ajustar de ser necesario
-* __*Comando*__:  
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
 * Borrar carpeta nueva
+```
+rm Models -R
+```
 * Renombrar nuevamente la carpeta donde se ejecutó el *scaffold* a su nombre original
+```
+mv Models.ORI/ Models
+```
 * Renombrar el archivo EPSS.csproj  x EPSS.Back.csproj 
+```
+mv EPSS.csproj EPPS.Back.csproj
+```
 
 
 
