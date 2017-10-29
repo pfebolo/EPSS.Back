@@ -10,6 +10,7 @@ namespace EPSS.Settings
         public static ConnectionStrings connectionStrings { get; set; } = new ConnectionStrings();
         public static Inscripcion inscripcion { get; set; } = new Inscripcion();
         public static SMTPSettings smtpSettings { get; set; } = new SMTPSettings();
+        public static ProcesosFrecuentes procesosFrecuentes { get; set; } = new ProcesosFrecuentes();
 
         public static void cargarConfiguracion(IConfigurationRoot configuration)
         {
@@ -18,6 +19,7 @@ namespace EPSS.Settings
             Configuration.GetSection("ConnectionStrings").Bind(connectionStrings);
             Configuration.GetSection("Inscripcion").Bind(inscripcion);
             Configuration.GetSection("SMTP").Bind(smtpSettings);
+            Configuration.GetSection("ProcesosFrecuentes").Bind(procesosFrecuentes);
         }
 	}
 }
