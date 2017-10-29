@@ -8,21 +8,10 @@ using Microsoft.EntityFrameworkCore;
 namespace EPSS.Controllers
 {
 	[Route("api/[controller]")]
-	public class CoordinacionesController : Controller
+	public class CoordinacionesController : BaseController<Coordinaciones>
 	{
-		private IRepository<Coordinaciones> _repo;
+		public CoordinacionesController(IRepository<Coordinaciones> repo) : base (repo){}
 
-		public CoordinacionesController(IRepository<Coordinaciones> repo)
-		{
-			this._repo = repo;
-		}
-
-
-		[HttpGet]
-		public IEnumerable<Coordinaciones> GetAll()
-		{
-			return _repo.GetAll();
-		}
 
 		[HttpGet("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/{CoordinadorId}", Name = "GetCoordinaciones")]
 		public IActionResult GetById(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId, int CoordinadorId)
@@ -36,7 +25,7 @@ namespace EPSS.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody] Coordinaciones item)
+		public override IActionResult Create([FromBody] Coordinaciones item)
 		{
 			if (item == null)
 			{
@@ -49,7 +38,7 @@ namespace EPSS.Controllers
 
 		// PUT api/Coordinaciones
 		[HttpPut]
-		public IActionResult Put([FromBody] Coordinaciones item)
+		public override IActionResult Put([FromBody] Coordinaciones item)
 		{
 			try
 			{
@@ -77,24 +66,7 @@ namespace EPSS.Controllers
 		[HttpDelete("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/{CoordinadorId}")]
 		public IActionResult Delete(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId, int CoordinadorId)
 		{
-			try
-			{
-				var item = _repo.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId, CoordinadorId);
-				if (item == null)
-				{
-					return NoContent(); //Sin error por que DELETE es Idempotente.
-				}
-				_repo.Remove(item); ;
-				return NoContent();
-			}
-			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
-			{
-				return Utils.ResponseConfict(ex);
-			}
-			catch (System.Exception ex)
-			{
-				return Utils.ResponseInternalError(ex);
-			}
+			return base.Delete(new Object[] {CarreraId,ModoId,AnioInicio,MesInicio,AnioLectivo,NmestreLectivo,TurnoId,DivisionId,CoordinadorId});
 		}
 
 	}

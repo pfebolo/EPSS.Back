@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using EPSS.Models;
 using EPSS.Repositories;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Controllers
 {
 	public class BaseController<Model> : Controller where Model : class
 	{
-		private IRepository<Model> _repo;
+		protected IRepository<Model> _repo;
 
 		public BaseController(IRepository<Model> repo)
 		{
@@ -34,7 +35,7 @@ namespace EPSS.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Create([FromBody] Model item)
+		public virtual IActionResult Create([FromBody] Model item)
 		{
 			if (item == null)
 			{
@@ -46,23 +47,45 @@ namespace EPSS.Controllers
 			return Utils.ResponseCreated(); //No devuelve la ruta
 		}
 
-		//[HttpDelete("{id}")]
-		public IActionResult Delete(params Object[] KeyValues)
+		[HttpPut]
+		public virtual IActionResult Put([FromBody] Model item)
 		{
 			try
 			{
-				var item = _repo.Find(KeyValues);
 				if (item == null)
-				{
-					return NoContent(); //Sin error por que DELETE es Idempotente.
-				}
-				_repo.Remove(item); ;
+					return BadRequest();
+
+				_repo.Update(item);
 				return NoContent();
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
+
+
+
+		//[HttpDelete]
+		public virtual IActionResult Delete(params Object[] KeyValues)
+		{
+			try
+			{
+				_repo.Remove(KeyValues);
+				return NoContent();
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
 			}
 			catch (System.Exception ex)
 			{
 				return Utils.ResponseInternalError(ex);
-			}
+			}			
 		}
 	}
 }
