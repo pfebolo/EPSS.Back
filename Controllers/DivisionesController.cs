@@ -8,55 +8,67 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Controllers
 {
-    [Route("api/[controller]")]
-    public class DivisionesController : Controller
-    {
-        private IRepository<Divisiones> _repo;
-        
-        public DivisionesController(IRepository<Divisiones> repo)
-        {
-            this._repo = repo;
-        }
+	[Route("api/[controller]")]
+	public class DivisionesController : BaseController<Divisiones>
+	{
 
+		public DivisionesController(IRepository<Divisiones> repo) : base(repo) { }
 
-        [HttpGet]
-        public IEnumerable<Divisiones> GetAll()
-        {
-            return _repo.GetAll();
-        }
+		[HttpGet("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}", Name = "GetDivisiones")]
+		public IActionResult GetById(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId)
+		{
+			var item = _repo.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId);
+			if (item == null)
+			{
+				return NotFound();
+			}
+			return new ObjectResult(item);
+		}
 
-        [HttpGet("{id}", Name = "GetDivisiones")]
-        public IActionResult GetById(int id)
-        {
-            var item = _repo.Find(id);
-            if (item == null)
-            {
-                return NotFound();
-            }
-            return new ObjectResult(item);
-        }
-
-        [HttpPost]
-        public IActionResult Create([FromBody] Divisiones item)
-        {
-            if (item == null)
-            {
-                return BadRequest();
-            }
-            _repo.Add(item);
-            return CreatedAtRoute("GetDivisiones", new { controller = "Divisiones", id = item.CarreraId }, item);
-        }
+		[HttpPost]
+		public override IActionResult Create([FromBody] Divisiones item)
+		{
+			try
+			{
+				if (item == null)
+				{
+					return BadRequest();
+				}
+				_repo.Add(item);
+				// return CreatedAtRoute("GetDivisiones", new
+				// {
+				// 	controller = "Divisiones",
+				// 	CarreraId = item.CarreraId,
+				// 	ModoId = item.ModoId,
+				// 	AnioInicio = item.AnioInicio,
+				// 	MesInicio = item.MesInicio,
+				// 	AnioLectivo = item.AnioLectivo,
+				// 	NmestreLectvo = item.NmestreLectivo,
+				// 	TurnoId = item.TurnoId,
+				// 	DivisionId = item.DivisionId,
+				// }, item);
+				return Utils.ResponseCreated(); //No devuelve la ruta
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
 
 		// PUT api/Divisiones
 		[HttpPut]
-		public IActionResult Put([FromBody] Divisiones item)
+		public override IActionResult Put([FromBody] Divisiones item)
 		{
 			try
 			{
 				if (item == null)
 					return BadRequest();
 
-				var division = _repo.Find(item.CarreraId,item.ModoId,item.AnioInicio,item.MesInicio,item.AnioLectivo,item.NmestreLectivo,item.TurnoId,item.DivisionId);
+				var division = _repo.Find(item.CarreraId, item.ModoId, item.AnioInicio, item.MesInicio, item.AnioLectivo, item.NmestreLectivo, item.TurnoId, item.DivisionId);
 
 				if (division == null)
 					return NotFound();
@@ -78,24 +90,7 @@ namespace EPSS.Controllers
 		[HttpDelete("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}")]
 		public IActionResult Delete(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId)
 		{
-			try
-			{
-				var item = _repo.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId);
-				if (item == null)
-				{
-					return NoContent(); //Sin error por que DELETE es Idempotente.
-				}
-				_repo.Remove(item); ;
-				return NoContent();
-			}
-			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
-			{
-				return Utils.ResponseConfict(ex);
-			}
-			catch (System.Exception ex)
-			{
-				return Utils.ResponseInternalError(ex);
-			}
+			return base.Delete(new Object[] { CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId });
 		}
-    }
+	}
 }

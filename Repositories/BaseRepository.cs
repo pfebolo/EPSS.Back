@@ -111,14 +111,17 @@ namespace EPSS.Repositories
 			}
 		}
 
-		public virtual void Remove(Model item)
+		public virtual void Remove(params Object[] KeyValues)
 		{
 			try
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    db.Remove(item);
-                    db.SaveChanges();
+					var ItemBuscado = db.Set<Model>().Find(KeyValues);
+					if (ItemBuscado!=null) { //Implementa Idempotencia.
+						db.Remove(ItemBuscado);
+                    	db.SaveChanges();
+					}
                     _logger.LogInformation("Eliminar " + typeof(Model).Name + " --> OK");
                 }
             }

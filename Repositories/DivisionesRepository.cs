@@ -51,10 +51,11 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-          Cursos Curso =  db.Cursos.Find(item.Curso.CarreraId,item.Curso.ModoId,item.Curso.AnioInicio,item.Curso.MesInicio,item.Curso.AnioLectivo,item.Curso.NmestreLectivo);
-          if (Curso != null) {
-            item.Curso=null;
-          }
+					Cursos Curso = db.Cursos.Find(item.Curso.CarreraId, item.Curso.ModoId, item.Curso.AnioInicio, item.Curso.MesInicio, item.Curso.AnioLectivo, item.Curso.NmestreLectivo);
+					if (Curso != null)
+					{
+						item.Curso = null;
+					}
 					db.Divisiones.Add(item);
 					db.SaveChanges();
 
@@ -66,8 +67,30 @@ namespace EPSS.Repositories
 				_logger.LogError(ex.Message);
 				throw ex;
 			}
+		}
 
+		public override void Update(Divisiones item)
+		{
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					if (item.Curso != null)
+					{
+						db.Cursos.Update(item.Curso);
+						item.Curso = null;
+					}
+					db.Divisiones.Update(item);
+					db.SaveChanges();
 
+					_logger.LogInformation("Crear " + typeof(Divisiones).Name + "--> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
 		}
 
 	}
