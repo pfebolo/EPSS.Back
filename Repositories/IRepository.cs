@@ -9,6 +9,6 @@ namespace EPSS.Repositories
 		Model Find(params Object[] KeyValues);
 		void Add(Model item);
 		void Update(Model item);
-		void Remove(Model item);
+		void Remove(params Object[] KeyValues);
 	}
 }

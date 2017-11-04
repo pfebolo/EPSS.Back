@@ -32,10 +32,11 @@ namespace EPSS
 
 
             ReglasDeInscripcion reglasDeInscripcion = new ReglasDeInscripcion();
+            if (settings.procesosFrecuentes.CargarInscriptos)
+                tmr = new Timer(reglasDeInscripcion.Cargar, null, settings.inscripcion.ejecucionInicialSegundos * 1000, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
             
-            tmr = new Timer(reglasDeInscripcion.Cargar, null, settings.inscripcion.ejecucionInicialSegundos * 1000, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
-            
-            tmr = new Timer(reglasDeInscripcion.ProcesarMails, null, settings.inscripcion.ejecucionInicialSegundos * 1500, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
+            if (settings.procesosFrecuentes.MailsInscriptos)
+                tmr = new Timer(reglasDeInscripcion.ProcesarMails, null, settings.inscripcion.ejecucionInicialSegundos * 1500, settings.inscripcion.ejecucionFrecuenciaSegundos * 1000); 
 
             host.Run();
         }
