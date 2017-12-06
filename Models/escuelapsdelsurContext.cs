@@ -109,6 +109,8 @@ namespace EPSS.Models
                 entity.Property(e => e.FechaNacimiento).HasColumnType("smalldatetime");
 
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
+
+                entity.Property(e => e.Seguimiento).HasDefaultValueSql("0");
             });
 
             modelBuilder.Entity<Localidades>(entity =>

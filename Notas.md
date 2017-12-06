@@ -37,6 +37,9 @@ dotnet ef dbContext scaffold "Data Source=...
 mv EPSS.Back.csproj EPPS.csproj
 ```
 * Si existe la carpeta **Models**, renombrarla a **Models.ORI**
+```
+mv Models/ Models.ORI
+```
 * 'scaffoldear' con las tablas nuevas
   * __*Comando*__:  
 ```

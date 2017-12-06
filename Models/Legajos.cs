@@ -97,6 +97,7 @@ namespace EPSS.Models
         public string Expectativas { get; set; }
         public int? LibroMatriz { get; set; }
         public int? Folio { get; set; }
+        public bool Seguimiento { get; set; }
 
 
         [ForeignKey("AlumnoId")]
