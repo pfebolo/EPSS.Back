@@ -67,7 +67,8 @@ namespace EPSS.Repositories
                                               .Include(Legajo => Legajo.Localidad)
                                                   .ThenInclude(Localidad => Localidad.Partido)
                                               .Include(Legajo => Legajo.Estudios)
-                                              .Include(Legajo => Legajo.Trabajos))
+                                              .Include(Legajo => Legajo.Trabajos)
+                                              .Include(Legajo => Legajo.EstadoEstudiante))
                     {
                         _list.Add(Legajo);
                     }
