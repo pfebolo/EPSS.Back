@@ -102,6 +102,8 @@ namespace EPSS.Models
         [Column("EstadoEstudianteID")]
         [MaxLength(255)]
         public string EstadoEstudianteId { get; set; }
+        [MaxLength(255)]
+        public string RazonSuspension { get; set; }
 
 
         [ForeignKey("AlumnoId")]
