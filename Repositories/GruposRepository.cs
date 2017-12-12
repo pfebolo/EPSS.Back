@@ -30,7 +30,9 @@ namespace EPSS.Repositories
                                                     .ThenInclude(Division => Division.Curso)
                                                         .ThenInclude(Curso => Curso.Carrera)
                                                 .Include(Grupo => Grupo.Legajo)
-                                                    .ThenInclude(Legajo => Legajo.Alumno))
+                                                    .ThenInclude(Legajo => Legajo.Alumno)
+                                                .Include(Grupo => Grupo.Legajo)
+                                                    .ThenInclude(Legajo => Legajo.EstadoEstudiante))
                 {
                     _list.Add(Grupo);
                 }
