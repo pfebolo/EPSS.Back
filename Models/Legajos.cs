@@ -97,12 +97,23 @@ namespace EPSS.Models
         public string Expectativas { get; set; }
         public int? LibroMatriz { get; set; }
         public int? Folio { get; set; }
+        public bool Seguimiento { get; set; }
+        [Required]
+        [Column("EstadoEstudianteID")]
+        [MaxLength(255)]
+        public string EstadoEstudianteId { get; set; }
+        [MaxLength(255)]
+        public string RazonSuspension { get; set; }
 
 
         [ForeignKey("AlumnoId")]
         [InverseProperty("Legajos")]
         public virtual Alumnos Alumno { get; set; }
-        
+
+        [ForeignKey("EstadoEstudianteId")]
+        [InverseProperty("Legajos")]
+        public virtual EstadosEstudiante EstadoEstudiante { get; set; }
+
         [ForeignKey("DireccionPaisId,DireccionProvinciaId,DireccionPartidoId,DireccionLocalidadId")]
         [InverseProperty("Legajos")]
         public virtual Localidades Localidad { get; set; }

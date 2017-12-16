@@ -48,16 +48,22 @@ namespace EPSS
             services.AddSingleton<IRepository<Models.Lugares>, LugaresRepository>();
 
 
+            //Interface de Repositorio Genéricas
             services.AddSingleton<IRepository<Models.Carreras>, BaseRepositoryNew<Models.Carreras>>();
             //services.AddSingleton<IRepository<Models.Cursos>, BaseRepositoryNew<Models.Cursos>>();
             services.AddSingleton<IRepository<Models.Cursos>, CursosRepository>();
             services.AddSingleton<IRepository<Models.Turnos>, BaseRepositoryNew<Models.Turnos>>();
             services.AddSingleton<IRepository<Models.EstadosDivision>, BaseRepositoryNew<Models.EstadosDivision>>();
             services.AddSingleton<IRepository<Models.Dispositivos>, BaseRepositoryNew<Models.Dispositivos>>();
+            services.AddSingleton<IRepository<Models.EstadosEstudiante>, BaseRepositoryNew<Models.EstadosEstudiante>>();
             services.AddSingleton<IRepository<Models.Divisiones>, DivisionesRepository>();
-            services.AddSingleton<IRepository<Models.Grupos>, GruposRepository>();
             services.AddSingleton<IRepository<Models.Coordinaciones>, CoordinacionesRepository>();
 
+            //Interface de Repositorio Heredara de la genérica (básicamente extiende la genérica)
+            services.AddSingleton<IGruposRepository, GruposRepository>();
+
+            //Interface de Repositorio específicas
+            //TODO: Generalizarlas
             services.AddSingleton<IEventosRepository, EventosRepository>();
             services.AddSingleton<IAlumnosRepository, AlumnosRepository>();
             services.AddSingleton<ILegajosRepository, LegajosRepository>();

@@ -2,9 +2,9 @@
 Version=1.0
 Name=Ejecutar EPSS Back
 Comment=Acceso directo(para Ubuntu) a EPSS Back
-Exec=/home/pablo/Desarrollo/EPSS/EPSS.Back/run.sh
+Exec=gnome-terminal -t 'EPSS.Back - Http Server' -e '/home/pablo/Desarrollo/EPSS/EPSS.Back/run.sh'
 Icon=/home/pablo/Desarrollo/EPSS/EPSS.Back/epssLogo.png
-Terminal=true
+Terminal=false
 Type=Application
 Categories=Utility;Application;
 Name[es_AR]=run.epss.back

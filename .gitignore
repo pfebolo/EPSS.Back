@@ -6,3 +6,4 @@ temp.sql
 Logs/*
 console.sql
 appsettings.Development.json
+*.pdf

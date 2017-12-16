@@ -15,6 +15,7 @@ namespace EPSS.Models
         public virtual DbSet<Dispositivos> Dispositivos { get; set; }
         public virtual DbSet<Divisiones> Divisiones { get; set; }
         public virtual DbSet<EstadosDivision> EstadosDivision { get; set; }
+        public virtual DbSet<EstadosEstudiante> EstadosEstudiante { get; set; }
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
@@ -38,6 +39,9 @@ namespace EPSS.Models
             modelBuilder.Entity<Alumnos>(entity =>
             {
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
+
+
+                entity.Property(e => e.CarreraId).HasDefaultValueSql("'0'");
             });
 
             modelBuilder.Entity<Carreras>(entity =>
@@ -80,6 +84,11 @@ namespace EPSS.Models
                     .HasName("PK_Divisiones");
             });
 
+            modelBuilder.Entity<EstadosEstudiante>(entity =>
+            {
+                entity.Property(e => e.ActaVolante).HasDefaultValueSql("0");
+            });
+
             modelBuilder.Entity<Estudios>(entity =>
             {
                 entity.HasKey(e => new { e.AlumnoId, e.EstudioId })
@@ -109,6 +118,10 @@ namespace EPSS.Models
                 entity.Property(e => e.FechaNacimiento).HasColumnType("smalldatetime");
 
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
+
+                entity.Property(e => e.EstadoEstudianteId).HasDefaultValueSql("N'Inscripto'");
+
+                entity.Property(e => e.Seguimiento).HasDefaultValueSql("0");
             });
 
             modelBuilder.Entity<Localidades>(entity =>

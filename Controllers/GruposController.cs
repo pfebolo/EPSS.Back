@@ -11,7 +11,12 @@ namespace EPSS.Controllers
     [Route("api/[controller]")]
     public class GruposController : BaseController<Grupos>
 	{
-		public GruposController(IRepository<Grupos> repo) : base(repo) { }
+        //Para acceder a los métodos extendidos de la Interface extendida
+        protected IGruposRepository _repoExt;
+        //Se injecta la Interface extendida
+        public GruposController(IGruposRepository repo) : base(repo) { 
+            _repoExt = (IGruposRepository)_repo; //Se asigna con el CAST necesario para acceder a los métodos extendidos.
+        }
 
 		[HttpGet("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/{AlumnoId}", Name = "GetGrupos")]
 		public IActionResult GetById(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId, int AlumnoId)
@@ -22,6 +27,12 @@ namespace EPSS.Controllers
 				return NotFound();
 			}
 			return new ObjectResult(item);
+		}
+
+        [HttpGet("byAlumno/{AlumnoId}", Name = "GetGruposByAlumno")]
+		public IEnumerable<Grupos>  GetByAlumnoId(int AlumnoId)
+		{
+			return _repoExt.FindByAlumnoId(AlumnoId);
 		}
 
         [HttpPost]

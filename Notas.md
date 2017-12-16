@@ -34,13 +34,16 @@ dotnet ef dbContext scaffold "Data Source=...
 #### Tareas para ir actualizando los modelos desde la DB
 * Renombrar EPSS.Back.csproj  x EPSS.csproj porque el nombre del namespace lo toma el nombre del proyecto
 ```
-mv EPSS.Back.csproj EPPS.csproj
+mv EPSS.Back.csproj EPSS.csproj
 ```
 * Si existe la carpeta **Models**, renombrarla a **Models.ORI**
+```
+mv Models/ Models.ORI
+```
 * 'scaffoldear' con las tablas nuevas
   * __*Comando*__:  
 ```
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Dispositivos -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
+dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t EstadosEstudiante -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Dispositivos -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
 ```
 * Comparar carpeta vieja con la nueva
 ```
@@ -59,7 +62,7 @@ mv Models.ORI/ Models
 ```
 * Renombrar el archivo EPSS.csproj  x EPSS.Back.csproj 
 ```
-mv EPSS.csproj EPPS.Back.csproj
+mv EPSS.csproj EPSS.Back.csproj
 ```
 
 
