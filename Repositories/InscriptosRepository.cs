@@ -57,7 +57,7 @@ namespace EPSS.Repositories
                     //                                  Dni= a.Dni};
 
                     // Forma Linq - "Method Syntax"
-                    var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Include(a => a.Modalidad).Include(a => a.Carrera).Select(a => new Inscriptos
+                    var q = db.Alumnos.Where(a => !db.Legajos.Any(l => l.AlumnoId == a.AlumnoId)).Include(a => a.Modalidad).Include(a => a.Carrera).Include(a => a.MedioDeContacto).Select(a => new Inscriptos
                     {
                         AlumnoId = a.AlumnoId,
                         Nombre = a.Nombre,
@@ -87,8 +87,10 @@ namespace EPSS.Repositories
                         docAptoFisico = a.DocAptoFisico,
                         docFoto = a.DocFoto,
                         docCompromiso = a.DocCompromiso,
+                        MedioDeContactoId = a.MedioDeContactoId,
 
-                        Carrera = a.Carrera
+                        Carrera = a.Carrera,
+                        MedioDeContacto = a.MedioDeContacto
                     });
 
 

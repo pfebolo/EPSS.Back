@@ -113,7 +113,9 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad).Include(Alumno => Alumno.Carrera))
+                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad)
+                                                     .Include(Alumno => Alumno.Carrera)
+                                                     .Include(Alumno => Alumno.MedioDeContacto))
                     {
                         _list.Add(Alumno);
                     }

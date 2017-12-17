@@ -119,7 +119,7 @@ namespace EPSS.Models
 
                 entity.Property(e => e.AlumnoId).ValueGeneratedNever();
 
-                entity.Property(e => e.EstadoEstudianteId).HasDefaultValueSql("N'Inscripto'");
+                entity.Property(e => e.EstadoEstudianteId).HasDefaultValueSql("N'Activo'");
 
                 entity.Property(e => e.Seguimiento).HasDefaultValueSql("0");
             });

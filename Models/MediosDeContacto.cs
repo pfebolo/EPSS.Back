@@ -10,6 +10,7 @@ namespace EPSS.Models
     {
         public MediosDeContacto()
         {
+            Alumnos = new HashSet<Alumnos>();
             Interesados = new HashSet<Interesados>();
         }
 
@@ -19,6 +20,10 @@ namespace EPSS.Models
         [MaxLength(500)]
         public string Nombre { get; set; }
 
+        [IgnoreDataMember]
+        [InverseProperty("MedioDeContacto")]
+        public virtual ICollection<Alumnos> Alumnos { get; set; }
+        
         [IgnoreDataMember]
         [InverseProperty("MedioDeContacto")]
         public virtual ICollection<Interesados> Interesados { get; set; }
