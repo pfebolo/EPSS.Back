@@ -62,6 +62,8 @@ namespace EPSS.Repositories
                                                   .ThenInclude(Alumno => Alumno.Modalidad)
                                               .Include(Legajo => Legajo.Alumno)
                                                   .ThenInclude(Alumno => Alumno.Carrera)
+                                              .Include(Legajo => Legajo.Alumno)
+                                                  .ThenInclude(Alumno => Alumno.MedioDeContacto)
                                               .Include(Legajo => Legajo.Localidad)
                                                   .ThenInclude(Localidad => Localidad.CodigoPostal)
                                               .Include(Legajo => Legajo.Localidad)

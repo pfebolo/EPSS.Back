@@ -1,5 +1,7 @@
 using System;
 using EPSS.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EPSS.DTOs
 {
@@ -34,5 +36,11 @@ namespace EPSS.DTOs
         public DateTime? docFoto  { get; set; }
         public DateTime? docCompromiso  { get; set; }
         public int? LegajoNro { get; set; }
+        public int? MedioDeContactoId { get; set; }
+
+
+        [ForeignKey("MedioDeContactoId")]
+        [InverseProperty("Alumnos")]
+        public virtual MediosDeContacto MedioDeContacto { get; set; }
     }
 }

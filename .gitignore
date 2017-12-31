@@ -7,3 +7,5 @@ Logs/*
 console.sql
 appsettings.Development.json
 *.pdf
+DBScripts/backUpDB.bat
+DBScripts/restoreDB.bat

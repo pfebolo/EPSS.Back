@@ -65,6 +65,7 @@ namespace EPSS.Models
         public DateTime? DocCompromiso { get; set; }
         [Column("CarreraID")]
         public int CarreraId { get; set; }
+        public int? MedioDeContactoId { get; set; }
 
         
         [IgnoreDataMember]
@@ -74,6 +75,10 @@ namespace EPSS.Models
         [ForeignKey("CarreraId")]
         [InverseProperty("Alumnos")]
         public virtual Carreras Carrera { get; set; }
+
+        [ForeignKey("MedioDeContactoId")]
+        [InverseProperty("Alumnos")]
+        public virtual MediosDeContacto MedioDeContacto { get; set; }
 
         [ForeignKey("ModalidadId")]
         [InverseProperty("Alumnos")]
