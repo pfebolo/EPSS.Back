@@ -9,7 +9,15 @@ using System.Linq;
 
 namespace EPSS.Repositories
 {
-	public class DivisionesRepository : BaseRepositoryNew<Divisiones>
+
+	//Extiende la Interfaz Génerica con métodos especificos del Modelo
+	public interface IDivisionesRepository : IRepository<Divisiones>
+	{
+		void Promover(Divisiones divisionOrigen,Divisiones divisiondestino);
+	}
+
+
+	public class DivisionesRepository : BaseRepositoryNew<Divisiones>, IDivisionesRepository
 	{
 
 		public DivisionesRepository(ILoggerFactory loggerFactory) : base(loggerFactory) { }
@@ -84,6 +92,49 @@ namespace EPSS.Repositories
 					db.SaveChanges();
 
 					_logger.LogInformation("Crear " + typeof(Divisiones).Name + "--> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
+
+		public void Promover(Divisiones divisionOrigen,Divisiones divisionDestino)
+		{
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					var estudiantesAsignados = db.Grupos.Where(d => d.CarreraId == divisionOrigen.CarreraId 
+														&& d.ModoId  == divisionOrigen.ModoId
+														&& d.AnioInicio  == divisionOrigen.AnioInicio
+														&& d.MesInicio  == divisionOrigen.MesInicio
+														&& d.AnioLectivo  == divisionOrigen.AnioLectivo
+														&& d.NmestreLectivo  == divisionOrigen.NmestreLectivo
+														&& d.TurnoId == divisionOrigen.TurnoId
+														&& d.DivisionId == divisionOrigen.DivisionId);
+					foreach (var estudianteAsigando in estudiantesAsignados)
+					{
+						Grupos nuevaAsignacion = new Grupos();
+						nuevaAsignacion.CarreraId = divisionDestino.CarreraId;
+						nuevaAsignacion.ModoId  = divisionDestino.ModoId;
+						nuevaAsignacion.AnioInicio  = divisionDestino.AnioInicio;
+						nuevaAsignacion.MesInicio  = divisionDestino.MesInicio;
+						nuevaAsignacion.AnioLectivo = divisionDestino.AnioLectivo;
+						nuevaAsignacion.NmestreLectivo  = divisionDestino.NmestreLectivo;
+						nuevaAsignacion.TurnoId = divisionDestino.TurnoId;
+						nuevaAsignacion.DivisionId = divisionDestino.DivisionId;
+						nuevaAsignacion.AlumnoId = estudianteAsigando.AlumnoId;
+
+						db.Grupos.Add(nuevaAsignacion);
+					}
+					divisionOrigen.EstadoDivisionId="Terminado";
+					db.Divisiones.Update(divisionOrigen);
+					db.SaveChanges();
+
+					_logger.LogInformation("Promoción " + "--> Ok");
 				}
 			}
 			catch (System.Exception ex)

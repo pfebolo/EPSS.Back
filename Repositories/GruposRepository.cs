@@ -9,42 +9,43 @@ using System.Linq;
 
 namespace EPSS.Repositories
 {
-    //Extiende la Interfaz Génerica con métodos especificos del Modelo
-    public interface IGruposRepository: IRepository<Grupos>
-    {
-        IEnumerable<Grupos> FindByAlumnoId(int alumnoId);
-    }
-    public class GruposRepository: BaseRepositoryNew<Grupos>, IGruposRepository
-    {
+	//Extiende la Interfaz Génerica con métodos especificos del Modelo
+	public interface IGruposRepository : IRepository<Grupos>
+	{
+		IEnumerable<Grupos> FindByAlumnoId(int alumnoId);
+		void MasiveAdd(Grupos[] items);
+	}
+	public class GruposRepository : BaseRepositoryNew<Grupos>, IGruposRepository
+	{
 
-        public GruposRepository(ILoggerFactory loggerFactory) : base (loggerFactory){}
+		public GruposRepository(ILoggerFactory loggerFactory) : base(loggerFactory) { }
 
-        public override IEnumerable<Grupos> GetAll()
-        {
-          _list.Clear();
-          try
-          {
-            using (var db = new escuelapsdelsurContext())
-            {//
-              foreach (var Grupo in db.Grupos.Include(Grupo => Grupo.Division)
-                                                    .ThenInclude(Division => Division.Curso)
-                                                        .ThenInclude(Curso => Curso.Carrera)
-                                                .Include(Grupo => Grupo.Legajo)
-                                                    .ThenInclude(Legajo => Legajo.Alumno)
-                                                .Include(Grupo => Grupo.Legajo)
-                                                    .ThenInclude(Legajo => Legajo.EstadoEstudiante))
-                {
-                    _list.Add(Grupo);
-                }
-               _logger.LogInformation("Buscar Grupos --> OK");
-              }             
-          }
-            catch (System.Exception ex)
-          {
-            _logger.LogError(ex.Message);
-          }
-          return _list.AsReadOnly();
-        }
+		public override IEnumerable<Grupos> GetAll()
+		{
+			_list.Clear();
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{//
+					foreach (var Grupo in db.Grupos.Include(Grupo => Grupo.Division)
+														  .ThenInclude(Division => Division.Curso)
+															  .ThenInclude(Curso => Curso.Carrera)
+													  .Include(Grupo => Grupo.Legajo)
+														  .ThenInclude(Legajo => Legajo.Alumno)
+													  .Include(Grupo => Grupo.Legajo)
+														  .ThenInclude(Legajo => Legajo.EstadoEstudiante))
+					{
+						_list.Add(Grupo);
+					}
+					_logger.LogInformation("Buscar Grupos --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+			}
+			return _list.AsReadOnly();
+		}
 		public IEnumerable<Grupos> FindByAlumnoId(int AlumnoId)
 		{
 			List<Grupos> buscados = new List<Grupos>();
@@ -54,10 +55,10 @@ namespace EPSS.Repositories
 
 				{
 					foreach (var grupo in from gr in db.Grupos.Include(Grupo => Grupo.Division)
-													        .ThenInclude(Division => Division.Curso)
-														    .ThenInclude(Curso => Curso.Carrera)
-													 where gr.AlumnoId == AlumnoId
-													 select gr)
+															.ThenInclude(Division => Division.Curso)
+															.ThenInclude(Curso => Curso.Carrera)
+										  where gr.AlumnoId == AlumnoId
+										  select gr)
 					{
 						buscados.Add(grupo);
 					}
@@ -72,5 +73,26 @@ namespace EPSS.Repositories
 			return buscados.AsReadOnly();
 
 		}
-    }
+
+		public virtual void MasiveAdd(Grupos[] items)
+		{
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					foreach (Grupos item in items)
+					{
+						db.Grupos.Add(item);
+					}
+					db.SaveChanges();
+					_logger.LogInformation("Crear grupos masivo --> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
+	}
 }
