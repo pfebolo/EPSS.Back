@@ -118,7 +118,29 @@ namespace EPSS.Controllers
 			}
 		}
 
+		// PUT api/Divisiones/.../Egreso
+		[HttpPost("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}/Egreso")]
+		public IActionResult Egresar(int CarreraId, string ModoId, int AnioInicio, int MesInicio, int AnioLectivo, int NmestreLectivo, string TurnoId, string DivisionId)
+		{
+			try
+			{
+				var division = _repoExt.Find(CarreraId, ModoId, AnioInicio, MesInicio, AnioLectivo, NmestreLectivo, TurnoId, DivisionId);
 
+				if (division==null)
+					return NotFound();
+
+				_repoExt.Egresar(division);
+				return NoContent();
+			}
+			catch (Exception ex) when (ex is DbUpdateException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
 
 
 		[HttpDelete("{CarreraId}/{ModoId}/{AnioInicio}/{MesInicio}/{AnioLectivo}/{NmestreLectivo}/{TurnoId}/{DivisionId}")]
