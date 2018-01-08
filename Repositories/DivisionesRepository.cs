@@ -9,7 +9,33 @@ using System.Linq;
 
 namespace EPSS.Repositories
 {
-	public class DivisionesRepository : BaseRepositoryNew<Divisiones>
+	public class EstadoDivisionExpectedException : Exception
+	{
+		public EstadoDivisionExpectedException()
+		{
+		}
+
+		public EstadoDivisionExpectedException(string message)
+			: base(message)
+		{
+		}
+
+		public EstadoDivisionExpectedException(string message, Exception inner)
+			: base(message, inner)
+		{
+		}
+
+	}
+
+	//Extiende la Interfaz Génerica con métodos especificos del Modelo
+	public interface IDivisionesRepository : IRepository<Divisiones>
+	{
+		void Promover(Divisiones divisionOrigen, Divisiones divisiondestino);
+		void Egresar(Divisiones division);
+	}
+
+
+	public class DivisionesRepository : BaseRepositoryNew<Divisiones>, IDivisionesRepository
 	{
 
 		public DivisionesRepository(ILoggerFactory loggerFactory) : base(loggerFactory) { }
@@ -93,5 +119,93 @@ namespace EPSS.Repositories
 			}
 		}
 
+		public void Promover(Divisiones divisionOrigen, Divisiones divisionDestino)
+		{
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					var estudiantesAsignados = db.Grupos.Where(d => d.CarreraId == divisionOrigen.CarreraId
+														&& d.ModoId == divisionOrigen.ModoId
+														&& d.AnioInicio == divisionOrigen.AnioInicio
+														&& d.MesInicio == divisionOrigen.MesInicio
+														&& d.AnioLectivo == divisionOrigen.AnioLectivo
+														&& d.NmestreLectivo == divisionOrigen.NmestreLectivo
+														&& d.TurnoId == divisionOrigen.TurnoId
+														&& d.DivisionId == divisionOrigen.DivisionId);
+					foreach (var estudianteAsigando in estudiantesAsignados)
+					{
+						Grupos nuevaAsignacion = new Grupos();
+						nuevaAsignacion.CarreraId = divisionDestino.CarreraId;
+						nuevaAsignacion.ModoId = divisionDestino.ModoId;
+						nuevaAsignacion.AnioInicio = divisionDestino.AnioInicio;
+						nuevaAsignacion.MesInicio = divisionDestino.MesInicio;
+						nuevaAsignacion.AnioLectivo = divisionDestino.AnioLectivo;
+						nuevaAsignacion.NmestreLectivo = divisionDestino.NmestreLectivo;
+						nuevaAsignacion.TurnoId = divisionDestino.TurnoId;
+						nuevaAsignacion.DivisionId = divisionDestino.DivisionId;
+						nuevaAsignacion.AlumnoId = estudianteAsigando.AlumnoId;
+
+						db.Grupos.Add(nuevaAsignacion);
+					}
+					divisionOrigen.EstadoDivisionId = "Terminado";
+					db.Divisiones.Update(divisionOrigen);
+					db.SaveChanges();
+
+					_logger.LogInformation("Promoción " + "--> Ok");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
+
+		public void Egresar(Divisiones division)
+		{
+			try
+			{
+				if (division.EstadoDivisionId == EstadosDivision.Estados[(int)EstadoDivisionId.Cursando])
+				{
+					bool TerminarDivision = true;
+					using (var db = new escuelapsdelsurContext())
+					{
+						var estudiantesAsignados = db.Grupos.Include(g => g.Legajo).Where(d => d.CarreraId == division.CarreraId
+															&& d.ModoId == division.ModoId
+															&& d.AnioInicio == division.AnioInicio
+															&& d.MesInicio == division.MesInicio
+															&& d.AnioLectivo == division.AnioLectivo
+															&& d.NmestreLectivo == division.NmestreLectivo
+															&& d.TurnoId == division.TurnoId
+															&& d.DivisionId == division.DivisionId);
+						foreach (Grupos estudianteAsigando in estudiantesAsignados)
+						{
+							Legajos legajo = estudianteAsigando.Legajo;
+							if (legajo.EstadoEstudianteId == Enum.GetName(typeof(EstadoEstudianteId), EstadoEstudianteId.Activo))
+							{
+								legajo.EstadoEstudianteId = Enum.GetName(typeof(EstadoEstudianteId), EstadoEstudianteId.Egresado);
+								db.Legajos.Update(legajo);
+							}
+							TerminarDivision &= !(legajo.EstadoEstudianteId == Enum.GetName(typeof(EstadoEstudianteId), EstadoEstudianteId.Suspendido));
+						}
+						if (TerminarDivision)
+						{
+							division.EstadoDivisionId = EstadosDivision.Estados[(int)EstadoDivisionId.Terminado];
+							db.Divisiones.Update(division);
+						}
+						db.SaveChanges();
+						_logger.LogInformation("Egresar " + "--> Ok");
+					}
+				}
+				else
+					throw new EstadoDivisionExpectedException("Se esperaba el estado: " + EstadosDivision.Estados[(int)EstadoDivisionId.Cursando]);
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+		}
 	}
 }

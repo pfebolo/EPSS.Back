@@ -6,6 +6,13 @@ using System.Runtime.Serialization;
 
 namespace EPSS.Models
 {
+    public enum EstadoEstudianteId {
+        Activo,
+        Expulsado,
+        Abandonó,
+        Suspendido,
+        Egresado
+    }
     public partial class EstadosEstudiante
     {
         public EstadosEstudiante()
