@@ -169,7 +169,11 @@ namespace EPSS.Rules
 							legajo.DireccionCoordenadaInterna = inscripto[(int)inscriptoCampos.DireccionDepartamento].Trim() + ", " + inscripto[(int)inscriptoCampos.DireccionOtros].Trim();
 							legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
 							legajo.SecundarioCompletoOley25 = false;
-							legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
+							if (inscripto[(int)inscriptoCampos.Aclaracion].Trim() != "" )
+								if (legajo.Comentarios != null || legajo.Comentarios.Trim() == "")
+									legajo.Comentarios = legajo.Comentarios.Trim() +  " - " + inscripto[(int)inscriptoCampos.Aclaracion].Trim();
+								else
+									legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
 							int CPBase = 0;
 							int.TryParse(inscripto[(int)inscriptoCampos.DireccionCP].Trim(), out CPBase);
 							legajo.CodigoPostalBase = CPBase;
