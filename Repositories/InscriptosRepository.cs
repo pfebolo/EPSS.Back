@@ -124,8 +124,9 @@ namespace EPSS.Repositories
                             LegajoNuevo = new Legajos();
                             LegajoNuevo.AlumnoId = item.AlumnoId;
                             LegajoNuevo.LegajoNro = item.LegajoNro.Value;
-                            LegajoNuevo.Sexo = "Masculino";
-                            LegajoNuevo.FechaNacimiento = DateTime.Today;
+                            LegajoNuevo.Sexo = "Masculino"; //TODO: Según https://pfebolo.atlassian.net/browse/EPSS0-112
+                            LegajoNuevo.FechaNacimiento = null;
+                            LegajoNuevo.FechaIngreso  = DateTime.Today;
                             dniok = 0;
                             int.TryParse(item.Dni, out dniok);
                             LegajoNuevo.Dni = dniok;
