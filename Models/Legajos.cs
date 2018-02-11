@@ -13,6 +13,7 @@ namespace EPSS.Models
             Estudios = new HashSet<Estudios>();
             Trabajos = new HashSet<Trabajos>();
             Grupos = new HashSet<Grupos>();
+            Interacciones = new HashSet<Interacciones>();
         }
 
         [Column("AlumnoID")]
@@ -127,5 +128,9 @@ namespace EPSS.Models
         [IgnoreDataMember]
         [InverseProperty("Legajo")]
         public virtual ICollection<Grupos> Grupos { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Legajo")]
+        public virtual ICollection<Interacciones> Interacciones { get; set; }
     }
 }

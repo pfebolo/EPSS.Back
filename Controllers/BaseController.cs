@@ -37,14 +37,24 @@ namespace EPSS.Controllers
 		[HttpPost]
 		public virtual IActionResult Create([FromBody] Model item)
 		{
-			if (item == null)
-			{
-				return BadRequest();
+			try {
+				if (item == null)
+				{
+					return BadRequest();
+				}
+				_repo.Add(item);
+				//TODO: Crear un resultado con la ruta (route path) generico
+				//return CreatedAtRoute("GetModel", new { controller = "Model", id = 1 }, item);
+				return Utils.ResponseCreated(); //No devuelve la ruta
 			}
-			_repo.Add(item);
-			//TODO: Crear un resultado con la ruta (route path) generico
-			//return CreatedAtRoute("GetModel", new { controller = "Model", id = 1 }, item);
-			return Utils.ResponseCreated(); //No devuelve la ruta
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
 		}
 
 		[HttpPut]
