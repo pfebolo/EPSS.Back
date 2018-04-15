@@ -43,7 +43,7 @@ mv Models/ Models.ORI
 * 'scaffoldear' con las tablas nuevas
   * __*Comando*__:  
 ```
-dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t EstadosEstudiante -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Dispositivos -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
+dotnet ef dbContext scaffold "Data Source=192.168.1.41;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;Database=escuelapsdelsur;User Id=sa;Password=sasasasa;" Microsoft.EntityFrameworkCore.SqlServer -d -c escuelapsdelsurContext -t Paises -t Provincias -t Partidos -t CodigosPostales -t Localidades -t lugares -t eventos -t modalidades -t Carreras -t MediosDeContacto -t interesados -t interesados_eventos -t EstadosEstudiante -t alumnos -t Legajos -t NivelesEstudios -t Estudios -t Interacciones -t Modos -t EstadosDivision -t Cursos -t Turnos -t Divisiones -t Coordinadores -t Dispositivos -t Grupos -t Coordinaciones -t Coordinacion -t Trabajos -o Models -f
 ```
 * Comparar carpeta vieja con la nueva
 ```

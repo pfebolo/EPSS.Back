@@ -19,6 +19,7 @@ namespace EPSS.Models
         public virtual DbSet<Estudios> Estudios { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
+        public virtual DbSet<Interacciones> Interacciones { get; set; }
         public virtual DbSet<Interesados> Interesados { get; set; }
         public virtual DbSet<InteresadosEventos> InteresadosEventos { get; set; }
         public virtual DbSet<Legajos> Legajos { get; set; }
@@ -99,6 +100,12 @@ namespace EPSS.Models
             {
                 entity.HasKey(e => new { e.CarreraId, e.ModoId, e.AnioInicio, e.MesInicio, e.AnioLectivo, e.NmestreLectivo, e.TurnoId, e.DivisionId, e.AlumnoId })
                     .HasName("PK_Grupos");
+            });
+
+            modelBuilder.Entity<Interacciones>(entity =>
+            {
+                entity.HasKey(e => new { e.AlumnoId, e.InteraccionId })
+                    .HasName("PK_Interacciones");
             });
 
             modelBuilder.Entity<Interesados>(entity =>
