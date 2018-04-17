@@ -28,12 +28,14 @@ namespace EPSS.Repositories
 				using (var db = new escuelapsdelsurContext())
 				{//
 					foreach (var Grupo in db.Grupos.Include(Grupo => Grupo.Division)
-														  .ThenInclude(Division => Division.Curso)
-															  .ThenInclude(Curso => Curso.Carrera)
-													  .Include(Grupo => Grupo.Legajo)
+														.ThenInclude(Division => Division.Curso)
+															.ThenInclude(Curso => Curso.Carrera)
+													.Include(Grupo => Grupo.Legajo)
 														  .ThenInclude(Legajo => Legajo.Alumno)
-													  .Include(Grupo => Grupo.Legajo)
-														  .ThenInclude(Legajo => Legajo.EstadoEstudiante))
+													.Include(Grupo => Grupo.Legajo)
+														  .ThenInclude(Legajo => Legajo.EstadoEstudiante)
+													.Include(Grupo => Grupo.Legajo)
+														  .ThenInclude(Legajo => Legajo.Estudios))
 					{
 						_list.Add(Grupo);
 					}
