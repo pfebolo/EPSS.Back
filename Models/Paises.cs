@@ -9,6 +9,7 @@ namespace EPSS.Models
     {
         public Paises()
         {
+            Alumnos = new HashSet<Alumnos>();
             CodigosPostales = new HashSet<CodigosPostales>();
             Provincias = new HashSet<Provincias>();
         }
@@ -23,6 +24,8 @@ namespace EPSS.Models
         public string DescripcionPoliticaNivel3 { get; set; }
         [Column(TypeName = "nchar(10)")]
         public string PatronCodigoPostal { get; set; }
+        [MaxLength(50)]
+        public string Nacionalidad { get; set; }
 
         [IgnoreDataMember]
         [InverseProperty("Pais")]
@@ -31,5 +34,9 @@ namespace EPSS.Models
         [IgnoreDataMember]
         [InverseProperty("Pais")]
         public virtual ICollection<Provincias> Provincias { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Nacionalidad")]
+        public virtual ICollection<Alumnos> Alumnos { get; set; }
     }
 }

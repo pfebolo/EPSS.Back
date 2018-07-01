@@ -66,6 +66,9 @@ namespace EPSS.Models
         [Column("CarreraID")]
         public int CarreraId { get; set; }
         public int? MedioDeContactoId { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string NacionalidadId { get; set; }
 
         
         [IgnoreDataMember]
@@ -83,5 +86,9 @@ namespace EPSS.Models
         [ForeignKey("ModalidadId")]
         [InverseProperty("Alumnos")]
         public virtual Modalidades Modalidad { get; set; }
+
+        [ForeignKey("NacionalidadId")]
+        [InverseProperty("Alumnos")]
+        public virtual Paises Nacionalidad { get; set; }
     }
 }
