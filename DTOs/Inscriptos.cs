@@ -37,6 +37,8 @@ namespace EPSS.DTOs
         public DateTime? docCompromiso  { get; set; }
         public int? LegajoNro { get; set; }
         public int? MedioDeContactoId { get; set; }
+        public virtual Paises Nacionalidad { get; set; }
+        
 
 
         [ForeignKey("MedioDeContactoId")]
