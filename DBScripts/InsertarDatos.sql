@@ -15,6 +15,7 @@ Insert into Paises Values ('Uruguay',null,null,null,'Uruguaya/o');
 Insert into Paises Values ('Paraguay',null,null,null,'Paraguaya/o');
 Insert into Paises Values ('Panama',null,null,null,'Panameña/o');
 Insert into Paises Values ('Brasil',null,null,null,'Brasileña/o');
+Insert into Paises Values ('NacionesUnidas',null,null,null,'Otra');
 
 COMMIT
 GO

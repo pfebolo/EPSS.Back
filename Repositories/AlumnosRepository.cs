@@ -69,7 +69,7 @@ namespace EPSS.Repositories
                     // AlumnoNuevo.DocFoto = item.DocFoto;
                     // AlumnoNuevo.DocCompromiso = item.DocCompromiso;
                     int idInteresado = item.AlumnoId;
-                    item.AlumnoId+=50000; //Numero magico para que no colisione con sistema anterior
+                    item.AlumnoId+=50000; //Número mágico para que no colisione con sistema anterior.
                     item.Mail2="Enviar"; //Marca el envio de E-mail de bienvenida y completado de cuestionario.
                     db.Alumnos.Add(item);
                     //Borrar Interesados
@@ -113,9 +113,10 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    foreach (var Alumno in db.Alumnos.Include(a => a.Modalidad)
+                    foreach (var Alumno in db.Alumnos.Include(Alumno => Alumno.Modalidad)
                                                      .Include(Alumno => Alumno.Carrera)
-                                                     .Include(Alumno => Alumno.MedioDeContacto))
+                                                     .Include(Alumno => Alumno.MedioDeContacto)
+                                                     .Include(Alumno => Alumno.Nacionalidad))
                     {
                         _list.Add(Alumno);
                     }
