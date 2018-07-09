@@ -43,6 +43,8 @@ namespace EPSS.Models
 
 
                 entity.Property(e => e.CarreraId).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.NacionalidadId).HasDefaultValueSql("N'Argentina'");
             });
 
             modelBuilder.Entity<Carreras>(entity =>

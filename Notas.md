@@ -137,3 +137,10 @@ export ASPNETCORE_ENVIRONMENT=Development
 ### Script de DB (SQLCMD)
 > ref: https://technet.microsoft.com/es-es/library/ms165702(v=sql.105).aspx
 
+### .NET Core vs ASP.NET Core
+Básicamente NET Cores es el framework base para cualquier aplicación '.NET Core', que es multiplataforma
+ASP.NET Core son librerias adicionales que permite crear aplicaciones tio ASP.NET pero usando el framework 
+NET core a diferencia de usar el .NET framework (tradional) que solose ejecuta en windows.
+
+![Diagrama gral de Frameworks](NETCore.png)
+> ref: [Diagrama gral de Frameworks](https://www.hanselman.com/blog/ASPNET5IsDeadIntroducingASPNETCore10AndNETCore10.aspx).
