@@ -170,7 +170,7 @@ namespace EPSS.Rules
 							legajo.LocalidadBase = inscripto[(int)inscriptoCampos.DireccionLocalidad].Trim();
 							legajo.SecundarioCompletoOley25 = false;
 							if (inscripto[(int)inscriptoCampos.Aclaracion].Trim() != "" )
-								if (legajo.Comentarios != null || legajo.Comentarios.Trim() == "")
+								if (legajo.Comentarios != null && legajo.Comentarios.Trim() != "")
 									legajo.Comentarios = legajo.Comentarios.Trim() +  " - " + inscripto[(int)inscriptoCampos.Aclaracion].Trim();
 								else
 									legajo.Comentarios = inscripto[(int)inscriptoCampos.Aclaracion].Trim();
@@ -256,11 +256,13 @@ namespace EPSS.Rules
 						catch (System.Exception ex)
 						{
 							dbContextTransaction.Rollback();
-							//Rollback del Contexto
-							DbContextHelper dbHelper = new DbContextHelper(db);
-							dbHelper.tableRollback<Estudios>(legajo.Estudios);
-							dbHelper.tableRollback<Trabajos>(legajo.Trabajos);
-							dbHelper.entryRollback(legajo);
+							if (legajo != null) {
+								//Rollback del Contexto
+								DbContextHelper dbHelper = new DbContextHelper(db);
+								dbHelper.tableRollback<Estudios>(legajo.Estudios);
+								dbHelper.tableRollback<Trabajos>(legajo.Trabajos);
+								dbHelper.entryRollback(legajo);
+							}
 							_logger.LogError(new EventId(), ex, null);
 							_inscriptosEncontradosNoOK += 1;
 						}
