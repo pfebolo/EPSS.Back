@@ -9,3 +9,5 @@ appsettings.Development.json
 *.pdf
 DBScripts/backUpDB.bat
 DBScripts/restoreDB.bat
+
+Dockerfile
