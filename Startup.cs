@@ -45,7 +45,8 @@ namespace EPSS
             services.AddSingleton<IRepository<Models.EstadosDivision>, BaseRepositoryNew<Models.EstadosDivision>>();
             services.AddSingleton<IRepository<Models.Dispositivos>, BaseRepositoryNew<Models.Dispositivos>>();
             services.AddSingleton<IRepository<Models.EstadosEstudiante>, BaseRepositoryNew<Models.EstadosEstudiante>>();
-            
+            services.AddSingleton<IRepository<Models.InteraccionesInteresados>, BaseRepositoryNew<Models.InteraccionesInteresados>>();
+
 
             //Interface de Repositorio Genérica extendidas
             services.AddSingleton<IGruposRepository, GruposRepository>();
