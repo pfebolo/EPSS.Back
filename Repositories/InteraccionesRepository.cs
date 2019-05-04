@@ -10,11 +10,11 @@ using System.Linq;
 namespace EPSS.Repositories
 {
 	//Extiende la Interfaz Génerica con métodos especificos del Modelo
-	public interface IIntereaccionesRepository : IRepository<Interacciones>
+	public interface IInteraccionesRepository : IRepository<Interacciones>
 	{
 		IEnumerable<Interacciones> FindByAlumnoId(int alumnoId);
 	}
-	public class InteraccionesRepository : BaseRepositoryNew<Interacciones>, IIntereaccionesRepository 
+	public class InteraccionesRepository : BaseRepositoryNew<Interacciones>, IInteraccionesRepository 
 	{
 
 		public InteraccionesRepository(ILoggerFactory loggerFactory) : base(loggerFactory) { }

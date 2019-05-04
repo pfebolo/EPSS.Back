@@ -9,9 +9,9 @@ namespace EPSS.Controllers
 	[Route("api/[controller]")]
 	public class InteraccionesController : BaseController<Interacciones>
 	{
-		protected IIntereaccionesRepository _repoExt;
+		protected IInteraccionesRepository _repoExt;
 		public InteraccionesController(IRepository<Interacciones> repo) : base(repo) { 
-			_repoExt = (IIntereaccionesRepository)_repo; //Se asigna con el CAST necesario para acceder a los métodos extendidos.
+			_repoExt = (IInteraccionesRepository)_repo; //Se asigna con el CAST necesario para acceder a los métodos extendidos.
 		}
 
 		[HttpGet("{AlumnoId}/{InteraccionId}", Name = "GetInteraccionXId")]
@@ -26,7 +26,7 @@ namespace EPSS.Controllers
 			return base.Delete(new Object[] { AlumnoId, InteraccionId });
 		}
 
-		[HttpGet("byAlumno/{AlumnoId}", Name = "GetIntereaccionesByAlumno")]
+		[HttpGet("byAlumno/{AlumnoId}", Name = "GetInteraccionesByAlumno")]
 		public IEnumerable<Interacciones> GetByAlumnoId(int AlumnoId)
 		{
 			return _repoExt.FindByAlumnoId(AlumnoId);
