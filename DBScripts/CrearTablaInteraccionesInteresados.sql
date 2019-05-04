@@ -2,7 +2,7 @@
 USE [escuelapsdelsur]
 GO
 
-/****** Object:  Table [dbo].[InteraccionesInteresados]    Script Date: 04/28/2019 20:19:19 ******/
+/****** Object:  Table [dbo].[InteraccionesInteresados]    Script Date: 05/04/2019 17:29:49 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -31,11 +31,5 @@ GO
 ALTER TABLE [dbo].[InteraccionesInteresados] CHECK CONSTRAINT [FK_InteraccionesInteresados_InteraccionesInteresados]
 GO
 
-ALTER TABLE [dbo].[InteraccionesInteresados]  WITH CHECK ADD  CONSTRAINT [FK_InteraccionesInteresados_interesados] FOREIGN KEY([InteresadoId])
-REFERENCES [dbo].[interesados] ([id])
-GO
-
-ALTER TABLE [dbo].[InteraccionesInteresados] CHECK CONSTRAINT [FK_InteraccionesInteresados_interesados]
-GO
 
 
