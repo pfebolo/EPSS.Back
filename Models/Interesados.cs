@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace EPSS.Models
 {
@@ -55,12 +56,18 @@ namespace EPSS.Models
         [InverseProperty("Interesados")]
         public virtual Carreras Carrera { get; set; }
         
-        [ForeignKey("MedioDeContactoId")]	
+        [ForeignKey("MedioDeContactoId")]
         [InverseProperty("Interesados")]
         public virtual MediosDeContacto MedioDeContacto { get; set; }
 
         [ForeignKey("ModalidadId")]
         [InverseProperty("Interesados")]
         public virtual Modalidades Modalidad { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Interesado")]
+        public virtual ICollection<InteraccionesInteresados> InteraccionesInteresados { get; set; }
+
+
     }
 }
