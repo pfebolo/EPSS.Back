@@ -95,7 +95,11 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    AlumnoBuscado =  db.Alumnos.Find(id);
+                    Alumnos ItemBuscado =  db.Alumnos.Find(id);
+                    if (ItemBuscado != null && !ItemBuscado.EstaBorrado)
+                        AlumnoBuscado=ItemBuscado;
+                    else
+					    _logger.LogInformation("AlumnoID: " + id.ToString() + " --> EstaBorrado");
                     _logger.LogInformation("Buscar AlumnoId: " + id.ToString() + " --> OK");
                 }
             }
@@ -113,10 +117,12 @@ namespace EPSS.Repositories
             {
                 using (var db = new escuelapsdelsurContext())
                 {
-                    foreach (var Alumno in db.Alumnos.Include(Alumno => Alumno.Modalidad)
+                    foreach (var Alumno in from ie in db.Alumnos.Include(Alumno => Alumno.Modalidad)
                                                      .Include(Alumno => Alumno.Carrera)
                                                      .Include(Alumno => Alumno.MedioDeContacto)
-                                                     .Include(Alumno => Alumno.Nacionalidad))
+                                                     .Include(Alumno => Alumno.Nacionalidad)
+                                                     where ie.EstaBorrado == false
+                                                     select ie)
                     {
                         _list.Add(Alumno);
                     }
