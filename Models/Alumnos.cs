@@ -69,6 +69,7 @@ namespace EPSS.Models
         [Required]
         [MaxLength(50)]
         public string NacionalidadId { get; set; }
+        public bool EstaBorrado { get; set; }
 
         
         [IgnoreDataMember]
