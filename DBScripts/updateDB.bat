@@ -1,5 +1,5 @@
 chcp 65001
-Rem Crea Tabla
-sqlcmd -f 65001 -i CrearTablaInteraccionesInteresados.sql
+Rem Agrega campo EstaBorrado
+sqlcmd -f 65001 -i CambiarAlumnos.sql
 
 

@@ -3,6 +3,7 @@ using System;
 using EPSS.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 
 namespace EPSS.Repositories
 {
@@ -38,7 +39,11 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-					ItemBuscado = db.Legajos.Find(id);
+					Alumnos AlumnoBuscado = db.Alumnos.Find(id);
+					if (AlumnoBuscado != null && !AlumnoBuscado.EstaBorrado)
+						ItemBuscado = db.Legajos.Find(id);
+					else
+						_logger.LogInformation("AlumnoID: " + id.ToString() + " --> EstaBorrado");
 					_logger.LogInformation("Buscar LegajoId: " + id.ToString() + " --> OK");
 				}
 			}
@@ -57,7 +62,7 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-					foreach (var Legajo in db.Legajos
+					foreach (var Legajo in from ie in db.Legajos
 											  .Include(Legajo => Legajo.Alumno)
 												  .ThenInclude(Alumno => Alumno.Modalidad)
 											  .Include(Legajo => Legajo.Alumno)
@@ -72,7 +77,9 @@ namespace EPSS.Repositories
 												  .ThenInclude(Localidad => Localidad.Partido)
 											  .Include(Legajo => Legajo.Estudios)
 											  .Include(Legajo => Legajo.Trabajos)
-											  .Include(Legajo => Legajo.EstadoEstudiante))
+											  .Include(Legajo => Legajo.EstadoEstudiante)
+											  where ie.Alumno.EstaBorrado == false
+											  select ie)
 					{
 						_list.Add(Legajo);
 					}
