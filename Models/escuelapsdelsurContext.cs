@@ -45,6 +45,8 @@ namespace EPSS.Models
 
                 entity.Property(e => e.CarreraId).HasDefaultValueSql("'0'");
 
+                entity.Property(e => e.EstaBorrado).HasDefaultValueSql("0");
+
                 entity.Property(e => e.NacionalidadId).HasDefaultValueSql("N'Argentina'");
             });
 
@@ -68,6 +70,8 @@ namespace EPSS.Models
             modelBuilder.Entity<Coordinadores>(entity =>
             {
                 entity.Property(e => e.CoordinadorId).ValueGeneratedNever();
+
+                entity.Property(e => e.Activo).HasDefaultValueSql("1");
             });
 
             modelBuilder.Entity<Cursos>(entity =>
@@ -119,6 +123,8 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Interesados>(entity =>
             {
+                entity.Property(e => e.FechaActualizacion).HasDefaultValueSql("getdate()");
+
                 entity.Property(e => e.Seguimiento).HasDefaultValueSql("0");
             });
 
