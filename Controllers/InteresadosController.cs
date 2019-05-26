@@ -51,6 +51,7 @@ namespace EPSS.Controllers
             }
             try
             {
+                item.FechaActualizacion = DateTimeOffset.Now;
                 _repo.Add(item);
                 return CreatedAtRoute("GetInteresados", new { controller = "Interesados", Id = item.InteresadoId }, item);
             }
@@ -92,6 +93,7 @@ namespace EPSS.Controllers
                 return NotFound();
             try
             {
+                item.FechaActualizacion = DateTimeOffset.Now;
                 _repo.Update(item);
                 return NoContent();
             }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -51,6 +51,7 @@ namespace EPSS.Models
         public bool Seguimiento { get; set; }
         [Column("MedioDeContactoID")]
         public int? MedioDeContactoId { get; set; }
+        public DateTimeOffset FechaActualizacion { get; set; }
 
         [ForeignKey("CarreraId")]
         [InverseProperty("Interesados")]
