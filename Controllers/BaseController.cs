@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using EPSS.Models;
 using EPSS.Repositories;
 using System;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +14,6 @@ namespace EPSS.Controllers
 		{
 			this._repo = repo;
 		}
-
 
 		[HttpGet]
 		public IEnumerable<Model> GetAll()
@@ -34,10 +32,18 @@ namespace EPSS.Controllers
 			return new ObjectResult(item);
 		}
 
+		[HttpGet("{id}")]
+		public virtual IActionResult GetById(int id)
+		{
+			return GetById(new Object[] { id });
+		}
+
+
 		[HttpPost]
 		public virtual IActionResult Create([FromBody] Model item)
 		{
-			try {
+			try
+			{
 				if (item == null)
 				{
 					return BadRequest();
@@ -95,7 +101,13 @@ namespace EPSS.Controllers
 			catch (System.Exception ex)
 			{
 				return Utils.ResponseInternalError(ex);
-			}			
+			}
+		}
+
+		[HttpDelete("{id}")]
+		public virtual IActionResult Delete(int id)
+		{
+			return Delete(new Object[] { id });
 		}
 	}
 }
