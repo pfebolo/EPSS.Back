@@ -69,8 +69,6 @@ namespace EPSS.Models
 
             modelBuilder.Entity<Coordinadores>(entity =>
             {
-                entity.Property(e => e.CoordinadorId).ValueGeneratedNever();
-
                 entity.Property(e => e.Activo).HasDefaultValueSql("1");
             });
 
