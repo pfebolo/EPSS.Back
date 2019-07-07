@@ -180,6 +180,7 @@ namespace EPSS.Repositories
                     interesado.Turno = item.Turno;
                     interesado.Seguimiento = false;
                     interesado.MedioDeContactoId = 12; //TODO: Este dato se pierde ¿?
+                    interesado.FechaActualizacion = DateTimeOffset.Now;
                     db.Remove(item);
                     db.Interesados.Add(interesado);
                     db.SaveChanges();
