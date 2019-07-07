@@ -1,11 +1,7 @@
 using System.Collections.Generic;
-using System;
 using EPSS.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-
-
 namespace EPSS.Repositories
 {
     public class CursosRepository: BaseRepositoryNew<Cursos>
