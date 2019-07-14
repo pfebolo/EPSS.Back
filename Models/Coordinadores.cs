@@ -11,6 +11,7 @@ namespace EPSS.Models
         public Coordinadores()
         {
             Coordinaciones = new HashSet<Coordinaciones>();
+            Informes = new HashSet<Informes>();
         }
 
         [Column("CoordinadorID")]
@@ -33,5 +34,9 @@ namespace EPSS.Models
         [IgnoreDataMember]
         [InverseProperty("Coordinador")]
         public virtual ICollection<Coordinaciones> Coordinaciones { get; set; }
+
+        [IgnoreDataMember]
+        [InverseProperty("Coordinador")]
+        public virtual ICollection<Informes> Informes { get; set; }
     }
 }
