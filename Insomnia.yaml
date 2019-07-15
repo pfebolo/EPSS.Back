@@ -1,0 +1,2934 @@
+_type: export
+__export_format: 4
+__export_date: 2019-07-15T00:07:07.781Z
+__export_source: insomnia.desktop.app:v6.5.4
+resources:
+  - _id: req_f1a503884d6f4763a83f0f221e13a4ab
+    authentication: {}
+    body: {}
+    created: 1530478425191
+    description: |-
+      **Get Paises**  
+      Obtiene todos los todos los registros de los _Paises_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471594.75
+    method: GET
+    modified: 1554060140982
+    name: Paises
+    parameters: []
+    parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/paises
+    _type: request
+  - _id: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    created: 1506986000086
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051785
+    modified: 1506986003509
+    name: Enumerados
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: fld_3342fd78b1564038b08a55009b0fba2f
+    created: 1506301020056
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506301020056
+    modified: 1506301126045
+    name: Modelo Grupos
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: wrk_dc37dfab6101490e87aeb2d147816d7e
+    created: 1499530186678
+    description: |-
+      **EPPS Validador Rest**
+      API REST del proyecto EPSS
+    modified: 1563149037289
+    name: EPSS
+    parentId: null
+    _type: workspace
+  - _id: req_72fff5a1e87b404faf4a626552c2a127
+    authentication: {}
+    body: {}
+    created: 1506787554097
+    description: |-
+      **Get EstadosDivision**  
+      Obtiene todos los todos los registros de las _estadosDivision_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471569.75
+    method: GET
+    modified: 1506986027183
+    name: EstadosDivision
+    parameters: []
+    parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/estadosDivision
+    _type: request
+  - _id: req_f29ca2aad0e9422fa99d09aa74926247
+    authentication: {}
+    body: {}
+    created: 1506301924908
+    description: |-
+      **Get Modos**  
+      Obtiene todos los todos los registros de las _modos_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471519.75
+    method: GET
+    modified: 1506986012190
+    name: Modos
+    parameters: []
+    parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: false
+    url: http://localhost:5000/api/modos
+    _type: request
+  - _id: req_3253618124a9409383f66cfc75f6c7bb
+    authentication: {}
+    body: {}
+    created: 1506302170634
+    description: |-
+      **Get Turnos**  
+      Obtiene todos los todos los registros de las _Turnos_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471494.75
+    method: GET
+    modified: 1506986023989
+    name: Turnos
+    parameters: []
+    parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: false
+    url: http://localhost:5000/api/turnos
+    _type: request
+  - _id: req_dbabac2b226e4dc98e0a260b9138c422
+    authentication: {}
+    body: {}
+    created: 1512832177986
+    description: |-
+      **Get EstadosEstudiante**  
+      Obtiene todos los todos los registros de los _EstadosEstudiante_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471463.5
+    method: GET
+    modified: 1512832222294
+    name: EstadosEstudiante
+    parameters: []
+    parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/EstadosEstudiante
+    _type: request
+  - _id: req_efe6ea85201a42a09469751036a4701e
+    authentication: {}
+    body: {}
+    created: 1506301715288
+    description: |-
+      **Get Carreras**  
+      Obtiene todos los todos los registros de las _carreras_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471619.75
+    method: GET
+    modified: 1563147418632
+    name: Carreras
+    parameters: []
+    parentId: fld_885e3104af324a70945f4f0a0ca72f4d
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/carreras
+    _type: request
+  - _id: fld_885e3104af324a70945f4f0a0ca72f4d
+    created: 1563147415156
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051772.5
+    modified: 1563147427808
+    name: Carreras
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_dad94c396898486bb03d9c1fb44673b8
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-2
+          {
+            "carreraId": 2,
+            "descripcion": "Cursos de Capacitaciòn y perfeccionamiento",
+            "resolucion": null
+          }
+    created: 1558281530652
+    description: |-
+      **Get Carreras**  
+      Obtiene todos los todos los registros de las _carreras_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_60d53e1685a344e99f7ebfe90bebddd3
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471569.75
+    method: POST
+    modified: 1563147422677
+    name: Carreras (Copy)
+    parameters: []
+    parentId: fld_885e3104af324a70945f4f0a0ca72f4d
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/carreras
+    _type: request
+  - _id: req_894119fd5e12402fb1b7c8398493ce35
+    authentication: {}
+    body: {}
+    created: 1506262438481
+    description: |-
+      **Get Coordinaciones**  
+      Obtiene todos los todos los registros de los _Coordinaciones_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471444.75
+    method: GET
+    modified: 1506991255492
+    name: Coordinaciones
+    parameters: []
+    parentId: fld_6af63e8d9c534151844c64ab6969bbe3
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Coordinaciones
+    _type: request
+  - _id: fld_6af63e8d9c534151844c64ab6969bbe3
+    created: 1506986080681
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051766.25
+    modified: 1563147466812
+    name: Coordinaciones
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_f73e6bdce6ac485e98212db021dc4744
+    authentication: {}
+    body: {}
+    created: 1506988898924
+    description: |-
+      **Get Coordinacion**  
+      Obtiene una  _Coordinacion_
+
+      Ejemplo de clave Primaria:  
+      ```
+      	"carreraId": 0,  
+      	"modoId": "Presencial",  
+      	"anioInicio": 2015,  
+      	"anioLectivo": 1,  
+      	"nmestreLectivo": 1,  
+      	"turnoId": "Mañana",  
+      	"divisionId": "B",  
+      	"coordinadorId": 4,  
+      ```	
+      /api/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4
+      > Deben _Encodearse_ los carcteres especiales  
+      > Mañana --> Ma%C3%B1ana
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471419.75
+    method: GET
+    modified: 1509310003523
+    name: Coordinacion
+    parameters: []
+    parentId: fld_6af63e8d9c534151844c64ab6969bbe3
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4
+    _type: request
+  - _id: req_af7da12b462740cd9ef3027999c08708
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2015,
+        		"mesInicio": 1,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B",
+        		"coordinadorId": 4,
+        		"dispositivoId": "Operativo",
+        		"comentario": "Coordinación Insertada Via API"
+        	}
+    created: 1506986080692
+    description: |-
+      **Agregar Divisions**  
+      Crea (da de alta) una _division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_314b463de88a41d09d64db2d8137a95d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471392.4062
+    method: POST
+    modified: 1509309514973
+    name: Agregar Coordinacion
+    parameters: []
+    parentId: fld_6af63e8d9c534151844c64ab6969bbe3
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinaciones
+    _type: request
+  - _id: req_b52739fcdea04ece843d07904520acf7
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2015,
+        		"mesInicio": 1,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B",
+        		"coordinadorId": 4,
+        		"dispositivoId": "Taller",
+        		"comentario": "Coordinación Insertada Via API"
+        	}
+    created: 1506986080701
+    description: |-
+      **Modificar División**  
+      Modificar uno o mas atributos de  _division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_314b463de88a41d09d64db2d8137a95d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471391.2344
+    method: PUT
+    modified: 1509309549747
+    name: Modificar Coordinación
+    parameters: []
+    parentId: fld_6af63e8d9c534151844c64ab6969bbe3
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Coordinaciones
+    _type: request
+  - _id: req_5a1cdf4daac34cba9ba4ebcbbecff9ae
+    authentication: {}
+    body: {}
+    created: 1506991622602
+    description: |
+      **Borrar Coordinacion**  
+      Borra una _Coordinacion_
+
+      Ejemplo de clave Primaria:  
+      ``` 
+          "carreraId": 0,  
+          "modoId": "Presencial",  
+          "anioInicio": 2015,  
+          "anioLectivo": 1,  
+          "nmestreLectivo": 1,  
+          "turnoId": "Mañana",  
+          "divisionId": "B",  
+          "coordinadorId": 4, 
+      ```		
+      api/Coordinaciones/0/A Distancia/2017080202/Virtual/F/1		
+      > Deben _encodearse_ los caracteres especiales  
+      > A Distancia --> A%20Distancia
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471341.2344
+    method: DELETE
+    modified: 1509310146366
+    name: Borrar Coordinacion
+    parameters: []
+    parentId: fld_6af63e8d9c534151844c64ab6969bbe3
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4
+    _type: request
+  - _id: req_e561d4c4cf7542caa5a21f16ad85edee
+    authentication: {}
+    body: {}
+    created: 1505664878500
+    description: |-
+      **Get Coordinadores**  
+      Obtiene todos los todos los registros de los _coordinadores_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471444.75
+    method: GET
+    modified: 1560812605217
+    name: Coordinadores
+    parameters: []
+    parentId: fld_63494d0adce142c6a2361c1f94f3090c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinadores
+    _type: request
+  - _id: fld_63494d0adce142c6a2361c1f94f3090c
+    created: 1509199110496
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051760
+    modified: 1509199117344
+    name: Coordinadores
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_fd5ae54d7f664594aa8168598553e994
+    authentication: {}
+    body: {}
+    created: 1560815539309
+    description: |-
+      **Get Coordinador Por Id**  
+      Obtiene una _coordinadores_ específica
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471441.625
+    method: GET
+    modified: 1560990038755
+    name: Coordinador By id
+    parameters: []
+    parentId: fld_63494d0adce142c6a2361c1f94f3090c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinadores/29
+    _type: request
+  - _id: req_eb3e4969a00f4944964be8cf36b1ae40
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-2
+          {
+            "nombre": "Febolo, Pablo alberto",
+            "fotoPath": "img/persona.png",
+            "telefonoFijo": 1142229225,
+            "telefonoCelular": 1134019225,
+            "email": "pfebolo@yahoo.com",
+            "comentarios": "Nuevo",
+            "activo": true
+          }
+    created: 1560812664633
+    description: |-
+      **Add Coordinador	**  
+      Agregar (dar de alta) un _coordinador_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_4dfe55a4b5ab4c7da0c6b17b74c40624
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471438.5
+    method: POST
+    modified: 1562443038197
+    name: Agregar Coordinador
+    parameters: []
+    parentId: fld_63494d0adce142c6a2361c1f94f3090c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinadores
+    _type: request
+  - _id: req_196e294d93bf40afb53c2ab49a16b9ee
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-2
+          {
+            "coordinadorId": 30,
+            "nombre": "PAEZ, Diana Lia",
+            "fotoPath": "img/fotos/PaezDiana.png",
+            "telefonoFijo": 21319823.0,
+            "telefonoCelular": 1553390447.0,
+            "email": "dianapaez77@hotmail.com",
+            "comentarios": "otra modificacion",
+            "activo": true
+          }
+    created: 1560809883022
+    description: |-
+      **Put Coordinadores**  
+      Modifica un registro de _coordinadores_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_6f0f3561785c4616919a1b290b0ad8ff
+        name: Content-Type
+        value: application/json
+      - id: pair_fa993ff8936c49baa16651a458e22179
+        name: ""
+        value: ""
+    isPrivate: false
+    metaSortKey: -1505664471432.25
+    method: PUT
+    modified: 1562458259601
+    name: Modificar Coordinador
+    parameters: []
+    parentId: fld_63494d0adce142c6a2361c1f94f3090c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinadores
+    _type: request
+  - _id: req_0421b55818694a05816a3633c87f37b5
+    authentication: {}
+    body: {}
+    created: 1560813848879
+    description: |+
+      **Borrar Coordinador**  
+      Borrar una _coordinadora_ (sin dependencias)
+
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471382.25
+    method: DELETE
+    modified: 1562458267051
+    name: Borrar Coordinador
+    parameters: []
+    parentId: fld_63494d0adce142c6a2361c1f94f3090c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/coordinadores/30
+    _type: request
+  - _id: req_3a63ab6f5dba428a8bd91df87b113f23
+    authentication: {}
+    body: {}
+    created: 1506301154257
+    description: |-
+      **Get CursosXxx**  
+      Obtiene todos los todos los registros de los _cursosXxx_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1506594547771
+    method: GET
+    modified: 1506888064468
+    name: Cursos
+    parameters: []
+    parentId: fld_3a79fc173b3f45268b25e27fa86b2255
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Cursos
+    _type: request
+  - _id: fld_3a79fc173b3f45268b25e27fa86b2255
+    created: 1506888051635
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051735
+    modified: 1506985977308
+    name: Cursos
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_2562010b4b94450c9edd37283ffce39d
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |
+        	{
+        		"carreraId": 0,
+        		"modoId": "A Distancia",
+        		"anioInicio": 2017,
+        		"mesInicio": 8,
+        		"mesFinal": 9,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 2,
+        		"comentario": "Item Insertado"
+        	}
+    created: 1506888081562
+    description: |-
+      **Add Curso**  
+      Agregar (dar de alta) un _curso_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_4dfe55a4b5ab4c7da0c6b17b74c40624
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1506389346966.4375
+    method: POST
+    modified: 1507421558753
+    name: Agregar Curso
+    parameters: []
+    parentId: fld_3a79fc173b3f45268b25e27fa86b2255
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Cursos
+    _type: request
+  - _id: req_661d1b6f3e734d438f6f4cad256acad0
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"carreraId": 0,
+        		"modoId": "A Distancia",
+        		"cursoId": 2017080102,
+        		"anioInicio": 2017,
+        		"mesInicio": 8,
+        		"mesFinal": 10,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 2,
+        		"comentario": "Item modificado."
+        	}
+    created: 1506905142665
+    description: |-
+      **Update Curso**  
+      Modificar un _curso_ existente
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_4dfe55a4b5ab4c7da0c6b17b74c40624
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1506286746564.1562
+    method: PUT
+    modified: 1507421536188
+    name: Modificar Curso
+    parameters: []
+    parentId: fld_3a79fc173b3f45268b25e27fa86b2255
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Cursos
+    _type: request
+  - _id: req_f6519c261cf0470da976faf93fe8f224
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: ""
+    created: 1506301220186
+    description: |-
+      **Get Divisiones**  
+      Obtiene todos los todos los registros de las _divisiones_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_38c0df94458d43b2bb794b147268c258
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471394.75
+    method: GET
+    modified: 1506985784633
+    name: Divisiones
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones
+    _type: request
+  - _id: fld_df2731cd4587418291ac08a15331f86b
+    created: 1506985685400
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506888051685
+    modified: 1506985974518
+    name: Divisiones
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_3507d221f50d4151ac64000c54d87287
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2015,
+        		"mesInicio": 1,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "L",
+        		"estadoDivisionId": "Cursando",
+        		"comentario": "Observa 4",
+        		"curso": {
+        			"carreraId": 0,
+        			"modoId": "Presencial",
+        			"anioInicio": 2015,
+        			"mesInicio": 1,
+        			"mesFinal": 1,
+        			"anioLectivo": 1,
+        			"nmestreLectivo": 1,
+        			"comentario": "Observa 4"
+        		}
+        	} 
+    created: 1506985729150
+    description: |-
+      **Agregar Divisions**  
+      Crea (da de alta) una _division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_314b463de88a41d09d64db2d8137a95d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471392.4062
+    method: POST
+    modified: 1509325297442
+    name: Agregar Division
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones
+    _type: request
+  - _id: req_3d857dd33d91410584018c6d88c70cde
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2018,
+        		"mesInicio": 3,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B"
+        	}
+    created: 1515266672862
+    description: >-
+      **Promover Divisions**  
+
+      Promueve (agrega) los estudiantes de la _division_ a la _división_ solicitada
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_314b463de88a41d09d64db2d8137a95d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471391.8203
+    method: POST
+    modified: 1515284207604
+    name: Promover Division
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones/0/A
+      Distancia/2017/8/1/1/Virtual/A/promocion
+    _type: request
+  - _id: req_a6e5beb53fbb4baca66a6aabb7ebb352
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2015,
+        		"mesInicio": 1,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B",
+        		"estadoDivisionId": "Cursando",
+        		"comentario": "Observa 6"
+        	}
+    created: 1506985869945
+    description: |-
+      **Modificar División**  
+      Modificar uno o mas atributos de  _division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_314b463de88a41d09d64db2d8137a95d
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471391.2344
+    method: PUT
+    modified: 1509309441317
+    name: Modificar Division
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones
+    _type: request
+  - _id: req_e2324810a98748f891e416dd98f2dc82
+    authentication: {}
+    body: {}
+    created: 1515280372719
+    description: >-
+      **Egresar División**  
+
+      Colocar en estado **Egresado** a todos los estudiantes **Activo**
+
+      Si no existieran estudiantes **Suspendidos**, se cambiae el estado de la división a **Terminado*
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471389.7695
+    method: POST
+    modified: 1515284466915
+    name: Egresar Division
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones/0/Presencial/2017/8/3/1/Noche/A/egreso
+    _type: request
+  - _id: req_7223509800974236a3b95ff879c3918f
+    authentication: {}
+    body: {}
+    created: 1508195622669
+    description: |+
+      **Borrar División**  
+      Borrar una _division_ (sin coordinadores, ni estudiantes)
+
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471388.3047
+    method: DELETE
+    modified: 1509309410330
+    name: Borrar Division
+    parameters: []
+    parentId: fld_df2731cd4587418291ac08a15331f86b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/divisiones/0/Presencial/2015/1/1/1/Ma%C3%B1ana/C
+    _type: request
+  - _id: req_dacca7ed722c44bb99c795d2208ec28a
+    authentication: {}
+    body: {}
+    created: 1509199130456
+    description: |-
+      **Get Dispositivos**  
+      Obtiene todos los todos los registros de los _Dispositivos_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471469.75
+    method: GET
+    modified: 1563147446675
+    name: Dispositivos
+    parameters: []
+    parentId: fld_b1c80848df5245979c8fc1485e4bd3e2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/dispositivos
+    _type: request
+  - _id: fld_b1c80848df5245979c8fc1485e4bd3e2
+    created: 1563147440313
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506741299740.5
+    modified: 1563147456027
+    name: Dispositivos
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_c12e6522dfd44648ba4ec10534567a3c
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"modoId": "A Distancia",
+        		"dispositivoId": "Operativo"
+        	}
+    created: 1509201590862
+    description: |-
+      **Agrear Dispositivos**  
+      Agraga un _Dispositivo_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_2156240e05034a07af96cc364c232ff7
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471419.75
+    method: POST
+    modified: 1563147449982
+    name: Agregar Dispositivo
+    parameters: []
+    parentId: fld_b1c80848df5245979c8fc1485e4bd3e2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/dispositivos
+    _type: request
+  - _id: req_edcfeaad712a4aa29c6a409a5f91f6f0
+    authentication: {}
+    body: {}
+    created: 1506301496882
+    description: |-
+      **Get Grupos**  
+      Obtiene todos los todos los registros de las _gruposXxx_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471385.375
+    method: GET
+    modified: 1507421384991
+    name: Grupos
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/grupos
+    _type: request
+  - _id: fld_62603dd5ec92411980b41a274b2ca64b
+    created: 1507421369287
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506447795851.5
+    modified: 1507421380048
+    name: Grupos
+    parentId: fld_3342fd78b1564038b08a55009b0fba2f
+    _type: request_group
+  - _id: req_777be295f3734f309a6d072253859098
+    authentication: {}
+    body: {}
+    created: 1512857206119
+    description: "**Get Grupo** \ 
+
+      Obtiene una  _Grupo_
+
+
+      Ejemplo de clave Primaria: \ 
+
+      ```
+
+      \t\"carreraId\": 0, \ 
+
+      \t\"modoId\": \"Presencial\", \ 
+
+      \t\"anioInicio\": 2015, \ 
+
+      \t\"anioLectivo\": 1, \ 
+
+      \t\"nmestreLectivo\": 1, \ 
+
+      \t\"turnoId\": \"Mañana\", \ 
+
+      \t\"divisionId\": \"B\", \ 
+
+      \t\"alumnoId\": 102829, \ 
+
+      ```\t
+
+      /api/Cursos/0/Presencial/2015/1/1/1/Mañana/B/102829
+
+      > Deben _Encodearse_ los carcteres especiales \ 
+
+      > Mañana --> Ma%C3%B1ana
+
+      \   /api/Cursos/0/Presencial/2015/1/1/1/Ma%C3%B1ana/B/102829
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471374.3398
+    method: GET
+    modified: 1512858078200
+    name: Grupo
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Grupos/0/A Distancia/2017/8/2/2/Virtual/E/102829
+    _type: request
+  - _id: req_5798f36624b948548b6bedcdfed228de
+    authentication: {}
+    body: {}
+    created: 1512861555513
+    description: "**Get Grupos x Alumno** \ 
+
+      Obtiene una array de _Grupos_
+
+
+      Ejemplo de clave Primaria: \ 
+
+      ```
+
+      \t\"alumnoId\": 102829, \ 
+
+      ```\t
+
+      /api/Cursos/byAlumno/102829
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471368.8223
+    method: GET
+    modified: 1526343799325
+    name: GruposByAlumno
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Grupos/byAlumno/8423
+    _type: request
+  - _id: req_4a7e560c8ecc43dcb375947803043a94
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2015,
+        		"mesInicio": 2,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "A",
+        		"alumnoId": 102829,
+        		"comentario": null
+        	}
+    created: 1508202985195
+    description: |-
+      **Post Grupos**  
+      Agregar un Estudiante a una _Division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_4f124c8f250848bcb4afbdc3448a277b
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471363.3047
+    method: POST
+    modified: 1508283491822
+    name: Agregar Est. a División
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/grupos
+    _type: request
+  - _id: req_2a52b35b78af481980b90c7b7e9403ad
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |
+        [
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2018,
+        		"mesInicio": 3,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B",
+        		"alumnoId": 102829,
+        		"comentario": null
+        	},
+        	{
+        		"carreraId": 0,
+        		"modoId": "Presencial",
+        		"anioInicio": 2018,
+        		"mesInicio": 3,
+        		"anioLectivo": 1,
+        		"nmestreLectivo": 1,
+        		"turnoId": "Mañana",
+        		"divisionId": "B",
+        		"alumnoId": 60665,
+        		"comentario": null
+        	}
+        ]
+    created: 1515257650674
+    description: |-
+      **Post Grupos**  
+      Agregar un conjunto de Estudiantes a una _Division_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_4f124c8f250848bcb4afbdc3448a277b
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505664471352.2695
+    method: POST
+    modified: 1515263251166
+    name: Agregar Array de Est. a División
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/grupos/coleccion
+    _type: request
+  - _id: req_546feeb8c05b46f1986cb71ba6971895
+    authentication: {}
+    body: {}
+    created: 1508283394449
+    description: |+
+      **Borrar un estudiante de una División**  
+      Borrar un estudiante de una _division_
+
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1505664471313.3047
+    method: DELETE
+    modified: 1508284454770
+    name: Borrar Est. de División
+    parameters: []
+    parentId: fld_62603dd5ec92411980b41a274b2ca64b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/grupos/0/Presencial/2015/2/1/1/Ma%C3%B1ana/A/6315
+    _type: request
+  - _id: req_4a69491187a841bfb90cc9cd7a90905a
+    authentication: {}
+    body: {}
+    created: 1506211550582
+    description: |-
+      **Get Lugares**  
+      Obtiene todos los todos los registros de los _lugares_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1506184146161.875
+    method: GET
+    modified: 1506260901889
+    name: Todos los Lugares
+    parameters: []
+    parentId: fld_89d1323e657843abae49cb3d328639e0
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/lugares
+    _type: request
+  - _id: fld_89d1323e657843abae49cb3d328639e0
+    created: 1506258385417
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1506258385417
+    modified: 1506258385417
+    name: Lugares
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_b27a7d313aa24e758ae908525809e847
+    authentication: {}
+    body: {}
+    created: 1506260844914
+    description: |-
+      **Get Lugar**  
+      Obtiene un único _lugar_ indicado por su ID
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1506054227465.4062
+    method: GET
+    modified: 1506260908294
+    name: Un Lugar
+    parameters: []
+    parentId: fld_89d1323e657843abae49cb3d328639e0
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: true
+    url: http://localhost:5000/api/lugares/1
+    _type: request
+  - _id: req_5677ee6545aa4e61a89ab6c4f74d85e4
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		
+        		"nombre": "Algún Lugar en el mundo"
+        	}
+    created: 1506258891137
+    description: |-
+      **Crear un Lugar**  
+      Crea un nuevo registro de _lugar_
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_304b5a31219145d994e9fb0e8bf1b091
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1505924308768.9375
+    method: POST
+    modified: 1506906233197
+    name: Agregar Lugar
+    parameters: []
+    parentId: fld_89d1323e657843abae49cb3d328639e0
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/lugares
+    _type: request
+  - _id: req_57a4e909f38648da8ff02dd3af8226f7
+    authentication: {}
+    body: {}
+    created: 1505605844023
+    description: |-
+      **Get Inscriptos**  
+      Obtiene todos los todos los registros de los _inscriptos_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_a1ab90039ceb4c0682b53a7cd299cd76
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1503527059185
+    method: GET
+    modified: 1505608534037
+    name: inscriptos
+    parameters: []
+    parentId: fld_98b9d1f1e7e84a3d984f44ba4d72669c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/inscriptos
+    _type: request
+  - _id: fld_98b9d1f1e7e84a3d984f44ba4d72669c
+    created: 1505608474266
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1505608474266
+    modified: 1505608563350
+    name: Inscriptos
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_039e6ff52aed40ac8e676dd27ae79d24
+    authentication: {}
+    body: {}
+    created: 1501442348820
+    description: |-
+      **Get Legajos**  
+      Obtiene todos los todos los registros de los _legajos_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: 0
+    method: GET
+    modified: 1518365331043
+    name: Legajos
+    parameters: []
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/legajos
+    _type: request
+  - _id: fld_71223ac6c4b34daca373ea1e7e406f28
+    created: 1501445644054
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1501445644054
+    modified: 1501445644054
+    name: Legajos
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_f5189760be4f471ba43c87d136f44885
+    authentication: {}
+    body: {}
+    created: 1505080140002
+    description: |-
+      **Get Eventos**  
+      Obtiene un legajo pedido por Id
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_f9057a1840954110a20b2ab4696d3180
+        name: Cache-Control
+        value: no-cache, no-store
+    isPrivate: false
+    metaSortKey: 100
+    method: GET
+    modified: 1558486345950
+    name: Obtener Legajo x Id
+    parameters: []
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/legajos/62113
+    _type: request
+  - _id: req_a0f0f6edb91c4a909e7b90a287841de8
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: >-
+        {
+          "alumnoId": 62112,
+          "legajoNro": 5243,
+          "sexo": "Femenino ",
+          "fechaNacimiento": "1990-12-21T00:00:00",
+          "lugarNacimiento": "La Plata, Buenos Aires.",
+          "dni": 36289970,
+          "cuit": null,
+          "direccionCalle": "Alguna sera",
+          "direccionNro": "",
+          "direccionCoordenadaInterna": ", ",
+          "direccionLocalidadId": null,
+          "direccionPartidoId": null,
+          "direccionProvinciaId": null,
+          "direccionPaisId": null,
+          "secundarioCompletoOley25": false,
+          "comentarios": "",
+          "codigoPostalBase": 1667,
+          "localidadBase": "Manuel Alberti, Pilar.",
+          "fechaIngreso": "2017-11-09T00:00:00",
+          "pagoIniFecha": null,
+          "pagoIniMonto": null,
+          "modalidadBase": "Distancia",
+          "turno": null,
+          "cuestionario": "2017-11-09T00:00:00",
+          "docAptoFisico": null,
+          "docTitulo": null,
+          "docDni": null,
+          "docFoto": null,
+          "docCompromiso": null,
+          "docAptoFisicoValido": null,
+          "docTituloValido": null,
+          "docDnivalido": null,
+          "docFotoValido": null,
+          "pathFoto": null,
+          "historia": "Mis padres se mudaron de La Plata a Capital Federal cuando yo era bebé. Se mudaron a un departamento que les regalo mi abuelo. Luego mi papá fundo un negocio propio y mi mamá estudio el magisterio en bellas artes.  Mis papas trabajaban todo el día cuando yo era chica, asi que estuve al cuidado de mis abuelos casi toda mi infancia. Mi abuelo era militar y carpintero y mi abuela ama de casa. Tengo dos hermanas mas chicas. En mi familia hubo muchos momentos de crisis, pero siempre pudimos sobreponernos a lo que se presentaba. Actualmente vivo con mi pareja en el partido de Pilar.",
+          "definicion": "Me defino a mi misma como una persona responsable, sensible y timida ( aunque mi trabajo como profesora me ayudo a vencer un poco la timidez ).",
+          "situacion": "Imagino una reunión de profesores a la cual tengo que concurrir, primero todos van llegando de a poco y se saludan, luego el director presenta el tema de la reunión. Escucho atenta, algunos compañeros hacen aportes y emiten su opinión. Luego nos proponen ponernos en grupo y escribir una reflexión sobre lo presentado. Me pongo en un grupo, todos hacemos un aporte y escribimos en un papel las ideas que van surgiendo. Luego un integrante del grupo las lee y nos fijamos entre todos si estamos de acuerdo. Luego lo firmamos y lo entregamos al director.",
+          "expectativas": "Actualmente me desempeño como profesora. Tengo la expectativa de que esta carrera me ayude a complementar mi formación y mejore mi desempeño dentro del aula. Aunque no descarto poder trabajar ejerciendo como técnica en psicología social si se llegara a presentar la oportunidad. Tampoco descarto hacer la continuación universitaria en psicología.",
+          "libroMatriz": null,
+          "folio": null,
+          "seguimiento": false,
+          "estadoEstudianteId": "Activo",
+          "razonSuspension": null,
+          "alumno": null,
+          "estadoEstudiante": null,
+          "localidad": null,
+          "estudios": [],
+          "trabajos": []
+        }
+    created: 1507495167642
+    description: |-
+      **Get Eventos**  
+      Obtiene un legajo pedido por Id
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: 200
+    method: PUT
+    modified: 1558304362531
+    name: Actualizar Legajo
+    parameters: []
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/legajos
+    _type: request
+  - _id: req_f9fe4d874e28427d8c04bc7cba79d7cd
+    authentication: {}
+    body: {}
+    created: 1563065059643
+    description: |-
+      **Get Informes**  
+      Obtiene todos los todos los registros de los _informes_ de los estudiantes
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1516010930300.625
+    method: GET
+    modified: 1563147857419
+    name: Informes
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/informes
+    _type: request
+  - _id: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    created: 1563065043962
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: 250
+    modified: 1563065051734
+    name: Informes
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    _type: request_group
+  - _id: req_a7f421366da3499899bf8c1995d2395d
+    authentication: {}
+    body: {}
+    created: 1563116399128
+    description: |-
+      **Get Informes by Id**  
+      Obtiene un registro especifico de _informes_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1516010930299.8438
+    method: GET
+    modified: 1563147862840
+    name: Informes by Id
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/informes/1826/3
+    _type: request
+  - _id: req_c6804d8bfa5446d4a27c1a258aa44c52
+    authentication: {}
+    body: {}
+    created: 1563120227358
+    description: "**Get Informes x Estudiante** \ 
+
+      Obtiene una array de _informes_ por estudiante
+
+
+      Ejemplo de clave Primaria: \ 
+
+      ```
+
+      \t\"alumnoId\": 102829, \ 
+
+      ```\t
+
+
+      Ejemplo de uri: \ 
+
+      ```
+
+      \t/api/informes/byAlumno/102829
+
+      ```\t
+
+
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930299.4531
+    method: GET
+    modified: 1563147184609
+    name: Informes por Alumno
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Informes/byAlumno/1878
+    _type: request
+  - _id: req_ca31df81561f4c8cb082f34a6c709213
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "alumnoId": 1826,
+          "informeId": 4,
+          "anioLectivo": 2,
+          "coordinadorId": 2,
+          "informe": "Nuevo Informe id=3",
+          "fechaCreacion": "2019-07-14T00:00:00-03:00",
+          "fechaActualizacion": "2019-07-14T00:00:00-03:00"
+        }
+    created: 1563118349045
+    description: |-
+      **Crea una informe**  
+      Crea una _informe_ específico para un legajo
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930299.0625
+    method: POST
+    modified: 1563146973479
+    name: Crear un Informe
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/informes
+    _type: request
+  - _id: req_a88e37dd659349b79a9e959d1847ea30
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "alumnoId": 1826,
+          "informeId": 3,
+          "anioLectivo": 2,
+          "coordinadorId": 2,
+          "informe": "Nuevo Informe id=3, modificado",
+          "fechaCreacion": "2019-07-14T00:00:00-03:00",
+          "fechaActualizacion": "2019-07-14T00:00:00-03:00"
+        }
+    created: 1563118613563
+    description: |-
+      **Actualiza un informe**  
+      Actualiza una _informe_ específico
+    headers:
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930249.0625
+    method: PUT
+    modified: 1563118720265
+    name: Actualizar Informes
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/informes
+    _type: request
+  - _id: req_12c448cdcbaa45ba98feb207ccd7d8ef
+    authentication: {}
+    body: {}
+    created: 1563118765850
+    description: |+
+      **Borrar un informe**
+      Borrar una _informe_ específico de un legajo
+
+    headers: []
+    isPrivate: false
+    metaSortKey: -1516010930199.0625
+    method: DELETE
+    modified: 1563147016037
+    name: Borrar un Informe
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/informes/1826/4
+    _type: request
+  - _id: req_bf584e8d18b94864969e8c46ac5d3971
+    authentication: {}
+    body: {}
+    created: 1518364049394
+    description: >-
+      **Get Intereacciones**  
+
+      Obtiene todos los todos los registros de las _intereacciones_ de los estudiantes
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1516010930306.875
+    method: GET
+    modified: 1563147826151
+    name: Interacciones
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interacciones
+    _type: request
+  - _id: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    created: 1518365266338
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: 300
+    modified: 1518365331044
+    name: Interacciones
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    _type: request_group
+  - _id: req_b06d3b5e7184405f965d841d9ee4f57f
+    authentication: {}
+    body: {}
+    created: 1518365702925
+    description: |
+      **Get Interacción por Id**
+      Obtiene una _Interacción_ específica 
+      ID= AlumnoId+InteraccionId
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_f9057a1840954110a20b2ab4696d3180
+        name: Cache-Control
+        value: no-cache, no-store
+    isPrivate: false
+    metaSortKey: -1516010930281.875
+    method: GET
+    modified: 1563125489357
+    name: Interacción x Id
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interacciones/1315/4
+    _type: request
+  - _id: req_781d336291fb4059bab19e521677b542
+    authentication: {}
+    body: {}
+    created: 1518383884327
+    description: "**Get Interacciones x Estudiante** \ 
+
+      Obtiene una array de _Interacciones_ por Estudiante
+
+
+      Ejemplo de clave Primaria: \ 
+
+      ```
+
+      \t\"alumnoId\": 102829, \ 
+
+      ```\t
+
+
+      Ejemplo de uri: \ 
+
+      ```
+
+      \t/api/interacciones/byAlumno/102829
+
+      ```\t
+
+
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1516010930275.625
+    method: GET
+    modified: 1563120430821
+    name: Interacciones por Alumno
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Interacciones/byAlumno/1315
+    _type: request
+  - _id: req_906238a37b8e4e00b0faa4d54c25ebcc
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"alumnoId": 1315,
+        		"interaccionId": 3,
+        		"fecha": "2018-02-11T00:00:00",
+        		"comentario": "Esto es una prueba mas"
+        	}
+    created: 1518365602629
+    description: |-
+      **Crea una interacción**  
+      Crea una _interaccion_ específica para un legajo
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930269.375
+    method: POST
+    modified: 1563116677384
+    name: Crear una Interacción
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interacciones
+    _type: request
+  - _id: req_a85dabfee6fd499686b7d0cca1f19883
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"alumnoId": 1315,
+        		"interaccionId": 3,
+        		"fecha": "2018-02-11T13:14:00",
+        		"comentario": "Esto es una 4ta prueba"
+        	}
+    created: 1518365328896
+    description: |-
+      **Actualiza una interacción**  
+      Actualiza una _interaccion_ específica
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930256.875
+    method: PUT
+    modified: 1563125480779
+    name: Actualizar Interacción
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interacciones
+    _type: request
+  - _id: req_231a98e5db244a598551ee164b452e9d
+    authentication: {}
+    body: {}
+    created: 1518365867885
+    description: |+
+      **Borrar una interacción**
+      Borrar una _intereacción_ específica de un estudiante
+
+    headers: []
+    isPrivate: false
+    metaSortKey: -1511302738963.9375
+    method: DELETE
+    modified: 1563125453869
+    name: Borrar una Interacción
+    parameters: []
+    parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interacciones/1315/0
+    _type: request
+  - _id: req_3847f725e9fb42ee9d8c1e6a698c9cb4
+    authentication: {}
+    body: {}
+    created: 1513467215153
+    description: |-
+      **Get Estudiantes**  
+      Obtiene todos los todos los registros de los _Estudiantes_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1499530577489
+    method: GET
+    modified: 1556485474890
+    name: Estudiantes
+    parameters: []
+    parentId: fld_6cd8eca437c140159f641c405b0e922b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Alumnos
+    _type: request
+  - _id: fld_6cd8eca437c140159f641c405b0e922b
+    created: 1513467215142
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1501445633816.5
+    modified: 1513467224934
+    name: Alumnos
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_dbb7c023d498400e814afe8b45ff9a1d
+    authentication: {}
+    body: {}
+    created: 1558300697095
+    description: |-
+      **Get Estudiantes por Id**  
+      Obtiene el _Estudiantes_ asociado al id
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -749765288744.5
+    method: GET
+    modified: 1558486152293
+    name: Obtener Estudiantes  x Id
+    parameters: []
+    parentId: fld_6cd8eca437c140159f641c405b0e922b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Alumnos/62113
+    _type: request
+  - _id: req_65f846c83d8c44eeab2aa2c3c1bfc381
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+              "alumnoId": 63738,
+              "nombre": "ERROR",
+              "apellido": "ERROR",
+              "mail": "",
+              "mail2": "Enviado",
+              "telefono": null,
+              "celular": "",
+              "comoConocio": "BuscoUniversidad",
+              "modalidadId": 2,
+              "gradoInteres": "Medio",
+              "fechaInteresado": "2018-03-26T00:00:00",
+              "comentario": null,
+              "provincia": null,
+              "situacionInscripcion": null,
+              "situacionEspecial": null,
+              "dni": "27929814",
+              "domicilio": "Ciudadela",
+              "fechaInteresadoOriginal": "2018-03-21T00:00:00",
+              "anioAcursar": 1,
+              "nmestreAcursar": 1,
+              "turno": "Noche",
+              "docTitulo": null,
+              "docDni": null,
+              "docAptoFisico": null,
+              "docFoto": null,
+              "docCompromiso": null,
+              "carreraId": 0,
+              "medioDeContactoId": 2,
+              "nacionalidadId": "Argentina",
+              "estaBorrado": false,
+              "carrera": {
+                "carreraId": 0,
+                "descripcion": "Técnico Superior en Psicología Social",
+                "resolucion": null
+              },
+              "medioDeContacto": {
+                "medioDeContactoId": 2,
+                "nombre": "BuscoUniversidad"
+              },
+              "modalidad": {
+                "id": 2,
+                "nombre": "A Distancia"
+              },
+              "nacionalidad": {
+                "paisId": "Argentina",
+                "descripcionPoliticaNivel2": "Provincia ",
+                "descripcionPoliticaNivel3": "Partido   ",
+                "patronCodigoPostal": "^\\d{4}$   ",
+                "nacionalidad": "Argentina/o"
+              }
+            }
+    created: 1558300800131
+    description: |-
+      **Put Estudiantee**  
+      Actualiza un estudiante
+
+      _Borrado lógico: Actualizar el campo 'EstaBorrado' a true
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -749765288694.5
+    method: PUT
+    modified: 1558660564616
+    name: Actualizar Estudiante
+    parameters: []
+    parentId: fld_6cd8eca437c140159f641c405b0e922b
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/Alumnos
+    _type: request
+  - _id: req_9a675371cb3a46fa9abbdc8d96dc4d0b
+    authentication: {}
+    body: {}
+    created: 1499531405917
+    description: |-
+      **Get Interesados**  
+      Obtiene todos los todos los registros de los _interesados_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_a1ab90039ceb4c0682b53a7cd299cd76
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1500452298812
+    method: GET
+    modified: 1501460222892
+    name: interesados
+    parameters: []
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesados
+    _type: request
+  - _id: fld_97157bf206c04d09ab6144e7c635f274
+    created: 1501445623579
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1501445623579
+    modified: 1501445623579
+    name: Interesados
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_c637cc02a6c74d088fc9bf5e015ce4fa
+    authentication: {}
+    body: {}
+    created: 1501460126121
+    description: |-
+      **Get Eventos**  
+      Obtiene todos los eventos 
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1500452298787
+    method: GET
+    modified: 1506816126877
+    name: Obtener Interesado x Id
+    parameters: []
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesados/10567
+    _type: request
+  - _id: req_a86880eb09574e05a236d15c654f81aa
+    authentication: {}
+    body: {}
+    created: 1499559078762
+    description: |-
+      **Borrar Interesados**  
+      Borra una ficha de_interesados_
+      * Si tuviera enventos asociados, da error.
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1500452298762
+    method: DELETE
+    modified: 1501460690628
+    name: Borrar interesados
+    parameters: []
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesados/10647
+    _type: request
+  - _id: req_19883cd041ae4a29b40f68531195e603
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"interesadoId": 10647,
+        	"nombre": "Test",
+        	"apellido": "Testing",
+        	"mail": "test@gmail.com",
+        	"mail2": "",
+        	"telefono": "",
+        	"celular": "",
+        	"comoConocio": "",
+        	"modalidadId": 1,
+        	"gradoInteres": "",
+        	"fechaInteresado": "2017-07-30T00:00:00",
+        	"comentario": null,
+        	"provincia": "Buenos Aires",
+        	"situacionInscripcion": null,
+        	"situacionEspecial": null,
+        	"carreraId": null,
+        	"anioAcursar": null,
+        	"nmestreAcursar": null,
+        	"turno": null,
+        	"seguimiento": false,
+        	"medioDeContactoId": 2,
+        	"carrera": null,
+        	"medioDeContacto": null,
+        	"modalidad": null
+        }
+    created: 1501460362155
+    description: |-
+      **Put Interesados**  
+      Actualiza un Interesado
+    headers:
+      - id: pair_64083041bc094d6bb19d51e0095abc08
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1500412395980.625
+    method: PUT
+    modified: 1501460527246
+    name: Actualizar Interesado
+    parameters: []
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesados
+    _type: request
+  - _id: req_5d2ddc93a2a74ef98179688ea4d65c51
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"nombre": "Test",
+        		"apellido": "Testing",
+        		"mail": "test@gmail.com",
+        		"mail2": "",
+        		"telefono": "",
+        		"celular": "",
+        		"comoConocio": "",
+        		"modalidadId": 1,
+        		"gradoInteres": "",
+        		"fechaInteresado": "2017-07-30T00:00:00",
+        		"comentario": null,
+        		"provincia": "Buenos Aires",
+        		"situacionInscripcion": null,
+        		"situacionEspecial": null,
+        		"carreraId": null,
+        		"anioAcursar": null,
+        		"nmestreAcursar": null,
+        		"turno": null,
+        		"seguimiento": false,
+        		"medioDeContactoId": 1
+        	}
+    created: 1501459804444
+    description: |
+      **Agregar Interesados**  
+      Agregar una ficha de _interesados_
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1500372493199.25
+    method: POST
+    modified: 1501460108484
+    name: Agregar interesados
+    parameters: []
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesados
+    _type: request
+  - _id: req_2bab18196a5841c0b2c4b58a2e715a26
+    authentication: {}
+    body: {}
+    created: 1556500113145
+    description: >-
+      **Get IntereaccionesInteresados**  
+
+      Obtiene todos los registros de las _intereaccionesInteresados_ de los interesados
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1516010930294.375
+    method: GET
+    modified: 1556671910454
+    name: Interacciones
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados
+    _type: request
+  - _id: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    created: 1556500098145
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1500372493149.25
+    modified: 1556726253134
+    name: Interacciones Interesados
+    parentId: fld_97157bf206c04d09ab6144e7c635f274
+    _type: request_group
+  - _id: req_991e44cc88e1446fb43fe4a6f48ceec3
+    authentication: {}
+    body: {}
+    created: 1556671772478
+    description: |-
+      **Get IntereaccionesInteresados por Id**
+      Obtiene todos los registros de las _intereaccionesInteresados_ por Id
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1516010930288.125
+    method: GET
+    modified: 1556726164137
+    name: Interacciones x Id
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados/10567/2
+    _type: request
+  - _id: req_55953b81e1a347d882cf32fce921ca1a
+    authentication: {}
+    body: {}
+    created: 1556671937680
+    description: "**Get Interacciones x Interesado** \ 
+
+      Obtiene una array de _Interacciones_ por Interesado
+
+
+      Ejemplo de clave Primaria: \ 
+
+      ```
+
+      \t\"interesadoId\": 10567, \ 
+
+      ```\t
+
+
+      Ejemplo de uri: \ 
+
+      ```
+
+      \t/api/interacciones/byInteresado/10567
+
+      ```\t
+
+
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+      - id: pair_74bfd891bfeb4c649f96a40f1f09afe6
+        name: Accept-Charset
+        value: utf-8
+    isPrivate: false
+    metaSortKey: -1516010930238.125
+    method: GET
+    modified: 1556726188547
+    name: InteraccionesByInteresado
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados/byInteresado/10567
+    _type: request
+  - _id: req_da2d65849cab4858af88ab16050bf03a
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"interesadoId": 10567,
+        	"interaccionInteresadoId": 2,
+        	"fecha": "2019-04-30T00:00:00",
+        	"comentario": "Este es el segundo comentario"
+        }
+    created: 1556673060308
+    description: |-
+      **Crea una interacción de un Interesado**  
+      Crea una _InteraccionInteresado_ específica para un interesado
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930188.125
+    method: POST
+    modified: 1556726139174
+    name: Crear una Interacción de un Interesado
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados
+    _type: request
+  - _id: req_7585eff0b42b4087a9a9c84d250841c5
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"interesadoId": 10567,
+        	"interaccionInteresadoId": 5,
+        	"fecha": "2019-04-30T00:00:00",
+        	"comentario": "Este es el quinto comentario. (actualizado)"
+        }
+    created: 1556725811451
+    description: |-
+      **Actualiza una interacción de un interesado**  
+      Actualiza una _interaccionInteresado_ específica
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930138.125
+    method: PUT
+    modified: 1556725919944
+    name: Actualizar Interacción de un Interesado
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados
+    _type: request
+  - _id: req_dcfcd5b465a34b3ebb2be5ed5cc5ff44
+    authentication: {}
+    body: {}
+    created: 1556725953657
+    description: |+
+      **Borrar una interacción de un interesado**
+      Borrar una _intereacciónInteresado_ específica
+
+    headers: []
+    isPrivate: false
+    metaSortKey: -1516010930088.125
+    method: DELETE
+    modified: 1556726118288
+    name: Borrar una Interacción de un Interesado
+    parameters: []
+    parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interaccionesinteresados/10567/-2147482646
+    _type: request
+  - _id: req_1838784d043f4e1890c422ff03c47bcf
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"fecha": "2017-08-17T00:00:00",
+        	"tipoId": 1,
+        	"titulo": "Prueba con Observacion",
+        	"lugarId": 1,
+        	"observacion": "Inserción con Observación ❤⿇"
+        }
+    created: 1501367260977
+    description: |-
+      **Post Eventos**  
+      Agregar evento
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374083272
+    method: POST
+    modified: 1501460072356
+    name: Agregar Eventos
+    parameters: []
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/eventos
+    _type: request
+  - _id: fld_a28db28ac4704f04922d16dc80058acd
+    created: 1501374020110
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1501374020110
+    modified: 1501374020110
+    name: Eventos
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: request_group
+  - _id: req_fd8fb7240ac04bc08797a9a0cd53b957
+    authentication: {}
+    body: {}
+    created: 1499530577563
+    description: |-
+      **Get Eventos**  
+      Obtiene todos los eventos 
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374083222
+    method: GET
+    modified: 1501374096675
+    name: Obtener Todos los Eventos
+    parameters: []
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/eventos
+    _type: request
+  - _id: req_d8af85b3dcff4e55b003879cbae9e17e
+    authentication: {}
+    body: {}
+    created: 1501367652225
+    description: |-
+      **Get Eventos**  
+      Obtiene todos los eventos 
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374083197
+    method: GET
+    modified: 1501983080021
+    name: Obtener Evento x Id
+    parameters: []
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/eventos/6
+    _type: request
+  - _id: req_c82a98d483c4448196b5cdc8f34a3fda
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        	{
+        		"id": 1,
+        		"fecha": "2015-11-17T00:00:00",
+        		"tipoId": 1,
+        		"titulo": "Emprendedores",
+        		"lugarId": 1,
+        		"observacion": "Primera Observación ⿇",
+        		"lugar": {
+        			"id": 1,
+        			"nombre": "SERCLES - Florida 336"
+        		}
+        	}
+    created: 1501366824599
+    description: |-
+      **Put Eventos**  
+      Actualiza eventos 
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374083184.5
+    method: PUT
+    modified: 1501374127166
+    name: Actualizar Eventos
+    parameters: []
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/eventos
+    _type: request
+  - _id: req_c4d4542413f240a2a5070d951b4d002b
+    authentication: {}
+    body: {}
+    created: 1501367735732
+    description: |-
+      **Post Eventos**  
+      Agregar evento
+    headers: []
+    isPrivate: false
+    metaSortKey: -1501374083178.25
+    method: DELETE
+    modified: 1501374130789
+    name: Borrar Evento x Id
+    parameters: []
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/eventos/34
+    _type: request
+  - _id: req_65bcbd023196433aa5f43b1240fa65c5
+    authentication: {}
+    body: {}
+    created: 1499560235088
+    description: ""
+    headers:
+      - id: pair_482e8a5bd438460c9c97fedd8c39d688
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374047227.289
+    method: GET
+    modified: 1501374100196
+    name: invitados a un evento
+    parameters: []
+    parentId: fld_1cf407307b6c4b909f655ab925edf2d2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: false
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesadosEventos/Eventos/12
+    _type: request
+  - _id: fld_1cf407307b6c4b909f655ab925edf2d2
+    created: 1501374083172
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1501374083172
+    modified: 1501374083172
+    name: Invitados
+    parentId: fld_a28db28ac4704f04922d16dc80058acd
+    _type: request_group
+  - _id: req_1ce6158461cd479b86531506fb41b6de
+    authentication: {}
+    body: {}
+    created: 1501373448755
+    description: ""
+    headers:
+      - id: pair_c7fb7712a53b496ba90e19e4458d2dec
+        name: Accept
+        value: application/json
+      - id: pair_e93d73aa7a1f41e295429a29d4c46110
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_d21440f0d99d4f78b167913713341e49
+        name: Accept-Encoding
+        value: ""
+    isPrivate: false
+    metaSortKey: -1501374047177.289
+    method: GET
+    modified: 1501374844012
+    name: Obtener Invitados a un evento
+    parameters: []
+    parentId: fld_1cf407307b6c4b909f655ab925edf2d2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesadosEventos/Eventos/32
+    _type: request
+  - _id: req_e532c8d1d8de4aa2b08e47b167b2038a
+    authentication: {}
+    body: {}
+    created: 1499559554441
+    description: |-
+      **GET Todos los Interesados de todos los Eventos**  
+      obtiene todos los interesados de todos los eventos.
+    headers:
+      - id: pair_482e8a5bd438460c9c97fedd8c39d688
+        name: Accept
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1501374047127.289
+    method: GET
+    modified: 1563149155317
+    name: Invitados a todos los eventos
+    parameters: []
+    parentId: fld_1cf407307b6c4b909f655ab925edf2d2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: http://localhost:5000/api/interesadoseventos
+    _type: request
+  - _id: env_78f5aa94ef664c79b00f25a1f3702765
+    color: null
+    created: 1499530578190
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1563147934547
+    modified: 1501367213258
+    name: Base Environment
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: environment
+  - _id: jar_24beae5ff0c64aba890675819f56e4c0
+    cookies: []
+    created: 1499530659895
+    modified: 1558280172008
+    name: Default Jar
+    parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
+    _type: cookie_jar

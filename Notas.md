@@ -79,7 +79,7 @@ rm Models -R
 mv Models.ORI/ Models
 ```
 
-* Renombrar el archivo EPSS.csproj  x EPSS.Back.csproj 
+* Renombrar el archivo EPSS.csproj  x EPSS.Back.csproj
 
 ```(sh)
 mv EPSS.csproj EPSS.Back.csproj
@@ -106,8 +106,11 @@ mv EPSS.csproj EPSS.Back.csproj
 * 3ro) Habilitar el port 1433 en Firewall
 
 >__ref:__
->* <https://blogs.msdn.microsoft.com/walzenbach/2010/04/14/how-to-enable-remote-connections-in-sql-server-2008/
-http://www.solvetic.com/tutoriales/article/2657-como-abrir-o-cerrar-un-puerto-con-el-firewall-en-windows-10/>
+>
+>* <https://blogs.msdn.microsoft.com/walzenbach/2010/04/14/how-to-enable-remote-connections-in-sql-server-2008/>
+>
+>* <http://www.solvetic.com/tutoriales/article/2657-como-abrir-o-cerrar-un-puerto-con-el-firewall-en-windows-10/>
+>
 >* <http://dba.stackexchange.com/questions/62165/i-cant-connect-to-my-servers-sql-database-via-an-ip-address>
 
 * __Otros:__
@@ -121,7 +124,7 @@ http://www.solvetic.com/tutoriales/article/2657-como-abrir-o-cerrar-un-puerto-co
     * Abrir el Monitor de recursos
     * Solapa: Red
       * Seccion: Puertos de escucha
-        * Buscar proceso: sqlservr.exe 
+        * Buscar proceso: sqlservr.exe
         * Debe verse:
           * Proceso: sqlservr.exe
           * PID: [indistinto]
@@ -164,9 +167,23 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 ### .NET Core vs ASP.NET Core
 
-Básicamente NET Cores es el framework base para cualquier aplicación '.NET Core', que es multiplataforma
-ASP.NET Core son librerias adicionales que permite crear aplicaciones tio ASP.NET pero usando el framework 
-NET core a diferencia de usar el .NET framework (tradional) que solose ejecuta en windows.
+Básicamente NET Core es el framework base para cualquier aplicación '.NET Core', que es multiplataforma.
+ASP.NET Core son librerías adicionales que permite crear aplicaciones tipo ASP.NET pero usando el framework '.NET Core' a diferencia de usar el '.NET framework' (tradicional) que solo se ejecuta en windows.
 
 ![Diagrama gral de Frameworks](NETCore.png)
 > ref: [Diagrama gral de Frameworks](<https://www.hanselman.com/blog/ASPNET5IsDeadIntroducingASPNETCore10AndNETCore10.aspx>)
+
+---
+
+## Commit conventions
+
+* **feat**: A new feature
+* **fix**: A bug fix
+* **docs**: Documentation only changes
+* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+* **refactor**: A code change that neither fixes a bug or adds a feature
+* **perf**: A code change that improves performance
+* **test**: Adding missing tests
+* **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+> ref: <https://gist.github.com/brianclements/841ea7bffdb01346392c>
