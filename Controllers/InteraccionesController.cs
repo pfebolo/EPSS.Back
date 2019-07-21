@@ -14,18 +14,6 @@ namespace EPSS.Controllers
 			_repoExt = (IInteraccionesRepository)_repo; //Se asigna con el CAST necesario para acceder a los métodos extendidos.
 		}
 
-		[HttpGet("{AlumnoId}/{InteraccionId}", Name = "GetInteraccionXId")]
-		public IActionResult GetById(int AlumnoId, int InteraccionId)
-		{
-            return base.GetById(new Object[] { AlumnoId, InteraccionId });
-		}
-
-        [HttpDelete("{AlumnoId}/{InteraccionId}")]
-		public IActionResult Delete(int AlumnoId, int InteraccionId)
-		{
-			return base.Delete(new Object[] { AlumnoId, InteraccionId });
-		}
-
 		[HttpGet("byAlumno/{AlumnoId}", Name = "GetInteraccionesByAlumno")]
 		public IEnumerable<Interacciones> GetByAlumnoId(int AlumnoId)
 		{

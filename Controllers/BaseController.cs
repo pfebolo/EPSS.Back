@@ -24,12 +24,23 @@ namespace EPSS.Controllers
 		//[HttpGet("{id}", Name = "GetModel")]
 		public IActionResult GetById(params Object[] KeyValues)
 		{
-			var item = _repo.Find(KeyValues);
-			if (item == null)
+			try
 			{
-				return NotFound();
+				var item = _repo.Find(KeyValues);
+				if (item == null)
+				{
+					return NotFound();
+				}
+				return new ObjectResult(item);
 			}
-			return new ObjectResult(item);
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
 		}
 
 		[HttpGet("{id}")]
@@ -38,6 +49,11 @@ namespace EPSS.Controllers
 			return GetById(new Object[] { id });
 		}
 
+		[HttpGet("{id1}/{id2}")]
+		public virtual IActionResult GetById(int id1, int id2)
+		{
+			return GetById(new Object[] { id1, id2 });
+		}
 
 		[HttpPost]
 		public virtual IActionResult Create([FromBody] Model item)
@@ -109,5 +125,12 @@ namespace EPSS.Controllers
 		{
 			return Delete(new Object[] { id });
 		}
+
+		[HttpDelete("{id1}/{id2}")]
+		public virtual IActionResult Delete(int id1, int id2)
+		{
+			return Delete(new Object[] { id1, id2 });
+		}
+
 	}
 }

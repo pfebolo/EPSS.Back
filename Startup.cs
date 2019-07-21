@@ -56,6 +56,7 @@ namespace EPSS
             services.AddSingleton<IRepository<Models.Lugares>, LugaresRepository>();
             services.AddSingleton<IRepository<Models.Interacciones>, InteraccionesRepository>();
             services.AddSingleton<IRepository<Models.InteraccionesInteresados>, InteraccionesInteresadosRepository>();
+            services.AddSingleton<IRepository<Models.Informes>, InformesRepository>();
             
 
             //Interface de Repositorio específicas
