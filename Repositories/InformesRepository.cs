@@ -26,7 +26,7 @@ namespace EPSS.Repositories
 				using (var db = new escuelapsdelsurContext())
 				{//
 					foreach (var Informe in db.Informes.Include(Informe => Informe.Legajo)
-														  )
+													   .Include(Informe => Informe.Coordinador))
 					{
 						_list.Add(Informe);
 					}
@@ -48,8 +48,9 @@ namespace EPSS.Repositories
 
 				{
 					foreach (var Informe in from Info in db.Informes.Include(Informe => Informe.Legajo)
-													where Info.AlumnoId == AlumnoId
-										  select Info)
+																	.Include(Informe => Informe.Coordinador)
+															where Info.AlumnoId == AlumnoId
+										  					select Info)
 					{
 						buscados.Add(Informe);
 					}
