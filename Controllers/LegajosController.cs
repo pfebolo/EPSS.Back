@@ -33,6 +33,17 @@ namespace EPSS.Controllers
             return new ObjectResult(item);
         }
 
+		[HttpGet("byLegajoNro/{LegajoNro}", Name = "GetLegajosByLegajoNro")]
+		public IActionResult GetByLegajoNro(int LegajoNro)
+		{
+            var item = _repo.FindByLegajoNro(LegajoNro);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return new ObjectResult(item);
+		}
+
         [HttpPost]
         public IActionResult Create([FromBody] Legajos item)
         {

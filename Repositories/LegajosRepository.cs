@@ -11,6 +11,7 @@ namespace EPSS.Repositories
 	{
 		IEnumerable<Legajos> GetAll();
 		Legajos Find(int id);
+		Legajos FindByLegajoNro(int legajoNro);
 		void Add(Legajos item);
 		void Update(Legajos item);
 		void Remove(int id);
@@ -45,6 +46,34 @@ namespace EPSS.Repositories
 					else
 						_logger.LogInformation("AlumnoID: " + id.ToString() + " --> EstaBorrado");
 					_logger.LogInformation("Buscar LegajoId: " + id.ToString() + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+			return ItemBuscado;
+		}
+
+		public Legajos FindByLegajoNro(int legajoNro)
+		{
+			Legajos ItemBuscado = null;
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					ItemBuscado = db.Legajos.Single(legajo => legajo.LegajoNro == legajoNro);
+					if (ItemBuscado==null)
+						_logger.LogInformation("LegajoNro: " + legajoNro.ToString() + " --> NoEncontrado");
+					else {
+						Alumnos AlumnoBuscado = db.Alumnos.Find(ItemBuscado.AlumnoId);
+						if (AlumnoBuscado.EstaBorrado) {
+							ItemBuscado=null;
+							_logger.LogInformation("LegajoNro: " + legajoNro.ToString() + " --> Borrado");	
+						}
+					}
+					_logger.LogInformation("Buscar LegajoNro: " + legajoNro.ToString() + " --> OK");
 				}
 			}
 			catch (System.Exception ex)
