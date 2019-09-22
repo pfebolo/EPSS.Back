@@ -20,5 +20,11 @@ namespace EPSS.Controllers
 			return _repoExt.FindByAlumnoId(AlumnoId);
 		}
 
+		[HttpGet("ByInforme/{AlumnoId}/{CoordinadoraId}/{AnioLectivo}", Name = "FindByInforme")]
+		public Informes FindByInforme(int AlumnoId,int CoordinadoraId, int AnioLectivo)
+		{
+			return _repoExt.FindByInforme(AlumnoId,CoordinadoraId,AnioLectivo);
+		}
 	}
+	
 }
