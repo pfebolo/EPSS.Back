@@ -63,7 +63,7 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
-					ItemBuscado = db.Legajos.Single(legajo => legajo.LegajoNro == legajoNro);
+					ItemBuscado = db.Legajos.SingleOrDefault(legajo => legajo.LegajoNro == legajoNro);
 					if (ItemBuscado==null)
 						_logger.LogInformation("LegajoNro: " + legajoNro.ToString() + " --> NoEncontrado");
 					else {
