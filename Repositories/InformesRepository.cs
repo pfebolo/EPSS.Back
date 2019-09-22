@@ -12,6 +12,7 @@ namespace EPSS.Repositories
 	public interface IInformesRepository : IRepository<Informes>
 	{
 		IEnumerable<Informes> FindByAlumnoId(int alumnoId);
+		Informes FindByInforme(int alumnoId,int coordinadoraId, int anioLectivo);
 	}
 	public class InformesRepository : BaseRepositoryNew<Informes>, IInformesRepository 
 	{
@@ -39,7 +40,7 @@ namespace EPSS.Repositories
 			}
 			return _list.AsReadOnly();
 		}
-		public IEnumerable<Informes> FindByAlumnoId(int AlumnoId)
+		public IEnumerable<Informes> FindByAlumnoId(int alumnoId)
 		{
 			List<Informes> buscados = new List<Informes>();
 			try
@@ -49,12 +50,12 @@ namespace EPSS.Repositories
 				{
 					foreach (var Informe in from Info in db.Informes.Include(Informe => Informe.Legajo)
 																	.Include(Informe => Informe.Coordinador)
-															where Info.AlumnoId == AlumnoId
+															where Info.AlumnoId == alumnoId
 										  					select Info)
 					{
 						buscados.Add(Informe);
 					}
-					_logger.LogInformation("Buscar Informes x AlumnoId " + AlumnoId.ToString() + ", cantidad:" + buscados.Count().ToString() + " --> OK");
+					_logger.LogInformation("Buscar Informes x AlumnoId " + alumnoId.ToString() + ", cantidad:" + buscados.Count().ToString() + " --> OK");
 				}
 			}
 			catch (System.Exception ex)
@@ -63,6 +64,41 @@ namespace EPSS.Repositories
 				throw ex;
 			}
 			return buscados.AsReadOnly();
+
+		}
+
+		public Informes FindByInforme(int alumnoId,int coordinadoraId, int anioLectivo)
+		{
+			Informes informe = null;
+			List<Informes> buscados = new List<Informes>();
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+
+				{
+					foreach (var Informe in from Info in db.Informes.Include(Informe => Informe.Legajo)
+																	.Include(Informe => Informe.Coordinador)
+															where Info.AlumnoId == alumnoId
+															  && Info.CoordinadorId == coordinadoraId
+															  && Info.AnioLectivo == anioLectivo
+										  					select Info)
+					{
+						buscados.Add(Informe);
+					}
+					if (buscados.Count == 1) {
+						informe = buscados.ElementAt(0);
+						_logger.LogInformation("Buscar Informes x UniqueKey (" + alumnoId.ToString() + ", " + coordinadoraId.ToString() + ", " + anioLectivo.ToString() +  ") --> OK");
+						}
+					else
+						_logger.LogInformation("Buscar Informes x UniqueKey (" + alumnoId.ToString() + ", " + coordinadoraId.ToString() + ", " + anioLectivo.ToString() +  ") --> OK (No encontrado)");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
+			return informe;
 
 		}
 

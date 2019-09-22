@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using EPSS.Models;
 using EPSS.Repositories;
-
+using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace EPSS.Controllers
 {
@@ -20,5 +21,27 @@ namespace EPSS.Controllers
 			return _repoExt.FindByAlumnoId(AlumnoId);
 		}
 
+		[HttpGet("ByInforme/{AlumnoId}/{CoordinadoraId}/{AnioLectivo}", Name = "FindByInforme")]
+		public IActionResult FindByInforme(int AlumnoId,int CoordinadoraId, int AnioLectivo)
+		{
+			try
+			{
+				var item = _repoExt.FindByInforme(AlumnoId,CoordinadoraId,AnioLectivo);
+				if (item == null)
+				{
+					return NotFound();
+				}
+				return new ObjectResult(item);
+			}
+			catch (Exception ex) when (ex is DbUpdateException || ex is DbUpdateConcurrencyException)
+			{
+				return Utils.ResponseConfict(ex);
+			}
+			catch (Exception ex)
+			{
+				return Utils.ResponseInternalError(ex);
+			}
+		}
 	}
+	
 }
