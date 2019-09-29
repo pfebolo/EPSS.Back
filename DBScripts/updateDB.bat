@@ -1,4 +1,4 @@
 chcp 65001
-Rem Crear la tabla informes
-sqlcmd -f 65001 -i CrearInformes.sql
+Rem Agrear dtos
+sqlcmd -f 65001 -i ActualizarDatos.sql
 
