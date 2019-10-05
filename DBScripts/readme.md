@@ -1,6 +1,7 @@
 # Normas uso de carpeta
 
-# General
+## General
+
 * Verbos en infinitivo
 * Tipo de nomenclatura: Pascal
 * Codificación de archivos: UTF-8 (sin BOM)
