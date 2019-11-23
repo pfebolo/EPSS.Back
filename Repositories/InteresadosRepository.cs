@@ -54,6 +54,14 @@ namespace EPSS.Repositories
 				using (var db = new escuelapsdelsurContext())
 				{
 					InteresadoBuscado = db.Interesados.Find(id);
+					if (InteresadoBuscado!=null) {
+					if (InteresadoBuscado.ModalidadId.HasValue)
+						InteresadoBuscado.Modalidad = db.Modalidades.Find(InteresadoBuscado.ModalidadId);
+					if (InteresadoBuscado.CarreraId.HasValue)
+						InteresadoBuscado.Carrera = db.Carreras.Find(InteresadoBuscado.CarreraId);
+					if (InteresadoBuscado.MedioDeContactoId.HasValue)
+						InteresadoBuscado.MedioDeContacto =db.MediosDeContacto.Find(InteresadoBuscado.MedioDeContactoId);
+					}
 					_logger.LogInformation("Buscar InteresadoId: " + id.ToString() + " --> OK");
 				}
 			}
@@ -133,20 +141,20 @@ namespace EPSS.Repositories
 
 		public void Remove(Interesados item)
 		{
-            try
-            {
-                using (var db = new escuelapsdelsurContext())
-                {
-                    db.Remove(item);
-                    db.SaveChanges();
-                    _logger.LogInformation("Eliminado Interesado ID: " + item.InteresadoId.ToString() + " --> OK");
-                }
-            }
-            catch (System.Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw ex;
-            }
+			try
+			{
+				using (var db = new escuelapsdelsurContext())
+				{
+					db.Remove(item);
+					db.SaveChanges();
+					_logger.LogInformation("Eliminado Interesado ID: " + item.InteresadoId.ToString() + " --> OK");
+				}
+			}
+			catch (System.Exception ex)
+			{
+				_logger.LogError(ex.Message);
+				throw ex;
+			}
 
 		}
 	}
