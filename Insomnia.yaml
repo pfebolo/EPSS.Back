@@ -1,7 +1,7 @@
 _type: export
 __export_format: 4
-__export_date: 2019-07-15T00:07:07.781Z
-__export_source: insomnia.desktop.app:v6.5.4
+__export_date: 2019-12-01T16:26:12.185Z
+__export_source: insomnia.desktop.app:v7.0.4
 resources:
   - _id: req_f1a503884d6f4763a83f0f221e13a4ab
     authentication: {}
@@ -26,10 +26,11 @@ resources:
     parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/paises
+    url: "{{ baseUrl  }}/paises"
     _type: request
   - _id: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     created: 1506986000086
@@ -77,16 +78,17 @@ resources:
     isPrivate: false
     metaSortKey: -1505664471569.75
     method: GET
-    modified: 1506986027183
+    modified: 1575215763955
     name: EstadosDivision
     parameters: []
     parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/estadosDivision
+    url: "{{ baseUrl  }}/estadosDivision"
     _type: request
   - _id: req_f29ca2aad0e9422fa99d09aa74926247
     authentication: {}
@@ -111,10 +113,11 @@ resources:
     parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: false
-    url: http://localhost:5000/api/modos
+    url: "{{ baseUrl  }}/modos"
     _type: request
   - _id: req_3253618124a9409383f66cfc75f6c7bb
     authentication: {}
@@ -139,10 +142,11 @@ resources:
     parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: true
     settingStoreCookies: false
-    url: http://localhost:5000/api/turnos
+    url: "{{ baseUrl  }}/turnos"
     _type: request
   - _id: req_dbabac2b226e4dc98e0a260b9138c422
     authentication: {}
@@ -167,10 +171,11 @@ resources:
     parentId: fld_aa6dc7b496e345c8819c0eb2c1fe92b6
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/EstadosEstudiante
+    url: "{{ baseUrl  }}/EstadosEstudiante"
     _type: request
   - _id: req_efe6ea85201a42a09469751036a4701e
     authentication: {}
@@ -195,10 +200,11 @@ resources:
     parentId: fld_885e3104af324a70945f4f0a0ca72f4d
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/carreras
+    url: "{{ baseUrl  }}/carreras"
     _type: request
   - _id: fld_885e3104af324a70945f4f0a0ca72f4d
     created: 1563147415156
@@ -243,10 +249,11 @@ resources:
     parentId: fld_885e3104af324a70945f4f0a0ca72f4d
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/carreras
+    url: "{{ baseUrl  }}/carreras"
     _type: request
   - _id: req_894119fd5e12402fb1b7c8398493ce35
     authentication: {}
@@ -271,10 +278,11 @@ resources:
     parentId: fld_6af63e8d9c534151844c64ab6969bbe3
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Coordinaciones
+    url: "{{ baseUrl  }}/Coordinaciones"
     _type: request
   - _id: fld_6af63e8d9c534151844c64ab6969bbe3
     created: 1506986080681
@@ -324,10 +332,11 @@ resources:
     parentId: fld_6af63e8d9c534151844c64ab6969bbe3
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4
+    url: "{{ baseUrl  }}/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4"
     _type: request
   - _id: req_af7da12b462740cd9ef3027999c08708
     authentication: {}
@@ -370,10 +379,11 @@ resources:
     parentId: fld_6af63e8d9c534151844c64ab6969bbe3
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinaciones
+    url: "{{ baseUrl  }}/coordinaciones"
     _type: request
   - _id: req_b52739fcdea04ece843d07904520acf7
     authentication: {}
@@ -416,10 +426,11 @@ resources:
     parentId: fld_6af63e8d9c534151844c64ab6969bbe3
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Coordinaciones
+    url: "{{ baseUrl  }}/Coordinaciones"
     _type: request
   - _id: req_5a1cdf4daac34cba9ba4ebcbbecff9ae
     authentication: {}
@@ -459,10 +470,11 @@ resources:
     parentId: fld_6af63e8d9c534151844c64ab6969bbe3
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4
+    url: "{{ baseUrl  }}/Coordinaciones/0/Presencial/2015/1/1/1/Mañana/B/4"
     _type: request
   - _id: req_e561d4c4cf7542caa5a21f16ad85edee
     authentication: {}
@@ -487,10 +499,11 @@ resources:
     parentId: fld_63494d0adce142c6a2361c1f94f3090c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinadores
+    url: "{{ baseUrl  }}/coordinadores"
     _type: request
   - _id: fld_63494d0adce142c6a2361c1f94f3090c
     created: 1509199110496
@@ -522,10 +535,11 @@ resources:
     parentId: fld_63494d0adce142c6a2361c1f94f3090c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinadores/29
+    url: "{{ baseUrl  }}/coordinadores/29"
     _type: request
   - _id: req_eb3e4969a00f4944964be8cf36b1ae40
     authentication: {}
@@ -561,10 +575,11 @@ resources:
     parentId: fld_63494d0adce142c6a2361c1f94f3090c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinadores
+    url: "{{ baseUrl  }}/coordinadores"
     _type: request
   - _id: req_196e294d93bf40afb53c2ab49a16b9ee
     authentication: {}
@@ -604,10 +619,11 @@ resources:
     parentId: fld_63494d0adce142c6a2361c1f94f3090c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinadores
+    url: "{{ baseUrl  }}/coordinadores"
     _type: request
   - _id: req_0421b55818694a05816a3633c87f37b5
     authentication: {}
@@ -630,10 +646,11 @@ resources:
     parentId: fld_63494d0adce142c6a2361c1f94f3090c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/coordinadores/30
+    url: "{{ baseUrl  }}/coordinadores/30"
     _type: request
   - _id: req_3a63ab6f5dba428a8bd91df87b113f23
     authentication: {}
@@ -658,10 +675,11 @@ resources:
     parentId: fld_3a79fc173b3f45268b25e27fa86b2255
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Cursos
+    url: "{{ baseUrl  }}/Cursos"
     _type: request
   - _id: fld_3a79fc173b3f45268b25e27fa86b2255
     created: 1506888051635
@@ -711,10 +729,11 @@ resources:
     parentId: fld_3a79fc173b3f45268b25e27fa86b2255
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Cursos
+    url: "{{ baseUrl  }}/Cursos"
     _type: request
   - _id: req_661d1b6f3e734d438f6f4cad256acad0
     authentication: {}
@@ -755,10 +774,11 @@ resources:
     parentId: fld_3a79fc173b3f45268b25e27fa86b2255
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Cursos
+    url: "{{ baseUrl  }}/Cursos"
     _type: request
   - _id: req_f6519c261cf0470da976faf93fe8f224
     authentication: {}
@@ -788,10 +808,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones
+    url: "{{ baseUrl  }}/divisiones"
     _type: request
   - _id: fld_df2731cd4587418291ac08a15331f86b
     created: 1506985685400
@@ -853,10 +874,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones
+    url: "{{ baseUrl  }}/divisiones"
     _type: request
   - _id: req_3d857dd33d91410584018c6d88c70cde
     authentication: {}
@@ -897,11 +919,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones/0/A
-      Distancia/2017/8/1/1/Virtual/A/promocion
+    url: "{{ baseUrl  }}/divisiones/0/A Distancia/2017/8/1/1/Virtual/A/promocion"
     _type: request
   - _id: req_a6e5beb53fbb4baca66a6aabb7ebb352
     authentication: {}
@@ -943,10 +965,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones
+    url: "{{ baseUrl  }}/divisiones"
     _type: request
   - _id: req_e2324810a98748f891e416dd98f2dc82
     authentication: {}
@@ -974,10 +997,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones/0/Presencial/2017/8/3/1/Noche/A/egreso
+    url: "{{ baseUrl  }}/divisiones/0/Presencial/2017/8/3/1/Noche/A/egreso"
     _type: request
   - _id: req_7223509800974236a3b95ff879c3918f
     authentication: {}
@@ -1003,10 +1027,11 @@ resources:
     parentId: fld_df2731cd4587418291ac08a15331f86b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/divisiones/0/Presencial/2015/1/1/1/Ma%C3%B1ana/C
+    url: "{{ baseUrl  }}/divisiones/0/Presencial/2015/1/1/1/Ma%C3%B1ana/C"
     _type: request
   - _id: req_dacca7ed722c44bb99c795d2208ec28a
     authentication: {}
@@ -1031,10 +1056,11 @@ resources:
     parentId: fld_b1c80848df5245979c8fc1485e4bd3e2
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/dispositivos
+    url: "{{ baseUrl  }}/dispositivos"
     _type: request
   - _id: fld_b1c80848df5245979c8fc1485e4bd3e2
     created: 1563147440313
@@ -1078,10 +1104,11 @@ resources:
     parentId: fld_b1c80848df5245979c8fc1485e4bd3e2
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/dispositivos
+    url: "{{ baseUrl  }}/dispositivos"
     _type: request
   - _id: req_edcfeaad712a4aa29c6a409a5f91f6f0
     authentication: {}
@@ -1106,10 +1133,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/grupos
+    url: "{{ baseUrl  }}/grupos"
     _type: request
   - _id: fld_62603dd5ec92411980b41a274b2ca64b
     created: 1507421369287
@@ -1181,10 +1209,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Grupos/0/A Distancia/2017/8/2/2/Virtual/E/102829
+    url: "{{ baseUrl  }}/Grupos/0/A Distancia/2017/8/2/2/Virtual/E/102829"
     _type: request
   - _id: req_5798f36624b948548b6bedcdfed228de
     authentication: {}
@@ -1226,10 +1255,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Grupos/byAlumno/8423
+    url: "{{ baseUrl  }}/Grupos/byAlumno/8423"
     _type: request
   - _id: req_4a7e560c8ecc43dcb375947803043a94
     authentication: {}
@@ -1271,10 +1301,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/grupos
+    url: "{{ baseUrl  }}/grupos"
     _type: request
   - _id: req_2a52b35b78af481980b90c7b7e9403ad
     authentication: {}
@@ -1330,10 +1361,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/grupos/coleccion
+    url: "{{ baseUrl  }}/grupos/coleccion"
     _type: request
   - _id: req_546feeb8c05b46f1986cb71ba6971895
     authentication: {}
@@ -1359,10 +1391,11 @@ resources:
     parentId: fld_62603dd5ec92411980b41a274b2ca64b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/grupos/0/Presencial/2015/2/1/1/Ma%C3%B1ana/A/6315
+    url: "{{ baseUrl  }}/grupos/0/Presencial/2015/2/1/1/Ma%C3%B1ana/A/6315"
     _type: request
   - _id: req_4a69491187a841bfb90cc9cd7a90905a
     authentication: {}
@@ -1387,10 +1420,11 @@ resources:
     parentId: fld_89d1323e657843abae49cb3d328639e0
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/lugares
+    url: "{{ baseUrl  }}/lugares"
     _type: request
   - _id: fld_89d1323e657843abae49cb3d328639e0
     created: 1506258385417
@@ -1425,10 +1459,11 @@ resources:
     parentId: fld_89d1323e657843abae49cb3d328639e0
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: true
-    url: http://localhost:5000/api/lugares/1
+    url: "{{ baseUrl  }}/lugares/1"
     _type: request
   - _id: req_5677ee6545aa4e61a89ab6c4f74d85e4
     authentication: {}
@@ -1462,10 +1497,11 @@ resources:
     parentId: fld_89d1323e657843abae49cb3d328639e0
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/lugares
+    url: "{{ baseUrl  }}/lugares"
     _type: request
   - _id: req_57a4e909f38648da8ff02dd3af8226f7
     authentication: {}
@@ -1491,10 +1527,11 @@ resources:
     parentId: fld_98b9d1f1e7e84a3d984f44ba4d72669c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/inscriptos
+    url: "{{ baseUrl  }}/inscriptos"
     _type: request
   - _id: fld_98b9d1f1e7e84a3d984f44ba4d72669c
     created: 1505608474266
@@ -1521,16 +1558,17 @@ resources:
     isPrivate: false
     metaSortKey: 0
     method: GET
-    modified: 1518365331043
+    modified: 1569367402570
     name: Legajos
     parameters: []
     parentId: fld_71223ac6c4b34daca373ea1e7e406f28
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/legajos
+    url: "{{ baseUrl  }}/legajos"
     _type: request
   - _id: fld_71223ac6c4b34daca373ea1e7e406f28
     created: 1501445644054
@@ -1547,7 +1585,7 @@ resources:
     body: {}
     created: 1505080140002
     description: |-
-      **Get Eventos**  
+      **Get Legajo**  
       Obtiene un legajo pedido por Id
     headers:
       - disabled: false
@@ -1563,16 +1601,50 @@ resources:
     isPrivate: false
     metaSortKey: 100
     method: GET
-    modified: 1558486345950
+    modified: 1568586154936
     name: Obtener Legajo x Id
     parameters: []
     parentId: fld_71223ac6c4b34daca373ea1e7e406f28
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/legajos/62113
+    url: "{{ baseUrl  }}/legajos/1826"
+    _type: request
+  - _id: req_d473b3c7d2ed4f629fdb1e299771458e
+    authentication: {}
+    body: {}
+    created: 1568586102712
+    description: |-
+      **Get Legajo**  
+      Obtiene un legajo pedido por LegajoNro
+    headers:
+      - disabled: false
+        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
+        name: Accept
+        value: application/json
+      - id: pair_cfeedd3025014a54a62539cb96ff970b
+        name: Accept-Charset
+        value: utf-8
+      - id: pair_f9057a1840954110a20b2ab4696d3180
+        name: Cache-Control
+        value: no-cache, no-store
+    isPrivate: false
+    metaSortKey: 150
+    method: GET
+    modified: 1569185815517
+    name: Obtener Legajo x LegajoNro
+    parameters: []
+    parentId: fld_71223ac6c4b34daca373ea1e7e406f28
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: "{{ baseUrl  }}/legajos/byLegajoNro/4577"
     _type: request
   - _id: req_a0f0f6edb91c4a909e7b90a287841de8
     authentication: {}
@@ -1653,10 +1725,11 @@ resources:
     parentId: fld_71223ac6c4b34daca373ea1e7e406f28
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/legajos
+    url: "{{ baseUrl  }}/legajos"
     _type: request
   - _id: req_f9fe4d874e28427d8c04bc7cba79d7cd
     authentication: {}
@@ -1679,10 +1752,11 @@ resources:
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/informes
+    url: "{{ baseUrl  }}/informes"
     _type: request
   - _id: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     created: 1563065043962
@@ -1709,16 +1783,17 @@ resources:
     isPrivate: false
     metaSortKey: -1516010930299.8438
     method: GET
-    modified: 1563147862840
+    modified: 1569185547908
     name: Informes by Id
     parameters: []
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/informes/1826/3
+    url: "{{ baseUrl  }}/informes/1826/18260011"
     _type: request
   - _id: req_c6804d8bfa5446d4a27c1a258aa44c52
     authentication: {}
@@ -1760,16 +1835,74 @@ resources:
     isPrivate: false
     metaSortKey: -1516010930299.4531
     method: GET
-    modified: 1563147184609
+    modified: 1569185534477
     name: Informes por Alumno
     parameters: []
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Informes/byAlumno/1878
+    url: "{{ baseUrl  }}/Informes/byAlumno/1826"
+    _type: request
+  - _id: req_9ad726e7b8444b45b1113578003d02a6
+    authentication: {}
+    body: {}
+    created: 1569165022376
+    description: "**Get Informes x Informe** \ 
+
+      Obtiene un _informe_ buscado pos su clave natural
+      (alumnoId+CoordinadorId+anioLectivo)
+
+
+      Ejemplo de clave natural: \ 
+
+      ```
+
+      \t\"alumnoId\": 102829, \ 
+
+      \  \"coordinadorId\": 8, \ 
+
+      \  \"anioLectivo\": 1, \ 
+
+      ```\t
+
+
+      Ejemplo de uri: \ 
+
+      ```
+
+      \t/api/informes/byAlumno/102829/8/1
+
+      ```\t
+
+
+
+      \t\ 
+
+      \t\ 
+
+      \t "
+    headers:
+      - id: pair_e52dbebfb1324c26bcea8434d497a229
+        name: Accept
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1516010930299.2578
+    method: GET
+    modified: 1569185556824
+    name: Informes por Informe
+    parameters: []
+    parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingFollowRedirects: global
+    settingRebuildPath: true
+    settingSendCookies: false
+    settingStoreCookies: false
+    url: "{{ baseUrl  }}/Informes/byInforme/1826/1/2"
     _type: request
   - _id: req_ca31df81561f4c8cb082f34a6c709213
     authentication: {}
@@ -1778,9 +1911,9 @@ resources:
       text: |-
         {
           "alumnoId": 1826,
-          "informeId": 4,
-          "anioLectivo": 2,
-          "coordinadorId": 2,
+          "informeId": 18260011,
+          "anioLectivo": 1,
+          "coordinadorId": 1,
           "informe": "Nuevo Informe id=3",
           "fechaCreacion": "2019-07-14T00:00:00-03:00",
           "fechaActualizacion": "2019-07-14T00:00:00-03:00"
@@ -1790,29 +1923,23 @@ resources:
       **Crea una informe**  
       Crea una _informe_ específico para un legajo
     headers:
-      - disabled: false
-        id: pair_f47ec8fe92354f4fb93342dd8d7b6356
-        name: Accept
-        value: application/json
-      - id: pair_cfeedd3025014a54a62539cb96ff970b
-        name: Accept-Charset
-        value: utf-8
       - id: pair_7de6ec1ea25c4cf7a9810a47192d6f99
         name: Content-Type
         value: application/json
     isPrivate: false
     metaSortKey: -1516010930299.0625
     method: POST
-    modified: 1563146973479
+    modified: 1569185087324
     name: Crear un Informe
     parameters: []
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/informes
+    url: "{{ baseUrl  }}/informes"
     _type: request
   - _id: req_a88e37dd659349b79a9e959d1847ea30
     authentication: {}
@@ -1845,10 +1972,11 @@ resources:
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/informes
+    url: "{{ baseUrl  }}/informes"
     _type: request
   - _id: req_12c448cdcbaa45ba98feb207ccd7d8ef
     authentication: {}
@@ -1862,16 +1990,17 @@ resources:
     isPrivate: false
     metaSortKey: -1516010930199.0625
     method: DELETE
-    modified: 1563147016037
+    modified: 1569166318975
     name: Borrar un Informe
     parameters: []
     parentId: fld_afbbc7eeb46c4d26b2a127e9eeb91ceb
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/informes/1826/4
+    url: "{{ baseUrl  }}/informes/1826/1"
     _type: request
   - _id: req_bf584e8d18b94864969e8c46ac5d3971
     authentication: {}
@@ -1895,10 +2024,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interacciones
+    url: "{{ baseUrl  }}/interacciones"
     _type: request
   - _id: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     created: 1518365266338
@@ -1938,10 +2068,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interacciones/1315/4
+    url: "{{ baseUrl  }}/interacciones/1315/4"
     _type: request
   - _id: req_781d336291fb4059bab19e521677b542
     authentication: {}
@@ -1992,10 +2123,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Interacciones/byAlumno/1315
+    url: "{{ baseUrl  }}/Interacciones/byAlumno/1315"
     _type: request
   - _id: req_906238a37b8e4e00b0faa4d54c25ebcc
     authentication: {}
@@ -2032,10 +2164,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interacciones
+    url: "{{ baseUrl  }}/interacciones"
     _type: request
   - _id: req_a85dabfee6fd499686b7d0cca1f19883
     authentication: {}
@@ -2072,10 +2205,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interacciones
+    url: "{{ baseUrl  }}/interacciones"
     _type: request
   - _id: req_231a98e5db244a598551ee164b452e9d
     authentication: {}
@@ -2095,10 +2229,11 @@ resources:
     parentId: fld_2180d7cb4c1e47a1be7f2adbbbdb2077
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interacciones/1315/0
+    url: "{{ baseUrl  }}/interacciones/1315/0"
     _type: request
   - _id: req_3847f725e9fb42ee9d8c1e6a698c9cb4
     authentication: {}
@@ -2121,10 +2256,11 @@ resources:
     parentId: fld_6cd8eca437c140159f641c405b0e922b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Alumnos
+    url: "{{ baseUrl  }}/Alumnos"
     _type: request
   - _id: fld_6cd8eca437c140159f641c405b0e922b
     created: 1513467215142
@@ -2151,16 +2287,17 @@ resources:
     isPrivate: false
     metaSortKey: -749765288744.5
     method: GET
-    modified: 1558486152293
+    modified: 1569367008382
     name: Obtener Estudiantes  x Id
     parameters: []
     parentId: fld_6cd8eca437c140159f641c405b0e922b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Alumnos/62113
+    url: "{{ baseUrl  }}/Alumnos/1826"
     _type: request
   - _id: req_65f846c83d8c44eeab2aa2c3c1bfc381
     authentication: {}
@@ -2245,10 +2382,11 @@ resources:
     parentId: fld_6cd8eca437c140159f641c405b0e922b
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/Alumnos
+    url: "{{ baseUrl  }}/Alumnos"
     _type: request
   - _id: req_9a675371cb3a46fa9abbdc8d96dc4d0b
     authentication: {}
@@ -2268,16 +2406,17 @@ resources:
     isPrivate: false
     metaSortKey: -1500452298812
     method: GET
-    modified: 1501460222892
+    modified: 1575210667284
     name: interesados
     parameters: []
     parentId: fld_97157bf206c04d09ab6144e7c635f274
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesados
+    url: "{{ baseUrl  }}/interesados"
     _type: request
   - _id: fld_97157bf206c04d09ab6144e7c635f274
     created: 1501445623579
@@ -2307,16 +2446,17 @@ resources:
     isPrivate: false
     metaSortKey: -1500452298787
     method: GET
-    modified: 1506816126877
+    modified: 1575210826082
     name: Obtener Interesado x Id
     parameters: []
     parentId: fld_97157bf206c04d09ab6144e7c635f274
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesados/10567
+    url: "{{ baseUrl  }}/interesados/7150"
     _type: request
   - _id: req_a86880eb09574e05a236d15c654f81aa
     authentication: {}
@@ -2340,10 +2480,11 @@ resources:
     parentId: fld_97157bf206c04d09ab6144e7c635f274
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesados/10647
+    url: "{{ baseUrl  }}/interesados/10647"
     _type: request
   - _id: req_19883cd041ae4a29b40f68531195e603
     authentication: {}
@@ -2387,16 +2528,17 @@ resources:
     isPrivate: false
     metaSortKey: -1500412395980.625
     method: PUT
-    modified: 1501460527246
+    modified: 1575209048588
     name: Actualizar Interesado
     parameters: []
     parentId: fld_97157bf206c04d09ab6144e7c635f274
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesados
+    url: "{{ baseUrl  }}/interesados"
     _type: request
   - _id: req_5d2ddc93a2a74ef98179688ea4d65c51
     authentication: {}
@@ -2443,10 +2585,11 @@ resources:
     parentId: fld_97157bf206c04d09ab6144e7c635f274
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesados
+    url: "{{ baseUrl  }}/interesados"
     _type: request
   - _id: req_2bab18196a5841c0b2c4b58a2e715a26
     authentication: {}
@@ -2470,10 +2613,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados
+    url: "{{ baseUrl  }}/interaccionesinteresados"
     _type: request
   - _id: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     created: 1556500098145
@@ -2506,10 +2650,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados/10567/2
+    url: "{{ baseUrl  }}/interaccionesinteresados/10567/2"
     _type: request
   - _id: req_55953b81e1a347d882cf32fce921ca1a
     authentication: {}
@@ -2560,10 +2705,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados/byInteresado/10567
+    url: "{{ baseUrl  }}/interaccionesinteresados/byInteresado/10567"
     _type: request
   - _id: req_da2d65849cab4858af88ab16050bf03a
     authentication: {}
@@ -2600,10 +2746,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados
+    url: "{{ baseUrl  }}/interaccionesinteresados"
     _type: request
   - _id: req_7585eff0b42b4087a9a9c84d250841c5
     authentication: {}
@@ -2640,10 +2787,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados
+    url: "{{ baseUrl  }}/interaccionesinteresados"
     _type: request
   - _id: req_dcfcd5b465a34b3ebb2be5ed5cc5ff44
     authentication: {}
@@ -2663,10 +2811,11 @@ resources:
     parentId: fld_d1a519fe1a52496c9d9f605f5c22ae3c
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interaccionesinteresados/10567/-2147482646
+    url: "{{ baseUrl  }}/interaccionesinteresados/10567/-2147482646"
     _type: request
   - _id: req_1838784d043f4e1890c422ff03c47bcf
     authentication: {}
@@ -2698,10 +2847,11 @@ resources:
     parentId: fld_a28db28ac4704f04922d16dc80058acd
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/eventos
+    url: "{{ baseUrl  }}/eventos"
     _type: request
   - _id: fld_a28db28ac4704f04922d16dc80058acd
     created: 1501374020110
@@ -2734,10 +2884,11 @@ resources:
     parentId: fld_a28db28ac4704f04922d16dc80058acd
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/eventos
+    url: "{{ baseUrl  }}/eventos"
     _type: request
   - _id: req_d8af85b3dcff4e55b003879cbae9e17e
     authentication: {}
@@ -2760,10 +2911,11 @@ resources:
     parentId: fld_a28db28ac4704f04922d16dc80058acd
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/eventos/6
+    url: "{{ baseUrl  }}/eventos/6"
     _type: request
   - _id: req_c82a98d483c4448196b5cdc8f34a3fda
     authentication: {}
@@ -2800,10 +2952,11 @@ resources:
     parentId: fld_a28db28ac4704f04922d16dc80058acd
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/eventos
+    url: "{{ baseUrl  }}/eventos"
     _type: request
   - _id: req_c4d4542413f240a2a5070d951b4d002b
     authentication: {}
@@ -2822,10 +2975,11 @@ resources:
     parentId: fld_a28db28ac4704f04922d16dc80058acd
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/eventos/34
+    url: "{{ baseUrl  }}/eventos/34"
     _type: request
   - _id: req_65bcbd023196433aa5f43b1240fa65c5
     authentication: {}
@@ -2845,10 +2999,11 @@ resources:
     parentId: fld_1cf407307b6c4b909f655ab925edf2d2
     settingDisableRenderRequestBody: false
     settingEncodeUrl: false
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesadosEventos/Eventos/12
+    url: "{{ baseUrl  }}/interesadosEventos/Eventos/12"
     _type: request
   - _id: fld_1cf407307b6c4b909f655ab925edf2d2
     created: 1501374083172
@@ -2884,10 +3039,11 @@ resources:
     parentId: fld_1cf407307b6c4b909f655ab925edf2d2
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesadosEventos/Eventos/32
+    url: "{{ baseUrl  }}/interesadosEventos/Eventos/32"
     _type: request
   - _id: req_e532c8d1d8de4aa2b08e47b167b2038a
     authentication: {}
@@ -2909,19 +3065,31 @@ resources:
     parentId: fld_1cf407307b6c4b909f655ab925edf2d2
     settingDisableRenderRequestBody: false
     settingEncodeUrl: true
+    settingFollowRedirects: global
     settingRebuildPath: true
     settingSendCookies: false
     settingStoreCookies: false
-    url: http://localhost:5000/api/interesadoseventos
+    url: "{{ baseUrl  }}/interesadoseventos"
     _type: request
   - _id: env_78f5aa94ef664c79b00f25a1f3702765
     color: null
     created: 1499530578190
-    data: {}
-    dataPropertyOrder: null
+    data:
+      basePhat: api
+      baseUrl: "{{ protocol  }}://{{ server  }}:{{ port  }}/{{ basePhat  }}"
+      port: "5000"
+      protocol: http
+      server: localhost
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+        - protocol
+        - server
+        - port
+        - basePhat
     isPrivate: false
     metaSortKey: 1563147934547
-    modified: 1501367213258
+    modified: 1575210753682
     name: Base Environment
     parentId: wrk_dc37dfab6101490e87aeb2d147816d7e
     _type: environment
