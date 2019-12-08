@@ -145,6 +145,9 @@ namespace EPSS.Repositories
 			{
 				using (var db = new escuelapsdelsurContext())
 				{
+					item.Carrera=null;
+					item.MedioDeContacto=null;
+					item.Modalidad=null;
 					db.Remove(item);
 					db.SaveChanges();
 					_logger.LogInformation("Eliminado Interesado ID: " + item.InteresadoId.ToString() + " --> OK");
